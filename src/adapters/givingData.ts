@@ -83,14 +83,26 @@ export function makeGivingDataAdapter(env: NodeJS.ProcessEnv = process.env): Sou
   const reqPath = env.GIVINGDATA_REQUIREMENTS_PATH ?? "/requirements";
   const http = new HttpClient({ headers: { authorization: `Bearer ${apiKey}` }, minIntervalMs: 200 });
 
+  const rootHost = new URL(root).host;
+  /** a pagination URL from the API response must stay on the configured host (no SSRF) */
+  const sameHost = (u: string) => {
+    try {
+      return new URL(u, root).host === rootHost;
+    } catch {
+      return false;
+    }
+  };
+
   /** page through a collection endpoint; tolerate the two common paging styles */
   async function* collection(path: string): AsyncGenerator<Row> {
     let url: string | null = `${root}${path}?pageSize=100`;
-    while (url) {
+    let pages = 0;
+    while (url && pages++ < 10_000) {
       const page: any = await http.getJson(url);
       const rows: Row[] = Array.isArray(page) ? page : (page.data ?? page.items ?? page.results ?? []);
       for (const r of rows) yield r;
-      url = page.next ?? page.nextPageUrl ?? (page.nextCursor ? `${root}${path}?cursor=${page.nextCursor}` : null);
+      const next = page.next ?? page.nextPageUrl ?? (page.nextCursor ? `${root}${path}?cursor=${encodeURIComponent(page.nextCursor)}` : null);
+      url = next && sameHost(next) ? next : null;
     }
   }
 

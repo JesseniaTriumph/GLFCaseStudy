@@ -94,9 +94,18 @@ function json(res: ServerResponse, status: number, body: unknown, extraHeaders: 
   res.writeHead(status, { "content-type": "application/json", ...extraHeaders });
   res.end(JSON.stringify(body));
 }
+const MAX_BODY = 64 * 1024; // a question + a couple of flags is tiny; cap the rest
 async function readBody(req: IncomingMessage): Promise<unknown> {
   const chunks: Buffer[] = [];
-  for await (const c of req) chunks.push(c as Buffer);
+  let total = 0;
+  for await (const c of req) {
+    total += (c as Buffer).length;
+    if (total > MAX_BODY) {
+      req.destroy();
+      return {};
+    }
+    chunks.push(c as Buffer);
+  }
   if (!chunks.length) return {};
   try {
     return JSON.parse(Buffer.concat(chunks).toString("utf8"));
@@ -210,15 +219,17 @@ export function createApp(deps: ServerDeps) {
 
       if (path === "/api/feedback" && req.method === "POST") {
         if (!session) return json(res, 401, { error: "not signed in" });
-        const b = (await readBody(req)) as { question?: string; answerText?: string; verdict?: string; note?: string };
-        if (!b.question || !["up", "down"].includes(b.verdict ?? "")) return json(res, 400, { error: "question + verdict (up|down) required" });
-        const entry = { ts: new Date().toISOString(), user: session.email, question: b.question, verdict: b.verdict, note: b.note ?? "", answerPreview: (b.answerText ?? "").slice(0, 400) };
+        const b = (await readBody(req)) as { question?: unknown; answerText?: unknown; verdict?: unknown; note?: unknown };
+        const str = (v: unknown, n: number) => (typeof v === "string" ? v.slice(0, n) : "");
+        const fq = str(b.question, 2000);
+        if (!fq || !["up", "down"].includes(String(b.verdict))) return json(res, 400, { error: "question + verdict (up|down) required" });
+        const entry = { ts: new Date().toISOString(), user: session.email, question: fq, verdict: b.verdict, note: str(b.note, 500), answerPreview: str(b.answerText, 400) };
         try {
           appendFileSync(deps.feedbackLog ?? "eval/feedback.jsonl", JSON.stringify(entry) + "\n");
         } catch {
           /* best effort */
         }
-        record({ type: "admin", user: session.email, action: "feedback", detail: `${b.verdict}: ${b.question.slice(0, 80)}` });
+        record({ type: "admin", user: session.email, action: "feedback", detail: `${b.verdict}: ${fq.slice(0, 80)}` });
         return json(res, 200, { ok: true });
       }
 
@@ -226,7 +237,7 @@ export function createApp(deps: ServerDeps) {
         if (!session) return json(res, 401, { error: "not signed in" });
         if (killSwitch.engaged) return json(res, 503, { error: "Compass is paused by an administrator." });
         const body = (await readBody(req)) as { question?: string; deepDive?: boolean; roleContext?: boolean };
-        const question = (body.question ?? "").trim();
+        const question = (body.question ?? "").trim().slice(0, 2000);
         if (!question) return json(res, 400, { error: "question required" });
 
         // per-user rate + cost limit — generation costs more budget than an extractive brief

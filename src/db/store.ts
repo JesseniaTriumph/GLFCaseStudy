@@ -149,8 +149,9 @@ export class PgStore {
     let restrictedTopScore = 0;
     const withheldTiers = new Set<string>();
     let withheldCount = 0;
+    const stubById = new Map(this.index.chunks.filter((c) => c.restrictedStub).map((c) => [c.id, c]));
     for (const s of stubRows.rows) {
-      const stub = this.index.chunks.find((c) => c.id === s.id);
+      const stub = stubById.get(s.id);
       if (!stub) continue;
       const sc = stubScore(stub, query, this.index);
       if (sc > 0.4) {

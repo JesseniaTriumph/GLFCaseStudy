@@ -51,7 +51,10 @@ const revokedBefore = new Map<string, number>();
 let globalRevokeBefore = 0;
 
 export function revokeUser(sub: string): void {
-  revokedBefore.set(sub, Math.floor(Date.now() / 1000));
+  const now = Math.floor(Date.now() / 1000);
+  revokedBefore.set(sub, now);
+  // a revocation older than one session lifetime can no longer affect any live token — evict it
+  for (const [k, t] of revokedBefore) if (now - t > SESSION_TTL_SEC) revokedBefore.delete(k);
 }
 export function revokeAll(): void {
   globalRevokeBefore = Math.floor(Date.now() / 1000);

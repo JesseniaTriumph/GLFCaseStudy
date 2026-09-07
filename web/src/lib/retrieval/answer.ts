@@ -440,14 +440,15 @@ function maybeScheduleAnswer(index: CorpusIndex, question: string, principal: Pr
   const m = q.match(/next (\d+) days?/);
   const windowDays = m ? +m[1]! : /next quarter|this quarter/.test(q) ? 90 : /next month|this month/.test(q) ? 31 : 60;
 
-  // only grants whose fact sheet this principal can read
+  // only grants whose fact sheet this principal can read (grantMeta is keyed by the grant id;
+  // the fact-sheet chunk's docId is `givingdata:<grantId>`)
   const readable = new Set(
     index.chunks
       .filter((c) => c.docTitle.startsWith("Grant fact sheet") && mayRead(c, principal))
-      .map((c) => c.docId.replace(/^givingdata:/, "").replace(/-.*/, "").replace(/^GD/, "GD-").replace("GD--", "GD-"))
+      .map((c) => c.docId.replace(/^givingdata:/, ""))
   );
   const cycles = Object.entries(index.grantMeta)
-    .filter(([gid]) => readable.size === 0 || readable.has(gid) || [...readable].some((r) => gid.startsWith(r)))
+    .filter(([gid]) => readable.has(gid))
     .map(([gid, meta]) => grantCycle({ grantId: gid, ...meta }));
 
   const wantsRenewal = /renewal|re-?application/.test(q);
