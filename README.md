@@ -32,26 +32,31 @@ Answer → Improve** (`docs/TRD.md`, `docs/ARCHITECTURE.md`).
 ```bash
 npm install
 
+npm run ci          # the PROMOTION GATE — runs everything below in order, stops on the first red:
+                    #   typecheck → build:index → eval → eval:pg → security → server:check → redteam
+
 npm run eval        # gold Q&A set: retrieval + refusal + PERMISSION-LEAK check
-                    #   → 8/8 pass, 0 leakage findings   (in-memory retrieval)
+                    #   → 12/12 pass, 0 leakage findings   (in-memory retrieval)
 npm run eval:pg     # the SAME gold set, retrieval through Postgres (PGlite, zero setup)
-                    #   → 8/8, 0 leaks — the permission filter is a SQL WHERE clause,
-                    #     plus a per-persona visibility check straight from SQL
-npm run security    # real RS256 OIDC token verification + tamper-evident audit log
-                    #   → 7/7: rejects a tampered token, a wrong-domain account, an
-                    #     expired token; detects an edited past audit entry
+                    #   → 12/12, 0 leaks — the permission filter is a SQL WHERE clause
+npm run redteam     # adversarial suite: 15 planted injection docs + jailbreak, exfiltration,
+                    #   permission-probing, PII-extraction cases → 16/16, 0 leaks
+npm run security    # RS256 OIDC verification + FAIL-CLOSED auth + tamper-evident audit
+                    #   → 9/9: rejects tampered / wrong-domain / expired tokens; a failed
+                    #     group lookup grants nothing; detects an edited past audit entry
 npm run server:check # the HTTP server + the FULL OIDC login flow against a mock Google IdP
-                    #   → 7/7: /api/ask is 401 without a session; login→callback verifies a
-                    #     real RS256 ID token and sets an HMAC session cookie; the
-                    #     restricted question is refused; logout returns to 401
-npm run build:index # the pipeline: clean → dedupe (exact/near/cross-system) → grant↔org
-                    #   graph join → gap report + a signed build manifest
+                    #   → 12/12: 401 without a session; login→callback verifies a real RS256
+                    #     token; rate-limit trip; kill switch; server-side session revocation;
+                    #     the restricted question refused with no metadata leak
+npm run build:index # pipeline: clean → PII scrub → injection filter → dedupe → grant↔org
+                    #   graph join → raw store → gap report + entity review queue + manifest
 npm run audit       # print + verify the hash-chained audit log
-npm run ask -- --pg --as impact "how did Riverbend perform against projection?"  # PG path
+npm run stats       # usage / trust / cost snapshot from the audit log
+npm run ask -- --pg --as impact "how did Riverbend perform against projection?"  # SQL path
 
 npm run ask -- --as programs "how did Riverbend Care Collective perform against projection?"
-npm run ask -- --as other    "did we decline an AI upskilling applicant and why?"   # → refused: permission
-npm run ask -- --as programs "what did the board discuss about staff compensation?" # → refused: restricted tier not indexed
+npm run ask -- --as other    "did we decline an AI upskilling applicant and why?"   # → refused
+npm run ask -- --as programs "what did the board discuss about staff compensation?" # → refused, no metadata leak
 ```
 
 ### The web app
@@ -77,12 +82,14 @@ cd web && npx vercel deploy        # or: netlify deploy --dir dist  /  any stati
 
 | | |
 |---|---|
-| **Real** | The pipeline (clean, dedupe, entity resolution, gap report, manifest). Hybrid retrieval (BM25 + tf-idf vector). **The permission filter — enforced per chunk, tested for zero leaks, and runnable as a SQL `WHERE` clause on Postgres (`src/db/store.ts`, `npm run eval:pg`).** `Restricted` excluded from the index (metadata stub + refusal). RS256 ID-token verification. Hash-chained tamper-evident audit log. Content hashing. The eval harness. |
-| **Real, opt-in** | **Learned embeddings** — `npm run build:index:embed` runs `bge-small-en-v1.5` locally via transformers.js (no API key, weights cached after first run) and `npm run eval:embed` / `COMPASS_EMBED=bge-small npm run eval:pg` pass 8/8, 0 leaks on it. Default stays tf-idf (offline-guaranteed). Same `Embedder` interface fronts BGE-M3 / a managed endpoint in production. |
-| **Real** (server) | `src/server/` — the HTTP API + the **full OIDC Authorization-Code + PKCE flow**: `/auth/login` → Google → `/auth/callback` verifies the RS256 ID token and sets an HMAC-signed `HttpOnly; Secure; SameSite=Strict` session cookie; `/api/ask` builds a `Principal` from the session's groups and runs the same permission-filtered `answerQuestion`. `npm run server:check` drives the whole flow against a mock Google IdP → 7/7. `npm run serve` runs it against a real Google OAuth client. |
-| **Real** (server) | PII detection + redaction at intake (`src/pipeline/pii.ts`) — deterministic scrubber (email/phone/SSN/EIN/card+Luhn/bank/IP/DOB/passport) plus a named-participant heuristic that raises a document to `Restricted` so it is never indexed; `npm run eval` case `participant-pii-quarantined` proves the query fails closed. Per-user rate + cost limiting (`src/server/limits.ts`, token buckets → `429` + `Retry-After`). Anomaly monitoring over the audit stream (`src/security/monitor.ts` — restricted-probing, auth-brute, broad-sweep, withheld-surge, cost-spike; each maps to an IR playbook). `npm run server:check` → 9/9 including the rate-limit trip and the monitor signal. |
-| **Stubbed for the demo** | The connectors (mock adapters on synthetic fixtures — real ones implement the same `SourceAdapter` interface). Deep-link targets (example URLs). Generative answers (extractive by default; set `ANTHROPIC_API_KEY`). Google Groups → permission-groups sync (a `resolveGroups` stub; production = a read-only Admin SDK lookup). The web SPA uses a persona switch + the tf-idf index (it runs retrieval in the browser). |
-| **Designed, not built** (see `deliverables/G_Security_Review.md`) | Real connector credentials, off-host audit streaming, a KMS for connector secrets, an egress allowlist, an indirect-prompt-injection test set, a third-party pen test, the Colombia/Kenya cross-border data review. **Prototype: `CONDITIONAL`. Production: `BLOCKED`** on those items. |
+| **Real — pipeline** | Clean · PII scrub + participant-data quarantine · indirect-prompt-injection pattern-strip + quarantine · dedupe (exact/near/cross-system) · entity resolution + grant↔org graph join · **entity review queue** · immutable content-addressed **raw store** · gap report (incl. what our own processing dropped) · signed build manifest. |
+| **Real — retrieval & answer** | Hybrid BM25 + tf-idf. **The permission filter — per chunk, tested for zero leaks, runnable as a SQL `WHERE` clause on Postgres (`npm run eval:pg`).** `Restricted` never indexed. Evidence brief with inline deep-link citations, coverage disclosure, **operationally-defined confidence** (coverage / source-agreement / freshness / citation-completeness), abstention, **conflict surfacing** (disagreeing figures shown, not merged), multilingual (ES↔EN) keyword bridge. |
+| **Real — security** | RS256 OIDC verification + **fail-closed** on a failed group lookup. HMAC session + **per-user & global server-side revocation**. Hash-chained tamper-evident audit log + **off-host stream hook**. Per-user rate + cost limits → `429`. Anomaly monitor (restricted-probing / auth-brute / broad-sweep / withheld-surge / cost-spike → IR playbooks). **Kill switch.** `/admin/review` · `/admin/stats` · `/api/feedback`. |
+| **Real — server** | `src/server/` — the **full OIDC Authorization-Code + PKCE flow**: `/auth/login` → Google → `/auth/callback` verifies the RS256 ID token, sets an `HttpOnly; Secure; SameSite=Strict` cookie; `/api/ask` runs the same permission-filtered `answerQuestion`. `npm run server:check` → 12/12. `npm run serve` runs it against a real Google OAuth client. |
+| **Real, opt-in** | Learned embeddings — `bge-small` locally via transformers.js (`npm run eval:embed`, 0 leaks); `bge-m3` registered as the multilingual option. Optional NER name redaction (`src/pipeline/ner.ts`, `COMPASS_PII_NER=true`). |
+| **Real, credential-activated** | Google Drive / GivingData / Airtable connectors (`src/adapters/`) — same `SourceAdapter` interface as the mocks; live the moment a credential is in `.env`, mock otherwise. Zoom Team Chat + Archive and Notion connectors, built and gated (`COMPASS_ZOOM_ENABLE` / `COMPASS_NOTION_ENABLE`). |
+| **Stubbed for the demo** | The connectors run on a synthetic fictional corpus. Deep-link targets are example URLs. Answers are extractive (a generative backend is `ANTHROPIC_API_KEY`). Google Groups sync is a `resolveGroups` stub (production = a read-only Admin SDK lookup). The web SPA runs retrieval in the browser with a persona switch instead of a login. The mobile app (`mobile/`) is an Expo scaffold. |
+| **Needs the Foundation's environment** (see `deliverables/G_Security_Review.md`, `docs/CONTROLS_MATRIX.md`) | Real connector credentials in a KMS · an egress allowlist · the off-host audit sink pointed at real write-once storage · Redis behind the rate-limiter/revocation store · a third-party pen test · counsel's Colombia/Kenya cross-border determination · exercising the incident tabletop. **Prototype: `CONDITIONAL`. Production: `BLOCKED`** on those items. |
 
 ---
 
