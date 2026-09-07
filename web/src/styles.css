@@ -126,8 +126,11 @@ select.persona { font-family: var(--font-body); font-size: 12.5px; padding: 5px 
 .conf.medium { color: var(--warn); background: var(--warn-bg); }
 .conf.low { color: var(--warn); background: var(--warn-bg); }
 .conf.refused { color: var(--flag); background: var(--flag-bg); }
-.vt { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--body); }
+.vt { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--body);
+  background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; cursor: pointer; }
+.vt.on { background: var(--warn-bg); border-color: var(--warn); color: var(--warn); }
 .vt input { accent-color: var(--accent); }
+.strip-note { flex-basis: 100%; font-size: 10.5px; color: var(--muted); margin-top: 2px; }
 .fb { display: inline-flex; gap: 6px; margin-left: auto; }
 .fb button { background: none; border: 1px solid var(--line); border-radius: 6px; width: 26px; height: 24px; color: var(--muted); font-size: 11px; }
 .fb button[aria-pressed="true"] { background: var(--peach); border-color: var(--accent); color: var(--accent-text); }

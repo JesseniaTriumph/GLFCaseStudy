@@ -130,7 +130,7 @@ export async function answerQuestion(
     text = extractiveAnswer(question, hits, citations);
   }
 
-  const confidence = gradeConfidence(hits);
+  const confidence = gradeConfidence(hits, question);
   const followUps =
     opts.followUps === false
       ? undefined
@@ -236,19 +236,79 @@ function extractiveAnswer(question: string, hits: Scored[], citations: Citation[
 }
 
 /**
- * Confidence describes the strength of the *evidence retrieved* — not the model's certainty.
- * It is computed only from retrieval signals (match strength, spread across systems),
- * never from the model's self-report.
+ * Confidence describes the *evidence*, never the model's certainty. It has an operational
+ * definition — four measurable dimensions, all from retrieval, none from a model self-report:
+ *
+ *   coverage      — how many close matches, across how many independent systems
+ *   agreement     — do the cited passages state consistent numbers, or do they conflict
+ *   freshness     — how old is the newest citation (a 4-year-old-only answer is "dated")
+ *   completeness  — is every cited passage backed by an openable source link
+ *
+ * The level is the weakest dimension that applies, and the reason names which one drove it.
  */
-function gradeConfidence(hits: Scored[]): { level: Answer["confidence"]; reason: string } {
+function gradeConfidence(hits: Scored[], question = ""): { level: Answer["confidence"]; reason: string } {
   const top = hits[0]!;
   const systems = new Set(hits.slice(0, 5).map((h) => h.chunk.system)).size;
   const strong = hits.filter((h) => h.bm25 > 2 || h.semantic > 0.12).length;
-  if (top.bm25 > 3 && strong >= 2)
-    return { level: "high", reason: `strong evidence — ${strong} close matches across ${systems} system(s)` };
+
+  // agreement: flag when passages state materially different values for a figure that
+  // carries the SAME label. A "vs projection / vs target" question expects a delta, so
+  // skip the check there — the difference is the answer, not a contradiction.
+  const comparison = /\b(vs\.?|versus|against|compared? to|relative to)\b.*\b(proj(ect|ection)|target|plan|goal|expect|estimate|forecast)/i.test(question);
+  const conflict = !comparison && hasLabeledConflict(hits.slice(0, 5).map((h) => h.chunk.text));
+
+  // freshness: newest citation date
+  const dates = hits.map((h) => h.chunk.date).filter(Boolean).sort() as string[];
+  const newest = dates[dates.length - 1];
+  const ageYears = newest ? (Date.now() - new Date(newest).getTime()) / 3.156e10 : null;
+  const dated = ageYears != null && ageYears > 2.5;
+
+  // completeness: every hit has an openable link
+  const linkable = hits.every((h) => !!h.chunk.deepLink);
+
+  if (conflict)
+    return { level: "medium", reason: "the cited sources report different values for the same figure — reconcile them against the sources before relying on this" };
+  if (!linkable)
+    return { level: "low", reason: "some evidence can't be linked to an openable source" };
+  if (top.bm25 > 3 && strong >= 2 && !dated)
+    return { level: "high", reason: `strong evidence — ${strong} close matches across ${systems} system(s), sources agree, most recent within ~2 years` };
   if (strong >= 1)
-    return { level: "medium", reason: `partial evidence — ${strong} close match(es); verify against the cited sources` };
+    return {
+      level: "medium",
+      reason:
+        `partial evidence — ${strong} close match(es)` +
+        (dated ? `; newest citation is ~${Math.round(ageYears!)}y old` : "") +
+        `; verify against the cited sources`,
+    };
   return { level: "low", reason: "thin evidence — treat as a lead, not an answer" };
+}
+
+/**
+ * Look for the same labelled figure with materially different values across passages —
+ * e.g. "median wage at placement $19.40" in one source and "$16.10" in another. Keying on
+ * a short label prefix avoids flagging a projection-vs-actual delta as a contradiction.
+ */
+function hasLabeledConflict(texts: string[]): boolean {
+  const byLabel = new Map<string, number[]>();
+  for (const t of texts) {
+    for (const m of t.matchAll(/([A-Za-z][A-Za-z ]{6,40}?)[:\s]\s*\$?\s?([\d,]+(?:\.\d+)?)\s?(%?)/g)) {
+      const label = m[1]!.trim().toLowerCase().replace(/\b(the|a|an|of|per|at|for|in)\b/g, "").replace(/\s+/g, " ").trim();
+      if (label.length < 6) continue;
+      const value = +m[2]!.replace(/,/g, "");
+      if (!Number.isFinite(value) || value === 0) continue;
+      const list = byLabel.get(label) ?? [];
+      list.push(value);
+      byLabel.set(label, list);
+    }
+  }
+  for (const vs of byLabel.values()) {
+    for (let i = 0; i < vs.length; i++)
+      for (let j = i + 1; j < vs.length; j++) {
+        const [a, b] = [vs[i]!, vs[j]!];
+        if (Math.abs(a - b) / Math.max(a, b) > 0.2) return true;
+      }
+  }
+  return false;
 }
 
 /**

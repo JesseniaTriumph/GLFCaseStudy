@@ -179,13 +179,14 @@ export function App() {
       </header>
 
       <div className="strip">
-        <span className="lbl">Corpus</span>
+        <span className="lbl">V1 corpus</span>
         <span className="chip"><span className="dot" /> GivingData <span className="rng">
           {index.coverage.dateRange ? `${index.coverage.dateRange[0]?.slice(0, 4)}–${index.coverage.dateRange[1]?.slice(0, 4)}` : ""}
         </span></span>
         <span className="chip"><span className="dot" /> Google Drive</span>
         <span className="chip"><span className="dot" /> Airtable</span>
-        <span className="chip off"><span className="dot" /> Zoom Chat <span className="rng">not connected</span></span>
+        <span className="chip off"><span className="dot" /> Zoom Chat <span className="rng">deferred — not in V1</span></span>
+        <span className="strip-note">V1 is these three systems. Zoom is deferred (retention + privacy review). This demo runs on synthetic data only.</span>
       </div>
       <div className="strip">
         <span className="lbl">Signed in as</span>
@@ -256,10 +257,9 @@ export function App() {
                   <div className="meta">
                     <span className={"conf " + ans.confidence}>● {ans.confidence} — {ans.confidenceReason}</span>
                     {ans.confidence !== "refused" && (
-                      <label className="vt">
-                        <input type="checkbox" checked={external} onChange={(e) => setExternal(e.target.checked)} />
-                        mark for external use
-                      </label>
+                      <button type="button" className={"vt" + (external ? " on" : "")} onClick={() => setExternal(!external)}>
+                        Request external-use review
+                      </button>
                     )}
                     <span className="fb">
                       <button aria-pressed={fb === "up"} onClick={() => setFb(fb === "up" ? null : "up")} title="Useful">▲</button>
@@ -268,7 +268,10 @@ export function App() {
                   </div>
                   {external && (
                     <div className="vbanner">
-                      Verify each figure against its cited source before this leaves the building. Logged to the evaluation set.
+                      <b>External-use review requested.</b> This does not approve sharing. Before anything
+                      leaves the Foundation it goes through: source-permission check · PII &amp; redaction
+                      pass · grantee-consent confirmation · sign-off by an accountable approver. Every
+                      figure is re-verified against its cited source. The request is logged.
                     </div>
                   )}
                 </div>
