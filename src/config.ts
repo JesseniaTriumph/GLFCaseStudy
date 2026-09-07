@@ -7,6 +7,7 @@ import { makeAirtableAdapter } from "./adapters/airtable.js";
 import { makeGivingDataAdapter } from "./adapters/givingData.js";
 import { makeGoogleDriveAdapter } from "./adapters/googleDrive.js";
 import { makeZoomTeamChatAdapter, makeZoomArchiveAdapter, probeZoomChatRetention } from "./adapters/zoom.js";
+import { makeNotionAdapter } from "./adapters/notion.js";
 
 /**
  * Default adapter set = the synthetic mock corpus. The eval harness, the security checks,
@@ -40,6 +41,13 @@ export async function resolveAdapters(env: NodeJS.ProcessEnv = process.env): Pro
     await pick("Google Drive", makeGoogleDriveAdapter(env), mockDrive),
     await pick("Airtable", makeAirtableAdapter(env), mockAirtable),
   ];
+
+  // Notion — a Phase 3 candidate add, off unless COMPASS_NOTION_ENABLE=true. No mock.
+  const notion = makeNotionAdapter(env);
+  if (notion) {
+    report.push(`Notion: LIVE (${notion.label})`);
+    adapters.push(notion);
+  }
 
   // Zoom — off unless COMPASS_ZOOM_ENABLE=true (governance gate). No mock: v1 scope
   // deliberately excludes it. When enabled, report what retention actually allows.

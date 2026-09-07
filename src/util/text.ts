@@ -4,8 +4,38 @@ const STOP = new Set(
   ("a an the of to in on for and or but with without at by from as is are was were be been being " +
     "this that these those it its our your their we you they i he she them us not no do does did " +
     "have has had will would should could can may might must about into over under than then so " +
-    "we're their there here what which who whom whose how when where why".split(/\s+/))
+    "we're their there here what which who whom whose how when where why " +
+    // Spanish stopwords — the Foundation funds in Colombia; reports arrive in Spanish
+    "el la los las un una unos unas de del al y o pero con sin por para en su sus se es son " +
+    "fue fueron ser este esta estos estas que como más muy ya no sí lo le les nos han ha había " +
+    "sobre entre hasta desde cuando donde porque este esa eso").split(/\s+/)
 );
+
+/**
+ * A small bilingual bridge for the keyword path: for a Spanish document, we append the
+ * English equivalents of recurring workforce/impact terms so an English query
+ * ("completion", "placement") still retrieves it. Real multilingual retrieval uses a
+ * multilingual embedder (bge-m3) — this keeps the offline tf-idf path usable across ES/EN.
+ */
+const ES_EN: Record<string, string> = {
+  finalización: "completion", finalizacion: "completion", culminación: "completion", culminacion: "completion",
+  graduación: "graduation", graduacion: "graduation", capacitación: "training", capacitacion: "training",
+  formación: "training", formacion: "training", empleo: "employment job", trabajo: "work job",
+  colocación: "placement", colocacion: "placement", "inserción": "placement insertion", insercion: "placement",
+  ingresos: "earnings income", salario: "wage salary", retención: "retention", retencion: "retention",
+  participantes: "participants", beneficiarios: "participants beneficiaries", credencial: "credential",
+  certificación: "certification credential", certificacion: "certification credential",
+  impacto: "impact", proyección: "projection", proyeccion: "projection", meta: "target goal",
+  barrera: "barrier", barreras: "barriers", mujeres: "women", jóvenes: "youth", rural: "rural",
+  informe: "report", subvención: "grant", subvencion: "grant", donación: "grant donation",
+};
+
+export function bilingualBridge(text: string): string {
+  const found = new Set<string>();
+  const lower = text.toLowerCase();
+  for (const [es, en] of Object.entries(ES_EN)) if (lower.includes(es)) found.add(en);
+  return found.size ? `\n[en: ${[...found].join(" ")}]` : "";
+}
 
 /** Lowercase word tokens, stopwords removed, light stemming of trailing s/es/ing/ed. */
 export function tokenize(text: string): string[] {

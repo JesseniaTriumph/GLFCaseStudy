@@ -4,7 +4,7 @@
  */
 import type { SourceAdapter } from "../adapters/types.js";
 import type { SourceDoc, Chunk, CorpusIndex, EntityRef, DedupeReport, GapReport, Tier, IndexPerson } from "../core/types.js";
-import { tokenize, jaccard, tfidfVector, detectLanguage } from "../util/text.js";
+import { tokenize, jaccard, tfidfVector, detectLanguage, bilingualBridge } from "../util/text.js";
 import { sha1 } from "../util/hash.js";
 import { scrubPii, looksLikeParticipantData } from "./pii.js";
 import { RawStore } from "./rawstore.js";
@@ -64,8 +64,10 @@ export async function runPipeline(adapters: SourceAdapter[], opts: RunOptions): 
       const findingCount = pii.findings.reduce((s, f) => s + f.count, 0);
       piiRedactions += findingCount;
       let tier = d.tier;
+      let piiRaised = false;
       if ((pii.score >= 1.5 || looksLikeParticipantData(pii.text)) && tier !== "restricted" && tier !== "never-ingest") {
         tier = "restricted";
+        piiRaised = true;
         piiTierRaised++;
         log(`  PII: raised ${d.id} → restricted (score ${pii.score.toFixed(1)}${looksLikeParticipantData(pii.text) ? ", participant-data pattern" : ""})`);
       } else if (findingCount) {
@@ -76,7 +78,7 @@ export async function runPipeline(adapters: SourceAdapter[], opts: RunOptions): 
         text: pii.text,
         tier,
         language: d.language === "unknown" ? detectLanguage(pii.text) : d.language,
-        meta: { ...d.meta, piiFindings: pii.findings },
+        meta: { ...d.meta, piiFindings: pii.findings, piiRaised },
       };
     })
     .filter((d) => {
@@ -97,10 +99,14 @@ export async function runPipeline(adapters: SourceAdapter[], opts: RunOptions): 
     });
 
   // ---------- 3. TIER EXCLUSION (defence in depth) ----------
-  // Excluded docs are dropped from the index. For `restricted` (not `never-ingest`) we keep a
-  // metadata-only stub so retrieval can honestly say "matching content is restricted".
+  // Excluded docs are dropped from the index. For docs that are Restricted BY POLICY
+  // (board / compensation / legal / declined-applicant) we keep a metadata-only stub so
+  // retrieval can honestly say "this resolves to Restricted material". For docs raised to
+  // Restricted only because they carry participant PII, we keep NO stub — they vanish
+  // entirely, and the coverage line's participant-data note is the only trace. A stub
+  // there would wrongly steer a legitimate question about the grant into a refusal.
   const beforeTier = docs.length;
-  const restrictedStubDocs = docs.filter((d) => d.tier === "restricted");
+  const restrictedStubDocs = docs.filter((d) => d.tier === "restricted" && !d.meta.piiRaised);
   docs = docs.filter((d) => !exclude.has(d.tier));
   const tierExcluded = beforeTier - docs.length;
 
@@ -508,6 +514,10 @@ function chunkDoc(d: SourceDoc): Omit<Chunk, "vector">[] {
   }
   if (buf.trim()) out.push(buf.trim());
 
+  // for a Spanish document, index the English equivalents of key terms too, so an English
+  // query still retrieves it (roadmap 3.4). The displayed text is unchanged.
+  const bridge = d.language === "es" ? bilingualBridge(d.text) : "";
+
   return out.map((text, i) => ({
     id: `${d.id}#${i}`,
     docId: d.id,
@@ -519,7 +529,7 @@ function chunkDoc(d: SourceDoc): Omit<Chunk, "vector">[] {
     tier: d.tier,
     acl: d.acl,
     entities: d.entities,
-    tokens: tokenize(`${d.title}\n${text}`),
+    tokens: tokenize(`${d.title}\n${text}${bridge}`),
   }));
 }
 

@@ -63,6 +63,14 @@
       "expectRefusal": false
     },
     {
+      "id": "multilingual-spanish-retrieval",
+      "_note": "An English question must retrieve the Spanish-language Fondo Adelante report and cite it (roadmap 3.4). The bilingual bridge indexes English equivalents of key Spanish terms.",
+      "persona": "programs",
+      "question": "What were Fondo Adelante's training completion and job placement results?",
+      "expectSources": ["drive:informe-fondo-adelante-2024-ES"],
+      "expectRefusal": false
+    },
+    {
       "id": "participant-pii-quarantined",
       "_note": "The Ada Bridge participant-spotlight doc carries named-participant PII. The intake PII pass must raise it to Restricted so it is never indexed — a direct question about the participant is refused and none of her identifiers appear.",
       "persona": "programs",

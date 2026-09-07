@@ -118,6 +118,13 @@ export async function answerQuestion(
 
   const citations = buildCitations(hits);
 
+  // The question asks for participant-level detail (a specific named/described individual's
+  // outcome) but Compass holds no participant identifiers by policy. Answer from the grant
+  // context if there is one, but never at high confidence, and say why.
+  const asksParticipantLevel =
+    /\b(participant|enrollee|trainee|client|beneficiary|individual|person|someone|graduate)\b/i.test(question) &&
+    /\b(who|which|whose|name|placed at|increased (their|his|her)|earned|was hired|specific)\b/i.test(question);
+
   let text: string;
   let mode: Answer["mode"] = "extractive";
   if (opts.llm) {
@@ -130,7 +137,15 @@ export async function answerQuestion(
     text = extractiveAnswer(question, hits, citations);
   }
 
-  const confidence = gradeConfidence(hits, question);
+  let confidence = gradeConfidence(hits, question);
+  if (asksParticipantLevel) {
+    confidence = {
+      level: "low",
+      reason:
+        "this asks about an individual participant; Compass holds no participant-level identifiers by policy, so this is grant context only, not an answer about a specific person",
+    };
+    text = `_Compass does not hold participant-level records. What follows is grant context, not information about a specific individual._\n\n${text}`;
+  }
   const followUps =
     opts.followUps === false
       ? undefined
