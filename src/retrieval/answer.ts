@@ -151,14 +151,22 @@ function refFor(h: Scored): string {
 
 function extractiveAnswer(question: string, hits: Scored[], citations: Citation[]): string {
   const lines: string[] = [];
+  const systems = new Set(hits.map((h) => h.chunk.system));
   lines.push(
-    `_Assembled from ${hits.length} retrieved passage(s). No generative model is configured, so this is the source text with citations, not a written synthesis._\n`
+    `_Evidence brief — ${hits.length} passage(s) across ${systems.size} system(s). No generative model is configured, so this is the source evidence with citations, not a written synthesis._\n`
   );
   const byDoc = new Map<string, { title: string; system: string; n: number; texts: string[] }>();
   hits.forEach((h, i) => {
     const key = h.chunk.docId;
     const e = byDoc.get(key) ?? { title: h.chunk.docTitle, system: h.chunk.system, n: i + 1, texts: [] };
-    e.texts.push(h.chunk.text.trim());
+    // drop markdown heading lines — the doc title already names the source
+    e.texts.push(
+      h.chunk.text
+        .split("\n")
+        .filter((l) => !/^#+\s/.test(l.trim()))
+        .join("\n")
+        .trim()
+    );
     byDoc.set(key, e);
   });
   for (const e of byDoc.values()) {
