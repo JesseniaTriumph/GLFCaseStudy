@@ -90,7 +90,7 @@ const oauth = {
   tokenEndpoint: `${IDP}/token`,
   jwks: JWKS,
   hostedDomain: HD,
-  resolveGroups: () => ["programs"], // Program Officer
+  resolveGroups: () => ["programs", "leadership"], // Program Officer who is also on the leadership group (can hit admin routes)
 };
 // tight limiter so the test can exhaust it in a few calls; collect anomaly signals
 const signals: Signal[] = [];
@@ -99,7 +99,15 @@ const limiter = new RateLimiter({
   cost: { capacity: 1000, refillPerSec: 1 },
 });
 const monitor = new Monitor({ windowMs: 60_000, restrictedRefusals: 3, authDenials: 5, sweepQueries: 15, costMultiple: 4 });
-const app = createApp({ index, secureCookies: false, oauth, limiter, monitor, onSignal: (s) => signals.push(s) });
+const app = createApp({
+  index,
+  secureCookies: false,
+  oauth,
+  limiter,
+  monitor,
+  onSignal: (s) => signals.push(s),
+  feedbackLog: "/tmp/compass-server-check-feedback.jsonl",
+});
 await new Promise<void>((r) => app.listen(0, "127.0.0.1", r));
 const port = (app.address() as { port: number }).port;
 const BASE = `http://127.0.0.1:${port}`;
@@ -176,7 +184,21 @@ const req = async (path: string, opts: RequestInit = {}) => {
   ok("repeated /api/ask trips the per-user rate limit → 429 + Retry-After", got429 && retryAfter !== "");
 }
 
-// 9. logout revokes server-side — a SAVED copy of the pre-logout cookie also stops working
+// 9. kill switch: admin engages → /api/ask is 503 → release → 200 again
+{
+  const on = await req("/admin/killswitch", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ on: true }) });
+  const paused = await req("/api/ask", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ question: "who co-funds Riverbend?" }) });
+  await req("/admin/killswitch", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ on: false }) });
+  ok("admin kill switch → /api/ask returns 503 until released", on.status === 200 && paused.status === 503);
+}
+
+// 10. feedback endpoint accepts a verdict
+{
+  const r = await req("/api/feedback", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ question: "test q", verdict: "down", note: "missed a source" }) });
+  ok("POST /api/feedback records a verdict", r.status === 200);
+}
+
+// 11. logout revokes server-side — a SAVED copy of the pre-logout cookie also stops working
 {
   const savedCookie = cookie; // capture before logout clears it
   await req("/auth/logout");

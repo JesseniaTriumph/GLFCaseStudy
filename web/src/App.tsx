@@ -86,7 +86,7 @@ export function App() {
   const [index, setIndex] = useState<CorpusIndex | null>(null);
   const [err, setErr] = useState<string | null>(null);
   const [persona, setPersona] = useState<keyof typeof PERSONAS>("programs");
-  const [tab, setTab] = useState<"ask" | "dossier">("ask");
+  const [tab, setTab] = useState<"ask" | "dossier" | "how">("ask");
   const [q, setQ] = useState("");
   const [ans, setAns] = useState<Answer | null>(null);
   const [busy, setBusy] = useState(false);
@@ -215,6 +215,7 @@ export function App() {
       <nav className="tabs" role="tablist">
         <button role="tab" aria-selected={tab === "ask"} onClick={() => setTab("ask")}>Ask</button>
         <button role="tab" aria-selected={tab === "dossier"} onClick={() => setTab("dossier")}>Grantee dossier</button>
+        <button role="tab" aria-selected={tab === "how"} onClick={() => setTab("how")}>How it works</button>
       </nav>
 
       {tab === "ask" && (
@@ -375,6 +376,7 @@ export function App() {
       )}
 
       {tab === "dossier" && <Dossier index={index} persona={persona} />}
+      {tab === "how" && <HowItWorks index={index} />}
 
       <footer>
         <b>What runs here:</b> the real pipeline output (`corpus-index.json`) with in-browser hybrid retrieval, the
@@ -455,6 +457,54 @@ function Dossier({ index, persona }: { index: CorpusIndex; persona: keyof typeof
           </div>
         </>
       )}
+    </div>
+  );
+}
+
+function HowItWorks({ index }: { index: CorpusIndex }) {
+  const stages: [string, string][] = [
+    ["Connect", "One adapter per source (Drive, GivingData, Airtable). Real connectors activate the moment a credential is provided; nothing downstream changes."],
+    ["Preserve", "Every document is cleaned, content-hashed, and PII-scanned at intake. Injected instructions and unreadable scans are set aside — and the count is disclosed on every answer."],
+    ["Resolve", "Records from different systems are matched to the same grant and organization. Duplicates are collapsed to one authoritative copy; conflicting values are flagged, not merged."],
+    ["Retrieve", "Hybrid search (keyword + meaning). The permission filter runs first — as a database WHERE clause — so a passage you may not see is never a candidate. Restricted material is never indexed at all."],
+    ["Answer", "An evidence brief: every claim linked to a source you can open, a line stating what was and wasn't searched, and a confidence grade computed from the evidence — coverage, source agreement, freshness, citation completeness — never the model's own certainty."],
+    ["Improve", "A gold question set and an adversarial suite gate every change. Feedback feeds the gold set. The system gets better at retrieving and citing — never at deciding."],
+  ];
+  return (
+    <div className="how">
+      <p className="intro">
+        Compass is a <b>retrieval, permissioning, and citation</b> system, not a chatbot. Every security-critical
+        decision is made in deterministic code, outside the language model. The model phrases; it does not decide.
+      </p>
+      <div className="how-stages">
+        {stages.map(([name, desc], i) => (
+          <div className="how-stage" key={name}>
+            <div className="how-n">{i + 1}</div>
+            <div>
+              <h4>{name}</h4>
+              <p>{desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="dossier-sec">
+        <h4>The rule</h4>
+        <p style={{ fontSize: 14 }}>If the user cannot open the evidence behind a sentence, Compass does not say it.</p>
+      </div>
+      <div className="dossier-sec">
+        <h4>What's real in this demo vs. what's stubbed</h4>
+        <table className="how-tbl">
+          <tbody>
+            <tr><td>Real</td><td>The pipeline, hybrid retrieval, the per-chunk permission filter (also runnable as SQL), Restricted-tier exclusion, PII scrub + quarantine, content hashing, the evidence-brief schema, the eval + adversarial harness, RS256 OIDC token verification, the HMAC session + revocation, the hash-chained audit log, per-user rate/cost limits, anomaly monitoring.</td></tr>
+            <tr><td>Real, opt-in</td><td>Learned embeddings (bge-small, local). The full OIDC login flow (server). Postgres-backed retrieval.</td></tr>
+            <tr><td>Stubbed</td><td>The connectors run on a synthetic fictional corpus (real ones implement the same interface). Deep-link targets are example URLs. Answers are extractive; a generative backend is a config value. This page runs retrieval in the browser with a persona switch instead of a login.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div className="dossier-sec" style={{ color: "var(--muted)", fontSize: 12 }}>
+        Index built {new Date(index.builtAt).toLocaleString()} · {index.chunks.length} chunks · {index.entities.length} entities ·
+        manifest digest {index.manifest.contentDigest.slice(0, 12)}… · all data synthetic and fictional.
+      </div>
     </div>
   );
 }

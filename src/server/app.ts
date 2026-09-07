@@ -14,6 +14,7 @@
  * the permission filter is enforced on every request.
  */
 import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
+import { appendFileSync } from "node:fs";
 import type { CorpusIndex } from "../core/types.js";
 import { principalFromGroups } from "../security/auth.js";
 import { answerQuestion } from "../retrieval/answer.js";
@@ -40,7 +41,27 @@ export interface ServerDeps {
   audit?: AuditLog;
   /** called for every anomaly signal the monitor raises (on-call hook) */
   onSignal?: (s: Signal) => void;
+  /** append target for /api/feedback (default: eval/feedback.jsonl) */
+  feedbackLog?: string;
 }
+
+/**
+ * Kill switch (strategy doc §6.9, G_Security_Review RESPOND). When engaged, /api/ask
+ * returns 503 and answers nothing until an admin turns it back on. The index is fully
+ * derived, so this plus an index rebuild is the whole containment story.
+ */
+let killed = false;
+export const killSwitch = {
+  engage: () => {
+    killed = true;
+  },
+  release: () => {
+    killed = false;
+  },
+  get engaged() {
+    return killed;
+  },
+};
 
 function json(res: ServerResponse, status: number, body: unknown, extraHeaders: Record<string, string> = {}) {
   res.writeHead(status, { "content-type": "application/json", ...extraHeaders });
@@ -114,16 +135,27 @@ export function createApp(deps: ServerDeps) {
 
       // Admin: revoke a user's sessions now (account deactivation), or everyone (incident).
       // Gated on an admin group in the caller's session.
-      if (path === "/admin/revoke" && req.method === "POST") {
+      const adminSession = () => {
         const s = verifySession(readCookie(req));
-        const isAdmin = s && s.groups.some((g) => /admin|leadership|executive/i.test(g));
-        if (!isAdmin) return json(res, 403, { error: "admin only" });
+        return s && s.groups.some((g) => /admin|leadership|executive/i.test(g)) ? s : null;
+      };
+      if (path === "/admin/revoke" && req.method === "POST") {
+        const s = adminSession();
+        if (!s) return json(res, 403, { error: "admin only" });
         const body = (await readBody(req)) as { sub?: string; all?: boolean };
         if (body.all) revokeAll();
         else if (body.sub) revokeUser(body.sub);
         else return json(res, 400, { error: "sub or all required" });
-        record({ type: "admin", user: s!.email, action: "revoke", detail: body.all ? "all" : body.sub });
+        record({ type: "admin", user: s.email, action: "revoke", detail: body.all ? "all" : body.sub });
         return json(res, 200, { ok: true });
+      }
+      if (path === "/admin/killswitch" && req.method === "POST") {
+        const s = adminSession();
+        if (!s) return json(res, 403, { error: "admin only" });
+        const body = (await readBody(req)) as { on?: boolean };
+        body.on ? killSwitch.engage() : killSwitch.release();
+        record({ type: "admin", user: s.email, action: "killswitch", detail: body.on ? "engaged" : "released" });
+        return json(res, 200, { engaged: killSwitch.engaged });
       }
 
       // ---- session-gated API ----
@@ -134,8 +166,23 @@ export function createApp(deps: ServerDeps) {
         return json(res, 200, { email: session.email, name: session.name, groups: session.groups });
       }
 
+      if (path === "/api/feedback" && req.method === "POST") {
+        if (!session) return json(res, 401, { error: "not signed in" });
+        const b = (await readBody(req)) as { question?: string; answerText?: string; verdict?: string; note?: string };
+        if (!b.question || !["up", "down"].includes(b.verdict ?? "")) return json(res, 400, { error: "question + verdict (up|down) required" });
+        const entry = { ts: new Date().toISOString(), user: session.email, question: b.question, verdict: b.verdict, note: b.note ?? "", answerPreview: (b.answerText ?? "").slice(0, 400) };
+        try {
+          appendFileSync(deps.feedbackLog ?? "eval/feedback.jsonl", JSON.stringify(entry) + "\n");
+        } catch {
+          /* best effort */
+        }
+        record({ type: "admin", user: session.email, action: "feedback", detail: `${b.verdict}: ${b.question.slice(0, 80)}` });
+        return json(res, 200, { ok: true });
+      }
+
       if (path === "/api/ask" && req.method === "POST") {
         if (!session) return json(res, 401, { error: "not signed in" });
+        if (killSwitch.engaged) return json(res, 503, { error: "Compass is paused by an administrator." });
         const body = (await readBody(req)) as { question?: string; deepDive?: boolean; roleContext?: boolean };
         const question = (body.question ?? "").trim();
         if (!question) return json(res, 400, { error: "question required" });

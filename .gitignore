@@ -13,3 +13,6 @@ secrets/
 # transformers.js model cache
 .cache/
 **/.cache/
+
+# runtime feedback capture
+eval/feedback.jsonl

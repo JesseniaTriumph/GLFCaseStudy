@@ -131,6 +131,17 @@ select.persona { font-family: var(--font-body); font-size: 12.5px; padding: 5px 
 .vt.on { background: var(--warn-bg); border-color: var(--warn); color: var(--warn); }
 .vt input { accent-color: var(--accent); }
 .strip-note { flex-basis: 100%; font-size: 10.5px; color: var(--muted); margin-top: 2px; }
+.how { max-width: 760px; }
+.how-stages { display: flex; flex-direction: column; gap: 2px; margin: 16px 0; }
+.how-stage { display: flex; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); }
+.how-stage:first-child { border-top: none; }
+.how-n { flex: none; width: 24px; height: 24px; border-radius: 999px; background: var(--accent); color: #fff;
+  display: grid; place-items: center; font-size: 12px; font-weight: 600; }
+.how-stage h4 { font-size: 13.5px; margin: 2px 0 4px; }
+.how-stage p { font-size: 13px; color: var(--body); margin: 0; line-height: 1.5; }
+.how-tbl { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+.how-tbl td { border-top: 1px solid var(--line); padding: 8px 8px 8px 0; vertical-align: top; }
+.how-tbl td:first-child { white-space: nowrap; color: var(--accent-text); font-weight: 600; width: 90px; }
 .fb { display: inline-flex; gap: 6px; margin-left: auto; }
 .fb button { background: none; border: 1px solid var(--line); border-radius: 6px; width: 26px; height: 24px; color: var(--muted); font-size: 11px; }
 .fb button[aria-pressed="true"] { background: var(--peach); border-color: var(--accent); color: var(--accent-text); }
