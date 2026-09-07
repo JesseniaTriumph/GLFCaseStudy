@@ -16,6 +16,8 @@ export interface RunOptions {
   excludeTiers?: Tier[];
   notCovered?: string[];
   log?: (msg: string) => void;
+  /** git commit the build ran at — recorded in the manifest for reproducibility (§6.5) */
+  commit?: string | null;
 }
 
 export async function runPipeline(adapters: SourceAdapter[], opts: RunOptions): Promise<CorpusIndex> {
@@ -104,9 +106,24 @@ export async function runPipeline(adapters: SourceAdapter[], opts: RunOptions): 
       `chunks ${chunks.length}`
   );
 
+  // Build manifest — records exactly what is in the index and how it got there (§6.5).
+  const contentDigest = sha1(
+    chunks
+      .map((c) => `${c.id}:${sha1(c.text)}`)
+      .sort()
+      .join("|")
+  );
+  const builtAt = new Date().toISOString();
+
   return {
-    builtAt: new Date().toISOString(),
+    builtAt,
     corpusLabel: opts.corpusLabel,
+    manifest: {
+      builtAt,
+      commit: opts.commit ?? null,
+      sourceCounts: perSystem,
+      contentDigest,
+    },
     chunks,
     df,
     docCount,

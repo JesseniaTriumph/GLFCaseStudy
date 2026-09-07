@@ -96,9 +96,20 @@ export interface GapReport {
   untaggedGrants: string[];
 }
 
+export interface BuildManifest {
+  builtAt: string;
+  /** git commit the pipeline was at, for reproducibility (§6.5) */
+  commit: string | null;
+  /** items pulled per source */
+  sourceCounts: Record<string, number>;
+  /** sha256 over all chunk hashes — the index fingerprint */
+  contentDigest: string;
+}
+
 export interface CorpusIndex {
   builtAt: string;
   corpusLabel: string;
+  manifest: BuildManifest;
   chunks: Chunk[];
   /** doc-frequency per term across the corpus, for BM25 + idf */
   df: Record<string, number>;

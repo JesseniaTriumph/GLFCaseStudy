@@ -8,10 +8,12 @@
  * Personas: programs (default) | impact | other  — see src/config.ts
  * Set ANTHROPIC_API_KEY to switch from extractive to generative answers.
  */
+import { fileURLToPath } from "node:url";
 import { runPipeline } from "../src/pipeline/run.js";
 import { answerQuestion } from "../src/retrieval/answer.js";
 import { ADAPTERS, CORPUS, PRINCIPALS } from "../src/config.js";
 import { claudeLLM } from "../src/retrieval/llm.js";
+import { AuditLog } from "../src/security/audit.js";
 
 const args = process.argv.slice(2);
 let persona = "programs";
@@ -41,6 +43,20 @@ const index = await runPipeline(ADAPTERS, {
 
 const llm = process.env.ANTHROPIC_API_KEY ? claudeLLM : undefined;
 const ans = await answerQuestion(index, question, principal, { llm });
+
+// every query is written to the tamper-evident audit log (§6.5)
+const audit = new AuditLog(fileURLToPath(new URL("../dist/audit.jsonl", import.meta.url)));
+audit.append({
+  type: "query",
+  user: principal.userId,
+  question,
+  citedRefs: ans.citations.map((c) => c.ref),
+  citedTiers: [...new Set(ans.citations.map((c) => c.tier))],
+  withheld: ans.withheld?.count ?? 0,
+  withheldTiers: ans.withheld ? ans.withheld.reason.split("—").pop()!.trim().split(", ") : [],
+  confidence: ans.confidence,
+  mode: ans.mode,
+});
 
 console.log(`\n\x1b[1mQ (${persona}):\x1b[0m ${question}\n`);
 console.log(ans.text);
@@ -77,3 +93,8 @@ if (ans.followUps) {
     console.log(f.draftEmail.body.split("\n").map((l) => "   " + l).join("\n"));
   }
 }
+
+const chain = audit.verify();
+console.log(
+  `\n\x1b[2m— audit: entry #${audit.length - 1} logged · chain ${chain.ok ? "intact" : "BROKEN at " + (chain as any).brokenAt} · head ${audit.head.slice(0, 12)}…\x1b[0m`
+);

@@ -8,6 +8,8 @@
   "scripts": {
     "build:index": "tsx scripts/build-index.ts",
     "eval": "tsx scripts/eval.ts",
+    "security": "tsx scripts/security-check.ts",
+    "audit": "tsx scripts/audit.ts",
     "ask": "tsx scripts/ask.ts",
     "web:dev": "npm --prefix web run dev",
     "web:build": "npm run build:index && npm --prefix web run build",
