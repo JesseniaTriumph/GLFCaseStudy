@@ -16,6 +16,8 @@ export interface SessionClaims {
   name?: string;
   /** function/permission groups resolved from Google Groups at login */
   groups: string[];
+  /** false when the Groups lookup failed at login — principal is then denied all tiers */
+  groupsResolved?: boolean;
   iat: number;
   exp: number;
 }

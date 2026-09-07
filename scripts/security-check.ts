@@ -72,6 +72,22 @@ try {
   ok("valid ID token verifies", false, String(e));
 }
 
+// ---------- 1b. fail closed when the group lookup didn't succeed (HOPE lesson) ----------
+{
+  const claims = verifyIdToken(makeToken(baseClaims), JWKS, CFG);
+  const denied = principalFromClaims(claims, [], false); // groupsResolved = false
+  ok(
+    "group lookup failure → principal can retrieve nothing",
+    denied.allowedTiers.length === 0,
+    `tiers: [${denied.allowedTiers.join(", ")}]`
+  );
+  const resolvedEmpty = principalFromClaims(claims, [], true); // resolved, just no groups
+  ok(
+    "resolved-but-no-groups → team tier only (intended)",
+    resolvedEmpty.allowedTiers.length === 1 && resolvedEmpty.allowedTiers[0] === "team"
+  );
+}
+
 // ---------- 2. tampered payload ----------
 {
   const t = makeToken(baseClaims).split(".");

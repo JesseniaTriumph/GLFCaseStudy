@@ -129,7 +129,16 @@ export function createApp(deps: ServerDeps) {
           return json(res, 429, { error: `${decision.limit} limit exceeded`, retryAfter: decision.retryAfter });
         }
 
-        const principal = principalFromGroups(session.email.split("@")[0] ?? session.sub, session.groups);
+        const principal = principalFromGroups(
+          session.email.split("@")[0] ?? session.sub,
+          session.groups,
+          session.groupsResolved !== false
+        );
+        if (principal.allowedTiers.length === 0) {
+          return json(res, 403, {
+            error: "Your account isn't mapped to a Compass access group yet. Contact the workspace admin.",
+          });
+        }
         const ans = await answerQuestion(deps.index, question, principal, {
           llm: deps.llm as never,
           followUps: body.deepDive ?? false,

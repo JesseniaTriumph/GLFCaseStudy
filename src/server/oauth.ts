@@ -68,6 +68,8 @@ export interface CallbackResult {
   email: string;
   name?: string;
   groups: string[];
+  /** false when the Groups lookup failed — the session grants no retrieval access */
+  groupsResolved: boolean;
 }
 
 export async function handleCallback(cfg: OAuthConfig, code: string, state: string): Promise<CallbackResult> {
@@ -102,8 +104,23 @@ export async function handleCallback(cfg: OAuthConfig, code: string, state: stri
   const claims = verifyIdToken(tokens.id_token, await getJwks(cfg.jwks), oidc);
 
   // --- resolve groups and issue the Compass session ---
-  const groups = await cfg.resolveGroups(claims.email, claims.sub);
-  const principal = principalFromClaims(claims, groups); // exercises the mapping; groups also carried raw
-  const sessionToken = issueSession({ sub: claims.sub, email: claims.email, name: claims.name, groups: principal.groups });
-  return { sessionToken, email: claims.email, name: claims.name, groups: principal.groups };
+  // Fail closed if the group lookup errors (HOPE lesson: a broken integration key must not
+  // silently grant access). A successful lookup that returns [] is fine — that user gets
+  // team tier only, which is the intended "any signed-in staff" behavior.
+  let groups: string[] = [];
+  let groupsResolved = true;
+  try {
+    groups = await cfg.resolveGroups(claims.email, claims.sub);
+  } catch (e) {
+    groupsResolved = false;
+  }
+  const principal = principalFromClaims(claims, groups, groupsResolved);
+  const sessionToken = issueSession({
+    sub: claims.sub,
+    email: claims.email,
+    name: claims.name,
+    groups: principal.groups,
+    groupsResolved,
+  });
+  return { sessionToken, email: claims.email, name: claims.name, groups: principal.groups, groupsResolved };
 }

@@ -88,9 +88,19 @@ export function verifyIdToken(token: string, jwks: Jwk[], cfg: OidcConfig): IdTo
   return claims;
 }
 
-/** Build a Principal from a user id + their permission groups. The tier mapping lives here. */
-export function principalFromGroups(userId: string, groups: string[]): Principal {
+/**
+ * Build a Principal from a user id + their permission groups. The tier mapping lives here.
+ *
+ * `groupsResolved` fails the model CLOSED when the Google Groups lookup did not actually
+ * succeed. Lesson from the HOPE dashboard: a misconfigured integration key silently
+ * defaulted every sign-in to a read role. Here, if group resolution threw or returned
+ * nothing usable, the caller passes `false` and the principal can retrieve *nothing* —
+ * the UI then says "your account isn't mapped to a Compass access group yet" instead of
+ * quietly serving content.
+ */
+export function principalFromGroups(userId: string, groups: string[], groupsResolved = true): Principal {
   const g = new Set(groups.map((x) => x.toLowerCase()));
+  if (!groupsResolved) return { userId, groups: [], allowedTiers: [] };
   const allowedTiers: Tier[] = ["team"];
   // Programs + Impact see diligence notes, review scorecards, interaction logs.
   if (g.has("programs") || g.has("impact") || g.has("executive") || g.has("leadership") ||
@@ -104,6 +114,6 @@ export function principalFromGroups(userId: string, groups: string[]): Principal
  * Map verified claims + the user's Google Groups (read-only Admin SDK lookup in production)
  * to a Compass Principal. This is what the retrieval-time filter (§6.3) enforces against.
  */
-export function principalFromClaims(claims: IdTokenClaims, groups: string[]): Principal {
-  return principalFromGroups(claims.email.split("@")[0] ?? claims.sub, groups);
+export function principalFromClaims(claims: IdTokenClaims, groups: string[], groupsResolved = true): Principal {
+  return principalFromGroups(claims.email.split("@")[0] ?? claims.sub, groups, groupsResolved);
 }
