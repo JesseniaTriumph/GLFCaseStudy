@@ -63,6 +63,14 @@
       "expectRefusal": false
     },
     {
+      "id": "conflicting-figures-shown-not-merged",
+      "_note": "The Q3 board-update draft carries a stale Riverbend median-wage figure that disagrees with the final Year 1 report. Compass must show both, not silently pick one (roadmap 3.6). Confidence drops to medium.",
+      "persona": "programs",
+      "question": "What was Riverbend's median wage at placement in Year 1?",
+      "expectSources": ["givingdata:GD-1188-Year-1", "drive:care-economy-q3-board-update-draft-2025"],
+      "expectRefusal": false
+    },
+    {
       "id": "multilingual-spanish-retrieval",
       "_note": "An English question must retrieve the Spanish-language Fondo Adelante report and cite it (roadmap 3.4). The bilingual bridge indexes English equivalents of key Spanish terms.",
       "persona": "programs",

@@ -137,7 +137,18 @@ export async function answerQuestion(
     text = extractiveAnswer(question, hits, citations);
   }
 
-  let confidence = gradeConfidence(hits, question);
+  // Conflicting figures across sources are shown, not merged (roadmap 3.6).
+  const comparison = /\b(vs\.?|versus|against|compared? to|relative to)\b.*\b(proj|target|plan|goal|expect|estimate|forecast)/i.test(question);
+  const conflicts = comparison ? [] : findLabeledConflicts(hits);
+  if (conflicts.length) {
+    const lines = conflicts
+      .slice(0, 3)
+      .map((c) => `- **${c.label}**: ${c.values.map((v) => `${v.value.toLocaleString()} [${v.n}]`).join(" vs ")}`)
+      .join("\n");
+    text = `_⚠ The cited sources disagree on some figures — shown here, not reconciled:_\n${lines}\n\n${text}`;
+  }
+
+  let confidence = gradeConfidence(hits, question, conflicts.length > 0);
   if (asksParticipantLevel) {
     confidence = {
       level: "low",
@@ -261,16 +272,10 @@ function extractiveAnswer(question: string, hits: Scored[], citations: Citation[
  *
  * The level is the weakest dimension that applies, and the reason names which one drove it.
  */
-function gradeConfidence(hits: Scored[], question = ""): { level: Answer["confidence"]; reason: string } {
+function gradeConfidence(hits: Scored[], question = "", conflict = false): { level: Answer["confidence"]; reason: string } {
   const top = hits[0]!;
   const systems = new Set(hits.slice(0, 5).map((h) => h.chunk.system)).size;
   const strong = hits.filter((h) => h.bm25 > 2 || h.semantic > 0.12).length;
-
-  // agreement: flag when passages state materially different values for a figure that
-  // carries the SAME label. A "vs projection / vs target" question expects a delta, so
-  // skip the check there — the difference is the answer, not a contradiction.
-  const comparison = /\b(vs\.?|versus|against|compared? to|relative to)\b.*\b(proj(ect|ection)|target|plan|goal|expect|estimate|forecast)/i.test(question);
-  const conflict = !comparison && hasLabeledConflict(hits.slice(0, 5).map((h) => h.chunk.text));
 
   // freshness: newest citation date
   const dates = hits.map((h) => h.chunk.date).filter(Boolean).sort() as string[];
@@ -298,33 +303,50 @@ function gradeConfidence(hits: Scored[], question = ""): { level: Answer["confid
   return { level: "low", reason: "thin evidence — treat as a lead, not an answer" };
 }
 
+interface FigureConflict {
+  label: string;
+  values: Array<{ value: number; n: number }>;
+}
+
 /**
- * Look for the same labelled figure with materially different values across passages —
- * e.g. "median wage at placement $19.40" in one source and "$16.10" in another. Keying on
- * a short label prefix avoids flagging a projection-vs-actual delta as a contradiction.
+ * The same labelled figure with materially different values across passages — e.g.
+ * "median wage at placement $19.40" in one source, "$16.10" in another. Keying on a short
+ * label avoids flagging a projection-vs-actual delta as a contradiction. Conflicts are
+ * SHOWN, never merged (roadmap 3.6).
  */
-function hasLabeledConflict(texts: string[]): boolean {
-  const byLabel = new Map<string, number[]>();
-  for (const t of texts) {
-    for (const m of t.matchAll(/([A-Za-z][A-Za-z ]{6,40}?)[:\s]\s*\$?\s?([\d,]+(?:\.\d+)?)\s?(%?)/g)) {
-      const label = m[1]!.trim().toLowerCase().replace(/\b(the|a|an|of|per|at|for|in)\b/g, "").replace(/\s+/g, " ").trim();
-      if (label.length < 6) continue;
+function findLabeledConflicts(hits: Scored[]): FigureConflict[] {
+  // key = grant entity + normalised label, so we only compare like with like (a Riverbend
+  // figure never "conflicts" with a Highland figure)
+  const byKey = new Map<string, { label: string; grant: string; values: Array<{ value: number; n: number }> }>();
+  hits.forEach((h, i) => {
+    const grant = h.chunk.entities.find((e) => e.kind === "grant")?.id ?? h.chunk.docId;
+    const clean = h.chunk.text.replace(/[*_`]/g, "");
+    for (const m of clean.matchAll(/([A-Za-z][A-Za-z ]{6,40}?)\s*(?:was|is|:|of|=|reached)?\s*\$?\s?([\d,]+(?:\.\d+)?)\s?(%|\/hr|\/hour)?/g)) {
+      const label = m[1]!.trim().toLowerCase().replace(/\b(the|a|an|of|per|at|for|in|was|is|were|are)\b/g, "").replace(/\s+/g, " ").trim();
+      if (label.length < 6 || /\b(year|q[1-4]|target|projected|baseline|model)\b/.test(label)) continue;
       const value = +m[2]!.replace(/,/g, "");
       if (!Number.isFinite(value) || value === 0) continue;
-      const list = byLabel.get(label) ?? [];
-      list.push(value);
-      byLabel.set(label, list);
+      const key = `${grant}::${label}`;
+      const e = byKey.get(key) ?? { label, grant, values: [] };
+      e.values.push({ value, n: i + 1 });
+      byKey.set(key, e);
     }
+  });
+  const out: FigureConflict[] = [];
+  for (const e of byKey.values()) {
+    const distinct = [...new Map(e.values.map((v) => [v.value, v])).values()];
+    if (distinct.length < 2) continue;
+    // ignore pairs from the same citation number (a doc restating a figure)
+    if (new Set(distinct.map((v) => v.n)).size < 2) continue;
+    const max = Math.max(...distinct.map((v) => v.value));
+    const min = Math.min(...distinct.map((v) => v.value));
+    // any real disagreement beyond rounding is worth showing; a >60% gap is almost always
+    // two different quantities caught by a loose label, not a genuine conflict
+    if ((max - min) / max > 0.02 && (max - min) / max < 0.6) out.push({ label: e.label, values: distinct.sort((a, b) => b.value - a.value) });
   }
-  for (const vs of byLabel.values()) {
-    for (let i = 0; i < vs.length; i++)
-      for (let j = i + 1; j < vs.length; j++) {
-        const [a, b] = [vs[i]!, vs[j]!];
-        if (Math.abs(a - b) / Math.max(a, b) > 0.2) return true;
-      }
-  }
-  return false;
+  return out;
 }
+
 
 /**
  * If the question names a specific person or multi-word proper entity, and neither the
