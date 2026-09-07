@@ -6,7 +6,7 @@ export interface AnswerOptions {
   /** optional generative backend; if absent, Compass returns an extractive answer */
   llm?: (args: { question: string; passages: { n: number; text: string; source: string }[] }) => Promise<string>;
   k?: number;
-  /** "ask better" suggestions beside the answer — user-toggleable, default on */
+  /** "deep dive" suggestions beside the answer — user-toggleable, default on */
   followUps?: boolean;
 }
 

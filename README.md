@@ -38,7 +38,7 @@ adapters ──▶ clean ──▶ dedupe ──▶ resolve entities ──▶ c
 - **Graph join** — a doc that carries only a grant ID gets the organization attached (and
   vice versa) so "how did X do vs projection" can join the projected field, the reported
   field, and the PO note even though they live in different systems.
-- **"Ask better"** (`src/retrieval/followups.ts`) — a toggleable assistant surfaced beside
+- **"Deep dive"** (`src/retrieval/followups.ts`) — a toggleable panel surfaced beside
   the answer: what would sharpen it, **who to ask** (the people actually associated with
   the grants involved — PO, relationship owner, note authors, call attendees), suggested
   questions, and a **draft email** when there's a clear recipient.
@@ -77,7 +77,7 @@ See [`ARCHITECTURE.md`](./ARCHITECTURE.md) and [`SECURITY.md`](./SECURITY.md).
 | Pipeline: clean / dedupe / resolve / graph join / gap report | working on mock data |
 | Hybrid retrieval + entity focus + permission filter + restricted refusal | working |
 | Extractive answers + citations + coverage | working |
-| "Ask better" — gaps / who to ask / suggested questions / draft email | working (toggleable) |
+| "Deep dive" — gaps / who to ask / suggested questions / draft email | working (toggleable) |
 | Generative answers (Claude) | working when `ANTHROPIC_API_KEY` set |
 | Eval harness + gold set | working (8 cases) |
 | Web UI | next — React app over the built `corpus-index.json` |

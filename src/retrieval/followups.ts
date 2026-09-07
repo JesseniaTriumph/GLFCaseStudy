@@ -2,7 +2,7 @@ import type { CorpusIndex, FollowUps, IndexPerson } from "../core/types.js";
 import type { Scored } from "./search.js";
 
 /**
- * "Ask better" — generated beside the answer, never inside it. A toggleable assistant that
+ * "Deep dive" — generated beside the answer, never inside it. A toggleable assistant that
  * flags what would sharpen the answer, who to ask (based on who was actually associated
  * with the grants involved), what to ask them, and a draft email when there's a clear
  * recipient. All of this is derived from the entity graph + directory the pipeline built.

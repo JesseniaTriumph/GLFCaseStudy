@@ -58,7 +58,7 @@ if (ans.citations.length) {
 
 if (ans.followUps) {
   const f = ans.followUps;
-  console.log(`\n\x1b[1mAsk better\x1b[0m \x1b[2m(toggleable)\x1b[0m`);
+  console.log(`\n\x1b[1mDeep dive\x1b[0m \x1b[2m(toggleable)\x1b[0m`);
   if (f.gaps.length) {
     console.log(`  \x1b[2mWhat would sharpen this:\x1b[0m`);
     for (const g of f.gaps) console.log(`   – ${g}`);

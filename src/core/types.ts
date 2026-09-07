@@ -130,7 +130,7 @@ export interface IndexPerson {
 }
 
 /**
- * "Ask better" output — surfaced beside the answer, not inside it. Toggleable.
+ * "Deep dive" output — surfaced beside the answer, not inside it. Toggleable.
  * Tells the user what would sharpen the answer, who to ask, what to ask, and drafts an email.
  */
 export interface FollowUps {
@@ -171,7 +171,7 @@ export interface Answer {
   withheld: { count: number; reason: string } | null;
   /** which generation path produced this */
   mode: "extractive" | "generative";
-  /** optional "ask better" suggestions — present when requested and the feature is on */
+  /** optional "deep dive" suggestions — present when requested and the feature is on */
   followUps?: FollowUps;
 }
 
