@@ -3,6 +3,7 @@ import type { Principal } from "./core/types.js";
 import { mockDrive } from "./adapters/mockDrive.js";
 import { mockGivingData } from "./adapters/mockGivingData.js";
 import { mockAirtable } from "./adapters/mockAirtable.js";
+import { mockZoom } from "./adapters/mockZoom.js";
 import { makeAirtableAdapter } from "./adapters/airtable.js";
 import { makeGivingDataAdapter } from "./adapters/givingData.js";
 import { makeGoogleDriveAdapter } from "./adapters/googleDrive.js";
@@ -13,7 +14,10 @@ import { makeNotionAdapter } from "./adapters/notion.js";
  * Default adapter set = the synthetic mock corpus. The eval harness, the security checks,
  * and `npm run ask` all run against this so results are reproducible.
  */
-export const ADAPTERS: SourceAdapter[] = [mockGivingData, mockDrive, mockAirtable];
+export const ADAPTERS: SourceAdapter[] =
+  process.env.COMPASS_CORPUS === "full"
+    ? [mockGivingData, mockDrive, mockAirtable, mockZoom]
+    : [mockGivingData, mockDrive, mockAirtable];
 
 /**
  * The real ingest path. `build:index` and `serve` call this: for each system, if the

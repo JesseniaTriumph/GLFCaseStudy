@@ -14,7 +14,7 @@
     "audit": "tsx scripts/audit.ts",
     "ask": "tsx scripts/ask.ts",
     "web:dev": "npm --prefix web run dev",
-    "web:build": "npm run build:index && npm --prefix web run build",
+    "web:build": "COMPASS_CORPUS=full npm run build:index:full && npm --prefix web run build",
     "typecheck": "tsc --noEmit",
     "eval:pg": "tsx scripts/eval-pg.ts",
     "build:index:embed": "tsx scripts/build-index.ts --embed bge-small",
@@ -25,7 +25,11 @@
     "ci": "tsx scripts/ci.ts",
     "build:index:ner": "COMPASS_PII_NER=true tsx scripts/build-index.ts",
     "tune": "tsx scripts/tune.ts",
-    "stats": "tsx scripts/stats.ts"
+    "stats": "tsx scripts/stats.ts",
+    "gen:corpus": "tsx scripts/gen-corpus.ts",
+    "eval:full": "COMPASS_CORPUS=full tsx scripts/eval.ts",
+    "build:index:full": "COMPASS_CORPUS=full tsx scripts/build-index.ts",
+    "reconcile": "tsx scripts/reconcile.ts"
   },
   "devDependencies": {
     "@types/node": "^22.9.0",

@@ -1,10 +1,15 @@
 import { readdir, readFile } from "node:fs/promises";
+import { existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import type { SourceAdapter } from "./types.js";
 import type { SourceDoc, Tier } from "../core/types.js";
 import { detectLanguage, parseFrontmatter } from "../util/text.js";
 
 const DIR = fileURLToPath(new URL("../../data/mock/drive/", import.meta.url));
+const GEN = fileURLToPath(new URL("../../data/generated/drive/", import.meta.url));
+/** COMPASS_CORPUS=full adds the generated 5-year corpus (scripts/gen-corpus.ts) on top of
+ *  the hand-written fixtures. Default (core) stays on the fixtures so eval + red-team are stable. */
+const dirs = () => (process.env.COMPASS_CORPUS === "full" && existsSync(GEN) ? [DIR, GEN] : [DIR]);
 
 /**
  * Mock Google Drive adapter.
@@ -20,10 +25,11 @@ export const mockDrive: SourceAdapter = {
   label: "Google Drive (3 shared drives)",
 
   async pull(): Promise<SourceDoc[]> {
-    const files = (await readdir(DIR)).filter((f) => f.endsWith(".md"));
     const docs: SourceDoc[] = [];
+    for (const dir of dirs()) {
+    const files = (await readdir(dir)).filter((f) => f.endsWith(".md"));
     for (const f of files) {
-      const raw = await readFile(new URL(f, `file://${DIR}`), "utf8");
+      const raw = await readFile(new URL(f, `file://${dir}`), "utf8");
       const { data, body } = parseFrontmatter(raw);
       const tier = (data.tier as Tier) ?? "team";
       const sourceId = f.replace(/\.md$/, "");
@@ -50,6 +56,7 @@ export const mockDrive: SourceAdapter = {
           duplicateOfPortal: data.duplicate_of_portal ?? null,
         },
       });
+    }
     }
     return docs;
   },

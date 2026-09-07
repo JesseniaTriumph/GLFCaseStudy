@@ -41,6 +41,8 @@ export function bilingualBridge(text: string): string {
 export function tokenize(text: string): string[] {
   const raw = text
     .toLowerCase()
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "") // fold accents: "fundación" ~ "fundacion", "atención" ~ "atencion"
     .replace(/[^\p{L}\p{N}\s$%.]/gu, " ") // hyphens included -> split compounds like "nuclear-maintenance"
     .split(/\s+/)
     .filter(Boolean);

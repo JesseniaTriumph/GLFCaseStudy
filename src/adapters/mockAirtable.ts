@@ -1,10 +1,12 @@
 import { readFile } from "node:fs/promises";
+import { existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import type { SourceAdapter } from "./types.js";
 import type { SourceDoc, Tier } from "../core/types.js";
 import { detectLanguage } from "../util/text.js";
 
 const DATA = fileURLToPath(new URL("../../data/mock/airtable.json", import.meta.url));
+const GEN = fileURLToPath(new URL("../../data/generated/airtable.json", import.meta.url));
 
 /**
  * Mock Airtable adapter.
@@ -21,6 +23,12 @@ export const mockAirtable: SourceAdapter = {
 
   async pull(): Promise<SourceDoc[]> {
     const db = JSON.parse(await readFile(DATA, "utf8"));
+    if (process.env.COMPASS_CORPUS === "full" && existsSync(GEN)) {
+      const g = JSON.parse(await readFile(GEN, "utf8"));
+      db.organizations = [...db.organizations, ...g.organizations];
+      db.contacts = [...db.contacts, ...g.contacts];
+      db.interactions = [...db.interactions, ...g.interactions];
+    }
     const docs: SourceDoc[] = [];
     const contactsByOrg: Record<string, any[]> = {};
     for (const c of db.contacts) (contactsByOrg[c.orgId] ??= []).push(c);

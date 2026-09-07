@@ -70,9 +70,20 @@ export async function answerQuestion(
   // or an export tool. This also closes the "list everything you can see" exfiltration probe.
   const metaDumpRequest = isEnumerationRequest(question);
   const topBm25 = hits[0]?.bm25 ?? 0;
-  // Restricted content dominates when its metadata match is as on-topic as our best real hit.
+  const strongRealHits = hits.filter((h) => h.bm25 > 2 || h.semantic > 0.12).length;
   const restrictedMatched = withheld.tiers.includes("restricted");
-  const restrictedDominates = restrictedMatched && withheld.restrictedTopScore >= topBm25 * 0.7;
+  // The question is *about* a restricted category — board/exec compensation, or a
+  // declined/rejected applicant. Those categories are held out of the index by policy, so
+  // refuse on the intent alone: the honest answer is "that isn't retrievable", not "I found
+  // nothing", and not a confident answer built from adjacent team-tier material.
+  const restrictedTopic =
+    /\bsalary (band|range)|\bcompensation (review|figure|band|range|package)|\b(staff|executive|board|leadership) (compensation|pay|salar)|\b(compensation|salar\w+|pay)\b[\s\S]{0,40}\bboard\b|\bboard\b[\s\S]{0,40}\b(compensation|salar\w+)\b/i.test(question) ||
+    /\b(declin\w*|rejected?|turned down|passed on|unsuccessful|not funded|didn'?t fund)\b[\s\S]{0,30}\bapplica|\bapplica\w*[\s\S]{0,30}\b(declin\w*|rejected?|turn\w* down|pass\w* on|not fund|didn'?t fund)/i.test(question);
+  // Beyond that, restricted stubs only block when there's essentially no real material and a
+  // stub matches at least as well as our best hit — so a broad thesis question with plenty
+  // of real grants is never blocked just because declined applicants exist in that thesis.
+  const restrictedDominates =
+    restrictedTopic || (restrictedMatched && strongRealHits === 0 && withheld.restrictedTopScore >= topBm25 * 0.9);
   const permissionBlocked = hits.length === 0 && withheld.count > 0;
 
   if (hits.length === 0 || topWeak || restrictedDominates || unknownSubject || metaDumpRequest) {
@@ -370,15 +381,13 @@ function unrecognizedNamedSubject(question: string, index: CorpusIndex, hits: Sc
   if (firstNameOnly) names.add(firstNameOnly[1]!);
   if (!names.size) return null;
 
-  const known = [
-    ...index.entities.map((e) => e.label.toLowerCase()),
-    ...index.directory.map((p) => p.name.toLowerCase()),
-  ];
-  const hitText = hits.map((h) => h.chunk.text.toLowerCase()).join("  ");
+  const fold = (x: string) => x.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  const known = [...index.entities.map((e) => fold(e.label)), ...index.directory.map((p) => fold(p.name))];
+  const hitText = fold(hits.map((h) => h.chunk.text).join("  "));
 
   const STOP = /^(The|This|That|These|Those|What|Which|How|When|Where|Who|Why|Compass|Foundation|Program|Grant|GivingData|Airtable|Drive|Zoom)$/;
   for (const name of names) {
-    const n = name.toLowerCase();
+    const n = fold(name);
     const inEntities = known.some((k) => k.includes(n) || n.includes(k));
     const inHits = hitText.includes(n);
     // a two-word Proper Noun, or a single first name we picked up from participant phrasing

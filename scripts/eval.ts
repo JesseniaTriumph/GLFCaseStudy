@@ -14,7 +14,9 @@ import { runPipeline } from "../src/pipeline/run.js";
 import { answerQuestion } from "../src/retrieval/answer.js";
 import { ADAPTERS, CORPUS, PRINCIPALS } from "../src/config.js";
 
-const GOLD = fileURLToPath(new URL("../eval/gold.json", import.meta.url));
+// COMPASS_CORPUS=full runs the 5-year generated corpus with its own gold set (eval:full).
+const full = process.env.COMPASS_CORPUS === "full";
+const GOLD = fileURLToPath(new URL(full ? "../eval/gold-full.json" : "../eval/gold.json", import.meta.url));
 const gold = JSON.parse(await readFile(GOLD, "utf8"));
 
 const index = await runPipeline(ADAPTERS, {

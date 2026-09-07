@@ -1,10 +1,24 @@
 import { readFile } from "node:fs/promises";
+import { existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import type { SourceAdapter } from "./types.js";
 import type { SourceDoc, Tier } from "../core/types.js";
 import { detectLanguage } from "../util/text.js";
 
 const DATA = fileURLToPath(new URL("../../data/mock/givingdata.json", import.meta.url));
+const GEN = fileURLToPath(new URL("../../data/generated/givingdata.json", import.meta.url));
+
+async function loadDb() {
+  const db = JSON.parse(await readFile(DATA, "utf8"));
+  if (process.env.COMPASS_CORPUS === "full" && existsSync(GEN)) {
+    const g = JSON.parse(await readFile(GEN, "utf8"));
+    db.grants = [...db.grants, ...g.grants];
+    db.organizations = [...db.organizations, ...g.organizations];
+    db.declinedApplicants = [...(db.declinedApplicants ?? []), ...(g.declinedApplicants ?? [])];
+    db.funds = [...db.funds, ...g.funds.filter((f: any) => !db.funds.some((x: any) => x.id === f.id))];
+  }
+  return db;
+}
 
 /**
  * Mock GivingData adapter.
@@ -20,7 +34,7 @@ export const mockGivingData: SourceAdapter = {
   label: "GivingData (grants system of record)",
 
   async pull(): Promise<SourceDoc[]> {
-    const db = JSON.parse(await readFile(DATA, "utf8"));
+    const db = await loadDb();
     const docs: SourceDoc[] = [];
 
     for (const g of db.grants) {

@@ -23,6 +23,7 @@ const STEPS: Array<[string, string]> = [
   ["build:index", "npm run -s build:index"],
   ["eval", "npm run -s eval"],
   ["eval:pg", "npm run -s eval:pg"],
+  ["eval:full", "npm run -s eval:full"],
   ["security", "npm run -s security"],
   ["server:check", "npm run -s server:check"],
   ["redteam", "npm run -s redteam"],
