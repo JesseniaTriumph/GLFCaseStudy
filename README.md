@@ -25,6 +25,13 @@ deterministic code, outside the model.
 Evidence moves through six controlled stages: **Connect → Preserve → Resolve → Retrieve →
 Answer → Improve** (`docs/TRD.md`, `docs/ARCHITECTURE.md`).
 
+**What Compass is not:** a grants-management system. GivingData tracks the grant lifecycle,
+payments, and requirement statuses and runs the workflow. Compass is **read-only** — it
+*reads* that tracking data (and Drive, Airtable, Zoom) and *answers questions* about it,
+including tracking questions ("which grants have reports overdue", "when is Riverbend's
+renewal"). The per-grant cycle logic (`src/grant-cycle.ts`) *shows* where each grant is in
+its own schedule; it does not *do* the tracking — no "mark received" button, no workflow.
+
 ---
 
 ## What actually runs (this is the skills demonstration)
