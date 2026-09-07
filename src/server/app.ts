@@ -19,7 +19,7 @@ import { principalFromGroups } from "../security/auth.js";
 import { answerQuestion } from "../retrieval/answer.js";
 import { functionsForGroups } from "../roles.js";
 import { beginLogin, handleCallback, type OAuthConfig } from "./oauth.js";
-import { issueSession as _issue, verifySession, cookieHeader, clearCookieHeader, readCookie } from "./session.js";
+import { issueSession as _issue, verifySession, cookieHeader, clearCookieHeader, readCookie, revokeUser, revokeAll } from "./session.js";
 import { RateLimiter } from "./limits.js";
 import { Monitor, type Signal } from "../security/monitor.js";
 import { AuditLog, type AuditEvent } from "../security/audit.js";
@@ -102,8 +102,28 @@ export function createApp(deps: ServerDeps) {
       }
 
       if (path === "/auth/logout") {
+        // revoke server-side, not just clear the cookie — a copied cookie stops working too
+        const s = verifySession(readCookie(req));
+        if (s) {
+          revokeUser(s.sub);
+          record({ type: "auth", user: s.email, result: "ok", reason: "logout" });
+        }
         res.writeHead(302, { location: "/", "set-cookie": clearCookieHeader(secure) });
         return res.end();
+      }
+
+      // Admin: revoke a user's sessions now (account deactivation), or everyone (incident).
+      // Gated on an admin group in the caller's session.
+      if (path === "/admin/revoke" && req.method === "POST") {
+        const s = verifySession(readCookie(req));
+        const isAdmin = s && s.groups.some((g) => /admin|leadership|executive/i.test(g));
+        if (!isAdmin) return json(res, 403, { error: "admin only" });
+        const body = (await readBody(req)) as { sub?: string; all?: boolean };
+        if (body.all) revokeAll();
+        else if (body.sub) revokeUser(body.sub);
+        else return json(res, 400, { error: "sub or all required" });
+        record({ type: "admin", user: s!.email, action: "revoke", detail: body.all ? "all" : body.sub });
+        return json(res, 200, { ok: true });
       }
 
       // ---- session-gated API ----

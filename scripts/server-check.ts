@@ -176,11 +176,13 @@ const req = async (path: string, opts: RequestInit = {}) => {
   ok("repeated /api/ask trips the per-user rate limit → 429 + Retry-After", got429 && retryAfter !== "");
 }
 
-// 9. logout → 401 again
+// 9. logout revokes server-side — a SAVED copy of the pre-logout cookie also stops working
 {
+  const savedCookie = cookie; // capture before logout clears it
   await req("/auth/logout");
-  const r = await fetch(BASE + "/api/ask", { method: "POST", headers: { "content-type": "application/json", cookie }, body: JSON.stringify({ question: "hi" }) });
-  ok("after logout, POST /api/ask → 401", r.status === 401);
+  const cleared = await fetch(BASE + "/api/ask", { method: "POST", headers: { "content-type": "application/json", cookie }, body: JSON.stringify({ question: "hi" }) });
+  const replay = await fetch(BASE + "/api/ask", { method: "POST", headers: { "content-type": "application/json", cookie: savedCookie }, body: JSON.stringify({ question: "hi" }) });
+  ok("after logout, cleared cookie AND a replayed pre-logout cookie both → 401", cleared.status === 401 && replay.status === 401);
 }
 
 idp.close();

@@ -41,6 +41,27 @@ export function issueSession(claims: Omit<SessionClaims, "iat" | "exp">): string
   return `${payload}.${sig}`;
 }
 
+/**
+ * Revocation. HOPE lesson: an 8-hour session outlived an admin deactivating the account.
+ * `revokeUser` invalidates every session for a subject issued at or before the call;
+ * `revokeAll` (an incident lever) invalidates everything issued before now. In production
+ * this map is Redis with a TTL of the session lifetime; here it's in-process.
+ */
+const revokedBefore = new Map<string, number>();
+let globalRevokeBefore = 0;
+
+export function revokeUser(sub: string): void {
+  revokedBefore.set(sub, Math.floor(Date.now() / 1000));
+}
+export function revokeAll(): void {
+  globalRevokeBefore = Math.floor(Date.now() / 1000);
+}
+/** test helper */
+export function _clearRevocations(): void {
+  revokedBefore.clear();
+  globalRevokeBefore = 0;
+}
+
 export function verifySession(token: string | undefined): SessionClaims | null {
   if (!token) return null;
   const [payload, sig] = token.split(".");
@@ -55,6 +76,9 @@ export function verifySession(token: string | undefined): SessionClaims | null {
     return null;
   }
   if (claims.exp < Math.floor(Date.now() / 1000)) return null;
+  if (claims.iat <= globalRevokeBefore) return null;
+  const userRevoke = revokedBefore.get(claims.sub);
+  if (userRevoke != null && claims.iat <= userRevoke) return null;
   return claims;
 }
 
