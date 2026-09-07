@@ -58,6 +58,24 @@ are **negative tests**: they assert that a named document *must not* appear in t
 A leak is a hard fail — the run exits non-zero and would block a deploy.
 
 ```bash
+npm run eval:pg
+```
+The same gold set, but retrieval runs through **Postgres** (PGlite — embedded, zero setup).
+The permission boundary is now a SQL `WHERE` clause:
+
+```sql
+WHERE restricted_stub = false
+  AND tier = ANY($allowedTiers)      -- the caller's sensitivity tiers
+  AND acl && $principalIds           -- array overlap: the caller's user + group ids
+```
+
+It prints a **visibility check straight from SQL** — `programs` sees 32/32 chunks,
+`impact` and `other` see 17/32 (team tier only), never the 15 `programs-only` rows — then
+runs all 8 gold cases through that path: **8/8, 0 leaks**. The database enforces the
+boundary; the ranking (`rankPermitted` in `retrieval/search.ts`) is shared with the
+in-memory path, so the two produce the same answers.
+
+```bash
 npm run security
 ```
 ```

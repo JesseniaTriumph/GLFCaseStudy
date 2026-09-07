@@ -10,7 +10,7 @@
  */
 import { fileURLToPath } from "node:url";
 import { runPipeline } from "../src/pipeline/run.js";
-import { answerQuestion } from "../src/retrieval/answer.js";
+import { answerQuestion, type AnswerOptions } from "../src/retrieval/answer.js";
 import { functionsForGroups } from "../src/roles.js";
 import { ADAPTERS, CORPUS, PRINCIPALS } from "../src/config.js";
 import { claudeLLM } from "../src/retrieval/llm.js";
@@ -26,6 +26,9 @@ if (ix !== -1) {
 // role & cycle context: off unless --role is passed
 const roleOn = args.includes("--role");
 if (roleOn) args.splice(args.indexOf("--role"), 1);
+// retrieval path: --pg runs it through Postgres (the permission filter as a SQL WHERE clause)
+const usePg = args.includes("--pg");
+if (usePg) args.splice(args.indexOf("--pg"), 1);
 let today: string | undefined;
 const ti = args.indexOf("--today");
 if (ti !== -1) {
@@ -53,7 +56,16 @@ const index = await runPipeline(ADAPTERS, {
 
 const llm = process.env.ANTHROPIC_API_KEY ? claudeLLM : undefined;
 const roleContext = roleOn ? { functions: functionsForGroups(principal.groups), today } : undefined;
-const ans = await answerQuestion(index, question, principal, { llm, roleContext });
+
+let retriever: AnswerOptions["retriever"];
+if (usePg) {
+  const { PgStore } = await import("../src/db/store.js");
+  const store = await PgStore.open();
+  await store.load(index);
+  retriever = (_i, q, p, k) => store.retrieve(q, p, k);
+}
+
+const ans = await answerQuestion(index, question, principal, { llm, roleContext, retriever });
 
 // every query is written to the tamper-evident audit log (§6.5)
 const audit = new AuditLog(fileURLToPath(new URL("../dist/audit.jsonl", import.meta.url)));

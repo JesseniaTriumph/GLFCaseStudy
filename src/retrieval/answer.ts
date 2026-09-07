@@ -1,5 +1,5 @@
 import type { Answer, Citation, CorpusIndex, Principal } from "../core/types.js";
-import { retrieve, type Scored } from "./search.js";
+import { retrieve, type Scored, type RetrieveResult } from "./search.js";
 import { suggestFollowups } from "./followups.js";
 import { currentSeasons, interpretQuery, type FunctionKey } from "../roles.js";
 
@@ -18,6 +18,17 @@ export interface AnswerOptions {
   followUps?: boolean;
   /** "role & cycle context" — off unless provided; interprets ambiguous queries + tailors suggestions */
   roleContext?: RoleContext;
+  /**
+   * Pluggable retriever. Default: the in-memory hybrid search (`./search.ts`). Pass the
+   * Postgres-backed one (`src/db/store.ts` → PgStore.retrieve) to run the permission
+   * filter as a SQL WHERE clause. Both return the same shape.
+   */
+  retriever?: (
+    index: CorpusIndex,
+    question: string,
+    principal: Principal,
+    k: number
+  ) => RetrieveResult | Promise<RetrieveResult>;
 }
 
 /**
@@ -32,7 +43,7 @@ export async function answerQuestion(
   principal: Principal,
   opts: AnswerOptions = {}
 ): Promise<Answer> {
-  const { hits, withheld } = retrieve(index, question, principal, opts.k ?? 8);
+  const { hits, withheld } = await (opts.retriever ?? retrieve)(index, question, principal, opts.k ?? 8);
 
   // Role & cycle context (off unless opts.roleContext is set): if the query is ambiguous,
   // note the reading Compass applied — always disclosed, never a silent scope change.

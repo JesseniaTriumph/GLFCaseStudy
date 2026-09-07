@@ -90,7 +90,7 @@ function mk(sourceId: string, title: string, text: string, date: string | null, 
     language: detectLanguage(text),
     extractionConfidence: 1,
     tier,
-    acl: tier === "programs-only" ? ["group:programs"] : ["group:programs", "group:impact"],
+    acl: tier === "programs-only" ? ["group:programs", "group:impact"] : ["*"], // team = any signed-in staff; programs-only = Programs + Impact
     entities: [],
     meta,
   };

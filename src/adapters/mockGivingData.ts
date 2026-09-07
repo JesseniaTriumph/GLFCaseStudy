@@ -130,7 +130,7 @@ function mk(sourceId: string, title: string, text: string, date: string | null, 
     extractionConfidence: 1, // structured source — no OCR risk
     tier,
     // ACL: team-tier grant data visible to all Programs + Impact; programs-only to Programs group.
-    acl: tier === "programs-only" ? ["group:programs"] : ["group:programs", "group:impact"],
+    acl: tier === "programs-only" ? ["group:programs", "group:impact"] : ["*"], // team = any signed-in staff; programs-only = Programs + Impact
     entities: [],
     meta: { ...meta, grantAmount: grant?.amount, coFunders: grant?.coFunders ?? [] },
   };

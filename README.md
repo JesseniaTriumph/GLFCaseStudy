@@ -33,13 +33,17 @@ Answer → Improve** (`docs/TRD.md`, `docs/ARCHITECTURE.md`).
 npm install
 
 npm run eval        # gold Q&A set: retrieval + refusal + PERMISSION-LEAK check
-                    #   → 8/8 pass, 0 leakage findings
+                    #   → 8/8 pass, 0 leakage findings   (in-memory retrieval)
+npm run eval:pg     # the SAME gold set, retrieval through Postgres (PGlite, zero setup)
+                    #   → 8/8, 0 leaks — the permission filter is a SQL WHERE clause,
+                    #     plus a per-persona visibility check straight from SQL
 npm run security    # real RS256 OIDC token verification + tamper-evident audit log
                     #   → 7/7: rejects a tampered token, a wrong-domain account, an
                     #     expired token; detects an edited past audit entry
 npm run build:index # the pipeline: clean → dedupe (exact/near/cross-system) → grant↔org
                     #   graph join → gap report + a signed build manifest
 npm run audit       # print + verify the hash-chained audit log
+npm run ask -- --pg --as impact "how did Riverbend perform against projection?"  # PG path
 
 npm run ask -- --as programs "how did Riverbend Care Collective perform against projection?"
 npm run ask -- --as other    "did we decline an AI upskilling applicant and why?"   # → refused: permission
@@ -69,7 +73,7 @@ cd web && npx vercel deploy        # or: netlify deploy --dir dist  /  any stati
 
 | | |
 |---|---|
-| **Real** | The pipeline (clean, dedupe, entity resolution, gap report, manifest). Hybrid retrieval (BM25 + tf-idf vector). **The permission filter — enforced per chunk, tested for zero leaks.** `Restricted` excluded from the index (metadata stub + refusal). RS256 ID-token verification. Hash-chained tamper-evident audit log. Content hashing. The eval harness. |
+| **Real** | The pipeline (clean, dedupe, entity resolution, gap report, manifest). Hybrid retrieval (BM25 + tf-idf vector). **The permission filter — enforced per chunk, tested for zero leaks, and runnable as a SQL `WHERE` clause on Postgres (`src/db/store.ts`, `npm run eval:pg`).** `Restricted` excluded from the index (metadata stub + refusal). RS256 ID-token verification. Hash-chained tamper-evident audit log. Content hashing. The eval harness. |
 | **Stubbed for the demo** | Google sign-in (a persona switch stands in — real verification is in `src/security/auth.ts`). Deep-link targets (example URLs). The connectors (mock adapters on synthetic fixtures — the real ones implement the same `SourceAdapter` interface). Generative answers (extractive by default; set `ANTHROPIC_API_KEY`). Embeddings (tf-idf stand-in behind the same interface — swap for BGE-M3). |
 | **Designed, not built** (see `deliverables/G_Security_Review.md`) | The OAuth callback + session layer, real connector credentials, a production PII scanner, monitoring/alerting, per-user rate limits, a pen test. **Prototype: `CONDITIONAL`. Production: `BLOCKED`** on those six items. |
 

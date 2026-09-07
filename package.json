@@ -4,7 +4,9 @@
   "private": true,
   "type": "module",
   "description": "Compass — a permission-aware way to ask years of grant knowledge one question. Modular ingest → clean → dedupe → resolve → index → retrieve → cite pipeline with swappable source adapters.",
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "build:index": "tsx scripts/build-index.ts",
     "eval": "tsx scripts/eval.ts",
@@ -13,11 +15,15 @@
     "ask": "tsx scripts/ask.ts",
     "web:dev": "npm --prefix web run dev",
     "web:build": "npm run build:index && npm --prefix web run build",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "eval:pg": "tsx scripts/eval-pg.ts"
   },
   "devDependencies": {
+    "@types/node": "^22.9.0",
     "tsx": "^4.19.2",
-    "typescript": "^5.6.3",
-    "@types/node": "^22.9.0"
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "@electric-sql/pglite": "^0.5.8"
   }
 }

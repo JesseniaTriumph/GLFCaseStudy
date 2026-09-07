@@ -40,7 +40,7 @@ export const mockDrive: SourceAdapter = {
         language: detectLanguage(body),
         extractionConfidence,
         tier,
-        acl: tier === "programs-only" ? ["group:programs"] : ["group:programs", "group:impact"],
+        acl: tier === "programs-only" ? ["group:programs", "group:impact"] : ["*"], // team = any signed-in staff; programs-only = Programs + Impact
         entities: [],
         meta: {
           recordType: "drive-document",

@@ -17,68 +17,48 @@ export interface RetrieveResult {
   withheld: { count: number; tiers: string[]; restrictedTopScore: number };
 }
 
+/** The principal ids a chunk ACL is matched against. */
+export function principalIds(principal: Principal): Set<string> {
+  return new Set([`user:${principal.userId}`, ...principal.groups.map((g) => `group:${g}`), "*"]);
+}
+
+/** Can this principal read this chunk? tier AND acl — the security boundary. */
+export function mayRead(chunk: Pick<Chunk, "tier" | "acl">, principal: Principal): boolean {
+  const ids = principalIds(principal);
+  return principal.allowedTiers.includes(chunk.tier) && chunk.acl.some((p) => ids.has(p));
+}
+
 /**
- * Hybrid retrieval: BM25 (exact terms — grant IDs, dollar figures, org names) +
- * tf-idf cosine (looser semantic match), then permission-filter to what the principal
- * may see. The permission filter is the security boundary and runs on every query.
+ * Rank a set of chunks the caller is ALREADY entitled to read. Hybrid BM25 + tf-idf
+ * cosine + entity boost, entity focus, per-doc de-duplication. This is the ranking half —
+ * identical whether the permitted set came from an in-memory filter or a SQL WHERE clause.
  */
-export function retrieve(index: CorpusIndex, query: string, principal: Principal, k = 8): RetrieveResult {
+export function rankPermitted(permitted: Chunk[], query: string, index: CorpusIndex, k: number): Scored[] {
   const qTokens = tokenize(query);
   const qVec = tfidfVector(qTokens, index.df, index.docCount);
   const qSet = new Set(qTokens);
 
-  const allowedTiers = new Set(principal.allowedTiers);
-  const principalPrincipals = new Set([`user:${principal.userId}`, ...principal.groups.map((g) => `group:${g}`), "*"]);
-
-  let withheldCount = 0;
-  let restrictedTopScore = 0;
-  const withheldTiers = new Set<string>();
   const scored: Scored[] = [];
-
-  for (const c of index.chunks) {
+  for (const c of permitted) {
     const bm25 = bm25Score(c, qSet, index);
     const semantic = cosine(qVec, c.vector);
-
-    // restricted stub: the index knows a doc on this topic exists but holds no content.
-    if (c.restrictedStub) {
-      if (bm25 > 0.4) {
-        withheldCount++;
-        withheldTiers.add("restricted");
-        restrictedTopScore = Math.max(restrictedTopScore, bm25);
-      }
-      continue;
-    }
-
     const eBoost = entityBoost(c, query);
     if (bm25 === 0 && semantic < 0.02 && eBoost === 0) continue;
-
-    // --- permission filter ---
-    const tierOk = allowedTiers.has(c.tier);
-    const aclOk = c.acl.some((p) => principalPrincipals.has(p));
-    if (!tierOk || !aclOk) {
-      withheldCount++;
-      withheldTiers.add(c.tier);
-      continue;
-    }
-
-    const score = 0.6 * normalize(bm25, 8) + 0.4 * semantic + eBoost;
-    scored.push({ chunk: c, score, bm25, semantic });
+    scored.push({ chunk: c, score: 0.6 * normalize(bm25, 8) + 0.4 * semantic + eBoost, bm25, semantic });
   }
-
   scored.sort((a, b) => b.score - a.score);
 
-  // Entity focus: if the query names a known organization, prefer chunks about that org.
+  // Entity focus: if the query names a known organization, prefer chunks about it.
   const qLower = query.toLowerCase();
-  const focusOrgIds = index.entities
+  const focus = index.entities
     .filter((e) => e.kind === "organization" && e.label.length > 3 && qLower.includes(e.label.toLowerCase()))
     .map((e) => e.id);
   let pool = scored;
-  if (focusOrgIds.length) {
-    const onFocus = scored.filter((s) => s.chunk.entities.some((e) => e.kind === "organization" && focusOrgIds.includes(e.id)));
-    if (onFocus.length >= 2) pool = onFocus;
+  if (focus.length) {
+    const on = scored.filter((s) => s.chunk.entities.some((e) => e.kind === "organization" && focus.includes(e.id)));
+    if (on.length >= 2) pool = on;
   }
 
-  // de-duplicate by doc: keep the best chunk per doc, then allow a 2nd from the same doc lower down
   const perDoc: Record<string, number> = {};
   const hits: Scored[] = [];
   for (const s of pool) {
@@ -88,7 +68,44 @@ export function retrieve(index: CorpusIndex, query: string, principal: Principal
     hits.push(s);
     if (hits.length >= k) break;
   }
+  return hits;
+}
 
+/** Score a restricted stub against the query — used to decide whether to refuse. */
+export function stubScore(stub: Chunk, query: string, index: CorpusIndex): number {
+  return bm25Score(stub, new Set(tokenize(query)), index);
+}
+
+/**
+ * In-memory hybrid retrieval. Splits the corpus into permitted / withheld (the security
+ * boundary), then ranks the permitted set. The SQL-backed path (src/db/store.ts) does the
+ * same split as a WHERE clause and calls rankPermitted directly.
+ */
+export function retrieve(index: CorpusIndex, query: string, principal: Principal, k = 8): RetrieveResult {
+  const permitted: Chunk[] = [];
+  let withheldCount = 0;
+  let restrictedTopScore = 0;
+  const withheldTiers = new Set<string>();
+
+  for (const c of index.chunks) {
+    if (c.restrictedStub) {
+      const s = stubScore(c, query, index);
+      if (s > 0.4) {
+        withheldCount++;
+        withheldTiers.add("restricted");
+        restrictedTopScore = Math.max(restrictedTopScore, s);
+      }
+      continue;
+    }
+    if (mayRead(c, principal)) {
+      permitted.push(c);
+    } else {
+      withheldCount++;
+      withheldTiers.add(c.tier);
+    }
+  }
+
+  const hits = rankPermitted(permitted, query, index, k);
   return { hits, withheld: { count: withheldCount, tiers: [...withheldTiers], restrictedTopScore } };
 }
 
@@ -96,7 +113,7 @@ function bm25Score(c: Chunk, qSet: Set<string>, index: CorpusIndex): number {
   const tf: Record<string, number> = {};
   for (const t of c.tokens) if (qSet.has(t)) tf[t] = (tf[t] ?? 0) + 1;
   let score = 0;
-  const dl = c.tokens.length;
+  const dl = c.tokens.length || 1;
   for (const [t, f] of Object.entries(tf)) {
     const n = index.df[t] ?? 0.5;
     const idf = Math.log(1 + (index.docCount - n + 0.5) / (n + 0.5));
