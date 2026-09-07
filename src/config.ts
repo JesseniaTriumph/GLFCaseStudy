@@ -22,12 +22,15 @@ export const CORPUS = {
   ],
 };
 
-/** Demo principals for local runs. In production these come from Google SSO + synced groups. */
+/**
+ * Demo principals for local runs (fictional users). In production these come from
+ * Google OIDC + a synced Google Groups membership — see src/security/auth.ts.
+ */
 export const PRINCIPALS: Record<string, Principal> = {
   // a Programs team member — sees team + programs-only, never restricted
-  programs: { userId: "m.zieger", groups: ["programs", "impact"], allowedTiers: ["team", "programs-only"] },
+  programs: { userId: "d.okafor", groups: ["programs", "impact"], allowedTiers: ["team", "programs-only"] },
   // an Impact analyst — team-tier only in this demo (no programs-only diligence notes)
-  impact: { userId: "n.sethi", groups: ["impact"], allowedTiers: ["team"] },
-  // someone outside Programs/Impact — team-tier, and only if ACL matches
-  other: { userId: "cj.jackson", groups: ["comms"], allowedTiers: ["team"] },
+  impact: { userId: "l.fischer", groups: ["impact"], allowedTiers: ["team"] },
+  // someone outside Programs/Impact — team-tier, and only if the ACL matches
+  other: { userId: "r.mensah", groups: ["comms"], allowedTiers: ["team"] },
 };

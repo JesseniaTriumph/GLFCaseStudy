@@ -1,14 +1,14 @@
 ---
-title: Carina — Year 1 Progress Report (FINAL)
-author: Carina (grantee submission)
+title: Riverbend Care Collective — Year 1 Progress Report (FINAL)
+author: Riverbend Care Collective (grantee submission)
 date: 2025-06-28
-folder: Care Economy/2025/Carina
+folder: Care Economy/2025/Riverbend
 grant: GD-1188
 tier: team
 duplicate_of_portal: GD-1188-R2
 ---
 
-# Carina — Year 1 Progress Report
+# Riverbend Care Collective — Year 1 Progress Report
 
 **Reporting period:** Jan–Dec Year 1
 **Grant:** GD-1188 · Powering Economic Opportunity Fund

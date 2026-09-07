@@ -29,7 +29,7 @@ npm run build:index    # pipeline: clean → dedupe → resolve → graph join �
 npm run eval           # gold set: retrieval + refusal + permission-leak — 8/8, 0 leaks
 npm run security       # OIDC token verify + tamper-evident audit log — 7/7
 npm run audit          # print + verify the hash-chained audit log
-npm run ask -- --as programs "how did Carina perform against projection?"
+npm run ask -- --as programs "how did Riverbend Care Collective perform against projection?"
 ```
 
 Prototype UI: `deliverables/compass_mvp.html` (published Artifact).

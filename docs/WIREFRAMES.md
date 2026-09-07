@@ -21,18 +21,18 @@ Legend: `[built]` in the prototype · `[spec]` designed here, not yet built.
 │  Ask | Grantee dossier                                                        │
 │  ┌─────────────────────────────────────────┐   ┌───────────────────────────┐  │
 │  │ [ type a question …                 ]   │   │ SOURCES & COVERAGE        │  │
-│  │  ▸ How did Carina perform vs projection? │   │ ┌───────────────────────┐ │  │
+│  │  ▸ How did Riverbend Care Collective perform vs projection? │   │ ┌───────────────────────┐ │  │
 │  │  ▸ Barriers to credential completion?    │   │ │[givingdata]  GD-1188  │ │  │
-│  │  ▸ Have we funded nuclear upskilling…?   │   │ │[1] Grant fact sheet   │ │  │
+│  │  ▸ Have we funded advanced-energy training…?   │   │ │[1] Grant fact sheet   │ │  │
 │  │  ▸ Did we decline an AI applicant?       │   │ │ …snippet…             │ │  │
 │  │  ▸ Board discussion on compensation?     │   │ │ ↳ opens in givingdata,│ │  │
 │  │                                         │   │ │   passage highlighted │ │  │
 │  │ ── QUESTION ────────────────────────────│   │ │ ● TEAM                │ │  │
-│  │ How did Carina perform against          │   │ └───────────────────────┘ │  │
+│  │ How did Riverbend Care Collective perform against          │   │ └───────────────────────┘ │  │
 │  │ projection…?                            │   │ ┌───────────────────────┐ │  │
 │  │                                         │   │ │[drive] PO check-in     │ │  │
 │  │ ── ANSWER ──────────────────────────────│   │ │[3] …behind on volume…  │ │  │
-│  │ Carina projected 107× / +$9,400 [1].    │   │ │ ● PROGRAMS-ONLY       │ │  │
+│  │ Riverbend Care Collective projected 107× / +$9,400 [1].    │   │ │ ● PROGRAMS-ONLY       │ │  │
 │  │ Year 1: 2,610 placed — 67% of target[2].│   │ └───────────────────────┘ │  │
 │  │ PO recommends a revised ramp [3].        │   │  … (4 sources)            │  │
 │  │                                         │   │ ─────────────────────────│  │
@@ -42,9 +42,9 @@ Legend: `[built]` in the prototype · `[spec]` designed here, not yet built.
 │  │ ● Well supported  ☐ mark for external   │                                  │
 │  │ ── DEEP DIVE (toggle: show) ────────────│                                  │
 │  │ What would sharpen this: no Year-2 rpt  │                                  │
-│  │ Who to ask: Matt Zieger <…> — PO GD-1188 │                                 │
+│  │ Who to ask: the program officer <…> — PO GD-1188 │                                 │
 │  │ Suggested Qs: revised target? delays?    │                                 │
-│  │ Draft email → matt.zieger@…              │                                 │
+│  │ Draft email → programs officer email              │                                 │
 │  └─────────────────────────────────────────┘                                  │
 └──────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -57,10 +57,10 @@ Legend: `[built]` in the prototype · `[spec]` designed here, not yet built.
 │ ● GD ● Drive ● AT ○ Zoom  │
 │ ─────────────────────────│
 │ QUESTION                  │
-│ How did Carina perform…?  │
+│ How did Riverbend Care Collective perform…?  │
 │                           │
 │ ANSWER                    │
-│ Carina projected 107× /   │
+│ Riverbend Care Collective projected 107× /   │
 │ +$9,400 [1]. Year 1:      │
 │ 2,610 placed — 67% [2].   │
 │ PO: revised ramp [3].     │
@@ -79,7 +79,7 @@ Legend: `[built]` in the prototype · `[spec]` designed here, not yet built.
 
 ```
 ┌──────────────────────────────────────────────────────────────┐
-│ Carina                         United States · Care economy   │
+│ Riverbend Care Collective                         United States · Care economy   │
 │ Online platform matching home-care workers with families…     │
 │ ┌────────┐┌────────┐┌────────┐┌────────┐                      │
 │ │Awarded ││N.Star  ││Stage   ││Reached │   ← stat row         │
@@ -91,7 +91,7 @@ Legend: `[built]` in the prototype · `[spec]` designed here, not yet built.
 │  2025-08  PO check-in: behind/ahead Drive · Care Economy/2025  │
 │ ASSEMBLED FROM FOUR SYSTEMS                                    │
 │  Primary contact   VP Partnerships          [airtable]        │
-│  Co-funder         Ballmer Group            [givingdata]      │
+│  Co-funder         The Hartwell Fund            [givingdata]      │
 │  Reported wage     $19.10/hr at placement   [givingdata]      │
 │  ⚠ conflict: projected participants 3,900 (GD) vs 3,600 (memo) │
 └──────────────────────────────────────────────────────────────┘
@@ -131,9 +131,9 @@ Phone: stats become a 2×2 grid; timeline and field list stack.
 │ ── Sensitivity tiers ──────────────────────────────────────│
 │  Board/Compensation/  → restricted    [ change… ] (2 approvers)│
 │ ── Entity review queue (3) ────────────────────────────────│
-│  "SOAR" ?= "Shaping Our Appalachian Region"  [merge] [keep]   │
+│  "Highland Alliance" ?= "Highland Skills Alliance"  [merge] [keep]   │
 │ ── Audit ───────────────────────────────────────────────────│
-│  #1 05:48 query m.zieger "how did Carina…" cited=[team] ✓chain │
+│  #1 05:48 query d.okafor "how did Riverbend Care Collective…" cited=[team] ✓chain │
 │  [ export ]                                                   │
 └──────────────────────────────────────────────────────────────┘
 ```

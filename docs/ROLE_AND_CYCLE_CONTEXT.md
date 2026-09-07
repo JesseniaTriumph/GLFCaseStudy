@@ -38,15 +38,15 @@ gate.
 | Role (person) | Owns | Peak season | Questions Compass should interpret in their favor |
 |---|---|---|---|
 | **Program Officer** | a grant portfolio | renewal windows; pre-check-in; pre-board | "my grants with reports due/overdue this quarter"; "performance vs projection for [grantee] before this renewal"; "what did I flag last cycle"; "which renewals are in the next 60 days" |
-| **Chief Programs & Partnerships Officer** (Matt Zieger) | whole portfolio + partnerships | pre-board; annual strategy; co-funder syncs | "portfolio: how many grants above/below the 100× threshold this FY"; "co-funded cohort status for the Ballmer / AECF sync"; "which thesis areas are under-evidenced" |
-| **Director of Impact** (Tamsin Chen) | measurement, the North Star model | impact-report season (spring); pre-board; model updates | "every reported outcome for cohort X, with a source for each"; "grants still reporting on an older model version"; "outcome-data gaps before the report deadline" |
-| **Impact Modeling / Measurement** (Geetika, Henner, Noor) | ROI models, grantee data | grantee reporting deadlines | "grantees who haven't submitted the data the model needs"; Colombia-specific (Henner) — Spanish-language reports |
-| **Impact Advisory Services** (Pragya) | helping other funders | client engagements | "learnings / case studies we can share externally" (shareable-tier only) |
-| **Partnerships Manager** (Samii) | co-funders, RFP partners | RFP launches; fund close | "co-funding committed vs mobilized this cycle"; "partner history with [org]" |
-| **Program Coordinator** (Alex) | grant ops, scheduling | RFP intake; report-chasing | "everything overdue and who owns chasing it"; "onboarding checklist for the new cohort" |
-| **Grants Manager** (Jessica Van Grouw) | GivingData, compliance | payment cycles; audit; year-end | "expenditure-responsibility docs outstanding"; "payments scheduled vs paid this quarter" |
-| **CFO / Controller** (Tracy Cude / Tom Clevenger) | budget, 990s, audit | audit; budget season; quarterly close | grant $ committed vs disbursed (financial tier) |
-| **Leadership** (Ellie, Elicia) | direction, ops | board; annual planning | "portfolio health at a glance"; "the story for the board"; "where are we against the North Star" |
+| **Chief Programs & Partnerships Officer** | whole portfolio + partnerships | pre-board; annual strategy; co-funder syncs | "portfolio: how many grants above/below the 100× threshold this FY"; "co-funded cohort status for the co-funder sync"; "which thesis areas are under-evidenced" |
+| **Director of Impact** | measurement, the North Star model | impact-report season (spring); pre-board; model updates | "every reported outcome for cohort X, with a source for each"; "grants still reporting on an older model version"; "outcome-data gaps before the report deadline" |
+| **Impact Modeling / Measurement** | ROI models, grantee data | grantee reporting deadlines | "grantees who haven't submitted the data the model needs"; Colombia-specific — Spanish-language reports |
+| **Impact Advisory Services** | helping other funders | client engagements | "learnings / case studies we can share externally" (shareable-tier only) |
+| **Partnerships Manager** | co-funders, RFP partners | RFP launches; fund close | "co-funding committed vs mobilized this cycle"; "partner history with [org]" |
+| **Program Coordinator** | grant ops, scheduling | RFP intake; report-chasing | "everything overdue and who owns chasing it"; "onboarding checklist for the new cohort" |
+| **Grants Manager** | GivingData, compliance | payment cycles; audit; year-end | "expenditure-responsibility docs outstanding"; "payments scheduled vs paid this quarter" |
+| **CFO / Controller** | budget, 990s, audit | audit; budget season; quarterly close | grant $ committed vs disbursed (financial tier) |
+| **Leadership** | direction, ops | board; annual planning | "portfolio health at a glance"; "the story for the board"; "where are we against the North Star" |
 | **New hire** | ramping | first 90 days | "our full history with [org]"; "why did we decide [X]"; "what's the current thesis on [area]" |
 
 ---

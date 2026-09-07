@@ -1,15 +1,15 @@
 ---
-title: Site-visit notes — AkiraChix (codeHive), Nairobi
-author: Alex Sindorf
+title: Site-visit notes — Ada Bridge Institute, Nairobi
+author: Marcus Bell
 date: 2026-01-19
 folder: Kenya/site-visits
 grant: GD-0951
 tier: programs-only
 ---
 
-# AkiraChix codeHive — Nairobi site visit
+# Ada Bridge Institute — Nairobi site visit
 
-Two days on site with the codeHive team.
+Two days on site with the Ada Bridge team.
 
 - **Completion is strong.** The one-year program holds most of its cohort to graduation.
 - **The leak is employment linkage.** The gap between graduating and landing a first

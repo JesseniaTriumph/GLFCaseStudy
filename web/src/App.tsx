@@ -4,9 +4,9 @@ import type { Answer, CorpusIndex } from "@compass/core/types.js";
 import { PERSONAS } from "./principals.js";
 
 const EXAMPLES = [
-  "How did Carina perform against what they projected, and did the program officer flag anything?",
+  "How did Riverbend Care Collective perform against what they projected, and did the program officer flag anything?",
   "What are the biggest barriers to credential completion across our grantees?",
-  "Have we funded nuclear-maintenance training in Appalachia?",
+  "Have we funded advanced-energy maintenance training for rural workers?",
   "Did we decline an AI-upskilling applicant recently, and why?",
   "What did the board discuss about staff compensation?",
 ];

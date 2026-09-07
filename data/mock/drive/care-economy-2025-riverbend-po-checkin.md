@@ -1,15 +1,15 @@
 ---
-title: PO check-in notes — Carina (Year 1, Q2)
-author: Matt Zieger
+title: PO check-in notes — Riverbend Care Collective (Year 1, Q2)
+author: Dana Okafor
 date: 2025-08-14
-folder: Care Economy/2025/Carina
+folder: Care Economy/2025/Riverbend
 grant: GD-1188
 tier: programs-only
 ---
 
-# Carina — Q2 check-in
+# Riverbend Care Collective — Q2 check-in
 
-Spoke with the Carina team on 2025-08-12.
+Spoke with the Riverbend team on 2025-08-12.
 
 **Placement pace.** Behind plan for Year 1. They attribute the slowdown to Medicaid
 reimbursement delays in two states that stalled onboarding of new families in Q2. They
@@ -22,4 +22,4 @@ against a regional baseline closer to $17 — a larger gap than we modeled at ap
 the wage-lift target and reset the Year-1 volume expectation rather than treating the
 original schedule as the bar. Flag for the renewal review in early 2026.
 
-Ballmer Group is co-funding this grant and will want the same Year-2 read.
+The Hartwell Fund is co-funding this grant and will want the same Year-2 read.

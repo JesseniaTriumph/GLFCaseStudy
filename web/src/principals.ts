@@ -9,16 +9,16 @@ export const PERSONAS: Record<string, { label: string; note: string; principal: 
   programs: {
     label: "Program Officer",
     note: "Programs + Impact groups · sees team + programs-only",
-    principal: { userId: "m.zieger", groups: ["programs", "impact"], allowedTiers: ["team", "programs-only"] },
+    principal: { userId: "d.okafor", groups: ["programs", "impact"], allowedTiers: ["team", "programs-only"] },
   },
   impact: {
     label: "Impact Analyst",
     note: "Impact group · team tier only in this demo",
-    principal: { userId: "n.sethi", groups: ["impact"], allowedTiers: ["team"] },
+    principal: { userId: "l.fischer", groups: ["impact"], allowedTiers: ["team"] },
   },
   other: {
     label: "Comms (outside Programs/Impact)",
     note: "team tier, and only where the ACL matches",
-    principal: { userId: "cj.jackson", groups: ["comms"], allowedTiers: ["team"] },
+    principal: { userId: "r.mensah", groups: ["comms"], allowedTiers: ["team"] },
   },
 };

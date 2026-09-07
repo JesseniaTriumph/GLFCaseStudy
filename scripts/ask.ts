@@ -1,7 +1,7 @@
 /**
  * Ask Compass a question from the command line, as a given persona.
  *
- *   npm run ask -- "how did Carina perform against projection?"
+ *   npm run ask -- "how did Riverbend perform against projection?"
  *   npm run ask -- --as impact "did we decline an AI upskilling applicant?"
  *   npm run ask -- --as programs "what did the board discuss about compensation?"
  *

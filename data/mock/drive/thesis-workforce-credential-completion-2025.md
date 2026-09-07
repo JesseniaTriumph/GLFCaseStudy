@@ -1,6 +1,6 @@
 ---
 title: Thesis memo — barriers to credential completion (2025 synthesis)
-author: Noor Sethi
+author: Lena Fischer
 date: 2025-10-02
 folder: Thesis/Workforce
 grant: null
@@ -26,7 +26,7 @@ Four barriers recur:
 
 4. **The graduation-to-first-role gap.** Completion is necessary but not sufficient —
    the transition into a paid role is where the earnings effect is won or lost. See the
-   AkiraChix site-visit notes for a clear example.
+   Ada Bridge site-visit notes for a clear example.
 
 The credential-completion thesis tag currently covers 11 organizations; 7 have reported
 outcomes. Three Colombia grantees report in Spanish and are under-represented in this memo.

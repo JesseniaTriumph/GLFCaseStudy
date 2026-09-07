@@ -36,8 +36,8 @@
 
 | Persona | Who | Top job | Success looks like |
 |---|---|---|---|
-| **Program Officer** (primary — Matt Zieger's org) | Owns a grant portfolio | "How did this grantee do vs. what they projected, and what did we flag?" before a renewal call | Answers a renewal question in minutes with sources, not an afternoon of digging |
-| **Impact Analyst** (Tamsin Chen's org) | Owns measurement | "Pull every reported outcome for the AI Fund cohort, with the source for each number" | Assembles a board/donor figure set she trusts without re-verifying each one |
+| **Program Officer** (primary — the program officer's org) | Owns a grant portfolio | "How did this grantee do vs. what they projected, and what did we flag?" before a renewal call | Answers a renewal question in minutes with sources, not an afternoon of digging |
+| **Impact Analyst** (the Director of Impact's org) | Owns measurement | "Pull every reported outcome for the AI Fund cohort, with the source for each number" | Assembles a board/donor figure set she trusts without re-verifying each one |
 | **New hire / coordinator** | Ramping | "What's our history with this org? Did we ever decline them?" | Comes up to speed on 5 years in weeks, not months |
 | **Compass admin** (data owner / DRI) | COO's office | Configure the corpus, approve tier changes | Can see exactly what's indexed and who queried what |
 

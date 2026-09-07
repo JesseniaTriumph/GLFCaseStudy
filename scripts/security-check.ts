@@ -50,22 +50,22 @@ const baseClaims = {
   iss: "https://accounts.google.com",
   aud: CFG.audience,
   sub: "10769150350006150715113082367",
-  email: "m.zieger@gitlabfoundation.org",
+  email: "d.okafor@gitlabfoundation.org",
   email_verified: true,
   hd: "gitlabfoundation.org",
   iat: now - 30,
   exp: now + 3600,
-  name: "Matt Zieger",
+  name: "Dana Okafor",
 };
 
 // ---------- 1. valid token ----------
 try {
   const claims = verifyIdToken(makeToken(baseClaims), JWKS, CFG);
   const principal = principalFromClaims(claims, ["programs", "impact"]);
-  ok("valid ID token verifies", claims.email === "m.zieger@gitlabfoundation.org");
+  ok("valid ID token verifies", claims.email === "d.okafor@gitlabfoundation.org");
   ok(
     "maps to the right Principal",
-    principal.userId === "m.zieger" && principal.allowedTiers.includes("programs-only") && !principal.allowedTiers.includes("restricted"),
+    principal.userId === "d.okafor" && principal.allowedTiers.includes("programs-only") && !principal.allowedTiers.includes("restricted"),
     `tiers: ${principal.allowedTiers.join(", ")}`
   );
 } catch (e) {
@@ -114,9 +114,9 @@ try {
   const path = fileURLToPath(new URL("../dist/audit-test.jsonl", import.meta.url));
   if (existsSync(path)) rmSync(path);
   const log = new AuditLog(path);
-  log.append({ type: "auth", user: "m.zieger", result: "ok" });
-  log.append({ type: "query", user: "m.zieger", question: "how did Carina do?", citedRefs: ["givingdata:GD-1188"], citedTiers: ["team"], withheld: 0, withheldTiers: [], confidence: "high", mode: "extractive" });
-  log.append({ type: "query", user: "m.zieger", question: "board comp?", citedRefs: [], citedTiers: [], withheld: 2, withheldTiers: ["restricted"], confidence: "refused", mode: "extractive" });
+  log.append({ type: "auth", user: "d.okafor", result: "ok" });
+  log.append({ type: "query", user: "d.okafor", question: "how did Riverbend do?", citedRefs: ["givingdata:GD-1188"], citedTiers: ["team"], withheld: 0, withheldTiers: [], confidence: "high", mode: "extractive" });
+  log.append({ type: "query", user: "d.okafor", question: "board comp?", citedRefs: [], citedTiers: [], withheld: 2, withheldTiers: ["restricted"], confidence: "refused", mode: "extractive" });
   ok("audit chain verifies when intact", log.verify().ok, `${log.length} entries, head ${log.head.slice(0, 12)}…`);
 
   // tamper: rewrite a middle record's contents on disk, reload, re-verify

@@ -1,11 +1,11 @@
 {
-  "_note": "Gold question set. In a real engagement this is built WITH the Programs team — 50-100 real questions with verified answers and expected sources. Releases are gated on it.",
+  "_note": "Gold question set (fictional corpus). In a real engagement this is built WITH the Programs team — 50-100 real questions with verified answers and expected sources. Releases are gated on it; a leakage finding is a hard fail.",
   "cases": [
     {
-      "id": "carina-vs-projection",
+      "id": "riverbend-vs-projection",
       "persona": "programs",
-      "question": "How did Carina perform against what they projected, and did the program officer flag anything?",
-      "expectSources": ["givingdata:GD-1188-Year-1", "drive:care-economy-2025-carina-po-checkin"],
+      "question": "How did Riverbend Care Collective perform against what they projected, and did the program officer flag anything?",
+      "expectSources": ["givingdata:GD-1188-Year-1", "drive:care-economy-2025-riverbend-po-checkin"],
       "expectRefusal": false
     },
     {
@@ -16,9 +16,9 @@
       "expectRefusal": false
     },
     {
-      "id": "appalachia-nuclear-existence",
+      "id": "advanced-energy-existence",
       "persona": "programs",
-      "question": "Have we funded nuclear-maintenance training in Appalachia?",
+      "question": "Have we funded advanced-energy maintenance training for rural workers?",
       "expectSources": ["givingdata:GD-1301"],
       "expectRefusal": false
     },
@@ -46,16 +46,16 @@
       "mustNotLeak": ["givingdata:GD-D-2024-Q4-07"]
     },
     {
-      "id": "akirachix-employment-gap",
+      "id": "adabridge-employment-gap",
       "persona": "programs",
-      "question": "What is the main risk on the AkiraChix codeHive grant?",
-      "expectSources": ["drive:kenya-site-visit-akirachix-2026"],
+      "question": "What is the main risk on the Ada Bridge Institute grant?",
+      "expectSources": ["drive:kenya-site-visit-adabridge-2026"],
       "expectRefusal": false
     },
     {
-      "id": "carina-cofunder",
+      "id": "riverbend-cofunder",
       "persona": "impact",
-      "question": "Who is co-funding the Carina grant?",
+      "question": "Who is co-funding the Riverbend Care Collective grant?",
       "expectSources": ["givingdata:GD-1188"],
       "expectRefusal": false
     }
