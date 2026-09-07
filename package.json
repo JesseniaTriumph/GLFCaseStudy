@@ -21,7 +21,8 @@
     "eval:embed": "COMPASS_EMBED=bge-small tsx scripts/eval.ts",
     "serve": "tsx scripts/serve.ts",
     "server:check": "tsx scripts/server-check.ts",
-    "redteam": "tsx scripts/redteam.ts"
+    "redteam": "tsx scripts/redteam.ts",
+    "ci": "tsx scripts/ci.ts"
   },
   "devDependencies": {
     "@types/node": "^22.9.0",

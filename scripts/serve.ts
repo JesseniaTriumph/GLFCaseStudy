@@ -17,7 +17,7 @@ import { runPipeline } from "../src/pipeline/run.js";
 import { resolveAdapters, CORPUS } from "../src/config.js";
 import { createApp } from "../src/server/app.js";
 import { claudeLLM } from "../src/retrieval/llm.js";
-import { AuditLog } from "../src/security/audit.js";
+import { AuditLog, webhookSink } from "../src/security/audit.js";
 
 const { adapters, report } = await resolveAdapters();
 report.forEach((l) => console.log(`connector · ${l}`));
@@ -32,7 +32,10 @@ const index = await runPipeline(adapters, {
 const clientId = process.env.COMPASS_OAUTH_CLIENT_ID;
 const port = Number(process.env.PORT ?? 8787);
 
-const audit = new AuditLog(process.env.COMPASS_AUDIT_LOG ?? "dist/audit.log");
+const audit = new AuditLog(
+  process.env.COMPASS_AUDIT_LOG ?? "dist/audit.log",
+  process.env.COMPASS_AUDIT_WEBHOOK ? webhookSink(process.env.COMPASS_AUDIT_WEBHOOK) : undefined
+);
 
 const app = createApp({
   index,

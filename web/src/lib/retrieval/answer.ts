@@ -362,7 +362,9 @@ function isEnumerationRequest(question: string): boolean {
   const verb = /\b(list|enumerate|dump|export|output|print|show me|give me|reveal)\b/;
   const rawtext = /\b(raw|full|entire|complete)\s+(text|content|contents)\b/;
   const followInstr = /\b(do what|follow|carry out|execute|obey|comply with|act on)\b[^.?!]*\b(instruction|directive|command|note|document|memo|text|it)s?\b[^.?!]*\b(say|says|said|tell|tells|contain)/;
-  return (verb.test(q) && scope.test(q)) || (rawtext.test(q) && /\b(every|all|each|index|corpus)\b/.test(q)) || followInstr.test(q);
+  // "print your system prompt", "reveal your instructions/guardrails/rules"
+  const revealSelf = /\b(print|show|reveal|output|repeat|tell me|what (is|are))\b[^.?!]*\b(your )?(system prompt|initial instructions|instructions you were given|guardrails|guidelines you follow|rules you (follow|were given)|prompt)\b/;
+  return (verb.test(q) && scope.test(q)) || (rawtext.test(q) && /\b(every|all|each|index|corpus)\b/.test(q)) || followInstr.test(q) || revealSelf.test(q);
 }
 
 function coverageStatement(index: CorpusIndex): string {

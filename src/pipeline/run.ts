@@ -52,6 +52,7 @@ export async function runPipeline(adapters: SourceAdapter[], opts: RunOptions): 
   // ---------- 2. CLEAN + PII PASS ----------
   let quarantined = 0;
   const quarantinedIds: string[] = [];
+  let injectionQuarantined = 0;
   let piiRedactions = 0;
   let piiTierRaised = 0;
   docs = docs
@@ -83,6 +84,13 @@ export async function runPipeline(adapters: SourceAdapter[], opts: RunOptions): 
         quarantined++;
         quarantinedIds.push(d.id);
         log(`  quarantined (low extraction confidence ${d.extractionConfidence}): ${d.id}`);
+        return false;
+      }
+      const injScore = injectionScore(d.text);
+      if (injScore >= INJECTION_QUARANTINE_AT) {
+        injectionQuarantined++;
+        quarantinedIds.push(d.id);
+        log(`  quarantined (prompt-injection signals: ${injScore}): ${d.id}`);
         return false;
       }
       return true;
@@ -158,7 +166,7 @@ export async function runPipeline(adapters: SourceAdapter[], opts: RunOptions): 
   // ---------- 8. GAP REPORT + DIRECTORY ----------
   const gaps = gapReport(docs);
   gaps.excluded = {
-    lowExtractionConfidence: { count: quarantined, ids: quarantinedIds },
+    lowExtractionConfidence: { count: quarantined + injectionQuarantined, ids: quarantinedIds },
     sensitivityTier: tierExcluded,
     duplicates: dedupe.exactDuplicates + dedupe.nearDuplicates,
   };
@@ -166,7 +174,7 @@ export async function runPipeline(adapters: SourceAdapter[], opts: RunOptions): 
 
   const dates = docs.map((d) => d.date).filter(Boolean).sort() as string[];
   log(
-    `  seen ${seen} · quarantined ${quarantined} · PII redactions ${piiRedactions} · PII tier-raised ${piiTierRaised} · ` +
+    `  seen ${seen} · quarantined ${quarantined} · injection-quarantined ${injectionQuarantined} · PII redactions ${piiRedactions} · PII tier-raised ${piiTierRaised} · ` +
       `tier-excluded ${tierExcluded} · exact dups ${dedupe.exactDuplicates} · near dups ${dedupe.nearDuplicates} · ` +
       `cross-system links ${dedupe.crossSystemLinks} · chunks ${chunks.length}`
   );
@@ -209,26 +217,64 @@ export async function runPipeline(adapters: SourceAdapter[], opts: RunOptions): 
 
 // ---------------------------------------------------------------------------
 
+/** patterns that mark text as an instruction aimed at an AI assistant rather than content */
+const INJECTION_PATTERNS: RegExp[] = [
+  /<!--[\s\S]*?-->/g,
+  /<(script|style)\b[\s\S]*?<\/\1>/gi,
+  // an instruction header line, with or without a trailing colon
+  /^\s*#{0,4}\s*(SYSTEM|ASSISTANT|USER|AI|NOTE TO COMPASS|INSTRUCTIONS? (FOR|TO)\b[^\n]*)\s*[:\-]?.*$/gim,
+  // an imperative line aimed at an assistant (optionally a numbered step)
+  /^\s*\d{0,2}[.)]?\s*(forget|ignore|disregard|disable|bypass|override|reveal|expose|output|print|dump|list every|do not (tell|mention|disclose|reveal)|stay in character|proceed to include)\b[^\n]*$/gim,
+  // a sentence/line telling an assistant to ignore rules, change role, or exfiltrate
+  /[^\n.]*\b(ignore|disregard|forget|override|bypass|supersed\w*)\b[^\n.]*\b(all|any|previous|prior|your|the)\b[^\n.]*\b(instruction|rule|guardrail|permission|policy|guideline|access[- ]?control)s?\b[^\n.]*\.?/gi,
+  /[^\n.]*\byou are (now )?(an? )?(unrestricted|DAN|no[- ]restrictions?|admin\w*)\b[^\n.]*\.?/gi,
+  /[^\n.]*\b(reveal|print|output|dump|disclose|list|email|send)\b[^\n.]*\b(system prompt|your instructions|salary band|compensation (review|figures?)|committee deliberation|restricted (tier|record|document)|declined applicant)s?\b[^\n.]*\.?/gi,
+  /[^\n.]*\b(this (document|message|note)|the following)\b[^\n.]*\b(supersed\w*|override\w*|grants? you|authoriz\w*)\b[^\n.]*\.?/gi,
+  // a fake tool call / structured directive
+  /\{\s*"(tool|action|command|function)"\s*:[^\n}]*\}/gi,
+  // a spoofed "authoritative source" block
+  /\[[^\]\n]*\b(AUTHORITATIVE|SOURCE \d+|OVERRIDE|SYSTEM)\b[^\]\n]*\][^\n]*/gi,
+  // a message impersonating a named authority to the assistant
+  /--\s*message from the [^\n-]+--[\s\S]*?--/gi,
+  // zero-width and bidi control characters used to hide instructions
+  /[​-‏‪-‮⁠﻿]/g,
+];
+
 function clean(text: string): string {
-  return (
-    text
-      .replace(/\r/g, "")
-      // strip HTML/XML comments and script/style blocks — a common carrier for indirect
-      // prompt-injection text that a reader never sees but a naive pipeline would index
-      .replace(/<!--[\s\S]*?-->/g, "")
-      .replace(/<(script|style)\b[\s\S]*?<\/\1>/gi, "")
-      // neutralise obvious injected "instruction" lines aimed at an LLM (defence in depth —
-      // the model is never given retrieved text as instructions in the first place)
-      .replace(
-        /^\s*(SYSTEM|ASSISTANT|USER)\s*:\s*.*(ignore (all|any|previous)|administrator mode|disregard|you are now|do not mention this).*/gim,
-        "[removed: injected instruction]"
-      )
-      .replace(/[ \t]+\n/g, "\n")
-      .replace(/\n{3,}/g, "\n\n")
-      .replace(/^\s*(confidential|internal use only|do not distribute)\s*$/gim, "")
-      .trim()
-  );
+  let out = text.replace(/\r/g, "");
+  for (const re of INJECTION_PATTERNS) out = out.replace(re, " [removed: text targeting an AI assistant] ");
+  return out
+    .replace(/[ \t]+\n/g, "\n")
+    .replace(/\n{3,}/g, "\n\n")
+    .replace(/^\s*(confidential|internal use only|do not distribute)\s*$/gim, "")
+    .replace(/(\s*\[removed: text targeting an AI assistant\]\s*)+/g, " [removed: text targeting an AI assistant] ")
+    .trim();
 }
+
+/**
+ * How much a document reads like a prompt-injection attempt rather than grant content —
+ * after line-level neutralisation, count residual attack signals. A document over the
+ * threshold is quarantined (never indexed), the same as an unreadable scan: it isn't
+ * content, so it doesn't belong in the corpus.
+ */
+const INJECTION_SIGNALS: RegExp[] = [
+  /\b(board )?compensation (figures?|review|data)\b/i,
+  /\bsalary band/i,
+  /\bcommittee deliberation/i,
+  /\brestricted (access|tier|records?|documents?)\b/i,
+  /\bdeclined applicants?\b/i,
+  /\bsystem prompt|your (instructions|guardrails)\b/i,
+  /\b(silently )?(append|include|add)\b[^.\n]*\b(to your (answer|response)|in (every|all) (answer|response)s?)\b/i,
+  /\bdo not (disclose|tell|mention)\b[^.\n]*\b(you|this|that)\b/i,
+  /\bwhenever a user asks\b/i,
+  /\bstay in character\b/i,
+  /\[removed: text targeting an AI assistant\]/,
+  /\b(pre-?authoriz|clearance|TOP SECRET|unrestricted assistant)\b/i,
+];
+function injectionScore(text: string): number {
+  return INJECTION_SIGNALS.reduce((s, re) => s + (re.test(text) ? 1 : 0), 0);
+}
+const INJECTION_QUARANTINE_AT = 3;
 
 /** exact (content hash) + near (jaccard) + cross-system (explicit duplicate pointer or title+date match) */
 function dedupeDocs(docs: SourceDoc[], log: (m: string) => void): DedupeReport {

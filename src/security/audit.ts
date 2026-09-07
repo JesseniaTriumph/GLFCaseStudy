@@ -51,12 +51,33 @@ function hashEntry(seq: number, ts: string, event: AuditEvent, prevHash: string)
   return createHash("sha256").update(`${seq}\n${ts}\n${canonical(event)}\n${prevHash}`).digest("hex");
 }
 
+/**
+ * Off-host stream (roadmap 3.5): each new record is also handed to `sink`, which in
+ * production ships it to write-once storage / a SIEM so an attacker who owns the app host
+ * still cannot rewrite history. `webhookSink` posts each record to an HTTPS endpoint.
+ */
+export type AuditSink = (rec: AuditRecord) => void;
+
+export function webhookSink(url: string): AuditSink {
+  return (rec) => {
+    void fetch(url, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(rec),
+    }).catch(() => {
+      /* best effort — the local hash chain is still the source of truth */
+    });
+  };
+}
+
 export class AuditLog {
   private path: string;
   private records: AuditRecord[] = [];
+  private sink?: AuditSink;
 
-  constructor(path: string) {
+  constructor(path: string, sink?: AuditSink) {
     this.path = path;
+    this.sink = sink;
     if (existsSync(path)) {
       this.records = readFileSync(path, "utf8")
         .split("\n")
@@ -83,6 +104,7 @@ export class AuditLog {
     const rec: AuditRecord = { seq, ts, event, prevHash, hash };
     this.records.push(rec);
     appendFileSync(this.path, JSON.stringify(rec) + "\n");
+    this.sink?.(rec);
     return rec;
   }
 
