@@ -4,7 +4,8 @@
  */
 import type { SourceAdapter } from "../adapters/types.js";
 import type { SourceDoc, Chunk, CorpusIndex, EntityRef, DedupeReport, GapReport, Tier, IndexPerson } from "../core/types.js";
-import { tokenize, sha1, jaccard, tfidfVector, detectLanguage } from "../util/text.js";
+import { tokenize, jaccard, tfidfVector, detectLanguage } from "../util/text.js";
+import { sha1 } from "../util/hash.js";
 
 const NEAR_DUP_THRESHOLD = 0.82;
 const QUARANTINE_BELOW = 0.6;

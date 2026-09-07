@@ -1,4 +1,4 @@
-import { createHash } from "node:crypto";
+// Browser-safe: no node imports. Build-time-only helpers (sha1) live in ./hash.ts.
 
 const STOP = new Set(
   ("a an the of to in on for and or but with without at by from as is are was were be been being " +
@@ -26,10 +26,6 @@ export function tokenize(text: string): string[] {
     out.push(t);
   }
   return out;
-}
-
-export function sha1(s: string): string {
-  return createHash("sha1").update(s).digest("hex");
 }
 
 /** Cheap language guess sufficient for routing en vs es in this corpus. */
