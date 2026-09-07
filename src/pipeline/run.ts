@@ -40,6 +40,7 @@ export async function runPipeline(adapters: SourceAdapter[], opts: RunOptions): 
 
   // ---------- 2. CLEAN + PII PASS ----------
   let quarantined = 0;
+  const quarantinedIds: string[] = [];
   let piiRedactions = 0;
   let piiTierRaised = 0;
   docs = docs
@@ -69,6 +70,7 @@ export async function runPipeline(adapters: SourceAdapter[], opts: RunOptions): 
     .filter((d) => {
       if (d.extractionConfidence < QUARANTINE_BELOW) {
         quarantined++;
+        quarantinedIds.push(d.id);
         log(`  quarantined (low extraction confidence ${d.extractionConfidence}): ${d.id}`);
         return false;
       }
@@ -142,6 +144,11 @@ export async function runPipeline(adapters: SourceAdapter[], opts: RunOptions): 
 
   // ---------- 8. GAP REPORT + DIRECTORY ----------
   const gaps = gapReport(docs);
+  gaps.excluded = {
+    lowExtractionConfidence: { count: quarantined, ids: quarantinedIds },
+    sensitivityTier: tierExcluded,
+    duplicates: dedupe.exactDuplicates + dedupe.nearDuplicates,
+  };
   const directory = buildDirectory(docs);
 
   const dates = docs.map((d) => d.date).filter(Boolean).sort() as string[];
@@ -470,5 +477,12 @@ function gapReport(docs: SourceDoc[]): GapReport {
     if (!orgProfiles.has(gid)) grantsWithNoOrgRecord.push(gid);
   }
 
-  return { missingByGrant, grantsWithNoOrgRecord, grantsWithNoProposal: [...new Set(grantsWithNoProposal)], untaggedGrants };
+  return {
+    missingByGrant,
+    grantsWithNoOrgRecord,
+    grantsWithNoProposal: [...new Set(grantsWithNoProposal)],
+    untaggedGrants,
+    // filled in by the caller with the real pipeline counts
+    excluded: { lowExtractionConfidence: { count: 0, ids: [] }, sensitivityTier: 0, duplicates: 0 },
+  };
 }

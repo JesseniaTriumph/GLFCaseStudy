@@ -276,5 +276,12 @@ function unrecognizedNamedSubject(question: string, index: CorpusIndex, hits: Sc
 function coverageStatement(index: CorpusIndex): string {
   const range = index.coverage.dateRange ? ` (${index.coverage.dateRange[0]} to ${index.coverage.dateRange[1]})` : "";
   const not = index.coverage.notCovered.length ? ` Not covered: ${index.coverage.notCovered.join("; ")}.` : "";
-  return `Searched: ${index.coverage.systems.join(", ")}${range}.${not}`;
+  // Honesty about what the pipeline itself dropped (HOPE lesson): if documents were held
+  // out because we couldn't read them, say so — they're a known blind spot, not absent.
+  const ex = index.gaps.excluded;
+  const unreadable =
+    ex && ex.lowExtractionConfidence.count > 0
+      ? ` ${ex.lowExtractionConfidence.count} document(s) were set aside as unreadable (scanned or corrupt) and are not in these results.`
+      : "";
+  return `Searched: ${index.coverage.systems.join(", ")}${range}.${not}${unreadable}`;
 }

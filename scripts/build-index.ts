@@ -68,5 +68,11 @@ console.log(`dedupe: ${index.dedupe.exactDuplicates} exact, ${index.dedupe.nearD
 console.log(`gap report:`);
 for (const [g, missing] of Object.entries(index.gaps.missingByGrant)) console.log(`  ${g}: ${missing.join("; ")}`);
 if (index.gaps.untaggedGrants.length) console.log(`  untagged grants: ${index.gaps.untaggedGrants.join(", ")}`);
+const ex = index.gaps.excluded;
+console.log(
+  `  excluded by our own processing: ${ex.lowExtractionConfidence.count} unreadable` +
+    (ex.lowExtractionConfidence.count ? ` (${ex.lowExtractionConfidence.ids.join(", ")})` : "") +
+    ` · ${ex.sensitivityTier} sensitivity-tier · ${ex.duplicates} duplicate(s)`
+);
 console.log(`embedder: ${index.embedder ? `${index.embedder.id} (${index.embedder.dims}d)` : "tf-idf (default)"}`);
 console.log(`written -> ${embedderId ? OUT_LOCAL : OUT}`);

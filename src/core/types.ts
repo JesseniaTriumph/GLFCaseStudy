@@ -96,6 +96,20 @@ export interface GapReport {
   grantsWithNoOrgRecord: string[];
   grantsWithNoProposal: string[];
   untaggedGrants: string[];
+  /**
+   * What the pipeline itself dropped, and why — separate from permissions (what a user
+   * can't see) and from source access limits (what a system won't give us). Lesson from
+   * the HOPE dashboard: records filtered out by our own processing were invisible until
+   * we counted them. These counts surface in the coverage statement.
+   */
+  excluded: {
+    /** documents whose text extraction (OCR / parse) was too low-confidence to trust */
+    lowExtractionConfidence: { count: number; ids: string[] };
+    /** documents held out because their sensitivity tier is excluded from the index */
+    sensitivityTier: number;
+    /** documents dropped as exact or near duplicates of another */
+    duplicates: number;
+  };
 }
 
 export interface BuildManifest {
