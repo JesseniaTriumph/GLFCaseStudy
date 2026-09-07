@@ -1,0 +1,231 @@
+{
+  "_note": "SYNTHETIC. Illustrative composites built on public information about GitLab Foundation grantees. Not real records, figures, or quotes. Schema mirrors a GivingData-style grants model.",
+  "funds": [
+    { "id": "fund-ai4eo", "name": "AI for Economic Opportunity Fund" },
+    { "id": "fund-peo", "name": "Powering Economic Opportunity Fund" },
+    { "id": "fund-lfa", "name": "Learning for Action" }
+  ],
+  "organizations": [
+    { "id": "org-carina", "name": "Carina", "geography": "United States", "ein": "XX-XXXXXX1" },
+    { "id": "org-akirachix", "name": "AkiraChix", "geography": "Kenya", "ein": null },
+    { "id": "org-soar", "name": "Shaping Our Appalachian Region", "aka": ["SOAR"], "geography": "United States", "ein": "XX-XXXXXX2" },
+    { "id": "org-makingspace", "name": "Making Space", "geography": "United States", "ein": "XX-XXXXXX3" },
+    { "id": "org-ndwa", "name": "National Domestic Workers Alliance", "aka": ["NDWA"], "geography": "United States", "ein": "XX-XXXXXX4" },
+    { "id": "org-fundacion-capital", "name": "Fundación Capital", "geography": "Colombia", "ein": null }
+  ],
+  "grants": [
+    {
+      "id": "GD-1188",
+      "organizationId": "org-carina",
+      "organizationName": "Carina",
+      "fundId": "fund-peo",
+      "fund": "Powering Economic Opportunity Fund",
+      "programOfficer": "Matt Zieger",
+      "title": "Wage-transparent placements and benefits navigation for home-care workers",
+      "thesisArea": "care economy",
+      "geography": "United States",
+      "amount": 750000,
+      "currency": "USD",
+      "status": "Active",
+      "startDate": "2025-01-15",
+      "endDate": "2027-01-14",
+      "coFunders": ["Ballmer Group"],
+      "projected": { "northStar": 107, "annualEarningsDelta": 9400, "lifetimeEarningsDelta": 118000, "participants": 3900, "modelVersion": "v4.1" },
+      "reported": [
+        {
+          "period": "Year 1",
+          "asOf": "2025-07-01",
+          "modelVersion": "v4.1",
+          "participants": 2610,
+          "annualEarningsDelta": 8100,
+          "medianWageAtPlacement": 19.10,
+          "regionalBaselineWage": 16.80,
+          "narrative": "2,610 caregivers placed in Year 1, about 67% of the two-year target. Placement pace slowed in Q2 due to Medicaid reimbursement delays in two states. Median wage at placement $19.10/hr against a $16.80 regional baseline."
+        }
+      ],
+      "requirements": [
+        { "type": "Proposal", "dueDate": "2024-11-01", "status": "Received", "submittedDocId": "GD-1188-P1" },
+        { "type": "Year 1 progress report", "dueDate": "2025-07-01", "status": "Received", "submittedDocId": "GD-1188-R2" },
+        { "type": "Year 2 progress report", "dueDate": "2026-07-01", "status": "Not yet due", "submittedDocId": null }
+      ],
+      "reviewNotes": "Scored 4.3/5 on impact rubric. Strong evidence base; main risk is dependency on state reimbursement timelines. Recommended for approval with a revised Year-1 ramp expectation.",
+      "tierHint": { "reviewNotes": "programs-only" }
+    },
+    {
+      "id": "GD-0951",
+      "organizationId": "org-akirachix",
+      "organizationName": "AkiraChix",
+      "fundId": "fund-lfa",
+      "fund": "Learning for Action",
+      "programOfficer": "Alex Sindorf",
+      "title": "codeHive — graduation-to-employment bridge for women software developers",
+      "thesisArea": "credential completion",
+      "geography": "Kenya",
+      "amount": 350000,
+      "currency": "USD",
+      "status": "Active",
+      "startDate": "2023-09-01",
+      "endDate": "2026-08-31",
+      "coFunders": [],
+      "projected": { "northStar": 88, "annualEarningsDelta": 6200, "lifetimeEarningsDelta": 74000, "participants": 480, "modelVersion": "v3.6" },
+      "reported": [
+        {
+          "period": "Year 2",
+          "asOf": "2025-11-15",
+          "modelVersion": "v4.0",
+          "participants": 310,
+          "annualEarningsDelta": 6800,
+          "narrative": "Completion strong. First-role placement rate up 14 points after launching a stipend bridge and employer-matching pilot. Alumni earning up to 6x the regional average within two years."
+        }
+      ],
+      "requirements": [
+        { "type": "Proposal", "dueDate": "2023-08-01", "status": "Received", "submittedDocId": "GD-0951-P1" },
+        { "type": "Year 1 report", "dueDate": "2024-09-01", "status": "Received", "submittedDocId": "GD-0951-R1" },
+        { "type": "Year 2 report", "dueDate": "2025-09-01", "status": "Received", "submittedDocId": "GD-0951-R3" }
+      ],
+      "reviewNotes": "Scored 4.0/5. Completion outcomes well evidenced; employment-linkage was the open question at approval.",
+      "tierHint": { "reviewNotes": "programs-only" }
+    },
+    {
+      "id": "GD-1301",
+      "organizationId": "org-soar",
+      "organizationName": "Shaping Our Appalachian Region",
+      "fundId": "fund-peo",
+      "fund": "Powering Economic Opportunity Fund",
+      "programOfficer": "Matt Zieger",
+      "title": "Nuclear-maintenance planning training for rural workers without degrees, Eastern Kentucky",
+      "thesisArea": "workforce training",
+      "geography": "United States",
+      "amount": 400000,
+      "currency": "USD",
+      "status": "Active",
+      "startDate": "2025-08-01",
+      "endDate": "2027-07-31",
+      "coFunders": [],
+      "projected": { "northStar": 96, "annualEarningsDelta": 14200, "lifetimeEarningsDelta": 165000, "participants": 220, "modelVersion": "v4.1" },
+      "reported": [],
+      "requirements": [
+        { "type": "Proposal", "dueDate": "2025-06-01", "status": "Received", "submittedDocId": "GD-1301-P1" },
+        { "type": "Baseline report", "dueDate": "2025-11-01", "status": "Overdue", "submittedDocId": null }
+      ],
+      "reviewNotes": "Scored 3.9/5. Novel sector for the portfolio; strong employer demand signal from regional utilities.",
+      "tierHint": { "reviewNotes": "programs-only" }
+    },
+    {
+      "id": "GD-1276",
+      "organizationId": "org-makingspace",
+      "organizationName": "Making Space",
+      "fundId": "fund-ai4eo",
+      "fund": "AI for Economic Opportunity Fund",
+      "programOfficer": "Samii Hartman",
+      "title": "Workforce pathways and bias-audited hiring tools for disabled talent",
+      "thesisArea": "AI for economic opportunity",
+      "geography": "United States",
+      "amount": 500000,
+      "currency": "USD",
+      "status": "Active",
+      "startDate": "2025-02-01",
+      "endDate": "2026-07-31",
+      "coFunders": ["AI for Economic Opportunity Fund pool"],
+      "projected": { "northStar": 61, "annualEarningsDelta": 11200, "lifetimeEarningsDelta": 132000, "participants": 900, "modelVersion": "v4.1" },
+      "reported": [
+        {
+          "period": "Q2 check-in",
+          "asOf": "2025-09-15",
+          "modelVersion": "v4.1",
+          "participants": 140,
+          "annualEarningsDelta": null,
+          "narrative": "First employer pilots live. Attribution model for the AI hiring tool vs. the pathways program is an open methodological question the team is working through with the Impact group."
+        }
+      ],
+      "requirements": [
+        { "type": "Proposal", "dueDate": "2025-01-01", "status": "Received", "submittedDocId": "GD-1276-P1" },
+        { "type": "Year 1 report", "dueDate": "2026-02-01", "status": "Not yet due", "submittedDocId": null }
+      ],
+      "reviewNotes": "Scored 3.7/5. Excitement about the tool; the panel flagged attribution risk explicitly.",
+      "tierHint": { "reviewNotes": "programs-only" }
+    },
+    {
+      "id": "GD-1042",
+      "organizationId": "org-ndwa",
+      "organizationName": "National Domestic Workers Alliance",
+      "fundId": "fund-ai4eo",
+      "fund": "AI for Economic Opportunity Fund",
+      "programOfficer": "Matt Zieger",
+      "title": "Ask Aya — personalized legal guidance and negotiation support for domestic workers",
+      "thesisArea": "AI for economic opportunity",
+      "geography": "United States",
+      "amount": 300000,
+      "currency": "USD",
+      "status": "Active",
+      "startDate": "2024-06-01",
+      "endDate": "2026-05-31",
+      "coFunders": [],
+      "projected": { "northStar": 140, "annualEarningsDelta": 4300, "lifetimeEarningsDelta": 52000, "participants": 12000, "modelVersion": "v4.0" },
+      "reported": [
+        {
+          "period": "Year 1",
+          "asOf": "2025-06-01",
+          "modelVersion": "v4.0",
+          "participants": 7100,
+          "annualEarningsDelta": 3900,
+          "narrative": "Tool reached 7,100 workers in Year 1. Employers inconsistently recognized negotiated agreements; grantee moved to co-designing outreach with four worker centers."
+        }
+      ],
+      "requirements": [
+        { "type": "Proposal", "dueDate": "2024-05-01", "status": "Received", "submittedDocId": "GD-1042-P1" },
+        { "type": "Year 1 report", "dueDate": "2025-06-01", "status": "Received", "submittedDocId": "GD-1042-R1" }
+      ],
+      "reviewNotes": "Scored 4.1/5. Large reach, modest per-person effect — portfolio-diversifying.",
+      "tierHint": { "reviewNotes": "programs-only" }
+    },
+    {
+      "id": "GD-0904",
+      "organizationId": "org-fundacion-capital",
+      "organizationName": "Fundación Capital",
+      "fundId": "fund-lfa",
+      "fund": "Learning for Action",
+      "programOfficer": "Henner Andrés Solarte",
+      "title": "Digital financial-capability training tied to workforce programs, Colombia",
+      "thesisArea": null,
+      "geography": "Colombia",
+      "amount": 180000,
+      "currency": "USD",
+      "status": "Closed",
+      "startDate": "2022-03-01",
+      "endDate": "2024-02-28",
+      "coFunders": [],
+      "projected": { "northStar": 72, "annualEarningsDelta": 2100, "lifetimeEarningsDelta": 26000, "participants": 5400, "modelVersion": "v2.9" },
+      "reported": [
+        {
+          "period": "Final report",
+          "asOf": "2024-03-15",
+          "modelVersion": "v2.9",
+          "participants": 6200,
+          "annualEarningsDelta": 2400,
+          "narrative": "38% de las personas que abandonaron el programa antes de completarlo mencionaron la necesidad de volver a un trabajo remunerado. Un aumento del estipendio en la tercera cohorte elevó la finalización del 61% al 74%."
+        }
+      ],
+      "requirements": [
+        { "type": "Proposal", "dueDate": "2022-02-01", "status": "Received", "submittedDocId": "GD-0904-P1" },
+        { "type": "Final report", "dueDate": "2024-03-01", "status": "Received", "submittedDocId": "GD-0904-R3" }
+      ],
+      "reviewNotes": "Cerrado. Resultados de finalización sólidos tras el ajuste del estipendio.",
+      "tierHint": { "reviewNotes": "programs-only" }
+    }
+  ],
+  "declinedApplicants": [
+    {
+      "id": "GD-D-2024-Q4-07",
+      "applicantNameRedacted": true,
+      "thesisArea": "AI for economic opportunity",
+      "geography": "United States",
+      "decision": "Declined",
+      "decidedOn": "2024-11-20",
+      "reason": "Strong team, but the projected earnings effect could not be separated from a concurrent state program operating in the same region. Attribution unclear.",
+      "rubric": { "evidenceBase": 2, "costEffectiveness": 2, "team": 4, "scalability": 3, "alignment": 4 },
+      "suggestedReapproach": "Re-apply with a control-group or staggered-rollout design.",
+      "tier": "programs-only"
+    }
+  ]
+}

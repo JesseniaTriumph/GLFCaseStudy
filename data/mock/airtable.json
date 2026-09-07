@@ -1,0 +1,21 @@
+{
+  "_note": "SYNTHETIC. Illustrative Airtable-style relationship CRM. Not real people or records.",
+  "organizations": [
+    { "id": "recCarina", "name": "Carina", "givingDataId": "GD-1188", "type": "Grantee", "thesisTags": ["care economy", "benefits access"], "geography": "United States", "stage": "Active grantee", "relationshipOwner": "Matt Zieger", "source": "Referred by Ballmer Group", "lastTouchpoint": "2026-06-02" },
+    { "id": "recAkira", "name": "AkiraChix", "givingDataId": "GD-0951", "type": "Grantee", "thesisTags": ["credential completion", "youth", "gender equity"], "geography": "Kenya", "stage": "Active grantee", "relationshipOwner": "Alex Sindorf", "source": "Inbound - Learning for Action RFP", "lastTouchpoint": "2026-01-19" },
+    { "id": "recSoar", "name": "SOAR (Shaping Our Appalachian Region)", "givingDataId": "GD-1301", "type": "Grantee", "thesisTags": ["workforce training", "rural"], "geography": "United States", "stage": "Active grantee", "relationshipOwner": "Matt Zieger", "source": "Powering Economic Opportunity Fund open call", "lastTouchpoint": "2026-05-28" },
+    { "id": "recMaking", "name": "Making Space", "givingDataId": "GD-1276", "type": "Grantee", "thesisTags": ["AI for economic opportunity", "disability inclusion"], "geography": "United States", "stage": "Active grantee", "relationshipOwner": "Samii Hartman", "source": "AI for Economic Opportunity Fund cohort 3", "lastTouchpoint": "2026-04-11" },
+    { "id": "recNdwa", "name": "National Domestic Workers Alliance", "givingDataId": "GD-1042", "type": "Grantee", "thesisTags": ["AI for economic opportunity", "worker power"], "geography": "United States", "stage": "Active grantee", "relationshipOwner": "Matt Zieger", "source": "AI for Economic Opportunity Fund cohort 2", "lastTouchpoint": "2026-03-30" },
+    { "id": "recFundacion", "name": "Fundacion Capital", "givingDataId": "GD-0904", "type": "Former grantee", "thesisTags": ["financial capability"], "geography": "Colombia", "stage": "Closed grant", "relationshipOwner": "Henner Andres Solarte", "source": "Prior relationship", "lastTouchpoint": "2024-05-04" }
+  ],
+  "contacts": [
+    { "id": "conCar1", "orgId": "recCarina", "name": "[VP, Partnerships]", "title": "VP, Partnerships", "workEmail": "partnerships@example-carina.org", "personalPhone": "REDACTED", "notes": "Primary point of contact; responsive." },
+    { "id": "conAki1", "orgId": "recAkira", "name": "[Executive Director]", "title": "Executive Director", "workEmail": "ed@example-akirachix.org", "personalPhone": "REDACTED", "notes": "" },
+    { "id": "conSoar1", "orgId": "recSoar", "name": "[Workforce Director]", "title": "Director of Workforce Initiatives", "workEmail": "workforce@example-soar.org", "personalPhone": "REDACTED", "notes": "Baseline report is late - chase before Q1 board." }
+  ],
+  "interactions": [
+    { "id": "intX1", "orgId": "recCarina", "date": "2026-06-02", "type": "Call", "summary": "Renewal-scoping call. Carina expects placement pace to recover in Year 2 as reimbursement issues clear. Asked about a revised ramp in the renewal.", "attendees": ["Matt Zieger"], "tier": "programs-only" },
+    { "id": "intX2", "orgId": "recSoar", "date": "2026-05-28", "type": "Email", "summary": "Reminded SOAR that the baseline report is overdue. They cited a data-collection delay with the training provider.", "attendees": ["Matt Zieger"], "tier": "programs-only" },
+    { "id": "intX3", "orgId": "recAkira", "date": "2026-01-19", "type": "Site visit", "summary": "Nairobi site visit. Completion strong; the leak is the gap between graduation and first paid role. Employer-matching pilot looks promising.", "attendees": ["Alex Sindorf"], "tier": "programs-only" }
+  ]
+}
