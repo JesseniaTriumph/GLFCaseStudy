@@ -63,6 +63,33 @@ export const killSwitch = {
   },
 };
 
+/**
+ * Usage / trust / cost snapshot from the audit log (roadmap 4.3). Cost is a rough
+ * estimate: an extractive answer is ~free; a generative one is ~6k in + 0.5k out tokens
+ * at Sonnet 5 rates ($2 / $10 per M) ≈ $0.017.
+ */
+export function auditStats(records: readonly import("../security/audit.js").AuditRecord[]) {
+  const q = records.filter((r) => r.event.type === "query").map((r) => r.event as Extract<AuditEvent, { type: "query" }>);
+  const auth = records.filter((r) => r.event.type === "auth").map((r) => r.event as Extract<AuditEvent, { type: "auth" }>);
+  const users = new Set(q.map((e) => e.user));
+  const refused = q.filter((e) => e.confidence === "refused").length;
+  const restrictedProbes = q.filter((e) => e.confidence === "refused" && e.withheldTiers.includes("restricted")).length;
+  const generative = q.filter((e) => e.mode === "generative").length;
+  const byUser: Record<string, number> = {};
+  for (const e of q) byUser[e.user] = (byUser[e.user] ?? 0) + 1;
+  return {
+    queries: q.length,
+    uniqueUsers: users.size,
+    refusalRate: q.length ? +(refused / q.length).toFixed(3) : 0,
+    restrictedProbes,
+    authDenials: auth.filter((e) => e.result === "denied").length,
+    generativeShare: q.length ? +(generative / q.length).toFixed(3) : 0,
+    estMonthlyCostUsd: +(generative * 0.017 + (q.length - generative) * 0.001).toFixed(2),
+    topUsers: Object.entries(byUser).sort((a, b) => b[1] - a[1]).slice(0, 5),
+    auditChainLength: records.length,
+  };
+}
+
 function json(res: ServerResponse, status: number, body: unknown, extraHeaders: Record<string, string> = {}) {
   res.writeHead(status, { "content-type": "application/json", ...extraHeaders });
   res.end(JSON.stringify(body));
@@ -158,6 +185,11 @@ export function createApp(deps: ServerDeps) {
           dedupe: deps.index.dedupe,
           killSwitch: killSwitch.engaged,
         });
+      }
+      if (path === "/admin/stats" && req.method === "GET") {
+        const s = adminSession();
+        if (!s) return json(res, 403, { error: "admin only" });
+        return json(res, 200, auditStats(deps.audit?.all() ?? []));
       }
       if (path === "/admin/killswitch" && req.method === "POST") {
         const s = adminSession();

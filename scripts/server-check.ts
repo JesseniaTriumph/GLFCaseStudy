@@ -20,6 +20,8 @@ import { ADAPTERS, CORPUS } from "../src/config.js";
 import { createApp } from "../src/server/app.js";
 import { RateLimiter } from "../src/server/limits.js";
 import { Monitor } from "../src/security/monitor.js";
+import { AuditLog } from "../src/security/audit.js";
+import { rmSync } from "node:fs";
 import type { Signal } from "../src/security/monitor.js";
 import type { Jwk } from "../src/security/auth.js";
 
@@ -99,12 +101,19 @@ const limiter = new RateLimiter({
   cost: { capacity: 1000, refillPerSec: 1 },
 });
 const monitor = new Monitor({ windowMs: 60_000, restrictedRefusals: 3, authDenials: 5, sweepQueries: 15, costMultiple: 4 });
+const AUDIT_PATH = "/tmp/compass-server-check-audit.jsonl";
+try {
+  rmSync(AUDIT_PATH);
+} catch {
+  /* fresh */
+}
 const app = createApp({
   index,
   secureCookies: false,
   oauth,
   limiter,
   monitor,
+  audit: new AuditLog(AUDIT_PATH),
   onSignal: (s) => signals.push(s),
   feedbackLog: "/tmp/compass-server-check-feedback.jsonl",
 });
@@ -196,6 +205,13 @@ const req = async (path: string, opts: RequestInit = {}) => {
 {
   const r = await req("/api/feedback", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ question: "test q", verdict: "down", note: "missed a source" }) });
   ok("POST /api/feedback records a verdict", r.status === 200);
+}
+
+// 10b. admin stats reflects the queries made in this run
+{
+  const r = await req("/admin/stats");
+  const s = (await r.json()) as { queries?: number; restrictedProbes?: number };
+  ok("GET /admin/stats → usage snapshot with queries + restricted probes", r.status === 200 && (s.queries ?? 0) >= 3 && (s.restrictedProbes ?? 0) >= 1);
 }
 
 // 11. logout revokes server-side — a SAVED copy of the pre-logout cookie also stops working
