@@ -17,6 +17,13 @@ Standard build docs for Compass. Read in this order.
 | 11 | [CROSS_PLATFORM.md](CROSS_PLATFORM.md) | Web / PWA / iOS / Android strategy — shared core, thin shells |
 | 12 | [ROADMAP.md](ROADMAP.md) | Sequential implementation plan + the build/ops agent orchestration (sequential DAG + two loops) |
 | — | [CONNECTORS.md](CONNECTORS.md) | Going from mock data to live data — what each connector needs and who provides it |
+| — | [TIER_POLICY.md](TIER_POLICY.md) | The four-tier sensitivity scheme + the `never-ingest` list (data owner signs off) |
+| — | [SOURCE_OF_TRUTH_MATRIX.md](SOURCE_OF_TRUTH_MATRIX.md) | Which system wins per fact, and what happens when they disagree |
+| — | [V1_CORPUS_AND_METRIC.md](V1_CORPUS_AND_METRIC.md) | The V1 scope and the 6-month success metric |
+| — | [RUNBOOK.md](RUNBOOK.md) | Operator runbook — every command, daily/on-change/incident |
+| — | [INCIDENT_RESPONSE.md](INCIDENT_RESPONSE.md) | Playbooks P1–P7, made operational |
+| — | [CONTROLS_MATRIX.md](CONTROLS_MATRIX.md) | Controls mapped to NIST CSF / 800-53 / SOC 2 / AI RMF, with status |
+| — | [TABLETOP_EXERCISE.md](TABLETOP_EXERCISE.md) | The incident tabletop scenario |
 | — | [../ARCHITECTURE.md](../ARCHITECTURE.md) | The running code's architecture (as-built) |
 | — | [../SECURITY.md](../SECURITY.md) | Security controls: built vs. still-needed |
 | — | `deliverables/A_Strategy_Doc.md` §6 | The full security architecture (OAuth → integrity → hardening → IR) |
@@ -26,10 +33,16 @@ Standard build docs for Compass. Read in this order.
 
 ```bash
 npm install
-npm run build:index    # pipeline: clean → dedupe → resolve → graph join → gap report + manifest
-npm run eval           # gold set: retrieval + refusal + permission-leak — 8/8, 0 leaks
-npm run security       # OIDC token verify + tamper-evident audit log — 7/7
+npm run ci             # the promotion gate: typecheck → build → eval → eval:pg → security → server:check → redteam
+npm run build:index    # pipeline: clean → PII → injection filter → dedupe → resolve → graph join → gap report + raw store + manifest
+npm run eval           # gold set: retrieval + refusal + permission-leak — 11/11, 0 leaks
+npm run eval:pg        # the same gold set through the SQL permission filter — 11/11
+npm run redteam        # adversarial suite: injection, jailbreak, exfiltration, PII — 16/16, 0 leaks
+npm run security       # OIDC token verify + fail-closed auth + tamper-evident audit — 9/9
+npm run server:check   # full OIDC login + rate limit + kill switch + revocation + stats — 12/12
 npm run audit          # print + verify the hash-chained audit log
+npm run stats          # usage / trust / cost snapshot from the audit log
+npm run tune           # weekly: propose a retrieval change from feedback + eval deltas (never auto-applies)
 npm run ask -- --as programs "how did Riverbend Care Collective perform against projection?"
 ```
 

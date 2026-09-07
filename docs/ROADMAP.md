@@ -133,3 +133,51 @@ flowchart TD
 ## If the plan runs behind at any exit gate
 
 Narrow the corpus or the user group. **Never** skip a security exit criterion.
+
+---
+
+## Build status (what's done in `compass/` vs. what needs the Foundation)
+
+Everything that can be built without the Foundation's people, credentials, or an external
+vendor has been built and is gated by `npm run ci`.
+
+### Done — runs and is tested
+
+| Step | What |
+|---|---|
+| 2.1 | Real connectors for Drive / GivingData / Airtable behind `SourceAdapter`, credential-activated (+ Zoom and Notion, gated). Mock fallback per source. |
+| 2.2 | Preserve — immutable content-addressed raw store (`src/pipeline/rawstore.ts`) + manifest. Extraction-confidence + injection quarantine. |
+| 2.3 | Resolve — entity graph, grant↔org join, dedupe (exact/near/cross-system), **entity review queue** (`/admin/review`, `build:index` output). |
+| 2.4 | Retrieve — hybrid BM25 + tf-idf; **permission filter as a SQL `WHERE` clause** (`src/db/store.ts`, `npm run eval:pg` 11/11, 0 leaks); Restricted excluded. |
+| 2.5 | Learned embeddings — `bge-small` via transformers.js, opt-in, eval-passing. bge-m3 registered as the multilingual option. |
+| 2.6 | Answer — evidence brief, inline deep-link citations, coverage line, **operational confidence** (coverage/agreement/freshness/completeness), abstention, **conflict surfacing**. |
+| 2.7 | Web app + the **full OIDC Authorization-Code + PKCE flow** (`src/server/`, `npm run server:check` 12/12). "How it works" panel. Embeddable widget. |
+| 2.8 | SSO+MFA-ready, session + **server-side revocation**, tamper-evident audit log, **kill switch**, admin-group gating. |
+| 2.9 | Feedback control (`/api/feedback` → `eval/feedback.jsonl`); **`npm run redteam`** (16 cases, injection/jailbreak/exfil/PII) inside **`npm run ci`**. |
+| 2.11 | Per-user rate + cost limits → 429 + Retry-After. |
+| 3.1 | Airtable adapter done; **Notion connector** built (gated). |
+| 3.2 | PII pass (deterministic + participant heuristic + quarantine); **optional NER name pass** (`src/pipeline/ner.ts`). |
+| 3.3 | **Indirect-prompt-injection**: 15 planted fixtures + intake pattern-stripping + injection-score quarantine + behavioural red-team cases. |
+| 3.4 | **Multilingual (Spanish)**: stopwords + bilingual keyword bridge; an English question retrieves a Spanish report (`gold` case). OCR quality gate exists. |
+| 3.5 | **Promotion gate** (`npm run ci`); anomaly alerts (`src/security/monitor.ts`); **off-host audit stream** (`webhookSink`). |
+| 3.6 | Conflicting figures **shown, not merged**; confidence drops to medium. |
+| 3.7 | Role & cycle context — done (`src/roles.ts`, toggleable). |
+| 4.1 | Additional surface — embeddable answer widget (`web/public/embed.html`). |
+| 4.2 | Weekly tuning loop — `npm run tune` proposes a change, never applies it. |
+| 4.3 | Usage / trust / cost snapshot — `GET /admin/stats`, `npm run stats`. |
+| 4.4 | Expo iOS + Android **scaffold** (`mobile/`) sharing the TS core + the same `/api/ask`. |
+| 4.5 | Docs — RUNBOOK, INCIDENT_RESPONSE, CONTROLS_MATRIX, TABLETOP_EXERCISE, TIER_POLICY, SOURCE_OF_TRUTH_MATRIX, V1_CORPUS_AND_METRIC. |
+| 4.7 | Leadership decision packet — `deliverables/M_Decision_Packet.md`. |
+
+### Blocked on the Foundation (people / access / legal)
+
+| Step | Needs |
+|---|---|
+| 1.1, 1.9, 2.10, 3.9, 4.6 | Interviews, design partners, baseline timings, onboarding, a named trained owner |
+| 1.3 | Real credentials in the secret manager (`.env.example`, `docs/CONNECTORS.md` say exactly what) |
+| 1.4 | Executed zero-retention LLM agreement + DPA + counsel's cross-border determination |
+| 1.5, 1.6, 1.8 | Data-owner sign-off on the tier policy, source-of-truth matrix, and V1 corpus (all drafted in `docs/`) |
+| 1.7 | The 50–100-question gold set built *with* the Programs team (harness + a 11-case synthetic set exist) |
+| 3.6 | Backfilling the real five-year corpus |
+| 3.8 | Third-party penetration test (external vendor) |
+| 4.8 | Running the tabletop (scenario written) |
