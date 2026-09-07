@@ -25,12 +25,22 @@ export const CORPUS = {
 /**
  * Demo principals for local runs (fictional users). In production these come from
  * Google OIDC + a synced Google Groups membership — see src/security/auth.ts.
+ *
+ * `groups` drive BOTH the permission filter (which tiers/records they may retrieve) and —
+ * separately, and only when role-context is toggled on — the relevance logic in
+ * src/roles.ts. Permission is strict; role-context is a signal, never a gate.
  */
 export const PRINCIPALS: Record<string, Principal> = {
-  // a Programs team member — sees team + programs-only, never restricted
-  programs: { userId: "d.okafor", groups: ["programs", "impact"], allowedTiers: ["team", "programs-only"] },
-  // an Impact analyst — team-tier only in this demo (no programs-only diligence notes)
+  // Programs — sees team + programs-only, never restricted
+  programs: { userId: "d.okafor", groups: ["programs"], allowedTiers: ["team", "programs-only"] },
+  // Impact analyst — team-tier only in this demo (no programs-only diligence notes)
   impact: { userId: "l.fischer", groups: ["impact"], allowedTiers: ["team"] },
+  // Executive — team + programs-only
+  executive: { userId: "e.wilson", groups: ["executive", "leadership"], allowedTiers: ["team", "programs-only"] },
+  // Donor engagement / EIR — team + programs-only
+  donor: { userId: "d.petty", groups: ["donor-engagement", "partnerships"], allowedTiers: ["team", "programs-only"] },
+  // Finance / Grants Operations — team + programs-only
+  finance: { userId: "j.vangrouw", groups: ["finance", "grants-ops"], allowedTiers: ["team", "programs-only"] },
   // someone outside Programs/Impact — team-tier, and only if the ACL matches
   other: { userId: "r.mensah", groups: ["comms"], allowedTiers: ["team"] },
 };

@@ -1,5 +1,11 @@
 import type { CorpusIndex, FollowUps, IndexPerson } from "../core/types.js";
 import type { Scored } from "./search.js";
+import { suggestedQuestions as roleSuggestions, type FunctionKey } from "../roles.js";
+
+export interface FollowupRoleCtx {
+  functions: FunctionKey[];
+  seasons: string[];
+}
 
 /**
  * "Deep dive" — generated beside the answer, never inside it. A toggleable assistant that
@@ -11,7 +17,8 @@ export function suggestFollowups(
   index: CorpusIndex,
   question: string,
   hits: Scored[],
-  withheld: { count: number; tiers: string[] }
+  withheld: { count: number; tiers: string[] },
+  role?: FollowupRoleCtx
 ): FollowUps {
   // --- which grants / orgs is this answer about? (top hits only, to avoid noise) ---
   const core = hits.slice(0, 5);
@@ -56,7 +63,8 @@ export function suggestFollowups(
   if (index.gaps.missingByGrant && Object.keys(index.gaps.missingByGrant).some((g) => grantIds.has(g)))
     suggestedQuestions.push(`What's the status of the overdue/missing report for ${orgName}, and is there a partial update we can use?`);
   suggestedQuestions.push(`Is there context from a recent call or email about ${orgName} that isn't written up anywhere Compass can see?`);
-  if (systems.has("givingdata") && !systems.has("drive")) suggestedQuestions.push(`Is there a diligence memo or PO note on ${orgName} in Drive that adds to the GivingData record?`);
+  // Role & cycle context (when on): add in-season questions for the asker's function.
+  if (role) for (const q of roleSuggestions(role.functions, role.seasons, orgName)) suggestedQuestions.push(q);
 
   // --- draft email (only if there's a clear internal recipient with an address) ---
   const recipient = whoToAsk.find((w) => w.person.kind === "internal" && w.person.email);

@@ -1,6 +1,14 @@
 import type { Answer, Citation, CorpusIndex, Principal } from "../core/types.js";
 import { retrieve, type Scored } from "./search.js";
 import { suggestFollowups } from "./followups.js";
+import { currentSeasons, interpretQuery, type FunctionKey } from "../roles.js";
+
+export interface RoleContext {
+  /** the asker's function(s) — a relevance signal, never a permission (see docs/ROLE_AND_CYCLE_CONTEXT.md) */
+  functions: FunctionKey[];
+  /** ISO date; defaults to now */
+  today?: string;
+}
 
 export interface AnswerOptions {
   /** optional generative backend; if absent, Compass returns an extractive answer */
@@ -8,6 +16,8 @@ export interface AnswerOptions {
   k?: number;
   /** "deep dive" suggestions beside the answer — user-toggleable, default on */
   followUps?: boolean;
+  /** "role & cycle context" — off unless provided; interprets ambiguous queries + tailors suggestions */
+  roleContext?: RoleContext;
 }
 
 /**
@@ -24,7 +34,12 @@ export async function answerQuestion(
 ): Promise<Answer> {
   const { hits, withheld } = retrieve(index, question, principal, opts.k ?? 8);
 
-  const coverage = coverageStatement(index);
+  // Role & cycle context (off unless opts.roleContext is set): if the query is ambiguous,
+  // note the reading Compass applied — always disclosed, never a silent scope change.
+  const seasons = opts.roleContext ? currentSeasons(opts.roleContext.today ? new Date(opts.roleContext.today) : undefined) : [];
+  const reading = opts.roleContext ? interpretQuery(question, opts.roleContext.functions, seasons) : null;
+
+  const coverage = (reading ? `${reading} ` : "") + coverageStatement(index);
 
   // Refuse when nothing solidly matches — a weak lexical brush is not an answer.
   const topWeak = hits.length > 0 && hits[0]!.bm25 < 1.6 && hits[0]!.semantic < 0.08;
@@ -76,7 +91,10 @@ export async function answerQuestion(
   }
 
   const confidence = gradeConfidence(hits);
-  const followUps = opts.followUps === false ? undefined : suggestFollowups(index, question, hits, withheld);
+  const followUps =
+    opts.followUps === false
+      ? undefined
+      : suggestFollowups(index, question, hits, withheld, opts.roleContext ? { functions: opts.roleContext.functions, seasons } : undefined);
 
   return {
     question,

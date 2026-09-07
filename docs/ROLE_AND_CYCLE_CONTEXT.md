@@ -1,100 +1,183 @@
 # Compass — Role & Cycle Context
 
-**The same question means different things depending on who is asking and when.**
-"How are my grantees doing?" from a program officer in renewal season is a portfolio +
-performance-vs-projection question scoped to *their* grants and *this* quarter's reports.
-The same words from the Director of Impact in April is an outcome-completeness question
-for the annual report. Compass treats **role** and **calendar position** as relevance
-signals (never as permissions — permission is tiers + ACL).
+**Not a permission gate.** Nonprofit staff wear many hats — a coordinator drafts a board
+memo, a program officer chases a payment, the COO asks a portfolio question, the
+Entrepreneur-in-Residence needs a grantee's SROI story for a donor call. Permission is
+handled separately and strictly (sensitivity tiers + source ACLs — `docs/LOGIC_TREES.md` §2).
+
+This is **relevance logic**: which questions a given *function* tends to bring to grant
+knowledge, and how those questions shift across the Foundation's *calendar*. Compass uses
+it to (a) suggest questions, (b) interpret ambiguous ones, (c) order what surfaces first,
+and (d) route "who to ask" in Deep dive. It is a **toggleable feature** — off by default,
+per user — and any scoping it applies is always stated in the coverage line. With it off,
+Compass answers the literal question over everything the user may see.
+
+**Anyone can ask anything.** Function only changes the defaults and the suggestions.
 
 ---
 
-## 1. The Foundation's cycles
+## 1. The Foundation runs three business lines now — not one
 
-| Cycle | Rhythm | Why it matters to a query |
+Public hiring over 2022–2026 shows the org evolving from a grantmaker into a *platform for
+high-impact philanthropy*. Compass has to serve all of it:
+
+| Line | What it does | Roles (public team + recent postings) |
 |---|---|---|
-| **Fiscal year** | ~Feb–Jan; FY impact report published in spring | "this FY" vs "last FY"; whether a figure is on the current North Star model version |
-| **Quarterly OKRs** | Q1–Q4 | "what's due / at risk this quarter"; progress against goals |
-| **Board meetings** | ~quarterly | "board prep" season — outcome figure sets, portfolio health narrative |
-| **Grant reporting** | per grant: proposal → interim / annual progress → final | "reports due / overdue"; renewal windows |
-| **Renewal & continuation** | rolling, per grant term | performance vs projection + prior flags, *before* the decision |
-| **RFP windows** | a few topical open RFPs / year, per fund | intake → review → decide seasons; "have we seen this applicant before" |
-| **Fund cohorts** (esp. AI for Economic Opportunity) | applications → selection → ~6-month program (OpenAI support) → learning/scaling | "cohort N status"; cross-cohort synthesis |
-| **Annual impact report** | production ~Q4→spring | outcome-data completeness; model re-basing; shareable learnings |
-| **Grantee measurement fund** ($50k) | application cycle | who applied, what capacity gaps |
-| **Finance** | quarterly close; annual audit; budget season | committed vs disbursed; expenditure-responsibility docs |
+| **Grantmaking** | Deploys the Foundation's own capital | Chief Programs & Partnerships Officer; Senior Program Officer (Roger Perez); Program Officer *(hiring)*; Program Coordinator (Alex Sindorf) |
+| **Collaborative capital / donor engagement** | Mobilizes *other people's* capital into high-SROI projects (co-funding, donor advising) | Entrepreneur-in-Residence (Drew Petty) — "leads a new donor engagement initiative"; Director, Donor Experience & Stewardship *(hiring, reports to the EIR)*; Partnerships Manager (Samii Hartman) |
+| **Impact advisory** | A *consulting practice* selling impact modeling & measurement to other philanthropic and investor clients | Director / Manager of Impact Advisory Services (Pragya Dewan); Impact Modeling team |
+| **Knowledge & intelligence products** *(emerging)* | Tools and reusable capability for the Foundation and the wider sector | **Applied AI Fellow** *(this role)*; Impact Modeling Analyst *(hiring)*; the EIR |
 
-Compass keeps a small **calendar config** (admin-maintained, or derived from GivingData
-requirement due dates + a few fixed dates): current FY + quarter, board dates, per-fund
-RFP windows, cohort definitions, impact-report deadline, audit window.
+Supporting every line:
 
----
+| Function | Roles | Owns |
+|---|---|---|
+| **Executive & governance** | President & CEO (Ellie Bertani); COO (Elicia Wilson); EA to the CEO (Yvette Chaskel); Board (Exec Chair Sid Sijbrandij; Board Chair Caroline Whistler; + a Gates Foundation finance lead) | Direction, sequencing, org health, board reporting, the approvals matrix |
+| **Impact** | Director of Impact (Tamsin Chen); Senior Manager + Manager of Impact Modeling & Measurement (Geetika Malhotra; Henner Andrés Solarte — likely covers LatAm / Spanish-language grantees); Senior Analyst (Noor Sethi) | The North Star model, ROI models (230+ since 2023), monitoring & evaluation, learnings tracking |
+| **Finance & Grants Operations** | CFO (Tracy Cude); Controller (Tom Clevenger); Grants Manager (Jessica Van Grouw); Operations Coordinator (Kamille Oliveira) | GivingData as system of record, payments, budgets, 990s, audit, expenditure responsibility |
+| **Communications** | Director of Communications and Marketing (C.J. Jackson) | External narrative, the FY impact report, grantee announcements, the public handbook |
 
-## 2. Roles → what they track → peak season
-
-Role is derived from the Google directory (title) and group membership — a *signal*, not a
-gate.
-
-| Role (person) | Owns | Peak season | Questions Compass should interpret in their favor |
-|---|---|---|---|
-| **Program Officer** | a grant portfolio | renewal windows; pre-check-in; pre-board | "my grants with reports due/overdue this quarter"; "performance vs projection for [grantee] before this renewal"; "what did I flag last cycle"; "which renewals are in the next 60 days" |
-| **Chief Programs & Partnerships Officer** | whole portfolio + partnerships | pre-board; annual strategy; co-funder syncs | "portfolio: how many grants above/below the 100× threshold this FY"; "co-funded cohort status for the co-funder sync"; "which thesis areas are under-evidenced" |
-| **Director of Impact** | measurement, the North Star model | impact-report season (spring); pre-board; model updates | "every reported outcome for cohort X, with a source for each"; "grants still reporting on an older model version"; "outcome-data gaps before the report deadline" |
-| **Impact Modeling / Measurement** | ROI models, grantee data | grantee reporting deadlines | "grantees who haven't submitted the data the model needs"; Colombia-specific — Spanish-language reports |
-| **Impact Advisory Services** | helping other funders | client engagements | "learnings / case studies we can share externally" (shareable-tier only) |
-| **Partnerships Manager** | co-funders, RFP partners | RFP launches; fund close | "co-funding committed vs mobilized this cycle"; "partner history with [org]" |
-| **Program Coordinator** | grant ops, scheduling | RFP intake; report-chasing | "everything overdue and who owns chasing it"; "onboarding checklist for the new cohort" |
-| **Grants Manager** | GivingData, compliance | payment cycles; audit; year-end | "expenditure-responsibility docs outstanding"; "payments scheduled vs paid this quarter" |
-| **CFO / Controller** | budget, 990s, audit | audit; budget season; quarterly close | grant $ committed vs disbursed (financial tier) |
-| **Leadership** | direction, ops | board; annual planning | "portfolio health at a glance"; "the story for the board"; "where are we against the North Star" |
-| **New hire** | ramping | first 90 days | "our full history with [org]"; "why did we decide [X]"; "what's the current thesis on [area]" |
+Compass derives a person's **function** from their Google directory title + group
+membership. It is a signal, never a lock — and a person can carry more than one.
 
 ---
 
-## 3. How Compass uses this
+## 2. The Foundation's calendar
 
-**This is a toggleable feature — "Role & cycle context" — off by default, per user, like
-Deep dive.** With it off, Compass answers the literal question over the full corpus the
-user may see. With it on, Compass resolves "my", "this quarter", "before the board", etc.
-using the asker's role and the calendar, and always *states the scoping it applied* in the
-coverage line so the user can see (and trust) what it did. Turning it off is one click and
-the preference persists.
+Modeled on GitLab Inc.: **fiscal year runs Feb 1 – Jan 31.** FY2026 = Feb 2025 – Jan 2026.
 
-1. **Query scoping.** When a query contains a possessive or a relative time ("my
-   grantees", "this quarter", "before the board meeting"), Compass resolves it using the
-   asker's role + the calendar config: "my" → the grants where they're the program
-   officer / relationship owner; "this quarter" → the current OKR quarter's date range;
-   "before the board" → items due before the next board date. The resolution is **shown**
-   in the coverage line ("Scoped to your 6 active grants; reports due this quarter (Q4)").
-2. **Grant lifecycle stage.** Each grant carries a derived `lifecycle_stage`
-   (pre-award / Y1 reporting / interim / **renewal window** / closing / closed) from its
-   dates + requirement status. The dossier shows it; answers use it ("this grant enters
-   its renewal window in March").
-3. **Vintage + season on figures.** Already: "as reported on {date} using model {version}".
-   Added: "this figure predates the current FY model — flagged for re-basing before the
-   FY26 report" when the calendar says report season and the model version is stale.
-4. **Deep dive routing respects role.** A measurement question routes "who to ask" to the
-   Impact team; a relationship question to the relationship owner; an ops/overdue question
-   to the coordinator or Grants Manager.
-5. **Proactive brief (v2, opt-in).** A role- and season-aware "what you might want to look
-   at this week", still pure retrieval:
-   - Program Officer, renewal season → "3 renewals in the next 60 days; performance-vs-projection for each, cited."
-   - Director of Impact, report season → "cohort 2: 4 of 16 grantees missing the outcome fields the model needs."
-   - Coordinator, RFP window → "RFP closes Friday; 12 submissions in; 3 are repeat applicants — here's our prior history."
+| Cycle | When | What it drives |
+|---|---|---|
+| **Fiscal quarters** | Q1 Feb–Apr · Q2 May–Jul · Q3 Aug–Oct · Q4 Nov–Jan | Quarterly OKRs; "what's due / at risk this quarter" |
+| **FY impact report** | Produced through Q4 → published ~May (the FY26 report landed May 2026) | Outcome-data completeness push; North Star model re-basing; shareable-learnings selection |
+| **Board meetings** | ~quarterly | Board-prep windows — portfolio-health narrative, an outcome figure set with a source for every number |
+| **Annual audit + 990** | Post-Q4 close, ~Feb–Apr | Expenditure-responsibility documentation; payments reconciliation; financial-tier questions |
+| **Budget & 3-year plan** | Q3–Q4 | Next-FY portfolio shape; where to concentrate |
+| **Open RFP windows** | A few topical RFPs per year, per fund | Intake → review → decision seasons; "have we seen this applicant / intervention before" |
+| **Fund cohorts** (esp. AI for Economic Opportunity) | Applications → selection → ~6-month program → learning/scaling | "Cohort N status"; cross-cohort synthesis; alumni follow-up |
+| **Grant lifecycle** (per grant) | Proposal → interim/annual reports → final report; renewal window near term end | "Reports due / overdue"; performance-vs-projection before a renewal |
+| **Donor cultivation** | Rolling, quarter-driven | "Which grants have the strongest SROI story for a donor conversation right now" |
+| **Grantee Measurement & Feedback Fund** ($50k top-ups) | Application cycle | Which grantees have measurement-capacity gaps |
+
+Compass keeps a small **calendar config** (admin-maintained + dates derived from GivingData
+requirement due-dates): current FY + quarter, board dates, RFP windows per fund, cohort
+definitions, impact-report deadline, audit window.
 
 ---
 
-## 4. Data-model additions (see `DATA_MODEL.md`)
+## 3. What each function brings to grant knowledge
+
+Stable "jobs to be done" against Compass, and the season each spikes.
+
+### Executive & governance
+- *Any time:* "Where are we against the North Star this FY?" · "One-paragraph story on [thesis area]."
+- *Board-prep window:* "Portfolio health at a glance — how many grants above / below their ROI threshold, and which are off-track?" · "An outcome figure set for [fund], every number cited and dated."
+- *Planning (Q3–Q4):* "Across five years, which thesis areas have the strongest evidence, and which are thin?" · "What have we learned about [intervention] that should shape next FY?"
+
+### Programs & Partnerships
+- *Before any grantee check-in:* "What did we last flag on [grantee]? What's changed since?"
+- *Renewal window:* "How did [grantee] perform against what they projected — and what did the program officer note?" · "Which of my grants have renewals in the next 60 days?"
+- *Quarterly:* "Which of my grants have reports due or overdue this quarter?"
+- *Sourcing / RFP season:* "Have we ever funded anything in [space]? What did we learn, and who did we talk to?" · "Did we already decline [org], and why?"
+- *Co-funder syncs:* "Cohort status for the [co-funder] collaboration." · "Our full history with [partner org]."
+
+### Collaborative capital / donor engagement (EIR, Donor Experience)
+- *Rolling:* "Which active grants have the cleanest, best-evidenced SROI story — cleared for external use?"
+- "What's the pipeline of high-SROI projects a donor could co-fund in [thesis area]?"
+- "For [donor]'s interests, which grantees match, and what's our track record with them?"
+- *Pre-donor-meeting:* "Give me a one-pager on [grantee] I could share externally — outcomes, caveats on period and model, the human story."
+
+### Impact
+- *Impact-report season (Q4 → May):* "For [cohort], which grantees are missing the outcome fields the model needs?" · "Which grants still report on an older North Star model version and need re-basing?" · "Every reported outcome for [fund], with a source and a date."
+- *Any time:* "Where do a grantee's narrative results and their structured GivingData numbers disagree?" · "Estimated vs. actual — which projected outcomes now have observed evidence?"
+- *Advisory engagements:* "Which learnings, ROI models, and case studies are cleared to share with an advisory client?" (shareable-tier only)
+- *LatAm coverage:* "What are the Colombia grantees reporting that isn't in the English synthesis?"
+
+### Finance & Grants Operations
+- *Payment cycles / quarterly close:* "Which grants have payments scheduled but not yet paid this quarter?" · "Any payments on hold, and why?"
+- *Audit season:* "Which grants require expenditure-responsibility documentation, and which are outstanding?"
+- *Grants Manager, ongoing:* "What's overdue across the whole portfolio, and who owns chasing it?" · "Which grant records are missing a thesis tag, a program officer, or an executed agreement?"
+- *CFO / Controller:* grant $ committed vs. disbursed by fund and FY (financial tier).
+
+### Communications
+- *Impact-report + announcement season:* "Which grantee results are strong, cited, and cleared for external use?" · "What have we said publicly about [grantee / thesis area] before?"
+- *Any time:* "The plain-language version of [outcome], with the caveat about period and model."
+
+### Innovation (Applied AI Fellow, EIR)
+- "Which questions does the team ask most, and which take longest to answer today?" — drives what to build next.
+- "Where does the same fact live in three systems with three values?" — the reconciliation backlog.
+- "Which manual workflows touch grant knowledge and could be automated?"
+
+---
+
+## 4. The question library (the actual logic)
+
+Compass ships a **question library**: entries keyed by `function × season × intent`, each
+with a template, the filters it implies, the scope, and "who to ask" routing. It powers:
+
+1. **Suggested questions** — on an empty Ask screen and after each answer, Compass offers
+   2–3 in-season questions for the user's function.
+   *Program Officer in November →* "Which of your grants have renewals in the next 60 days?"
+   *Impact analyst in April →* "Which grantees are missing outcome fields for the FY report?"
+   *EIR any time →* "Which active grants have the strongest externally-shareable SROI story?"
+
+2. **Ambiguous-query interpretation** — *"How are we doing?"* resolves to:
+   | Function + season | Reading |
+   |---|---|
+   | Program Officer, renewal season | performance-vs-projection across *their* active grants, flagging reports due this quarter |
+   | Impact, report season | outcome-data completeness for the current FY reporting cohort |
+   | Executive, board-prep | portfolio health: count above / below ROI threshold, list off-track |
+   | Donor engagement | the strongest externally-shareable outcome stories right now |
+   | Finance, close | payments scheduled vs. paid this quarter |
+   Compass **states the reading it applied** in the coverage line.
+
+3. **Result ordering & Deep-dive routing** — a measurement question routes "who to ask" to
+   Impact; a relationship question to the relationship owner; an overdue-report question to
+   the Grants Manager or Program Coordinator; a donor-facing question flags "shareable-tier
+   only — confirm with Comms before external use."
+
+Example library entry:
 
 ```
-ROLE            derived  {program-officer | impact | modeling | partnerships |
-                          coordinator | grants-manager | advisory | leadership | new-hire}
-CALENDAR        config   { fiscal_year, quarter, board_dates[], rfp_windows[per fund],
-                           cohort_defs[per fund], impact_report_deadline, audit_window }
-GRANT.lifecycle_stage  derived from start/end dates + requirement statuses
-GRANT.cohort           e.g. "AI4EO cohort 3"
-REQUIREMENT.quarter    derived — which OKR quarter the due date falls in
+id: po.renewal.performance
+function: programs
+season: [renewal-window, pre-board]
+trigger: /how did .* (do|perform)|vs\.? projection|renewal/i
+template: "How did {grantee} perform against projection, and what did we flag?"
+filters: { grant.status: active, grant.lifecycle_stage: renewal-window }
+scope:   "grants where the asker is program officer OR relationship owner (only if role-context is on)"
+whoToAsk: [program-officer-on-grant, relationship-owner]
+surfaces: [projected vs reported outcome, PO check-in notes, prior decision rationale, open requirements]
 ```
 
-Role and calendar are **not** in the permission filter. They change *what a question is
-taken to mean* and *what's surfaced first* — never *what a person is allowed to see*.
+---
+
+## 5. Data & config
+
+```
+FUNCTION        derived  { executive | programs | donor-engagement | impact |
+                           impact-advisory | finance-ops | comms | innovation }
+                         from directory title + group; a signal, not a gate; multi-valued
+CALENDAR        config   { fiscal_year_start: "02-01", quarter, board_dates[],
+                           rfp_windows[per fund], cohort_defs[per fund],
+                           impact_report_deadline, audit_window, donor_cadence }
+GRANT.lifecycle_stage    derived: pre-award | Y1 | interim | renewal-window | closing | closed
+GRANT.cohort             e.g. "AI4EO cohort 3"
+GRANT.sroi_story_grade   derived: strength × evidence × shareable-tier (for donor engagement)
+REQUIREMENT.quarter      derived from due_date against fiscal_year_start
+QUESTION_LIBRARY[]       { id, function, season[], trigger, template, filters, scope, whoToAsk, surfaces }
+```
+
+Implemented as `src/roles.ts` (function map + calendar + question library), consumed by
+`src/retrieval/answer.ts` (query interpretation + coverage-line disclosure) and
+`src/retrieval/followups.ts` (suggested questions + who-to-ask routing). It never touches
+`src/retrieval/search.ts` — the permission filter is upstream and unaffected.
+
+---
+
+## 6. What this is not
+
+- Not a permission boundary. A COO asking a program-officer question gets the answer.
+- Not personalization anyone has to trust blindly. Every scoping decision shows in the
+  coverage line and turns off in one click.
+- Not identity inference. Function comes from an HR directory field, nothing else.

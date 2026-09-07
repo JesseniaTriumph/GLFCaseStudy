@@ -11,6 +11,7 @@
 import { fileURLToPath } from "node:url";
 import { runPipeline } from "../src/pipeline/run.js";
 import { answerQuestion } from "../src/retrieval/answer.js";
+import { functionsForGroups } from "../src/roles.js";
 import { ADAPTERS, CORPUS, PRINCIPALS } from "../src/config.js";
 import { claudeLLM } from "../src/retrieval/llm.js";
 import { AuditLog } from "../src/security/audit.js";
@@ -21,6 +22,15 @@ const ix = args.indexOf("--as");
 if (ix !== -1) {
   persona = args[ix + 1] ?? "programs";
   args.splice(ix, 2);
+}
+// role & cycle context: off unless --role is passed
+const roleOn = args.includes("--role");
+if (roleOn) args.splice(args.indexOf("--role"), 1);
+let today: string | undefined;
+const ti = args.indexOf("--today");
+if (ti !== -1) {
+  today = args[ti + 1];
+  args.splice(ti, 2);
 }
 const question = args.join(" ").trim();
 if (!question) {
@@ -42,7 +52,8 @@ const index = await runPipeline(ADAPTERS, {
 });
 
 const llm = process.env.ANTHROPIC_API_KEY ? claudeLLM : undefined;
-const ans = await answerQuestion(index, question, principal, { llm });
+const roleContext = roleOn ? { functions: functionsForGroups(principal.groups), today } : undefined;
+const ans = await answerQuestion(index, question, principal, { llm, roleContext });
 
 // every query is written to the tamper-evident audit log (§6.5)
 const audit = new AuditLog(fileURLToPath(new URL("../dist/audit.jsonl", import.meta.url)));

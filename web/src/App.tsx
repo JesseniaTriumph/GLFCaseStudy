@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { answerQuestion } from "./lib/retrieval/answer.js";
 import type { Answer, CorpusIndex } from "./lib/core/types.js";
-import { PERSONAS } from "./principals.js";
+import { PERSONAS, personaFunctions } from "./principals.js";
 
 const EXAMPLES = [
   "How did Riverbend Care Collective perform against what they projected, and did the program officer flag anything?",
@@ -100,6 +100,13 @@ export function App() {
       return true;
     }
   });
+  const [roleCtx, setRoleCtx] = useState<boolean>(() => {
+    try {
+      return localStorage.getItem("compass.rolectx") === "on";
+    } catch {
+      return false;
+    }
+  });
 
   useEffect(() => {
     fetch("./corpus-index.json")
@@ -111,10 +118,11 @@ export function App() {
   useEffect(() => {
     try {
       localStorage.setItem("compass.deepdive", deepDive ? "on" : "off");
+      localStorage.setItem("compass.rolectx", roleCtx ? "on" : "off");
     } catch {
       /* ignore */
     }
-  }, [deepDive]);
+  }, [deepDive, roleCtx]);
 
   async function ask(question: string) {
     if (!index || !question.trim()) return;
@@ -122,17 +130,20 @@ export function App() {
     setActiveCite(null);
     setFb(null);
     setExternal(false);
-    const a = await answerQuestion(index, question.trim(), PERSONAS[persona].principal, { followUps: deepDive });
+    const a = await answerQuestion(index, question.trim(), PERSONAS[persona].principal, {
+      followUps: deepDive,
+      roleContext: roleCtx ? { functions: personaFunctions(persona) } : undefined,
+    });
     setAns(a);
     setQ(question);
     setBusy(false);
   }
 
-  // re-run when persona or deepDive changes and there's a live question
+  // re-run when persona / deepDive / roleCtx changes and there's a live question
   useEffect(() => {
     if (ans && q) void ask(q);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [persona, deepDive]);
+  }, [persona, deepDive, roleCtx]);
 
   const orgs = useMemo(() => {
     if (!index) return [];
@@ -184,6 +195,20 @@ export function App() {
           ))}
         </select>
         <span className="persona-note">{PERSONAS[persona].note} · in production this is Google sign-in</span>
+      </div>
+      <div className="strip">
+        <span className="lbl">Features</span>
+        <label className="vt">
+          <input type="checkbox" checked={deepDive} onChange={(e) => setDeepDive(e.target.checked)} /> Deep dive
+        </label>
+        <label className="vt">
+          <input type="checkbox" checked={roleCtx} onChange={(e) => setRoleCtx(e.target.checked)} /> Role &amp; cycle context
+        </label>
+        <span className="persona-note">
+          {roleCtx
+            ? `on — tailors suggestions & reads ambiguous questions for a ${PERSONAS[persona].label}; scoping is always shown in the coverage line, never a permission`
+            : "off — Compass answers the literal question over everything you may see"}
+        </span>
       </div>
 
       <nav className="tabs" role="tablist">
