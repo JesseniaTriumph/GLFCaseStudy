@@ -145,17 +145,25 @@ export function grantCycle(g: GrantCycleInput, today = new Date(), renewalLeadDa
   };
 }
 
-/** Across a set of grant cycles: what's due in the next `windowDays` and what's overdue. */
+/**
+ * Across a set of grant cycles: what's due in the next `windowDays`, what's overdue, and
+ * which grants have a renewal decision coming. Old fully-closed grants are excluded from
+ * "overdue" (a report 4 years late on a closed grant is history, not an action item).
+ */
 export function portfolioDeadlines(cycles: GrantCycle[], windowDays = 30) {
+  const live = (c: GrantCycle) => c.stage !== "closed";
   const dueSoon = cycles
-    .filter((c) => c.nextDeadline && c.nextDeadline.inDays <= windowDays)
+    .filter((c) => live(c) && c.nextDeadline && c.nextDeadline.inDays <= windowDays)
     .map((c) => ({ grant: c.grantId, org: c.organization, ...c.nextDeadline! }))
     .sort((a, b) => a.inDays - b.inDays);
   const overdue = cycles
+    .filter(live)
     .flatMap((c) => c.overdue.map((o) => ({ grant: c.grantId, org: c.organization, ...o })))
+    .filter((o) => o.overdueByDays <= 400) // within ~13 months — older than that is a data-cleanup item, not a chase
     .sort((a, b) => b.overdueByDays - a.overdueByDays);
   const renewals = cycles
-    .filter((c) => c.inRenewalWindow || (c.renewalDeadline && c.renewalDeadline.inDays >= 0 && c.renewalDeadline.inDays <= 120))
-    .map((c) => ({ grant: c.grantId, org: c.organization, endsOrDue: c.renewalDeadline?.dueDate, inDays: c.renewalDeadline?.inDays }));
+    .filter((c) => (c.inRenewalWindow && c.stage !== "closed") || (c.renewalDeadline && c.renewalDeadline.inDays >= -14 && c.renewalDeadline.inDays <= 150))
+    .map((c) => ({ grant: c.grantId, org: c.organization, endsOrDue: c.renewalDeadline?.dueDate, inDays: c.renewalDeadline?.inDays ?? null }))
+    .sort((a, b) => (a.inDays ?? 999) - (b.inDays ?? 999));
   return { dueSoon, overdue, renewals };
 }

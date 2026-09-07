@@ -74,6 +74,20 @@
       "question": "Who co-funds Open Access Works, if anyone?",
       "expectSources": ["givingdata:GD-1276"],
       "expectRefusal": false
+    },
+    {
+      "id": "full-portfolio-overdue",
+      "_note": "A portfolio-schedule question — answered by computing across every grant's own cycle, not retrieval. Highland's baseline report is a hand-set overdue item.",
+      "persona": "programs",
+      "question": "What reports are overdue across the portfolio?",
+      "expectSources": ["givingdata:GD-1301"],
+      "expectRefusal": false
+    },
+    {
+      "id": "full-portfolio-renewals",
+      "persona": "programs",
+      "question": "Which grants have renewals coming up in the next quarter?",
+      "expectRefusal": false
     }
   ]
 }

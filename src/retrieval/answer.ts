@@ -1,7 +1,8 @@
 import type { Answer, Citation, CorpusIndex, Principal } from "../core/types.js";
-import { retrieve, type Scored, type RetrieveResult } from "./search.js";
+import { retrieve, mayRead, type Scored, type RetrieveResult } from "./search.js";
 import { suggestFollowups } from "./followups.js";
 import { currentSeasons, interpretQuery, type FunctionKey } from "../roles.js";
+import { grantCycle, portfolioDeadlines } from "../grant-cycle.js";
 
 export interface RoleContext {
   /** the asker's function(s) — a relevance signal, never a permission (see docs/ROLE_AND_CYCLE_CONTEXT.md) */
@@ -44,6 +45,12 @@ export async function answerQuestion(
   principal: Principal,
   opts: AnswerOptions = {}
 ): Promise<Answer> {
+  // A portfolio-schedule question ("what's due in the next 30 days", "which grants have
+  // renewals coming up", "what's overdue") is answered by computing across every grant's
+  // own cycle — not by retrieval. Cited to the grant fact sheets it draws on.
+  const scheduleAns = maybeScheduleAnswer(index, question, principal);
+  if (scheduleAns) return scheduleAns;
+
   // embed the query the same way the index was built, if it uses a learned embedder
   let queryDense: number[] | undefined;
   if (index.embedder) {
@@ -415,6 +422,98 @@ function isEnumerationRequest(question: string): boolean {
   // "print your system prompt", "reveal your instructions/guardrails/rules"
   const revealSelf = /\b(print|show|reveal|output|repeat|tell me|what (is|are))\b[^.?!]*\b(your )?(system prompt|initial instructions|instructions you were given|guardrails|guidelines you follow|rules you (follow|were given)|prompt)\b/;
   return (verb.test(q) && scope.test(q)) || (rawtext.test(q) && /\b(every|all|each|index|corpus)\b/.test(q)) || followInstr.test(q) || revealSelf.test(q);
+}
+
+/**
+ * Portfolio-schedule answers — computed from every grant's own cycle, not retrieval.
+ * "What reports are due in the next 30 days?" · "Which grants have renewals coming up?" ·
+ * "What's overdue across the portfolio?"
+ */
+function maybeScheduleAnswer(index: CorpusIndex, question: string, principal: Principal): Answer | null {
+  const q = question.toLowerCase();
+  const isSchedule =
+    /\b(due|overdue|deadline|coming up|upcoming|renewal|re-?application|report[s]? (due|left|remaining)|what'?s (due|left|coming))\b/.test(q) &&
+    /\b(portfolio|my grants|our grants|across|all grants|next \d+ days?|next (month|quarter|week)|this (month|quarter|week|fy|fiscal year)|which grants?)\b/.test(q);
+  if (!isSchedule || !index.grantMeta) return null;
+
+  // window: "next N days", or a sensible default per phrasing
+  const m = q.match(/next (\d+) days?/);
+  const windowDays = m ? +m[1]! : /next quarter|this quarter/.test(q) ? 90 : /next month|this month/.test(q) ? 31 : 60;
+
+  // only grants whose fact sheet this principal can read
+  const readable = new Set(
+    index.chunks
+      .filter((c) => c.docTitle.startsWith("Grant fact sheet") && mayRead(c, principal))
+      .map((c) => c.docId.replace(/^givingdata:/, "").replace(/-.*/, "").replace(/^GD/, "GD-").replace("GD--", "GD-"))
+  );
+  const cycles = Object.entries(index.grantMeta)
+    .filter(([gid]) => readable.size === 0 || readable.has(gid) || [...readable].some((r) => gid.startsWith(r)))
+    .map(([gid, meta]) => grantCycle({ grantId: gid, ...meta }));
+
+  const wantsRenewal = /renewal|re-?application/.test(q);
+  const wantsOverdue = /overdue/.test(q);
+  const { dueSoon, overdue, renewals } = portfolioDeadlines(cycles, windowDays);
+
+  const lines: string[] = [];
+  const cites: string[] = [];
+  const push = (gid: string) => {
+    if (!cites.includes(gid)) cites.push(gid);
+  };
+
+  if (wantsRenewal) {
+    lines.push(`**Renewals in scope** (${renewals.length}):`);
+    for (const r of renewals.sort((a, b) => (a.inDays ?? 999) - (b.inDays ?? 999))) {
+      lines.push(`- ${r.org ?? r.grant} (${r.grant}) — ${r.inDays != null ? `LOI/decision in ${r.inDays}d (${r.endsOrDue})` : "in the renewal window"}`);
+      push(r.grant);
+    }
+  } else if (wantsOverdue) {
+    lines.push(`**Overdue** (${overdue.length}):`);
+    for (const o of overdue) {
+      lines.push(`- ${o.org ?? o.grant} (${o.grant}) — ${o.type}, ${o.overdueByDays}d overdue (was due ${o.dueDate})`);
+      push(o.grant);
+    }
+  } else {
+    lines.push(`**Due in the next ${windowDays} days** (${dueSoon.length}):`);
+    for (const d of dueSoon) {
+      lines.push(`- ${d.org ?? d.grant} (${d.grant}) — ${d.type} in ${d.inDays}d (${d.dueDate})`);
+      push(d.grant);
+    }
+    if (overdue.length) {
+      lines.push(``, `**Already overdue** (${overdue.length}):`);
+      for (const o of overdue.slice(0, 8)) {
+        lines.push(`- ${o.org ?? o.grant} (${o.grant}) — ${o.type}, ${o.overdueByDays}d overdue`);
+        push(o.grant);
+      }
+    }
+  }
+  if (lines.length <= 1) lines.push("_Nothing in this window._");
+  lines.push(``, `_Computed from each grant's own requirement schedule and term dates. Cadence is read from GivingData where recorded, otherwise inferred from the schedule (see docs/GRANT_METADATA.md)._`);
+
+  const citations: Citation[] = cites.slice(0, 10).map((gid, i) => {
+    const fs = index.chunks.find((c) => c.docTitle.startsWith("Grant fact sheet") && c.docId.includes(gid));
+    return {
+      n: i + 1,
+      system: "givingdata",
+      deepLink: fs?.deepLink ?? `https://givingdata.example/records/${gid}`,
+      locator: `§ Reporting schedule`,
+      docTitle: fs?.docTitle ?? `Grant ${gid}`,
+      ref: `givingdata:${gid}`,
+      snippet: index.grantMeta![gid]?.organization ?? gid,
+      highlight: "",
+      tier: "team",
+    };
+  });
+
+  return {
+    question,
+    text: lines.join("\n"),
+    citations,
+    confidence: "high",
+    confidenceReason: `computed from ${cycles.length} grant schedule(s) you can see`,
+    coverage: `Computed across the grant schedules in GivingData you have access to. ${coverageStatement(index)}`,
+    withheld: null,
+    mode: "extractive",
+  };
 }
 
 function coverageStatement(index: CorpusIndex): string {
