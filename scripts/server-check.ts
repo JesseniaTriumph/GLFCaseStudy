@@ -18,6 +18,9 @@ import { generateKeyPairSync, createSign } from "node:crypto";
 import { runPipeline } from "../src/pipeline/run.js";
 import { ADAPTERS, CORPUS } from "../src/config.js";
 import { createApp } from "../src/server/app.js";
+import { RateLimiter } from "../src/server/limits.js";
+import { Monitor } from "../src/security/monitor.js";
+import type { Signal } from "../src/security/monitor.js";
 import type { Jwk } from "../src/security/auth.js";
 
 let pass = 0,
@@ -89,7 +92,14 @@ const oauth = {
   hostedDomain: HD,
   resolveGroups: () => ["programs"], // Program Officer
 };
-const app = createApp({ index, secureCookies: false, oauth });
+// tight limiter so the test can exhaust it in a few calls; collect anomaly signals
+const signals: Signal[] = [];
+const limiter = new RateLimiter({
+  rate: { capacity: 8, refillPerSec: 0.001 },
+  cost: { capacity: 1000, refillPerSec: 1 },
+});
+const monitor = new Monitor({ windowMs: 60_000, restrictedRefusals: 3, authDenials: 5, sweepQueries: 15, costMultiple: 4 });
+const app = createApp({ index, secureCookies: false, oauth, limiter, monitor, onSignal: (s) => signals.push(s) });
 await new Promise<void>((r) => app.listen(0, "127.0.0.1", r));
 const port = (app.address() as { port: number }).port;
 const BASE = `http://127.0.0.1:${port}`;
@@ -142,7 +152,31 @@ const req = async (path: string, opts: RequestInit = {}) => {
   ok("restricted question → refused, nothing leaked", body.confidence === "refused" && !/salary band|committee deliberation/i.test(body.text ?? ""));
 }
 
-// 7. logout → 401 again
+// 7. monitor: repeated restricted-tier refusals raise a restricted-probing signal
+{
+  for (let i = 0; i < 3; i++) {
+    await req("/api/ask", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ question: `what did the board discuss about staff compensation (round ${i})?` }) });
+  }
+  const probing = signals.find((s) => s.kind === "restricted-probing");
+  ok("repeated Restricted-tier refusals raise a restricted-probing signal", !!probing && probing.severity === "high");
+}
+
+// 8. rate limit: keep hammering /api/ask until the per-user bucket is empty → 429 + Retry-After
+{
+  let got429 = false;
+  let retryAfter = "";
+  for (let i = 0; i < 10; i++) {
+    const r = await req("/api/ask", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ question: "who is co-funding Riverbend?" }) });
+    if (r.status === 429) {
+      got429 = true;
+      retryAfter = r.headers.get("retry-after") ?? "";
+      break;
+    }
+  }
+  ok("repeated /api/ask trips the per-user rate limit → 429 + Retry-After", got429 && retryAfter !== "");
+}
+
+// 9. logout → 401 again
 {
   await req("/auth/logout");
   const r = await fetch(BASE + "/api/ask", { method: "POST", headers: { "content-type": "application/json", cookie }, body: JSON.stringify({ question: "hi" }) });

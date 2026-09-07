@@ -17,6 +17,7 @@ import { runPipeline } from "../src/pipeline/run.js";
 import { ADAPTERS, CORPUS } from "../src/config.js";
 import { createApp } from "../src/server/app.js";
 import { claudeLLM } from "../src/retrieval/llm.js";
+import { AuditLog } from "../src/security/audit.js";
 
 const index = await runPipeline(ADAPTERS, {
   corpusLabel: CORPUS.corpusLabel,
@@ -28,10 +29,15 @@ const index = await runPipeline(ADAPTERS, {
 const clientId = process.env.COMPASS_OAUTH_CLIENT_ID;
 const port = Number(process.env.PORT ?? 8787);
 
+const audit = new AuditLog(process.env.COMPASS_AUDIT_LOG ?? "dist/audit.log");
+
 const app = createApp({
   index,
   secureCookies: process.env.NODE_ENV === "production",
   llm: process.env.ANTHROPIC_API_KEY ? (claudeLLM as never) : undefined,
+  audit,
+  onSignal: (s) =>
+    console.warn(`[MONITOR ${s.severity.toUpperCase()}] ${s.kind} — user=${s.user} — ${s.detail}\n           → ${s.playbook}`),
   oauth: {
     clientId: clientId ?? "NOT_CONFIGURED",
     clientSecret: process.env.COMPASS_OAUTH_CLIENT_SECRET ?? "",

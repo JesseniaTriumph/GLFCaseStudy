@@ -20,6 +20,9 @@ import { answerQuestion } from "../retrieval/answer.js";
 import { functionsForGroups } from "../roles.js";
 import { beginLogin, handleCallback, type OAuthConfig } from "./oauth.js";
 import { issueSession as _issue, verifySession, cookieHeader, clearCookieHeader, readCookie } from "./session.js";
+import { RateLimiter } from "./limits.js";
+import { Monitor, type Signal } from "../security/monitor.js";
+import { AuditLog, type AuditEvent } from "../security/audit.js";
 void _issue;
 
 export interface ServerDeps {
@@ -29,6 +32,14 @@ export interface ServerDeps {
   secureCookies?: boolean;
   /** optional generative backend */
   llm?: Parameters<typeof answerQuestion>[3] extends { llm?: infer L } ? L : never;
+  /** per-user rate + cost limiting; a default in-process limiter is used if omitted */
+  limiter?: RateLimiter;
+  /** anomaly detection over the audit stream; a default Monitor is used if omitted */
+  monitor?: Monitor;
+  /** tamper-evident audit log; if provided, every query + auth result is appended */
+  audit?: AuditLog;
+  /** called for every anomaly signal the monitor raises (on-call hook) */
+  onSignal?: (s: Signal) => void;
 }
 
 function json(res: ServerResponse, status: number, body: unknown, extraHeaders: Record<string, string> = {}) {
@@ -48,6 +59,15 @@ async function readBody(req: IncomingMessage): Promise<unknown> {
 
 export function createApp(deps: ServerDeps) {
   const secure = deps.secureCookies ?? process.env.NODE_ENV === "production";
+  const limiter = deps.limiter ?? new RateLimiter();
+  const monitor = deps.monitor ?? new Monitor();
+
+  const record = (ev: AuditEvent) => {
+    deps.audit?.append(ev);
+    for (const sig of monitor.observe(ev)) deps.onSignal?.(sig);
+  };
+  const clientKey = (req: IncomingMessage, sub?: string) =>
+    sub ? `u:${sub}` : `ip:${(req.headers["x-forwarded-for"] as string)?.split(",")[0]?.trim() || req.socket.remoteAddress || "unknown"}`;
 
   return createServer(async (req, res) => {
     const url = new URL(req.url ?? "/", `http://${req.headers.host ?? "localhost"}`);
@@ -70,9 +90,15 @@ export function createApp(deps: ServerDeps) {
         const code = url.searchParams.get("code");
         const state = url.searchParams.get("state");
         if (!code || !state) return json(res, 400, { error: "missing code/state" });
-        const r = await handleCallback(deps.oauth, code, state);
-        res.writeHead(302, { location: "/", "set-cookie": cookieHeader(r.sessionToken, secure) });
-        return res.end();
+        try {
+          const r = await handleCallback(deps.oauth, code, state);
+          record({ type: "auth", user: r.email ?? "unknown", result: "ok" });
+          res.writeHead(302, { location: "/", "set-cookie": cookieHeader(r.sessionToken, secure) });
+          return res.end();
+        } catch (e) {
+          record({ type: "auth", user: "unknown", result: "denied", reason: (e as Error).message });
+          return json(res, 401, { error: "sign-in failed" });
+        }
       }
 
       if (path === "/auth/logout") {
@@ -94,11 +120,31 @@ export function createApp(deps: ServerDeps) {
         const question = (body.question ?? "").trim();
         if (!question) return json(res, 400, { error: "question required" });
 
+        // per-user rate + cost limit — generation costs more budget than an extractive brief
+        const key = clientKey(req, session.sub);
+        const decision = limiter.check(key, deps.llm ? 1 : 0.25);
+        res.setHeader("X-RateLimit-Remaining", String(decision.remaining));
+        if (!decision.ok) {
+          res.setHeader("Retry-After", String(decision.retryAfter ?? 1));
+          return json(res, 429, { error: `${decision.limit} limit exceeded`, retryAfter: decision.retryAfter });
+        }
+
         const principal = principalFromGroups(session.email.split("@")[0] ?? session.sub, session.groups);
         const ans = await answerQuestion(deps.index, question, principal, {
           llm: deps.llm as never,
           followUps: body.deepDive ?? false,
           roleContext: body.roleContext ? { functions: functionsForGroups(session.groups) } : undefined,
+        });
+        record({
+          type: "query",
+          user: session.email,
+          question,
+          citedRefs: ans.citations.map((c) => c.ref),
+          citedTiers: [...new Set(ans.citations.map((c) => c.tier))],
+          withheld: ans.withheld?.count ?? 0,
+          withheldTiers: ["team", "programs-only", "restricted"].filter((t) => ans.withheld?.reason.includes(t)),
+          confidence: ans.confidence,
+          mode: ans.mode,
         });
         return json(res, 200, ans);
       }
