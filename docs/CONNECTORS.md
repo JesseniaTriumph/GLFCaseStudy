@@ -17,7 +17,17 @@ resolveAdapters()  →  for each system:  credentials in env?  →  LIVE connect
 | GivingData | `src/adapters/givingData.ts` | Built against the documented REST shape; field names overridable. **Confirm the API surface in discovery (question G1).** |
 | Google Drive | `src/adapters/googleDrive.ts` | Built. Service-account auth, native-format text export, real per-file permissions. Binary PDF/scan parsing is the one remaining piece (needs a parser + OCR — question D9). |
 | Airtable | `src/adapters/airtable.ts` | Built. Read-only token, pagination, rate cap, linked-record capture, PII-field → tier default. |
-| Zoom Chat | — | Deliberately not built. See the discovery request — it likely fails the retention test (Z1). |
+| Zoom Team Chat | `src/adapters/zoom.ts` | Built, **off unless `COMPASS_ZOOM_ENABLE=true`**. Pulls public-channel history via the admin report API (`/report/chat/sessions`), month by month. DMs and private channels permanently excluded in code. |
+| Zoom Archive | `src/adapters/zoom.ts` | Built, off by default. Recorded-call transcripts + in-meeting chat via the Archive Files API. Staged as `restricted` (held out of the index pending the Z8–Z12 review). |
+
+### Zoom — what the research says about "5 years"
+
+- **Team Chat cloud retention** defaults to **2 years**; a paid admin can set 1 day – 10 years (Account Settings → Chat). So five years of chat exists *only if* the Foundation raised retention above 5y and kept it there. `resolveAdapters()` calls `probeZoomChatRetention()` on start and prints what the account is actually set to.
+- **The live chat message API only returns ~6 months** — not usable for a backfill. Backfill comes from (a) a compliance-archiving integration (Global Relay / Smarsh / Theta Lake) if one exists, else (b) the admin Chat History Report / report-sessions API for whatever the retention window holds.
+- **Recorded meetings + transcripts** default to **30-day** retention and are usually auto-deleted. Five years of those almost certainly does not exist unless archiving was enabled.
+- **Workaround when retention < 5y:** Compass's coverage line states the real window ("Zoom chat: Apr 2024 onward") so the gap is disclosed, never silent. Recommendation to the Foundation: raise retention now so the clock starts, or turn on archiving, or treat chat as a recent-only signal.
+
+Scopes for the Server-to-Server OAuth app: `report_chat:read:admin`, `chat_channel:read:admin`, `account:read:admin`, and `archiving:read:list_archived_files:master` (Zoom Support must enable "Meeting and Webinar Archiving" for the last one).
 
 ---
 

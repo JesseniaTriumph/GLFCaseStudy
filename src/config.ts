@@ -6,6 +6,7 @@ import { mockAirtable } from "./adapters/mockAirtable.js";
 import { makeAirtableAdapter } from "./adapters/airtable.js";
 import { makeGivingDataAdapter } from "./adapters/givingData.js";
 import { makeGoogleDriveAdapter } from "./adapters/googleDrive.js";
+import { makeZoomTeamChatAdapter, makeZoomArchiveAdapter, probeZoomChatRetention } from "./adapters/zoom.js";
 
 /**
  * Default adapter set = the synthetic mock corpus. The eval harness, the security checks,
@@ -34,11 +35,36 @@ export async function resolveAdapters(env: NodeJS.ProcessEnv = process.env): Pro
     return r ?? mock;
   };
 
-  const adapters = [
+  const adapters: SourceAdapter[] = [
     await pick("GivingData", makeGivingDataAdapter(env), mockGivingData),
     await pick("Google Drive", makeGoogleDriveAdapter(env), mockDrive),
     await pick("Airtable", makeAirtableAdapter(env), mockAirtable),
   ];
+
+  // Zoom — off unless COMPASS_ZOOM_ENABLE=true (governance gate). No mock: v1 scope
+  // deliberately excludes it. When enabled, report what retention actually allows.
+  if (env.COMPASS_ZOOM_ENABLE === "true") {
+    const retention = await probeZoomChatRetention(env);
+    report.push(
+      retention
+        ? `Zoom: chat cloud retention = "${retention.setting}"` +
+          (retention.approxYears != null
+            ? ` (~${retention.approxYears}y available — ${retention.approxYears >= 5 ? "5y backfill possible" : "less than 5y exists; coverage statement will say so"})`
+            : "")
+        : `Zoom: enabled, retention setting unreadable — confirm with the Workspace admin (discovery Z1)`
+    );
+    const zc = makeZoomTeamChatAdapter(env);
+    const za = makeZoomArchiveAdapter(env);
+    if (zc) {
+      report.push(`Zoom Team Chat: LIVE (${zc.label})`);
+      adapters.push(zc);
+    }
+    if (za) {
+      report.push(`Zoom Archive: LIVE (${za.label})`);
+      adapters.push(za);
+    }
+  }
+
   return { adapters, report };
 }
 
