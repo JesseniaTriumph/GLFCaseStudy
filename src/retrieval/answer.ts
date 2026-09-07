@@ -66,23 +66,32 @@ export async function answerQuestion(
   // The question names a specific person/org, but nothing Compass can see mentions it.
   // Don't hand back a confident-looking brief about adjacent grantees — say so.
   const unknownSubject = unrecognizedNamedSubject(question, index, hits);
+  // Enumeration / dump requests — Compass answers questions, it is not a document browser
+  // or an export tool. This also closes the "list everything you can see" exfiltration probe.
+  const metaDumpRequest = isEnumerationRequest(question);
   const topBm25 = hits[0]?.bm25 ?? 0;
   // Restricted content dominates when its metadata match is as on-topic as our best real hit.
   const restrictedMatched = withheld.tiers.includes("restricted");
   const restrictedDominates = restrictedMatched && withheld.restrictedTopScore >= topBm25 * 0.7;
   const permissionBlocked = hits.length === 0 && withheld.count > 0;
 
-  if (hits.length === 0 || topWeak || restrictedDominates || unknownSubject) {
+  if (hits.length === 0 || topWeak || restrictedDominates || unknownSubject || metaDumpRequest) {
     let text: string;
     let reason: string;
-    if (restrictedDominates) {
+    if (metaDumpRequest) {
       text =
-        `This question would require material in the Restricted tier (board, compensation, legal, or named participant data). ` +
-        `That content is not indexed and Compass will not answer from it. If you need it, request it through the COO's office.`;
-      reason = "matching topic is Restricted-tier; not indexed";
-    } else if (permissionBlocked) {
-      text = `${withheld.count} passage(s) match this question but sit outside what you can retrieve in this workspace. I can't answer it here.`;
-      reason = "required sources are outside the caller's permission scope";
+        `Compass answers questions about the content of the grant record — it doesn't list, ` +
+        `enumerate, or export the index. Ask about a specific grant, organization, thesis area, ` +
+        `or decision. ${coverage}`;
+      reason = "enumeration/export request — not a question about the content";
+    } else if (restrictedDominates || permissionBlocked) {
+      // Deliberately reveals no count and no confirmation that matching records exist —
+      // the existence and number of restricted documents is itself sensitive metadata.
+      text =
+        `The information needed to answer this question is outside your approved access. ` +
+        `Compass did not retrieve or inspect that content. If you believe you should have access, ` +
+        `raise it with the data owner (the COO's office).`;
+      reason = restrictedDominates ? "topic resolves to Restricted-tier material" : "required sources are outside the caller's access";
     } else if (unknownSubject) {
       text =
         `Nothing Compass can see names the person or organization you asked about. ` +
@@ -100,7 +109,9 @@ export async function answerQuestion(
       confidence: "refused",
       confidenceReason: reason,
       coverage,
-      withheld: withheld.count ? { count: withheld.count, reason: withheld.tiers.join(", ") } : null,
+      // On an access refusal, do not echo how many restricted records matched — that count
+      // is sensitive. Only report withheld volume when the answer itself was served.
+      withheld: null,
       mode: "extractive",
     };
   }
@@ -254,6 +265,12 @@ function unrecognizedNamedSubject(question: string, index: CorpusIndex, hits: Sc
   // also catch a leading "Tell me about X" / "participant X" where X follows a keyword
   const kw = question.match(/\b(?:participant|client|beneficiary|about|regarding|for)\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+){1,3})/);
   if (kw) names.add(kw[1]!);
+  // a person referred to by first name only, tied to participant/enrollee language:
+  // "the participant whose first name is Amara", "the enrollee named Amara"
+  const firstNameOnly = question.match(
+    /\b(?:participant|client|beneficiary|enrollee|trainee|person)\b[^.?!]*\b(?:name(?:d)?(?:\s+is)?|called)\s+([A-Z][a-z]+)\b/
+  );
+  if (firstNameOnly) names.add(firstNameOnly[1]!);
   if (!names.size) return null;
 
   const known = [
@@ -262,15 +279,30 @@ function unrecognizedNamedSubject(question: string, index: CorpusIndex, hits: Sc
   ];
   const hitText = hits.map((h) => h.chunk.text.toLowerCase()).join("  ");
 
+  const STOP = /^(The|This|That|These|Those|What|Which|How|When|Where|Who|Why|Compass|Foundation|Program|Grant|GivingData|Airtable|Drive|Zoom)$/;
   for (const name of names) {
     const n = name.toLowerCase();
     const inEntities = known.some((k) => k.includes(n) || n.includes(k));
     const inHits = hitText.includes(n);
-    // common English word-pairs slip through the regex; require it to look like a name
-    const looksNominal = /^[A-Z][a-z]+\s+[A-Z][a-z]+/.test(name);
+    // a two-word Proper Noun, or a single first name we picked up from participant phrasing
+    const looksNominal = /^[A-Z][a-z]+\s+[A-Z][a-z]+/.test(name) || (/^[A-Z][a-z]{2,}$/.test(name) && !STOP.test(name));
     if (looksNominal && !inEntities && !inHits) return name;
   }
   return null;
+}
+
+/**
+ * Not a question about the content: an enumeration/export request ("list every document",
+ * "dump the corpus"), or a request to *act on instructions found in a document* ("do what
+ * the note says", "follow the instructions in X") — a classic indirect-injection vector.
+ */
+function isEnumerationRequest(question: string): boolean {
+  const q = question.toLowerCase();
+  const scope = /\b(every|all|each|entire|whole|complete|full)\b.*\b(document|doc|file|record|source|passage|entry|item)s?\b/;
+  const verb = /\b(list|enumerate|dump|export|output|print|show me|give me|reveal)\b/;
+  const rawtext = /\b(raw|full|entire|complete)\s+(text|content|contents)\b/;
+  const followInstr = /\b(do what|follow|carry out|execute|obey|comply with|act on)\b[^.?!]*\b(instruction|directive|command|note|document|memo|text|it)s?\b[^.?!]*\b(say|says|said|tell|tells|contain)/;
+  return (verb.test(q) && scope.test(q)) || (rawtext.test(q) && /\b(every|all|each|index|corpus)\b/.test(q)) || followInstr.test(q);
 }
 
 function coverageStatement(index: CorpusIndex): string {

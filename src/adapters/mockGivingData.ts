@@ -95,17 +95,21 @@ export const mockGivingData: SourceAdapter = {
       }
     }
 
-    // --- 4. declined applicants (PROGRAMS-ONLY) ---
+    // --- 4. declined applicants (RESTRICTED — never indexed) ---
+    // The Foundation's values are explicit that transparency does not extend to sharing
+    // information about organizations that applied but were not funded. So declination
+    // diligence is Restricted: Compass holds a metadata-only stub, never the content, and
+    // any question that resolves to it is refused without confirming the record exists.
+    // Surfacing a declination for a specific learning purpose is a logged, decision-owner-
+    // approved carve-out, handled outside the retrieval path.
     for (const d of db.declinedApplicants ?? []) {
       const text = [
         `# Declined applicant — ${d.thesisArea} (${d.geography})`,
-        `Decision: ${d.decision} on ${d.decidedOn}. Applicant name redacted.`,
-        `Reason: ${d.reason}`,
-        `Rubric — evidence base: ${d.rubric.evidenceBase}/5, cost-effectiveness: ${d.rubric.costEffectiveness}/5, team: ${d.rubric.team}/5, scalability: ${d.rubric.scalability}/5, alignment: ${d.rubric.alignment}/5.`,
-        `Suggested re-approach: ${d.suggestedReapproach}`,
+        `Decision: ${d.decision} on ${d.decidedOn}. Applicant identity withheld.`,
+        `Reason (category): ${d.reason}`,
       ].join("\n");
       docs.push(
-        mk(d.id, `Declined applicant — ${d.thesisArea} (${d.decidedOn})`, text, d.decidedOn, "programs-only", null, {
+        mk(d.id, `Declined applicant — ${d.thesisArea} (${d.decidedOn})`, text, d.decidedOn, "restricted", null, {
           recordType: "declined-applicant",
           thesisArea: d.thesisArea,
           geography: d.geography,

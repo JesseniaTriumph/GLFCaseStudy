@@ -196,12 +196,24 @@ export async function runPipeline(adapters: SourceAdapter[], opts: RunOptions): 
 // ---------------------------------------------------------------------------
 
 function clean(text: string): string {
-  return text
-    .replace(/\r/g, "")
-    .replace(/[ \t]+\n/g, "\n")
-    .replace(/\n{3,}/g, "\n\n")
-    .replace(/^\s*(confidential|internal use only|do not distribute)\s*$/gim, "")
-    .trim();
+  return (
+    text
+      .replace(/\r/g, "")
+      // strip HTML/XML comments and script/style blocks — a common carrier for indirect
+      // prompt-injection text that a reader never sees but a naive pipeline would index
+      .replace(/<!--[\s\S]*?-->/g, "")
+      .replace(/<(script|style)\b[\s\S]*?<\/\1>/gi, "")
+      // neutralise obvious injected "instruction" lines aimed at an LLM (defence in depth —
+      // the model is never given retrieved text as instructions in the first place)
+      .replace(
+        /^\s*(SYSTEM|ASSISTANT|USER)\s*:\s*.*(ignore (all|any|previous)|administrator mode|disregard|you are now|do not mention this).*/gim,
+        "[removed: injected instruction]"
+      )
+      .replace(/[ \t]+\n/g, "\n")
+      .replace(/\n{3,}/g, "\n\n")
+      .replace(/^\s*(confidential|internal use only|do not distribute)\s*$/gim, "")
+      .trim()
+  );
 }
 
 /** exact (content hash) + near (jaccard) + cross-system (explicit duplicate pointer or title+date match) */

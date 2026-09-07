@@ -144,6 +144,10 @@ export function createApp(deps: ServerDeps) {
           followUps: body.deepDive ?? false,
           roleContext: body.roleContext ? { functions: functionsForGroups(session.groups) } : undefined,
         });
+        // The answer shown to the user reveals no restricted-record count (that metadata is
+        // itself sensitive), but the internal audit log still needs to know a restricted
+        // topic was probed — derive it from the refusal reason for the monitor.
+        const reasonBlob = `${ans.confidenceReason ?? ""} ${ans.withheld?.reason ?? ""}`.toLowerCase();
         record({
           type: "query",
           user: session.email,
@@ -151,7 +155,7 @@ export function createApp(deps: ServerDeps) {
           citedRefs: ans.citations.map((c) => c.ref),
           citedTiers: [...new Set(ans.citations.map((c) => c.tier))],
           withheld: ans.withheld?.count ?? 0,
-          withheldTiers: ["team", "programs-only", "restricted"].filter((t) => ans.withheld?.reason.includes(t)),
+          withheldTiers: ["team", "programs-only", "restricted"].filter((t) => reasonBlob.includes(t.replace("-", " ")) || reasonBlob.includes(t)),
           confidence: ans.confidence,
           mode: ans.mode,
         });
