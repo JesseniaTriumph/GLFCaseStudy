@@ -1,18 +1,18 @@
 ---
-title: Pathwise Society — diligence memo
-author: Leah Fischer
-date: 2022-06-15
-folder: AI for Economic Opportunity/2022/Pathwise Society
+title: Fieldstone Care Collective — diligence memo
+author: Marcus Bell
+date: 2023-08-12
+folder: Learning for Action/2023/Fieldstone Care Collective
 grant: GD-2019
 tier: programs-only
 ---
 
-# Diligence memo — Pathwise Society (GD-2019)
+# Diligence memo — Fieldstone Care Collective (GD-2019)
 
-Program officer: Leah Fischer. AI for Economic Opportunity Fund.
+Program officer: Marcus Bell. Learning for Action.
 
 **Recommendation:** fund with a reporting condition on the data layer.
 
-**Strengths:** strong local partnerships. **Risks:** earnings attribution.
+**Strengths:** clear employer demand. **Risks:** scale-up path.
 
-Candid note: prior experience with them was positive. Programs-only.
+Candid note: board is mid-transition; watch continuity. Programs-only.

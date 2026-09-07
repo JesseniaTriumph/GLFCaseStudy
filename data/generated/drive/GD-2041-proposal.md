@@ -1,26 +1,26 @@
 ---
-title: Northgate Center — proposal (GD-2041)
-author: Northgate Center
-date: 2024-01-01
-folder: Powering Economic Opportunity/2024/Northgate Center
+title: Southline Labs — proposal (GD-2041)
+author: Southline Labs
+date: 2025-07-01
+folder: Future of Work/2025/Southline Labs
 grant: GD-2041
 tier: team
 ---
 
-# Proposal — Northgate Center
+# Proposal — Southline Labs
 
-**Grant:** GD-2041 · **Fund:** Powering Economic Opportunity Fund · **Geography:** United States
+**Grant:** GD-2041 · **Fund:** Future of Work Fund · **Geography:** United States
 
 ## 1. Problem
-Northgate Center proposes scaling a sectoral training partnership in oregon.
+Southline Labs proposes testing an ai benefits navigator in arizona.
 
 ## 2. Approach
 Sectoral partnership with employer commitments; outcomes tracked in the org's data system.
 
-## 3. Projected impact (model v3.5)
-- North Star ratio: 44x
-- Projected annual earnings gain per participant: $8170
-- Projected participants reached: 4700
+## 3. Projected impact (model v4.1)
+- North Star ratio: 99x
+- Projected annual earnings gain per participant: $5580
+- Projected participants reached: 3399
 
 ## 4. Budget
-USD 300,000.
+USD 900,000.

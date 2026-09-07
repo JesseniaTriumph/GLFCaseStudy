@@ -1,14 +1,14 @@
 ---
-title: Kindred Partners — site visit notes
-author: Marcus Bell
-date: 2026-09-17
-folder: Learning for Action/2025/Kindred Partners
+title: Corporación Adelante — site visit notes
+author: Ruth Mensah
+date: 2026-10-02
+folder: AI for Economic Opportunity/2025/Corporación Adelante
 grant: GD-2049
 tier: programs-only
 ---
 
-# Site visit — Kindred Partners
+# Site visit — Corporación Adelante
 
-Marcus Bell, United States. Grant GD-2049.
+Ruth Mensah, Colombia. Grant GD-2049.
 
-Completion looks strong. The friction point is employer follow-through on hiring. Recommend funding the placement function more deliberately in any renewal. Programs-only.
+Completion looks slightly behind plan. The friction point is the gap between graduation and a first paid role. Leadership is candid about the challenges. Programs-only.

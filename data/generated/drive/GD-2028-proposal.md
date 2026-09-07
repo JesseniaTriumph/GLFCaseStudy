@@ -1,16 +1,26 @@
 ---
-title: Southline Guild — proposal (GD-2028)
-author: Southline Guild
-date: 2023-01-01
-folder: Learning for Action/2023/Southline Guild
+title: Junction Collaborative — proposal (GD-2028)
+author: Junction Collaborative
+date: 2024-07-01
+folder: AI for Economic Opportunity/2024/Junction Collaborative
 grant: GD-2028
 tier: team
 ---
 
-# Proposal — Southline Guild
+# Proposal — Junction Collaborative
 
-Piloting a caregiver placement network in Georgia. Requested: USD 2,900,000 over 2023–2025.
+**Grant:** GD-2028 · **Fund:** AI for Economic Opportunity Fund · **Geography:** United States
 
-Expected reach: 2604 participants. Projected annual earnings gain per participant: $8305.
+## 1. Problem
+Junction Collaborative proposes building personalized career coaching in colorado.
 
-(2021–2023 proposal template — narrative sections free-form.)
+## 2. Approach
+Sectoral partnership with employer commitments; outcomes tracked in the org's data system.
+
+## 3. Projected impact (model v3.5)
+- North Star ratio: 135x
+- Projected annual earnings gain per participant: $9155
+- Projected participants reached: 5744
+
+## 4. Budget
+USD 400,000.

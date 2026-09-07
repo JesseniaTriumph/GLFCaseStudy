@@ -1,18 +1,18 @@
 ---
-title: Southline Guild — diligence memo
-author: Marcus Bell
-date: 2023-02-13
-folder: Learning for Action/2023/Southline Guild
+title: Junction Collaborative — diligence memo
+author: Tomas Nguyen
+date: 2024-08-01
+folder: AI for Economic Opportunity/2024/Junction Collaborative
 grant: GD-2028
 tier: programs-only
 ---
 
-# Diligence memo — Southline Guild (GD-2028)
+# Diligence memo — Junction Collaborative (GD-2028)
 
-Program officer: Marcus Bell. Learning for Action.
+Program officer: Tomas Nguyen. AI for Economic Opportunity Fund.
 
-**Recommendation:** fund at the requested level.
+**Recommendation:** fund at a reduced level pending a revised measurement plan.
 
-**Strengths:** experienced team. **Risks:** data-collection capacity.
+**Strengths:** existing outcomes data. **Risks:** scale-up path.
 
-Candid note: prior experience with them was positive. Programs-only.
+Candid note: a reference call raised a minor concern about reporting timeliness. Programs-only.

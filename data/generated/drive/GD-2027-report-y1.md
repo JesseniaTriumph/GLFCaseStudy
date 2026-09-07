@@ -1,16 +1,16 @@
 ---
-title: Inuka Works — Year 1 report
-author: Inuka Works
-date: 2024-06-01
-folder: Learning for Action/2023/Inuka Works
+title: Wayfinder Project — Q1 Y1 report
+author: Wayfinder Project
+date: 2023-12-02
+folder: AI for Economic Opportunity/2023/Wayfinder Project
 grant: GD-2027
 tier: team
 ---
 
-# Inuka Works — Year 1
+# Wayfinder Project — Q1 Y1
 
-Grant GD-2027. As of 2024-06-01. Served 610 participants; median wage at placement about $22.63/hr.
+Grant GD-2027. As of 2023-12-02. Served 1,520 participants; median wage at placement about $21.54/hr.
 
-Year 1: 610 participants reached (~28% of target). median wage at placement $22.63/hr vs a $21.13 regional baseline.
+Q1 Y1: 1,520 participants reached (~29% of target). Placement pace slowed mid-period; median wage at placement $21.54/hr vs a $20.04 regional baseline.
 
 (Pre-2024 template — no standard sections.)

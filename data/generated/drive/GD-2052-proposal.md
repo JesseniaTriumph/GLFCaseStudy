@@ -1,26 +1,26 @@
 ---
-title: Uplift Institute — proposal (GD-2052)
-author: Uplift Institute
-date: 2025-01-01
-folder: AI for Economic Opportunity/2025/Uplift Institute
+title: Pathwise Center — proposal (GD-2052)
+author: Pathwise Center
+date: 2026-05-01
+folder: Learning for Action/2026/Pathwise Center
 grant: GD-2052
 tier: team
 ---
 
-# Proposal — Uplift Institute
+# Proposal — Pathwise Center
 
-**Grant:** GD-2052 · **Fund:** AI for Economic Opportunity Fund · **Geography:** United States
+**Grant:** GD-2052 · **Fund:** Learning for Action · **Geography:** United States
 
 ## 1. Problem
-Uplift Institute proposes piloting a rapid-reskilling program in texas.
+Pathwise Center proposes testing credential-completion supports in new york.
 
 ## 2. Approach
 Sectoral partnership with employer commitments; outcomes tracked in the org's data system.
 
 ## 3. Projected impact (model v4.1)
-- North Star ratio: 132x
-- Projected annual earnings gain per participant: $8977
-- Projected participants reached: 7995
+- North Star ratio: 91x
+- Projected annual earnings gain per participant: $10352
+- Projected participants reached: 783
 
 ## 4. Budget
-USD 900,000.
+USD 400,000.

@@ -1,18 +1,18 @@
 ---
-title: Harbor Coalition — diligence memo
-author: Sofia Restrepo
-date: 2025-04-22
-folder: Learning for Action/2025/Harbor Coalition
+title: Lantern Guild — diligence memo
+author: Ruth Mensah
+date: 2026-05-04
+folder: Powering Economic Opportunity/2026/Lantern Guild
 grant: GD-2050
 tier: programs-only
 ---
 
-# Diligence memo — Harbor Coalition (GD-2050)
+# Diligence memo — Lantern Guild (GD-2050)
 
-Program officer: Sofia Restrepo. Learning for Action.
+Program officer: Ruth Mensah. Powering Economic Opportunity Fund.
 
-**Recommendation:** fund at the requested level.
+**Recommendation:** fund with a reporting condition on the data layer.
 
-**Strengths:** existing outcomes data. **Risks:** scale-up path.
+**Strengths:** experienced team. **Risks:** earnings attribution.
 
-Candid note: board is mid-transition; watch continuity. Programs-only.
+Candid note: a reference call raised a minor concern about reporting timeliness. Programs-only.

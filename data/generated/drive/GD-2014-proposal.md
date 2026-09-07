@@ -1,16 +1,16 @@
 ---
-title: Colectivo Camino — proposal (GD-2014)
-author: Colectivo Camino
-date: 2022-06-01
-folder: Future of Work/2022/Colectivo Camino
+title: Zawadi Collective — proposal (GD-2014)
+author: Zawadi Collective
+date: 2022-02-01
+folder: Future of Work/2022/Zawadi Collective
 grant: GD-2014
 tier: team
 ---
 
-# Proposal — Colectivo Camino
+# Proposal — Zawadi Collective
 
-Piloting personalized career coaching. Requested: USD 50,000 over 2022–2024.
+Building a public-benefits eligibility screener. Requested: USD 150,000 over 2022–2023.
 
-Expected reach: 7537 participants. Projected annual earnings gain per participant: $5394.
+Expected reach: 1531 participants. Projected annual earnings gain per participant: $7770.
 
 (2021–2023 proposal template — narrative sections free-form.)

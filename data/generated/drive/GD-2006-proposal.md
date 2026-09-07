@@ -1,15 +1,15 @@
 ---
-title: Marrow Society — proposal (GD-2006)
-author: Marrow Society
-date: 2021-04-01
-folder: Future of Work/2021/Marrow Society
+title: Riverbend Care Collective — proposal (GD-2006)
+author: Riverbend Care Collective
+date: 2021-01-01
+folder: Powering Economic Opportunity/2021/Riverbend Care Collective
 grant: GD-2006
 tier: team
 ---
 
-# Proposal — Marrow Society
+# Proposal — Riverbend Care Collective
 
-Testing an outcomes data layer in Arizona. Requested: USD 150,000 over 2021–2022.
+Expanding a wage-transparent placement pipeline in Colorado. Requested: USD 200,000 over 2021–2023.
 
 Expected reach: TBD participants. Projected annual earnings gain per participant: $TBD.
 

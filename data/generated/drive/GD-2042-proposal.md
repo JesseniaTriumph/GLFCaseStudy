@@ -1,26 +1,26 @@
 ---
-title: Halden Center — proposal (GD-2042)
-author: Halden Center
-date: 2024-02-01
-folder: Future of Work/2024/Halden Center
+title: Brightpath Labs — proposal (GD-2042)
+author: Brightpath Labs
+date: 2025-05-01
+folder: Future of Work/2025/Brightpath Labs
 grant: GD-2042
 tier: team
 ---
 
-# Proposal — Halden Center
+# Proposal — Brightpath Labs
 
 **Grant:** GD-2042 · **Fund:** Future of Work Fund · **Geography:** United States
 
 ## 1. Problem
-Halden Center proposes testing a caregiver placement network in georgia.
+Brightpath Labs proposes expanding a public-benefits eligibility screener in oregon.
 
 ## 2. Approach
 Sectoral partnership with employer commitments; outcomes tracked in the org's data system.
 
-## 3. Projected impact (model v3.5)
-- North Star ratio: 102x
-- Projected annual earnings gain per participant: $8415
-- Projected participants reached: 5264
+## 3. Projected impact (model v4.1)
+- North Star ratio: 47x
+- Projected annual earnings gain per participant: $7027
+- Projected participants reached: 5022
 
 ## 4. Budget
-USD 150,000.
+USD 100,000.

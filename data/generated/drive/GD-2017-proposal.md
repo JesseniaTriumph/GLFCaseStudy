@@ -1,16 +1,16 @@
 ---
-title: Nextstep Project — proposal (GD-2017)
-author: Nextstep Project
-date: 2022-03-01
-folder: Learning for Action/2022/Nextstep Project
+title: Cedarline Skills Alliance — proposal (GD-2017)
+author: Cedarline Skills Alliance
+date: 2022-06-01
+folder: AI for Economic Opportunity/2022/Cedarline Skills Alliance
 grant: GD-2017
 tier: team
 ---
 
-# Proposal — Nextstep Project
+# Proposal — Cedarline Skills Alliance
 
-Strengthening a wage-transparent placement pipeline in California. Requested: USD 100,000 over 2022–2025.
+Expanding a public-benefits eligibility screener in Massachusetts. Requested: USD 2,900,000 over 2022–2023.
 
-Expected reach: 5558 participants. Projected annual earnings gain per participant: $7663.
+Expected reach: TBD participants. Projected annual earnings gain per participant: $TBD.
 
 (2021–2023 proposal template — narrative sections free-form.)

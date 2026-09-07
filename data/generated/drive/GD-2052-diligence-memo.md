@@ -1,18 +1,18 @@
 ---
-title: Uplift Institute — diligence memo
+title: Pathwise Center — diligence memo
 author: Amara Boateng
-date: 2025-01-07
-folder: AI for Economic Opportunity/2025/Uplift Institute
+date: 2026-06-21
+folder: Learning for Action/2026/Pathwise Center
 grant: GD-2052
 tier: programs-only
 ---
 
-# Diligence memo — Uplift Institute (GD-2052)
+# Diligence memo — Pathwise Center (GD-2052)
 
-Program officer: Amara Boateng. AI for Economic Opportunity Fund.
+Program officer: Amara Boateng. Learning for Action.
 
 **Recommendation:** fund with a reporting condition on the data layer.
 
-**Strengths:** strong local partnerships. **Risks:** earnings attribution.
+**Strengths:** existing outcomes data. **Risks:** data-collection capacity.
 
-Candid note: the ED is stretched across two initiatives. Programs-only.
+Candid note: a reference call raised a minor concern about reporting timeliness. Programs-only.

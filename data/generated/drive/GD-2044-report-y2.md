@@ -1,25 +1,25 @@
 ---
-title: Groundwork Works — Year 2 report
-author: Groundwork Works
-date: 2026-05-01
-folder: Learning for Action/2024/Groundwork Works
+title: Mwangaza Works — H2 Y1 report
+author: Mwangaza Works
+date: 2026-08-26
+folder: Powering Economic Opportunity/2025/Mwangaza Works
 grant: GD-2044
 tier: team
 ---
 
-# Groundwork Works — Year 2 progress report
+# Mwangaza Works — H2 Y1 progress report
 
-**Grant:** GD-2044 · As reported 2026-05-01 · Impact model v3.5
+**Grant:** GD-2044 · As reported 2026-08-26 · Impact model v4.1
 
 ## Reach
-Participants reached: 654
+Participants reached: 780
 
 ## Earnings
-Reported annual earnings gain per participant: $4,995
-Median wage at placement: $21.74/hr (regional baseline $19.78/hr)
+Reported annual earnings gain per participant: $9,571
+Median wage at placement: $17.29/hr (regional baseline $14.94/hr)
 
 ## Narrative
-Year 2: 654 participants reached (~96% of target). Placement pace slowed mid-year; median wage at placement $21.74/hr vs a $20.24 regional baseline.
+H2 Y1: 780 participants reached (~30% of target). median wage at placement $17.29/hr vs a $15.79 regional baseline.
 
 ## Data note
 Outcomes are grantee-reported and verified on a sample. No participant identifiers included.

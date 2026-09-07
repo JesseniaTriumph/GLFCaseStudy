@@ -1,7 +1,7 @@
 ---
 title: Crosswalk Coalition — diligence memo
-author: Ruth Mensah
-date: 2021-04-27
+author: Priya Raman
+date: 2021-04-17
 folder: Future of Work/2021/Crosswalk Coalition
 grant: GD-2000
 tier: programs-only
@@ -9,10 +9,10 @@ tier: programs-only
 
 # Diligence memo — Crosswalk Coalition (GD-2000)
 
-Program officer: Ruth Mensah. Future of Work Fund.
+Program officer: Priya Raman. Future of Work Fund.
 
-**Recommendation:** fund at a reduced level pending a revised measurement plan.
+**Recommendation:** fund at the requested level.
 
-**Strengths:** experienced team. **Risks:** earnings attribution.
+**Strengths:** existing outcomes data. **Risks:** earnings attribution.
 
-Candid note: a reference call raised a minor concern about reporting timeliness. Programs-only.
+Candid note: prior experience with them was positive. Programs-only.

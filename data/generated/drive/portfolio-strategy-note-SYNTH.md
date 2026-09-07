@@ -3,7 +3,7 @@ title: Portfolio strategy note
 author: Programs team
 date: 2025-08-01
 folder: Programs/notes
-grant: GD-2000
+grant: GD-2002
 tier: team
 ---
 

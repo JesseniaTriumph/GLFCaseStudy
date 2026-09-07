@@ -1,26 +1,26 @@
 ---
-title: Pamoja Initiative — proposal (GD-2047)
-author: Pamoja Initiative
-date: 2024-01-01
-folder: Future of Work/2024/Pamoja Initiative
+title: Junction Initiative — proposal (GD-2047)
+author: Junction Initiative
+date: 2025-04-01
+folder: Future of Work/2025/Junction Initiative
 grant: GD-2047
 tier: team
 ---
 
-# Proposal — Pamoja Initiative
+# Proposal — Junction Initiative
 
-**Grant:** GD-2047 · **Fund:** Future of Work Fund · **Geography:** Kenya
+**Grant:** GD-2047 · **Fund:** Future of Work Fund · **Geography:** United States
 
 ## 1. Problem
-Pamoja Initiative proposes building personalized career coaching.
+Junction Initiative proposes building a caregiver placement network in massachusetts.
 
 ## 2. Approach
 Sectoral partnership with employer commitments; outcomes tracked in the org's data system.
 
-## 3. Projected impact (model v3.5)
-- North Star ratio: 62x
-- Projected annual earnings gain per participant: $5011
-- Projected participants reached: 3849
+## 3. Projected impact (model v4.1)
+- North Star ratio: 40x
+- Projected annual earnings gain per participant: $9712
+- Projected participants reached: 7748
 
 ## 4. Budget
-USD 75,000.
+USD 1,400,000.

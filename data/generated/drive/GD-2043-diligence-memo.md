@@ -1,18 +1,18 @@
 ---
-title: Brightpath Coalition — diligence memo
-author: Priya Raman
-date: 2024-07-01
-folder: Learning for Action/2024/Brightpath Coalition
+title: Kindred Project — diligence memo
+author: Marcus Bell
+date: 2025-01-04
+folder: Powering Economic Opportunity/2025/Kindred Project
 grant: GD-2043
 tier: programs-only
 ---
 
-# Diligence memo — Brightpath Coalition (GD-2043)
+# Diligence memo — Kindred Project (GD-2043)
 
-Program officer: Priya Raman. Learning for Action.
+Program officer: Marcus Bell. Powering Economic Opportunity Fund.
 
-**Recommendation:** fund at a reduced level pending a revised measurement plan.
+**Recommendation:** fund at the requested level.
 
-**Strengths:** existing outcomes data. **Risks:** data-collection capacity.
+**Strengths:** strong local partnerships. **Risks:** concurrent program overlap.
 
-Candid note: the ED is stretched across two initiatives. Programs-only.
+Candid note: board is mid-transition; watch continuity. Programs-only.

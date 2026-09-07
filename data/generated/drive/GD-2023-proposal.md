@@ -1,16 +1,16 @@
 ---
-title: Riverbend Institute — proposal (GD-2023)
-author: Riverbend Institute
-date: 2023-02-01
-folder: AI for Economic Opportunity/2023/Riverbend Institute
+title: Rootwork Guild — proposal (GD-2023)
+author: Rootwork Guild
+date: 2023-07-01
+folder: Future of Work/2023/Rootwork Guild
 grant: GD-2023
 tier: team
 ---
 
-# Proposal — Riverbend Institute
+# Proposal — Rootwork Guild
 
-Testing an outcomes data layer in Tennessee. Requested: USD 400,000 over 2023–2025.
+Strengthening a rapid-reskilling program in California. Requested: USD 900,000 over 2023–2024.
 
-Expected reach: 2815 participants. Projected annual earnings gain per participant: $5255.
+Expected reach: 1549 participants. Projected annual earnings gain per participant: $8507.
 
 (2021–2023 proposal template — narrative sections free-form.)

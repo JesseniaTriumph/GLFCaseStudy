@@ -1,16 +1,16 @@
 ---
-title: Lantern Coalition — proposal (GD-2012)
-author: Lantern Coalition
-date: 2022-06-01
-folder: AI for Economic Opportunity/2022/Lantern Coalition
+title: Foundry Center — proposal (GD-2012)
+author: Foundry Center
+date: 2022-01-01
+folder: Powering Economic Opportunity/2022/Foundry Center
 grant: GD-2012
 tier: team
 ---
 
-# Proposal — Lantern Coalition
+# Proposal — Foundry Center
 
-Building a caregiver placement network in Pennsylvania. Requested: USD 600,000 over 2022–2023.
+Scaling a sectoral training partnership in Texas. Requested: USD 600,000 over 2022–2023.
 
-Expected reach: 4724 participants. Projected annual earnings gain per participant: $5562.
+Expected reach: 7804 participants. Projected annual earnings gain per participant: $10137.
 
 (2021–2023 proposal template — narrative sections free-form.)

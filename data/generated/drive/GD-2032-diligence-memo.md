@@ -1,18 +1,18 @@
 ---
-title: Colectivo Puente — diligence memo
-author: Dana Okafor
-date: 2023-02-01
-folder: Learning for Action/2023/Colectivo Puente
+title: Groundwork Project — diligence memo
+author: Ruth Mensah
+date: 2024-06-12
+folder: Powering Economic Opportunity/2024/Groundwork Project
 grant: GD-2032
 tier: programs-only
 ---
 
-# Diligence memo — Colectivo Puente (GD-2032)
+# Diligence memo — Groundwork Project (GD-2032)
 
-Program officer: Dana Okafor. Learning for Action.
+Program officer: Ruth Mensah. Powering Economic Opportunity Fund.
 
 **Recommendation:** fund with a reporting condition on the data layer.
 
-**Strengths:** strong local partnerships. **Risks:** concurrent program overlap.
+**Strengths:** existing outcomes data. **Risks:** data-collection capacity.
 
-Candid note: a reference call raised a minor concern about reporting timeliness. Programs-only.
+Candid note: board is mid-transition; watch continuity. Programs-only.

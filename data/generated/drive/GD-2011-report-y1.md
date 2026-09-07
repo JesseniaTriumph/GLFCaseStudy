@@ -1,16 +1,16 @@
 ---
-title: Threshold Center — Year 2 report
-author: Threshold Center
-date: 2023-04-01
-folder: AI for Economic Opportunity/2021/Threshold Center
+title: Instituto Raíces — Q1 Y1 report
+author: Instituto Raíces
+date: 2022-12-10
+folder: Powering Economic Opportunity/2022/Instituto Raíces
 grant: GD-2011
 tier: team
 ---
 
-# Threshold Center — Year 2
+# Instituto Raíces — Q1 Y1
 
-Grant GD-2011. As of 2023-04-01. Served 4,609 participants; median wage at placement about $18.31/hr.
+Grant GD-2011. As of 2022-12-10. Served 1,037 participants; median wage at placement about $15.71/hr.
 
-Year 2: 4,609 participants reached (~120% of target). Placement pace slowed mid-year; median wage at placement $18.31/hr vs a $16.81 regional baseline.
+Q1 Y1: 1,037 participants reached (~19% of target). Placement pace slowed mid-period; median wage at placement $15.71/hr vs a $14.21 regional baseline.
 
 (Pre-2024 template — no standard sections.)

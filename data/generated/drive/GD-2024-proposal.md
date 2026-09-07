@@ -1,16 +1,16 @@
 ---
-title: Commonwork Skills Alliance — proposal (GD-2024)
-author: Commonwork Skills Alliance
-date: 2023-05-01
-folder: Future of Work/2023/Commonwork Skills Alliance
+title: Crosswalk Skills Alliance — proposal (GD-2024)
+author: Crosswalk Skills Alliance
+date: 2023-06-01
+folder: AI for Economic Opportunity/2023/Crosswalk Skills Alliance
 grant: GD-2024
 tier: team
 ---
 
-# Proposal — Commonwork Skills Alliance
+# Proposal — Crosswalk Skills Alliance
 
-Strengthening a public-benefits eligibility screener in Michigan. Requested: USD 100,000 over 2023–2025.
+Expanding employer-matched apprenticeships in Louisiana. Requested: USD 150,000 over 2023–2024.
 
-Expected reach: 1389 participants. Projected annual earnings gain per participant: $11125.
+Expected reach: 3000 participants. Projected annual earnings gain per participant: $6836.
 
 (2021–2023 proposal template — narrative sections free-form.)

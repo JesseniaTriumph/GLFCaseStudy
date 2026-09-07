@@ -1,16 +1,26 @@
 ---
-title: Colectivo Raíces — proposal (GD-2030)
-author: Colectivo Raíces
-date: 2023-01-01
-folder: Learning for Action/2023/Colectivo Raíces
+title: Nextstep Skills Alliance — proposal (GD-2030)
+author: Nextstep Skills Alliance
+date: 2024-01-01
+folder: Future of Work/2024/Nextstep Skills Alliance
 grant: GD-2030
 tier: team
 ---
 
-# Proposal — Colectivo Raíces
+# Proposal — Nextstep Skills Alliance
 
-Testing employer-matched apprenticeships. Requested: USD 600,000 over 2023–2026.
+**Grant:** GD-2030 · **Fund:** Future of Work Fund · **Geography:** United States
 
-Expected reach: 7204 participants. Projected annual earnings gain per participant: $11075.
+## 1. Problem
+Nextstep Skills Alliance proposes building credential-completion supports in pennsylvania.
 
-(2021–2023 proposal template — narrative sections free-form.)
+## 2. Approach
+Sectoral partnership with employer commitments; outcomes tracked in the org's data system.
+
+## 3. Projected impact (model v3.5)
+- North Star ratio: 53x
+- Projected annual earnings gain per participant: $3356
+- Projected participants reached: 956
+
+## 4. Budget
+USD 300,000.

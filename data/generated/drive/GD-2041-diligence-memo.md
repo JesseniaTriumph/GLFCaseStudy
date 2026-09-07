@@ -1,18 +1,18 @@
 ---
-title: Northgate Center — diligence memo
-author: Amara Boateng
-date: 2024-02-15
-folder: Powering Economic Opportunity/2024/Northgate Center
+title: Southline Labs — diligence memo
+author: Priya Raman
+date: 2025-08-09
+folder: Future of Work/2025/Southline Labs
 grant: GD-2041
 tier: programs-only
 ---
 
-# Diligence memo — Northgate Center (GD-2041)
+# Diligence memo — Southline Labs (GD-2041)
 
-Program officer: Amara Boateng. Powering Economic Opportunity Fund.
+Program officer: Priya Raman. Future of Work Fund.
 
-**Recommendation:** fund with a reporting condition on the data layer.
+**Recommendation:** fund at the requested level.
 
-**Strengths:** existing outcomes data. **Risks:** concurrent program overlap.
+**Strengths:** existing outcomes data. **Risks:** earnings attribution.
 
-Candid note: board is mid-transition; watch continuity. Programs-only.
+Candid note: the ED is stretched across two initiatives. Programs-only.

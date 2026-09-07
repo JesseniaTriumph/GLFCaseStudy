@@ -1,16 +1,16 @@
 ---
-title: Mwangaza Works — proposal (GD-2020)
-author: Mwangaza Works
-date: 2022-01-01
-folder: Powering Economic Opportunity/2022/Mwangaza Works
+title: Pathwise Institute — proposal (GD-2020)
+author: Pathwise Institute
+date: 2023-05-01
+folder: Future of Work/2023/Pathwise Institute
 grant: GD-2020
 tier: team
 ---
 
-# Proposal — Mwangaza Works
+# Proposal — Pathwise Institute
 
-Piloting a public-benefits eligibility screener. Requested: USD 250,000 over 2022–2024.
+Building employer-matched apprenticeships in New York. Requested: USD 400,000 over 2023–2026.
 
-Expected reach: TBD participants. Projected annual earnings gain per participant: $TBD.
+Expected reach: 7512 participants. Projected annual earnings gain per participant: $3390.
 
 (2021–2023 proposal template — narrative sections free-form.)

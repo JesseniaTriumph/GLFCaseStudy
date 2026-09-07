@@ -1,18 +1,18 @@
 ---
-title: Kindred Partners — diligence memo
-author: Marcus Bell
-date: 2025-04-16
-folder: Learning for Action/2025/Kindred Partners
+title: Corporación Adelante — diligence memo
+author: Ruth Mensah
+date: 2025-02-16
+folder: AI for Economic Opportunity/2025/Corporación Adelante
 grant: GD-2049
 tier: programs-only
 ---
 
-# Diligence memo — Kindred Partners (GD-2049)
+# Diligence memo — Corporación Adelante (GD-2049)
 
-Program officer: Marcus Bell. Learning for Action.
+Program officer: Ruth Mensah. AI for Economic Opportunity Fund.
 
-**Recommendation:** fund with a reporting condition on the data layer.
+**Recommendation:** fund at the requested level.
 
-**Strengths:** existing outcomes data. **Risks:** scale-up path.
+**Strengths:** clear employer demand. **Risks:** earnings attribution.
 
-Candid note: the ED is stretched across two initiatives. Programs-only.
+Candid note: board is mid-transition; watch continuity. Programs-only.

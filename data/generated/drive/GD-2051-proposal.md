@@ -1,26 +1,26 @@
 ---
-title: Trailhead Coalition — proposal (GD-2051)
-author: Trailhead Coalition
-date: 2025-01-01
-folder: Learning for Action/2025/Trailhead Coalition
+title: Pathwise Labs — proposal (GD-2051)
+author: Pathwise Labs
+date: 2026-07-01
+folder: Powering Economic Opportunity/2026/Pathwise Labs
 grant: GD-2051
 tier: team
 ---
 
-# Proposal — Trailhead Coalition
+# Proposal — Pathwise Labs
 
-**Grant:** GD-2051 · **Fund:** Learning for Action · **Geography:** United States
+**Grant:** GD-2051 · **Fund:** Powering Economic Opportunity Fund · **Geography:** United States
 
 ## 1. Problem
-Trailhead Coalition proposes piloting an outcomes data layer in tennessee.
+Pathwise Labs proposes strengthening an ai benefits navigator in ohio.
 
 ## 2. Approach
 Sectoral partnership with employer commitments; outcomes tracked in the org's data system.
 
 ## 3. Projected impact (model v4.1)
-- North Star ratio: 32x
-- Projected annual earnings gain per participant: $7705
-- Projected participants reached: 7298
+- North Star ratio: 68x
+- Projected annual earnings gain per participant: $3199
+- Projected participants reached: 3395
 
 ## 4. Budget
-USD 150,000.
+USD 50,000.

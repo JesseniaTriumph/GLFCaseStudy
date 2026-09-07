@@ -1,16 +1,16 @@
 ---
-title: Commonwork Project — Year 1 report
-author: Commonwork Project
-date: 2023-09-01
-folder: Future of Work/2022/Commonwork Project
+title: Cornerstone Care Collective — H1 Y1 report
+author: Cornerstone Care Collective
+date: 2022-09-12
+folder: Powering Economic Opportunity/2022/Cornerstone Care Collective
 grant: GD-2016
 tier: team
 ---
 
-# Commonwork Project — Year 1
+# Cornerstone Care Collective — H1 Y1
 
-Grant GD-2016. As of 2023-09-01. Served 2,865 participants; median wage at placement about $17.52/hr.
+Grant GD-2016. As of 2022-09-12. Served 523 participants; median wage at placement about $18.5/hr.
 
-Year 1: 2,865 participants reached (~37% of target). Placement pace slowed mid-year; median wage at placement $17.52/hr vs a $16.02 regional baseline.
+H1 Y1: 523 participants reached (~45% of target). Placement pace slowed mid-period; median wage at placement $18.5/hr vs a $17.00 regional baseline.
 
 (Pre-2024 template — no standard sections.)

@@ -1,16 +1,25 @@
 ---
-title: Tujenge Works — Year 3 report
-author: Tujenge Works
-date: 2026-08-01
-folder: Learning for Action/2023/Tujenge Works
+title: Cedarline Partners — Year 2 report
+author: Cedarline Partners
+date: 2026-07-07
+folder: Powering Economic Opportunity/2024/Cedarline Partners
 grant: GD-2034
 tier: team
 ---
 
-# Tujenge Works — Year 3
+# Cedarline Partners — Year 2 progress report
 
-Grant GD-2034. As of 2026-08-01. Served 673 participants; median wage at placement about $17.85/hr.
+**Grant:** GD-2034 · As reported 2026-07-07 · Impact model v3.5
 
-Year 3: 673 participants reached (~98% of target). median wage at placement $17.85/hr vs a $16.35 regional baseline.
+## Reach
+Participants reached: 1,138
 
-(Pre-2024 template — no standard sections.)
+## Earnings
+Reported annual earnings gain per participant: $10,034
+Median wage at placement: $17.38/hr (regional baseline $15.51/hr)
+
+## Narrative
+Year 2: 1,138 participants reached (~113% of target). median wage at placement $17.38/hr vs a $15.88 regional baseline.
+
+## Data note
+Outcomes are grantee-reported and verified on a sample. No participant identifiers included.

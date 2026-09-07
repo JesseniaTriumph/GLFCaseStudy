@@ -1,16 +1,16 @@
 ---
-title: Anchor Care Collective — Year 2 report
-author: Anchor Care Collective
-date: 2025-08-01
-folder: AI for Economic Opportunity/2023/Anchor Care Collective
+title: Bridgeworks Works — Q2 Y1 report
+author: Bridgeworks Works
+date: 2023-09-10
+folder: Learning for Action/2023/Bridgeworks Works
 grant: GD-2026
 tier: team
 ---
 
-# Anchor Care Collective — Year 2
+# Bridgeworks Works — Q2 Y1
 
-Grant GD-2026. As of 2025-08-01. Served 7,396 participants; median wage at placement about $15.38/hr.
+Grant GD-2026. As of 2023-09-10. Served 1,400 participants; median wage at placement about $17.26/hr.
 
-Year 2: 7,396 participants reached (~103% of target). Placement pace slowed mid-year; median wage at placement $15.38/hr vs a $13.88 regional baseline.
+Q2 Y1: 1,400 participants reached (~22% of target). median wage at placement $17.26/hr vs a $15.76 regional baseline.
 
 (Pre-2024 template — no standard sections.)

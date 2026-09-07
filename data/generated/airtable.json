@@ -11,39 +11,39 @@
    ],
    "geography": "United States",
    "stage": "Closed grant",
-   "relationshipOwner": "Ruth Mensah",
+   "relationshipOwner": "Priya Raman",
    "source": "Open RFP",
    "lastTouchpoint": "2025-09-17"
   },
   {
-   "id": "recsteadycooperative73",
-   "name": "Steady Cooperative",
+   "id": "reccommonworkcooperative73",
+   "name": "Commonwork Cooperative",
    "givingDataId": "GD-2001",
    "type": "Former grantee",
    "thesisTags": [
-    "AI for career navigation"
+    "AI for service delivery"
    ],
    "geography": "United States",
    "stage": "Closed grant",
-   "relationshipOwner": "Leah Fischer",
+   "relationshipOwner": "David Kang",
    "source": "Open RFP",
    "lastTouchpoint": "2025-10-18"
   },
   {
-   "id": "rectujengetrust83",
-   "name": "Tujenge Trust",
+   "id": "rectrailheadlabs83",
+   "name": "Trailhead Labs",
    "givingDataId": "GD-2002",
    "type": "Former grantee",
    "thesisTags": [],
-   "geography": "Kenya",
+   "geography": "United States",
    "stage": "Closed grant",
-   "relationshipOwner": "David Kang",
+   "relationshipOwner": "Tomas Nguyen",
    "source": "Referred by co-funder",
    "lastTouchpoint": "2025-10-08"
   },
   {
-   "id": "recfairwindcarecollective95",
-   "name": "Fairwind Care Collective",
+   "id": "reccrosswalklabs95",
+   "name": "Crosswalk Labs",
    "givingDataId": "GD-2003",
    "type": "Former grantee",
    "thesisTags": [
@@ -51,55 +51,55 @@
    ],
    "geography": "United States",
    "stage": "Closed grant",
-   "relationshipOwner": "Sofia Restrepo",
+   "relationshipOwner": "David Kang",
    "source": "Inbound - fund cohort",
    "lastTouchpoint": "2024-12-17"
   },
   {
-   "id": "recinstitutoprogreso56",
-   "name": "Instituto Progreso",
+   "id": "recfoundryinstitute56",
+   "name": "Foundry Institute",
    "givingDataId": "GD-2004",
-   "type": "Former grantee",
-   "thesisTags": [
-    "AI for career navigation"
-   ],
-   "geography": "Colombia",
-   "stage": "Closed grant",
-   "relationshipOwner": "Amara Boateng",
-   "source": "Open RFP",
-   "lastTouchpoint": "2026-03-04"
-  },
-  {
-   "id": "recbridgeworkssociety91",
-   "name": "Bridgeworks Society",
-   "givingDataId": "GD-2005",
    "type": "Former grantee",
    "thesisTags": [
     "care economy"
    ],
    "geography": "United States",
    "stage": "Closed grant",
-   "relationshipOwner": "Tomas Nguyen",
+   "relationshipOwner": "Amara Boateng",
+   "source": "Open RFP",
+   "lastTouchpoint": "2026-03-04"
+  },
+  {
+   "id": "recriverbendlabs91",
+   "name": "Riverbend Labs",
+   "givingDataId": "GD-2005",
+   "type": "Former grantee",
+   "thesisTags": [
+    "credential completion"
+   ],
+   "geography": "United States",
+   "stage": "Closed grant",
+   "relationshipOwner": "Ruth Mensah",
    "source": "Open RFP",
    "lastTouchpoint": "2025-12-08"
   },
   {
-   "id": "recmarrowsociety39",
-   "name": "Marrow Society",
+   "id": "recriverbendcarecollective39",
+   "name": "Riverbend Care Collective",
    "givingDataId": "GD-2006",
    "type": "Former grantee",
    "thesisTags": [
-    "worker power"
+    "advanced energy jobs"
    ],
    "geography": "United States",
    "stage": "Closed grant",
-   "relationshipOwner": "Amara Boateng",
+   "relationshipOwner": "Tomas Nguyen",
    "source": "Open RFP",
    "lastTouchpoint": "2025-12-01"
   },
   {
-   "id": "recmarrowsociety64",
-   "name": "Marrow Society",
+   "id": "recriverbendcarecoalition64",
+   "name": "Riverbend Care Coalition",
    "givingDataId": null,
    "type": "Prospect",
    "thesisTags": [],
@@ -110,170 +110,174 @@
    "lastTouchpoint": "2024-12-25"
   },
   {
-   "id": "rechaldennetwork24",
-   "name": "Halden Network",
+   "id": "reccedarlinecarecollective24",
+   "name": "Cedarline Care Collective",
    "givingDataId": "GD-2007",
    "type": "Former grantee",
    "thesisTags": [
-    "credential completion"
+    "AI for service delivery"
    ],
    "geography": "United States",
    "stage": "Closed grant",
-   "relationshipOwner": "Marcus Bell",
+   "relationshipOwner": "Dana Okafor",
    "source": "Inbound - fund cohort",
    "lastTouchpoint": "2024-12-03"
   },
   {
-   "id": "recredpuente91",
-   "name": "Red Puente",
+   "id": "reccolectivohorizonte91",
+   "name": "Colectivo Horizonte",
    "givingDataId": "GD-2008",
    "type": "Former grantee",
-   "thesisTags": [],
+   "thesisTags": [
+    "credential completion"
+   ],
    "geography": "Colombia",
    "stage": "Closed grant",
-   "relationshipOwner": "David Kang",
+   "relationshipOwner": "Nadia Haddad",
    "source": "Open RFP",
    "lastTouchpoint": "2024-11-03"
   },
   {
-   "id": "recamkainitiative28",
-   "name": "Amka Initiative",
+   "id": "recnextsteppartners28",
+   "name": "Nextstep Partners",
    "givingDataId": "GD-2009",
-   "type": "Former grantee",
-   "thesisTags": [
-    "advanced energy jobs"
-   ],
-   "geography": "Kenya",
-   "stage": "Closed grant",
-   "relationshipOwner": "Leah Fischer",
-   "source": "Referred by co-funder",
-   "lastTouchpoint": "2024-06-27"
-  },
-  {
-   "id": "recamkainitiative63",
-   "name": "Amka Initiative",
-   "givingDataId": null,
-   "type": "Prospect",
-   "thesisTags": [],
-   "geography": "Kenya",
-   "stage": "Early conversation",
-   "relationshipOwner": "Priya Raman",
-   "source": "Conference intro",
-   "lastTouchpoint": "2025-12-14"
-  },
-  {
-   "id": "recfoundryworks32",
-   "name": "Foundry Works",
-   "givingDataId": "GD-2010",
    "type": "Former grantee",
    "thesisTags": [
     "worker power"
    ],
    "geography": "United States",
    "stage": "Closed grant",
-   "relationshipOwner": "Marcus Bell",
+   "relationshipOwner": "Tomas Nguyen",
+   "source": "Referred by co-funder",
+   "lastTouchpoint": "2024-06-27"
+  },
+  {
+   "id": "recnextsteppartners63",
+   "name": "Nextstep Partners",
+   "givingDataId": null,
+   "type": "Prospect",
+   "thesisTags": [],
+   "geography": "United States",
+   "stage": "Early conversation",
+   "relationshipOwner": "Priya Raman",
+   "source": "Conference intro",
+   "lastTouchpoint": "2025-12-14"
+  },
+  {
+   "id": "recwayfinderlabs32",
+   "name": "Wayfinder Labs",
+   "givingDataId": "GD-2010",
+   "type": "Grantee",
+   "thesisTags": [
+    "field learning"
+   ],
+   "geography": "United States",
+   "stage": "Active grantee",
+   "relationshipOwner": "Leah Fischer",
    "source": "Conference intro",
    "lastTouchpoint": "2026-09-01"
   },
   {
-   "id": "recthresholdcenter35",
-   "name": "Threshold Center",
+   "id": "recinstitutoraces35",
+   "name": "Instituto Raíces",
    "givingDataId": "GD-2011",
    "type": "Former grantee",
    "thesisTags": [
-    "AI for workforce systems"
+    "advanced energy jobs"
    ],
-   "geography": "United States",
+   "geography": "Colombia",
    "stage": "Closed grant",
-   "relationshipOwner": "Amara Boateng",
+   "relationshipOwner": "Nadia Haddad",
    "source": "Open RFP",
    "lastTouchpoint": "2025-12-16"
   },
   {
-   "id": "reclanterncoalition37",
-   "name": "Lantern Coalition",
+   "id": "recfoundrycenter37",
+   "name": "Foundry Center",
    "givingDataId": "GD-2012",
    "type": "Former grantee",
    "thesisTags": [
-    "AI for career navigation"
+    "credential completion"
    ],
    "geography": "United States",
    "stage": "Closed grant",
-   "relationshipOwner": "Nadia Haddad",
+   "relationshipOwner": "David Kang",
    "source": "Prior relationship",
    "lastTouchpoint": "2025-09-16"
   },
   {
-   "id": "recmarrowcollaborative97",
-   "name": "Marrow Collaborative",
+   "id": "reccommonworkproject97",
+   "name": "Commonwork Project",
    "givingDataId": "GD-2013",
    "type": "Former grantee",
    "thesisTags": [
-    "AI for benefits access"
+    "evidence synthesis"
    ],
    "geography": "United States",
    "stage": "Closed grant",
-   "relationshipOwner": "Leah Fischer",
+   "relationshipOwner": "Dana Okafor",
    "source": "Inbound - fund cohort",
    "lastTouchpoint": "2025-04-04"
   },
   {
-   "id": "reccolectivocamino61",
-   "name": "Colectivo Camino",
+   "id": "reczawadicollective61",
+   "name": "Zawadi Collective",
    "givingDataId": "GD-2014",
    "type": "Former grantee",
    "thesisTags": [
-    "sectoral training"
+    "job quality"
    ],
-   "geography": "Colombia",
+   "geography": "Kenya",
    "stage": "Closed grant",
    "relationshipOwner": "Tomas Nguyen",
    "source": "Inbound - fund cohort",
    "lastTouchpoint": "2026-09-16"
   },
   {
-   "id": "reczawaditrust58",
-   "name": "Zawadi Trust",
+   "id": "recmarrowcooperative58",
+   "name": "Marrow Cooperative",
    "givingDataId": "GD-2015",
    "type": "Former grantee",
    "thesisTags": [
-    "AI for career navigation"
+    "worker power"
    ],
-   "geography": "Kenya",
+   "geography": "United States",
    "stage": "Closed grant",
    "relationshipOwner": "Tomas Nguyen",
    "source": "Conference intro",
    "lastTouchpoint": "2025-02-05"
   },
   {
-   "id": "reccommonworkproject81",
-   "name": "Commonwork Project",
+   "id": "reccornerstonecarecollective81",
+   "name": "Cornerstone Care Collective",
    "givingDataId": "GD-2016",
    "type": "Former grantee",
-   "thesisTags": [],
+   "thesisTags": [
+    "benefits navigation"
+   ],
    "geography": "United States",
    "stage": "Closed grant",
-   "relationshipOwner": "Dana Okafor",
+   "relationshipOwner": "Marcus Bell",
    "source": "Referred by co-funder",
    "lastTouchpoint": "2024-04-11"
   },
   {
-   "id": "recnextstepproject67",
-   "name": "Nextstep Project",
+   "id": "reccedarlineskillsalliance67",
+   "name": "Cedarline Skills Alliance",
    "givingDataId": "GD-2017",
    "type": "Former grantee",
    "thesisTags": [
-    "field learning"
+    "AI for service delivery"
    ],
    "geography": "United States",
    "stage": "Closed grant",
-   "relationshipOwner": "Ruth Mensah",
+   "relationshipOwner": "Dana Okafor",
    "source": "Conference intro",
    "lastTouchpoint": "2024-10-03"
   },
   {
-   "id": "recnextstepproject40",
-   "name": "Nextstep Project",
+   "id": "reccedarlineskillsalliance40",
+   "name": "Cedarline Skills Alliance",
    "givingDataId": null,
    "type": "Prospect",
    "thesisTags": [],
@@ -284,106 +288,104 @@
    "lastTouchpoint": "2025-10-13"
   },
   {
-   "id": "recgroundworkcarecollective93",
-   "name": "Groundwork Care Collective",
+   "id": "rectujengecollective93",
+   "name": "Tujenge Collective",
    "givingDataId": "GD-2018",
-   "type": "Former grantee",
-   "thesisTags": [
-    "credential completion"
-   ],
-   "geography": "United States",
-   "stage": "Closed grant",
-   "relationshipOwner": "Marcus Bell",
-   "source": "Referred by co-funder",
-   "lastTouchpoint": "2026-01-08"
-  },
-  {
-   "id": "recpathwisesociety78",
-   "name": "Pathwise Society",
-   "givingDataId": "GD-2019",
-   "type": "Former grantee",
-   "thesisTags": [
-    "AI for benefits access"
-   ],
-   "geography": "United States",
-   "stage": "Closed grant",
-   "relationshipOwner": "Leah Fischer",
-   "source": "Open RFP",
-   "lastTouchpoint": "2024-10-26"
-  },
-  {
-   "id": "recmwangazaworks77",
-   "name": "Mwangaza Works",
-   "givingDataId": "GD-2020",
    "type": "Former grantee",
    "thesisTags": [
     "credential completion"
    ],
    "geography": "Kenya",
    "stage": "Closed grant",
-   "relationshipOwner": "Dana Okafor",
+   "relationshipOwner": "David Kang",
+   "source": "Referred by co-funder",
+   "lastTouchpoint": "2026-01-08"
+  },
+  {
+   "id": "recfieldstonecarecollective78",
+   "name": "Fieldstone Care Collective",
+   "givingDataId": "GD-2019",
+   "type": "Former grantee",
+   "thesisTags": [
+    "measurement infrastructure"
+   ],
+   "geography": "United States",
+   "stage": "Closed grant",
+   "relationshipOwner": "Marcus Bell",
    "source": "Open RFP",
-   "lastTouchpoint": "2025-01-15"
+   "lastTouchpoint": "2024-10-26"
   },
   {
-   "id": "recnextstepcooperative50",
-   "name": "Nextstep Cooperative",
-   "givingDataId": "GD-2021",
-   "type": "Former grantee",
-   "thesisTags": [
-    "benefits navigation"
-   ],
-   "geography": "United States",
-   "stage": "Closed grant",
-   "relationshipOwner": "Nadia Haddad",
-   "source": "Inbound - fund cohort",
-   "lastTouchpoint": "2026-04-16"
-  },
-  {
-   "id": "recnorthgatelabs76",
-   "name": "Northgate Labs",
-   "givingDataId": "GD-2022",
-   "type": "Former grantee",
-   "thesisTags": [
-    "sectoral training"
-   ],
-   "geography": "United States",
-   "stage": "Closed grant",
-   "relationshipOwner": "Ruth Mensah",
-   "source": "Inbound - fund cohort",
-   "lastTouchpoint": "2025-06-16"
-  },
-  {
-   "id": "recriverbendinstitute45",
-   "name": "Riverbend Institute",
-   "givingDataId": "GD-2023",
-   "type": "Former grantee",
-   "thesisTags": [
-    "AI for benefits access"
-   ],
-   "geography": "United States",
-   "stage": "Closed grant",
-   "relationshipOwner": "Ruth Mensah",
-   "source": "Inbound - fund cohort",
-   "lastTouchpoint": "2026-11-07"
-  },
-  {
-   "id": "reccommonworkskillsalliance84",
-   "name": "Commonwork Skills Alliance",
-   "givingDataId": "GD-2024",
+   "id": "recpathwiseinstitute77",
+   "name": "Pathwise Institute",
+   "givingDataId": "GD-2020",
    "type": "Former grantee",
    "thesisTags": [
     "job quality"
    ],
    "geography": "United States",
    "stage": "Closed grant",
-   "relationshipOwner": "Nadia Haddad",
+   "relationshipOwner": "David Kang",
+   "source": "Open RFP",
+   "lastTouchpoint": "2025-01-15"
+  },
+  {
+   "id": "recnorthgatecarecollective50",
+   "name": "Northgate Care Collective",
+   "givingDataId": "GD-2021",
+   "type": "Former grantee",
+   "thesisTags": [
+    "measurement infrastructure"
+   ],
+   "geography": "United States",
+   "stage": "Closed grant",
+   "relationshipOwner": "Marcus Bell",
+   "source": "Inbound - fund cohort",
+   "lastTouchpoint": "2026-04-16"
+  },
+  {
+   "id": "recwayfindersociety76",
+   "name": "Wayfinder Society",
+   "givingDataId": "GD-2022",
+   "type": "Former grantee",
+   "thesisTags": [
+    "measurement infrastructure"
+   ],
+   "geography": "United States",
+   "stage": "Closed grant",
+   "relationshipOwner": "Dana Okafor",
+   "source": "Inbound - fund cohort",
+   "lastTouchpoint": "2025-06-16"
+  },
+  {
+   "id": "recrootworkguild45",
+   "name": "Rootwork Guild",
+   "givingDataId": "GD-2023",
+   "type": "Former grantee",
+   "thesisTags": [],
+   "geography": "United States",
+   "stage": "Closed grant",
+   "relationshipOwner": "Marcus Bell",
+   "source": "Inbound - fund cohort",
+   "lastTouchpoint": "2026-11-07"
+  },
+  {
+   "id": "reccrosswalkskillsalliance84",
+   "name": "Crosswalk Skills Alliance",
+   "givingDataId": "GD-2024",
+   "type": "Former grantee",
+   "thesisTags": [
+    "AI for career navigation"
+   ],
+   "geography": "United States",
+   "stage": "Closed grant",
+   "relationshipOwner": "Priya Raman",
    "source": "Open RFP",
    "lastTouchpoint": "2025-05-14"
   },
   {
-   "id": "reccommonworkskillsalliance56",
-   "name": "Commonwork Skills Alliance",
+   "id": "reccrosswalkskillsalliance56",
+   "name": "Crosswalk Skills Alliance",
    "givingDataId": null,
    "type": "Prospect",
    "thesisTags": [],
@@ -394,36 +396,36 @@
    "lastTouchpoint": "2025-08-11"
   },
   {
-   "id": "recbridgeworksinitiative47",
-   "name": "Bridgeworks Initiative",
+   "id": "reccornerstonecollaborative47",
+   "name": "Cornerstone Collaborative",
    "givingDataId": "GD-2025",
-   "type": "Former grantee",
-   "thesisTags": [
-    "benefits navigation"
-   ],
-   "geography": "United States",
-   "stage": "Closed grant",
-   "relationshipOwner": "Leah Fischer",
-   "source": "Open RFP",
-   "lastTouchpoint": "2025-04-26"
-  },
-  {
-   "id": "recanchorcarecollective48",
-   "name": "Anchor Care Collective",
-   "givingDataId": "GD-2026",
    "type": "Former grantee",
    "thesisTags": [
     "AI for workforce systems"
    ],
    "geography": "United States",
    "stage": "Closed grant",
-   "relationshipOwner": "Marcus Bell",
+   "relationshipOwner": "Nadia Haddad",
+   "source": "Open RFP",
+   "lastTouchpoint": "2025-04-26"
+  },
+  {
+   "id": "recbridgeworksworks48",
+   "name": "Bridgeworks Works",
+   "givingDataId": "GD-2026",
+   "type": "Former grantee",
+   "thesisTags": [
+    "measurement infrastructure"
+   ],
+   "geography": "United States",
+   "stage": "Closed grant",
+   "relationshipOwner": "Sofia Restrepo",
    "source": "Open RFP",
    "lastTouchpoint": "2024-11-23"
   },
   {
-   "id": "recanchorcarecoalition64",
-   "name": "Anchor Care Coalition",
+   "id": "recbridgeworkspartnership64",
+   "name": "Bridgeworks Partnership",
    "givingDataId": null,
    "type": "Prospect",
    "thesisTags": [],
@@ -434,114 +436,118 @@
    "lastTouchpoint": "2025-08-17"
   },
   {
-   "id": "recinukaworks96",
-   "name": "Inuka Works",
+   "id": "recwayfinderproject96",
+   "name": "Wayfinder Project",
    "givingDataId": "GD-2027",
    "type": "Former grantee",
-   "thesisTags": [
-    "measurement infrastructure"
-   ],
-   "geography": "Kenya",
+   "thesisTags": [],
+   "geography": "United States",
    "stage": "Closed grant",
-   "relationshipOwner": "Sofia Restrepo",
+   "relationshipOwner": "Priya Raman",
    "source": "Inbound - fund cohort",
    "lastTouchpoint": "2025-03-05"
   },
   {
-   "id": "recsouthlineguild77",
-   "name": "Southline Guild",
+   "id": "recjunctioncollaborative77",
+   "name": "Junction Collaborative",
    "givingDataId": "GD-2028",
-   "type": "Former grantee",
-   "thesisTags": [],
+   "type": "Grantee",
+   "thesisTags": [
+    "AI for career navigation"
+   ],
    "geography": "United States",
-   "stage": "Closed grant",
-   "relationshipOwner": "Marcus Bell",
+   "stage": "Active grantee",
+   "relationshipOwner": "Tomas Nguyen",
    "source": "Prior relationship",
    "lastTouchpoint": "2024-12-27"
   },
   {
-   "id": "recnextstepproject64",
-   "name": "Nextstep Project",
+   "id": "recrootworkguild64",
+   "name": "Rootwork Guild",
    "givingDataId": "GD-2029",
-   "type": "Former grantee",
-   "thesisTags": [],
+   "type": "Grantee",
+   "thesisTags": [
+    "evidence synthesis"
+   ],
    "geography": "United States",
-   "stage": "Closed grant",
-   "relationshipOwner": "Dana Okafor",
+   "stage": "Active grantee",
+   "relationshipOwner": "David Kang",
    "source": "Conference intro",
    "lastTouchpoint": "2025-02-17"
   },
   {
-   "id": "reccolectivoraces52",
-   "name": "Colectivo Raíces",
+   "id": "recnextstepskillsalliance52",
+   "name": "Nextstep Skills Alliance",
    "givingDataId": "GD-2030",
-   "type": "Former grantee",
-   "thesisTags": [],
-   "geography": "Colombia",
-   "stage": "Closed grant",
-   "relationshipOwner": "Amara Boateng",
+   "type": "Grantee",
+   "thesisTags": [
+    "automation transition"
+   ],
+   "geography": "United States",
+   "stage": "Active grantee",
+   "relationshipOwner": "Nadia Haddad",
    "source": "Conference intro",
    "lastTouchpoint": "2024-10-22"
   },
   {
-   "id": "recfundacinenlace83",
-   "name": "Fundación Enlace",
+   "id": "rectujengetrust83",
+   "name": "Tujenge Trust",
    "givingDataId": "GD-2031",
-   "type": "Former grantee",
-   "thesisTags": [
-    "sectoral training"
-   ],
-   "geography": "Colombia",
-   "stage": "Closed grant",
-   "relationshipOwner": "David Kang",
+   "type": "Grantee",
+   "thesisTags": [],
+   "geography": "Kenya",
+   "stage": "Active grantee",
+   "relationshipOwner": "Sofia Restrepo",
    "source": "Inbound - fund cohort",
    "lastTouchpoint": "2025-03-09"
   },
   {
-   "id": "reccolectivopuente25",
-   "name": "Colectivo Puente",
+   "id": "recgroundworkproject25",
+   "name": "Groundwork Project",
    "givingDataId": "GD-2032",
-   "type": "Former grantee",
+   "type": "Grantee",
    "thesisTags": [],
-   "geography": "Colombia",
-   "stage": "Closed grant",
-   "relationshipOwner": "Dana Okafor",
+   "geography": "United States",
+   "stage": "Active grantee",
+   "relationshipOwner": "Ruth Mensah",
    "source": "Inbound - fund cohort",
    "lastTouchpoint": "2025-01-24"
   },
   {
-   "id": "reccolectivoprogreso65",
-   "name": "Colectivo Progreso",
+   "id": "recinukatrust65",
+   "name": "Inuka Trust",
    "givingDataId": "GD-2033",
    "type": "Former grantee",
-   "thesisTags": [],
-   "geography": "Colombia",
+   "thesisTags": [
+    "AI for career navigation"
+   ],
+   "geography": "Kenya",
    "stage": "Closed grant",
    "relationshipOwner": "Priya Raman",
    "source": "Open RFP",
    "lastTouchpoint": "2024-05-03"
   },
   {
-   "id": "rectujengeworks76",
-   "name": "Tujenge Works",
+   "id": "reccedarlinepartners76",
+   "name": "Cedarline Partners",
    "givingDataId": "GD-2034",
    "type": "Former grantee",
    "thesisTags": [
-    "field learning"
+    "credential completion"
    ],
-   "geography": "Kenya",
+   "geography": "United States",
    "stage": "Closed grant",
    "relationshipOwner": "Marcus Bell",
    "source": "Prior relationship",
    "lastTouchpoint": "2025-11-15"
   },
   {
-   "id": "recnorthgatesociety22",
-   "name": "Northgate Society",
+   "id": "recgroundworksociety22",
+   "name": "Groundwork Society",
    "givingDataId": "GD-2035",
    "type": "Former grantee",
    "thesisTags": [
-    "AI for benefits access"
+    "measurement infrastructure"
    ],
    "geography": "United States",
    "stage": "Closed grant",
@@ -550,188 +556,186 @@
    "lastTouchpoint": "2025-08-17"
   },
   {
-   "id": "recsouthlinecoalition97",
-   "name": "Southline Coalition",
+   "id": "recinstitutoraces97",
+   "name": "Instituto Raíces",
    "givingDataId": "GD-2036",
-   "type": "Former grantee",
+   "type": "Grantee",
    "thesisTags": [
-    "advanced energy jobs"
+    "AI for career navigation"
    ],
-   "geography": "United States",
-   "stage": "Closed grant",
-   "relationshipOwner": "Sofia Restrepo",
+   "geography": "Colombia",
+   "stage": "Active grantee",
+   "relationshipOwner": "Marcus Bell",
    "source": "Open RFP",
    "lastTouchpoint": "2024-01-22"
   },
   {
-   "id": "recfieldstonecooperative97",
-   "name": "Fieldstone Cooperative",
+   "id": "recinstitutoenlace97",
+   "name": "Instituto Enlace",
    "givingDataId": "GD-2037",
    "type": "Former grantee",
-   "thesisTags": [],
-   "geography": "United States",
+   "thesisTags": [
+    "AI for workforce systems"
+   ],
+   "geography": "Colombia",
    "stage": "Closed grant",
-   "relationshipOwner": "Nadia Haddad",
+   "relationshipOwner": "Dana Okafor",
    "source": "Open RFP",
    "lastTouchpoint": "2025-11-02"
   },
   {
-   "id": "recnuruinstitute79",
-   "name": "Nuru Institute",
+   "id": "reccolectivopuente79",
+   "name": "Colectivo Puente",
    "givingDataId": "GD-2038",
-   "type": "Grantee",
-   "thesisTags": [
-    "field learning"
-   ],
-   "geography": "Kenya",
-   "stage": "Active grantee",
-   "relationshipOwner": "David Kang",
-   "source": "Inbound - fund cohort",
-   "lastTouchpoint": "2024-04-03"
-  },
-  {
-   "id": "recriverbendpartners60",
-   "name": "Riverbend Partners",
-   "givingDataId": "GD-2039",
-   "type": "Former grantee",
-   "thesisTags": [
-    "field learning"
-   ],
-   "geography": "United States",
-   "stage": "Closed grant",
-   "relationshipOwner": "David Kang",
-   "source": "Inbound - fund cohort",
-   "lastTouchpoint": "2024-02-03"
-  },
-  {
-   "id": "recinukatrust65",
-   "name": "Inuka Trust",
-   "givingDataId": "GD-2040",
-   "type": "Former grantee",
-   "thesisTags": [
-    "AI for career navigation"
-   ],
-   "geography": "Kenya",
-   "stage": "Closed grant",
-   "relationshipOwner": "Leah Fischer",
-   "source": "Conference intro",
-   "lastTouchpoint": "2024-12-25"
-  },
-  {
-   "id": "recnorthgatecenter83",
-   "name": "Northgate Center",
-   "givingDataId": "GD-2041",
    "type": "Grantee",
    "thesisTags": [
     "credential completion"
    ],
+   "geography": "Colombia",
+   "stage": "Active grantee",
+   "relationshipOwner": "Nadia Haddad",
+   "source": "Inbound - fund cohort",
+   "lastTouchpoint": "2024-04-03"
+  },
+  {
+   "id": "recbrightpathcarecollective60",
+   "name": "Brightpath Care Collective",
+   "givingDataId": "GD-2039",
+   "type": "Grantee",
+   "thesisTags": [
+    "measurement infrastructure"
+   ],
    "geography": "United States",
    "stage": "Active grantee",
    "relationshipOwner": "Amara Boateng",
-   "source": "Conference intro",
-   "lastTouchpoint": "2026-05-17"
+   "source": "Inbound - fund cohort",
+   "lastTouchpoint": "2024-02-03"
   },
   {
-   "id": "rechaldencenter10",
-   "name": "Halden Center",
-   "givingDataId": "GD-2042",
+   "id": "rectujengeinstitute65",
+   "name": "Tujenge Institute",
+   "givingDataId": "GD-2040",
    "type": "Grantee",
-   "thesisTags": [
-    "automation transition"
-   ],
-   "geography": "United States",
-   "stage": "Active grantee",
-   "relationshipOwner": "Priya Raman",
-   "source": "Conference intro",
-   "lastTouchpoint": "2026-11-14"
-  },
-  {
-   "id": "recbrightpathcoalition18",
-   "name": "Brightpath Coalition",
-   "givingDataId": "GD-2043",
-   "type": "Former grantee",
-   "thesisTags": [
-    "evidence synthesis"
-   ],
-   "geography": "United States",
-   "stage": "Closed grant",
-   "relationshipOwner": "Priya Raman",
-   "source": "Referred by co-funder",
-   "lastTouchpoint": "2024-03-14"
-  },
-  {
-   "id": "recgroundworkworks31",
-   "name": "Groundwork Works",
-   "givingDataId": "GD-2044",
-   "type": "Former grantee",
-   "thesisTags": [
-    "field learning"
-   ],
-   "geography": "United States",
-   "stage": "Closed grant",
-   "relationshipOwner": "Sofia Restrepo",
-   "source": "Conference intro",
-   "lastTouchpoint": "2026-02-02"
-  },
-  {
-   "id": "recthresholdcollaborative43",
-   "name": "Threshold Collaborative",
-   "givingDataId": "GD-2045",
-   "type": "Grantee",
-   "thesisTags": [
-    "field learning"
-   ],
-   "geography": "United States",
-   "stage": "Active grantee",
-   "relationshipOwner": "Nadia Haddad",
-   "source": "Referred by co-funder",
-   "lastTouchpoint": "2026-05-20"
-  },
-  {
-   "id": "reckeystonecollaborative90",
-   "name": "Keystone Collaborative",
-   "givingDataId": "GD-2046",
-   "type": "Grantee",
-   "thesisTags": [
-    "AI for workforce systems"
-   ],
-   "geography": "United States",
-   "stage": "Active grantee",
-   "relationshipOwner": "Ruth Mensah",
-   "source": "Conference intro",
-   "lastTouchpoint": "2026-04-19"
-  },
-  {
-   "id": "recpamojainitiative46",
-   "name": "Pamoja Initiative",
-   "givingDataId": "GD-2047",
-   "type": "Former grantee",
    "thesisTags": [
     "automation transition"
    ],
    "geography": "Kenya",
-   "stage": "Closed grant",
-   "relationshipOwner": "Nadia Haddad",
+   "stage": "Active grantee",
+   "relationshipOwner": "Ruth Mensah",
    "source": "Conference intro",
-   "lastTouchpoint": "2025-09-13"
+   "lastTouchpoint": "2024-12-25"
   },
   {
-   "id": "reccrosswalkinitiative50",
-   "name": "Crosswalk Initiative",
-   "givingDataId": "GD-2048",
+   "id": "recsouthlinelabs83",
+   "name": "Southline Labs",
+   "givingDataId": "GD-2041",
+   "type": "Grantee",
+   "thesisTags": [
+    "job quality"
+   ],
+   "geography": "United States",
+   "stage": "Active grantee",
+   "relationshipOwner": "Priya Raman",
+   "source": "Conference intro",
+   "lastTouchpoint": "2026-05-17"
+  },
+  {
+   "id": "recbrightpathlabs10",
+   "name": "Brightpath Labs",
+   "givingDataId": "GD-2042",
    "type": "Grantee",
    "thesisTags": [
     "worker power"
    ],
    "geography": "United States",
    "stage": "Active grantee",
-   "relationshipOwner": "Dana Okafor",
+   "relationshipOwner": "Leah Fischer",
+   "source": "Conference intro",
+   "lastTouchpoint": "2026-11-14"
+  },
+  {
+   "id": "reckindredproject18",
+   "name": "Kindred Project",
+   "givingDataId": "GD-2043",
+   "type": "Grantee",
+   "thesisTags": [],
+   "geography": "United States",
+   "stage": "Active grantee",
+   "relationshipOwner": "Marcus Bell",
+   "source": "Referred by co-funder",
+   "lastTouchpoint": "2024-03-14"
+  },
+  {
+   "id": "recmwangazaworks31",
+   "name": "Mwangaza Works",
+   "givingDataId": "GD-2044",
+   "type": "Grantee",
+   "thesisTags": [
+    "advanced energy jobs"
+   ],
+   "geography": "Kenya",
+   "stage": "Active grantee",
+   "relationshipOwner": "Marcus Bell",
+   "source": "Conference intro",
+   "lastTouchpoint": "2026-02-02"
+  },
+  {
+   "id": "recrootworkinitiative43",
+   "name": "Rootwork Initiative",
+   "givingDataId": "GD-2045",
+   "type": "Grantee",
+   "thesisTags": [
+    "care economy"
+   ],
+   "geography": "United States",
+   "stage": "Active grantee",
+   "relationshipOwner": "Ruth Mensah",
+   "source": "Referred by co-funder",
+   "lastTouchpoint": "2026-05-20"
+  },
+  {
+   "id": "recjengainitiative90",
+   "name": "Jenga Initiative",
+   "givingDataId": "GD-2046",
+   "type": "Grantee",
+   "thesisTags": [
+    "credential completion"
+   ],
+   "geography": "Kenya",
+   "stage": "Active grantee",
+   "relationshipOwner": "Sofia Restrepo",
+   "source": "Conference intro",
+   "lastTouchpoint": "2026-04-19"
+  },
+  {
+   "id": "recjunctioninitiative46",
+   "name": "Junction Initiative",
+   "givingDataId": "GD-2047",
+   "type": "Grantee",
+   "thesisTags": [
+    "sectoral training"
+   ],
+   "geography": "United States",
+   "stage": "Active grantee",
+   "relationshipOwner": "Sofia Restrepo",
+   "source": "Conference intro",
+   "lastTouchpoint": "2025-09-13"
+  },
+  {
+   "id": "recpathwisecoalition50",
+   "name": "Pathwise Coalition",
+   "givingDataId": "GD-2048",
+   "type": "Grantee",
+   "thesisTags": [],
+   "geography": "United States",
+   "stage": "Active grantee",
+   "relationshipOwner": "Sofia Restrepo",
    "source": "Open RFP",
    "lastTouchpoint": "2026-04-12"
   },
   {
-   "id": "reccrosswalkinitiative41",
-   "name": "Crosswalk Initiative",
+   "id": "recpathwisecoalition41",
+   "name": "Pathwise Coalition",
    "givingDataId": null,
    "type": "Prospect",
    "thesisTags": [],
@@ -742,55 +746,51 @@
    "lastTouchpoint": "2024-07-09"
   },
   {
-   "id": "reckindredpartners95",
-   "name": "Kindred Partners",
+   "id": "reccorporacinadelante95",
+   "name": "Corporación Adelante",
    "givingDataId": "GD-2049",
-   "type": "Grantee",
+   "type": "Former grantee",
    "thesisTags": [
-    "field learning"
+    "AI for benefits access"
    ],
-   "geography": "United States",
-   "stage": "Active grantee",
-   "relationshipOwner": "Marcus Bell",
+   "geography": "Colombia",
+   "stage": "Closed grant",
+   "relationshipOwner": "Ruth Mensah",
    "source": "Prior relationship",
    "lastTouchpoint": "2025-08-17"
   },
   {
-   "id": "recharborcoalition47",
-   "name": "Harbor Coalition",
+   "id": "reclanternguild47",
+   "name": "Lantern Guild",
    "givingDataId": "GD-2050",
    "type": "Grantee",
-   "thesisTags": [
-    "evidence synthesis"
-   ],
+   "thesisTags": [],
    "geography": "United States",
    "stage": "Active grantee",
-   "relationshipOwner": "Sofia Restrepo",
+   "relationshipOwner": "Ruth Mensah",
    "source": "Inbound - fund cohort",
    "lastTouchpoint": "2026-03-02"
   },
   {
-   "id": "rectrailheadcoalition27",
-   "name": "Trailhead Coalition",
+   "id": "recpathwiselabs27",
+   "name": "Pathwise Labs",
    "givingDataId": "GD-2051",
    "type": "Grantee",
    "thesisTags": [
-    "measurement infrastructure"
+    "care economy"
    ],
    "geography": "United States",
-   "stage": "Active grantee",
-   "relationshipOwner": "Dana Okafor",
+   "stage": "Pipeline",
+   "relationshipOwner": "Nadia Haddad",
    "source": "Prior relationship",
    "lastTouchpoint": "2025-08-02"
   },
   {
-   "id": "recupliftinstitute16",
-   "name": "Uplift Institute",
+   "id": "recpathwisecenter16",
+   "name": "Pathwise Center",
    "givingDataId": "GD-2052",
    "type": "Grantee",
-   "thesisTags": [
-    "AI for workforce systems"
-   ],
+   "thesisTags": [],
    "geography": "United States",
    "stage": "Active grantee",
    "relationshipOwner": "Amara Boateng",
@@ -798,238 +798,82 @@
    "lastTouchpoint": "2024-02-10"
   },
   {
-   "id": "recfundacinhorizonte91",
-   "name": "Fundación Horizonte",
+   "id": "reccommonworkproject91",
+   "name": "Commonwork Project",
    "givingDataId": "GD-2053",
-   "type": "Grantee",
-   "thesisTags": [
-    "credential completion"
-   ],
-   "geography": "Colombia",
-   "stage": "Active grantee",
-   "relationshipOwner": "Sofia Restrepo",
-   "source": "Conference intro",
-   "lastTouchpoint": "2024-12-22"
-  },
-  {
-   "id": "recmeridianguild82",
-   "name": "Meridian Guild",
-   "givingDataId": "GD-2054",
-   "type": "Grantee",
-   "thesisTags": [],
-   "geography": "United States",
-   "stage": "Active grantee",
-   "relationshipOwner": "Dana Okafor",
-   "source": "Referred by co-funder",
-   "lastTouchpoint": "2024-02-05"
-  },
-  {
-   "id": "recnextstepguild59",
-   "name": "Nextstep Guild",
-   "givingDataId": "GD-2055",
-   "type": "Grantee",
-   "thesisTags": [
-    "automation transition"
-   ],
-   "geography": "United States",
-   "stage": "Active grantee",
-   "relationshipOwner": "Sofia Restrepo",
-   "source": "Inbound - fund cohort",
-   "lastTouchpoint": "2025-10-18"
-  },
-  {
-   "id": "recbrightpathlabs25",
-   "name": "Brightpath Labs",
-   "givingDataId": "GD-2056",
-   "type": "Grantee",
-   "thesisTags": [
-    "benefits navigation"
-   ],
-   "geography": "United States",
-   "stage": "Active grantee",
-   "relationshipOwner": "Amara Boateng",
-   "source": "Prior relationship",
-   "lastTouchpoint": "2026-02-23"
-  },
-  {
-   "id": "recriverbendsociety14",
-   "name": "Riverbend Society",
-   "givingDataId": "GD-2057",
-   "type": "Grantee",
-   "thesisTags": [
-    "AI for career navigation"
-   ],
-   "geography": "United States",
-   "stage": "Active grantee",
-   "relationshipOwner": "Sofia Restrepo",
-   "source": "Referred by co-funder",
-   "lastTouchpoint": "2025-09-19"
-  },
-  {
-   "id": "reccornerstoneskillsalliance32",
-   "name": "Cornerstone Skills Alliance",
-   "givingDataId": "GD-2058",
-   "type": "Grantee",
-   "thesisTags": [
-    "evidence synthesis"
-   ],
-   "geography": "United States",
-   "stage": "Active grantee",
-   "relationshipOwner": "Marcus Bell",
-   "source": "Prior relationship",
-   "lastTouchpoint": "2024-01-10"
-  },
-  {
-   "id": "recmeridianpartners70",
-   "name": "Meridian Partners",
-   "givingDataId": "GD-2059",
-   "type": "Grantee",
-   "thesisTags": [
-    "field learning"
-   ],
-   "geography": "United States",
-   "stage": "Active grantee",
-   "relationshipOwner": "Marcus Bell",
-   "source": "Referred by co-funder",
-   "lastTouchpoint": "2025-11-07"
-  },
-  {
-   "id": "recwayfinderproject14",
-   "name": "Wayfinder Project",
-   "givingDataId": "GD-2060",
-   "type": "Grantee",
-   "thesisTags": [
-    "AI for career navigation"
-   ],
-   "geography": "United States",
-   "stage": "Active grantee",
-   "relationshipOwner": "Leah Fischer",
-   "source": "Prior relationship",
-   "lastTouchpoint": "2026-06-05"
-  },
-  {
-   "id": "reckeystonecarecollective12",
-   "name": "Keystone Care Collective",
-   "givingDataId": "GD-2061",
-   "type": "Grantee",
-   "thesisTags": [
-    "credential completion"
-   ],
-   "geography": "United States",
-   "stage": "Active grantee",
-   "relationshipOwner": "Amara Boateng",
-   "source": "Conference intro",
-   "lastTouchpoint": "2025-05-21"
-  },
-  {
-   "id": "reccolectivoprogreso31",
-   "name": "Colectivo Progreso",
-   "givingDataId": "GD-2062",
-   "type": "Grantee",
-   "thesisTags": [
-    "measurement infrastructure"
-   ],
-   "geography": "Colombia",
-   "stage": "Active grantee",
-   "relationshipOwner": "Dana Okafor",
-   "source": "Inbound - fund cohort",
-   "lastTouchpoint": "2024-07-06"
-  },
-  {
-   "id": "recpamojainstitute83",
-   "name": "Pamoja Institute",
-   "givingDataId": "GD-2063",
    "type": "Grantee",
    "thesisTags": [
     "AI for service delivery"
    ],
-   "geography": "Kenya",
+   "geography": "United States",
    "stage": "Active grantee",
-   "relationshipOwner": "Leah Fischer",
-   "source": "Referred by co-funder",
-   "lastTouchpoint": "2024-01-24"
+   "relationshipOwner": "Marcus Bell",
+   "source": "Conference intro",
+   "lastTouchpoint": "2024-12-22"
   },
   {
-   "id": "rechaldenworks78",
-   "name": "Halden Works",
-   "givingDataId": "GD-2064",
+   "id": "recmwangazahub82",
+   "name": "Mwangaza Hub",
+   "givingDataId": "GD-2054",
+   "type": "Grantee",
+   "thesisTags": [],
+   "geography": "Kenya",
+   "stage": "Active grantee",
+   "relationshipOwner": "Amara Boateng",
+   "source": "Referred by co-funder",
+   "lastTouchpoint": "2024-02-05"
+  },
+  {
+   "id": "recthresholdinstitute59",
+   "name": "Threshold Institute",
+   "givingDataId": "GD-2055",
    "type": "Grantee",
    "thesisTags": [],
    "geography": "United States",
    "stage": "Active grantee",
-   "relationshipOwner": "Priya Raman",
-   "source": "Open RFP",
-   "lastTouchpoint": "2026-10-11"
+   "relationshipOwner": "Nadia Haddad",
+   "source": "Inbound - fund cohort",
+   "lastTouchpoint": "2025-10-18"
   },
   {
-   "id": "recamkahub51",
-   "name": "Amka Hub",
-   "givingDataId": "GD-2065",
+   "id": "recbridgeworkspartners25",
+   "name": "Bridgeworks Partners",
+   "givingDataId": "GD-2056",
    "type": "Grantee",
    "thesisTags": [
-    "AI for career navigation"
-   ],
-   "geography": "Kenya",
-   "stage": "Active grantee",
-   "relationshipOwner": "Marcus Bell",
-   "source": "Conference intro",
-   "lastTouchpoint": "2024-10-15"
-  },
-  {
-   "id": "reckeystoneguild72",
-   "name": "Keystone Guild",
-   "givingDataId": "GD-2066",
-   "type": "Grantee",
-   "thesisTags": [
-    "evidence synthesis"
+    "sectoral training"
    ],
    "geography": "United States",
-   "stage": "Active grantee",
-   "relationshipOwner": "Priya Raman",
-   "source": "Inbound - fund cohort",
-   "lastTouchpoint": "2025-11-01"
+   "stage": "Pipeline",
+   "relationshipOwner": "Sofia Restrepo",
+   "source": "Prior relationship",
+   "lastTouchpoint": "2026-02-23"
   },
   {
-   "id": "reccolectivohorizonte24",
-   "name": "Colectivo Horizonte",
-   "givingDataId": "GD-2067",
+   "id": "reclanternproject14",
+   "name": "Lantern Project",
+   "givingDataId": "GD-2057",
    "type": "Grantee",
-   "thesisTags": [
-    "AI for workforce systems"
-   ],
-   "geography": "Colombia",
-   "stage": "Active grantee",
-   "relationshipOwner": "Marcus Bell",
-   "source": "Inbound - fund cohort",
-   "lastTouchpoint": "2025-11-08"
-  },
-  {
-   "id": "recanchorskillsalliance95",
-   "name": "Anchor Skills Alliance",
-   "givingDataId": "GD-2068",
-   "type": "Grantee",
-   "thesisTags": [
-    "measurement infrastructure"
-   ],
+   "thesisTags": [],
    "geography": "United States",
    "stage": "Active grantee",
-   "relationshipOwner": "Leah Fischer",
-   "source": "Conference intro",
-   "lastTouchpoint": "2024-08-18"
+   "relationshipOwner": "Tomas Nguyen",
+   "source": "Referred by co-funder",
+   "lastTouchpoint": "2025-09-19"
   },
   {
-   "id": "recnorthgateworks61",
+   "id": "recnorthgateworks32",
    "name": "Northgate Works",
-   "givingDataId": "GD-2069",
+   "givingDataId": "GD-2058",
    "type": "Grantee",
    "thesisTags": [
-    "benefits navigation"
+    "advanced energy jobs"
    ],
    "geography": "United States",
    "stage": "Active grantee",
    "relationshipOwner": "Nadia Haddad",
-   "source": "Inbound - fund cohort",
-   "lastTouchpoint": "2026-02-02"
+   "source": "Prior relationship",
+   "lastTouchpoint": "2024-01-10"
   }
  ],
  "contacts": [
@@ -1043,11 +887,272 @@
    "notes": ""
   },
   {
-   "id": "consteadycooperative1",
-   "orgId": "recsteadycooperative73",
+   "id": "concommonworkcooperative1",
+   "orgId": "reccommonworkcooperative73",
    "name": "[VP Programs]",
    "title": "Director of Impact",
-   "workEmail": "contact@example-steady-coope.org",
+   "workEmail": "contact@example-commonwork-c.org",
+   "personalPhone": "REDACTED",
+   "notes": ""
+  },
+  {
+   "id": "contrailheadlabs1",
+   "orgId": "rectrailheadlabs83",
+   "name": "[Director of Impact]",
+   "title": "VP, Programs",
+   "workEmail": "contact@example-trailhead-la.org",
+   "personalPhone": "REDACTED",
+   "notes": ""
+  },
+  {
+   "id": "concrosswalklabs1",
+   "orgId": "reccrosswalklabs95",
+   "name": "[Chief of Staff]",
+   "title": "Director of Impact",
+   "workEmail": "contact@example-crosswalk-la.org",
+   "personalPhone": "REDACTED",
+   "notes": "Report is late — chase before the board meeting."
+  },
+  {
+   "id": "confoundryinstitute1",
+   "orgId": "recfoundryinstitute56",
+   "name": "[Director of Impact]",
+   "title": "Director of Impact",
+   "workEmail": "contact@example-foundry-inst.org",
+   "personalPhone": "REDACTED",
+   "notes": ""
+  },
+  {
+   "id": "conriverbendlabs1",
+   "orgId": "recriverbendlabs91",
+   "name": "[VP Programs]",
+   "title": "VP, Programs",
+   "workEmail": "contact@example-riverbend-la.org",
+   "personalPhone": "REDACTED",
+   "notes": ""
+  },
+  {
+   "id": "conriverbendcarecollective1",
+   "orgId": "recriverbendcarecollective39",
+   "name": "[VP Programs]",
+   "title": "VP, Programs",
+   "workEmail": "contact@example-riverbend-ca.org",
+   "personalPhone": "REDACTED",
+   "notes": ""
+  },
+  {
+   "id": "concedarlinecarecollective1",
+   "orgId": "reccedarlinecarecollective24",
+   "name": "[Executive Director]",
+   "title": "VP, Programs",
+   "workEmail": "contact@example-cedarline-ca.org",
+   "personalPhone": "REDACTED",
+   "notes": "Report is late — chase before the board meeting."
+  },
+  {
+   "id": "concolectivohorizonte1",
+   "orgId": "reccolectivohorizonte91",
+   "name": "[Chief of Staff]",
+   "title": "Director of Impact",
+   "workEmail": "contact@example-colectivo-ho.org",
+   "personalPhone": "REDACTED",
+   "notes": ""
+  },
+  {
+   "id": "connextsteppartners1",
+   "orgId": "recnextsteppartners28",
+   "name": "[Director of Impact]",
+   "title": "Executive Director",
+   "workEmail": "contact@example-nextstep-par.org",
+   "personalPhone": "REDACTED",
+   "notes": ""
+  },
+  {
+   "id": "conwayfinderlabs1",
+   "orgId": "recwayfinderlabs32",
+   "name": "[VP Programs]",
+   "title": "VP, Programs",
+   "workEmail": "contact@example-wayfinder-la.org",
+   "personalPhone": "REDACTED",
+   "notes": "Report is late — chase before the board meeting."
+  },
+  {
+   "id": "coninstitutoraces1",
+   "orgId": "recinstitutoraces35",
+   "name": "[Director of Impact]",
+   "title": "VP, Programs",
+   "workEmail": "contact@example-instituto-ra.org",
+   "personalPhone": "REDACTED",
+   "notes": ""
+  },
+  {
+   "id": "confoundrycenter1",
+   "orgId": "recfoundrycenter37",
+   "name": "[Executive Director]",
+   "title": "Director of Impact",
+   "workEmail": "contact@example-foundry-cent.org",
+   "personalPhone": "REDACTED",
+   "notes": ""
+  },
+  {
+   "id": "concommonworkproject1",
+   "orgId": "reccommonworkproject97",
+   "name": "[Director of Impact]",
+   "title": "Director of Impact",
+   "workEmail": "contact@example-commonwork-p.org",
+   "personalPhone": "REDACTED",
+   "notes": ""
+  },
+  {
+   "id": "conzawadicollective1",
+   "orgId": "reczawadicollective61",
+   "name": "[Executive Director]",
+   "title": "Executive Director",
+   "workEmail": "contact@example-zawadi-colle.org",
+   "personalPhone": "REDACTED",
+   "notes": ""
+  },
+  {
+   "id": "conmarrowcooperative1",
+   "orgId": "recmarrowcooperative58",
+   "name": "[VP Programs]",
+   "title": "VP, Programs",
+   "workEmail": "contact@example-marrow-coope.org",
+   "personalPhone": "REDACTED",
+   "notes": "Report is late — chase before the board meeting."
+  },
+  {
+   "id": "concornerstonecarecollective1",
+   "orgId": "reccornerstonecarecollective81",
+   "name": "[Chief of Staff]",
+   "title": "VP, Programs",
+   "workEmail": "contact@example-cornerstone-.org",
+   "personalPhone": "REDACTED",
+   "notes": "Report is late — chase before the board meeting."
+  },
+  {
+   "id": "concedarlineskillsalliance1",
+   "orgId": "reccedarlineskillsalliance67",
+   "name": "[Director of Impact]",
+   "title": "Executive Director",
+   "workEmail": "contact@example-cedarline-sk.org",
+   "personalPhone": "REDACTED",
+   "notes": ""
+  },
+  {
+   "id": "contujengecollective1",
+   "orgId": "rectujengecollective93",
+   "name": "[Executive Director]",
+   "title": "VP, Programs",
+   "workEmail": "contact@example-tujenge-coll.org",
+   "personalPhone": "REDACTED",
+   "notes": "Report is late — chase before the board meeting."
+  },
+  {
+   "id": "confieldstonecarecollective1",
+   "orgId": "recfieldstonecarecollective78",
+   "name": "[Executive Director]",
+   "title": "VP, Programs",
+   "workEmail": "contact@example-fieldstone-c.org",
+   "personalPhone": "REDACTED",
+   "notes": ""
+  },
+  {
+   "id": "conpathwiseinstitute1",
+   "orgId": "recpathwiseinstitute77",
+   "name": "[Director of Impact]",
+   "title": "VP, Programs",
+   "workEmail": "contact@example-pathwise-ins.org",
+   "personalPhone": "REDACTED",
+   "notes": ""
+  },
+  {
+   "id": "connorthgatecarecollective1",
+   "orgId": "recnorthgatecarecollective50",
+   "name": "[Chief of Staff]",
+   "title": "VP, Programs",
+   "workEmail": "contact@example-northgate-ca.org",
+   "personalPhone": "REDACTED",
+   "notes": ""
+  },
+  {
+   "id": "conwayfindersociety1",
+   "orgId": "recwayfindersociety76",
+   "name": "[Director of Impact]",
+   "title": "Director of Impact",
+   "workEmail": "contact@example-wayfinder-so.org",
+   "personalPhone": "REDACTED",
+   "notes": ""
+  },
+  {
+   "id": "conrootworkguild1",
+   "orgId": "recrootworkguild45",
+   "name": "[Executive Director]",
+   "title": "Director of Impact",
+   "workEmail": "contact@example-rootwork-gui.org",
+   "personalPhone": "REDACTED",
+   "notes": ""
+  },
+  {
+   "id": "concrosswalkskillsalliance1",
+   "orgId": "reccrosswalkskillsalliance84",
+   "name": "[Director of Impact]",
+   "title": "VP, Programs",
+   "workEmail": "contact@example-crosswalk-sk.org",
+   "personalPhone": "REDACTED",
+   "notes": ""
+  },
+  {
+   "id": "concornerstonecollaborative1",
+   "orgId": "reccornerstonecollaborative47",
+   "name": "[Executive Director]",
+   "title": "Executive Director",
+   "workEmail": "contact@example-cornerstone-.org",
+   "personalPhone": "REDACTED",
+   "notes": "Report is late — chase before the board meeting."
+  },
+  {
+   "id": "conbridgeworksworks1",
+   "orgId": "recbridgeworksworks48",
+   "name": "[Director of Impact]",
+   "title": "Director of Impact",
+   "workEmail": "contact@example-bridgeworks-.org",
+   "personalPhone": "REDACTED",
+   "notes": "Report is late — chase before the board meeting."
+  },
+  {
+   "id": "conwayfinderproject1",
+   "orgId": "recwayfinderproject96",
+   "name": "[VP Programs]",
+   "title": "Executive Director",
+   "workEmail": "contact@example-wayfinder-pr.org",
+   "personalPhone": "REDACTED",
+   "notes": ""
+  },
+  {
+   "id": "conjunctioncollaborative1",
+   "orgId": "recjunctioncollaborative77",
+   "name": "[Chief of Staff]",
+   "title": "VP, Programs",
+   "workEmail": "contact@example-junction-col.org",
+   "personalPhone": "REDACTED",
+   "notes": ""
+  },
+  {
+   "id": "conrootworkguild1",
+   "orgId": "recrootworkguild64",
+   "name": "[Chief of Staff]",
+   "title": "Executive Director",
+   "workEmail": "contact@example-rootwork-gui.org",
+   "personalPhone": "REDACTED",
+   "notes": ""
+  },
+  {
+   "id": "connextstepskillsalliance1",
+   "orgId": "recnextstepskillsalliance52",
+   "name": "[Director of Impact]",
+   "title": "Executive Director",
+   "workEmail": "contact@example-nextstep-ski.org",
    "personalPhone": "REDACTED",
    "notes": ""
   },
@@ -1061,604 +1166,244 @@
    "notes": ""
   },
   {
-   "id": "confairwindcarecollective1",
-   "orgId": "recfairwindcarecollective95",
-   "name": "[Chief of Staff]",
-   "title": "Director of Impact",
-   "workEmail": "contact@example-fairwind-car.org",
-   "personalPhone": "REDACTED",
-   "notes": "Report is late — chase before the board meeting."
-  },
-  {
-   "id": "coninstitutoprogreso1",
-   "orgId": "recinstitutoprogreso56",
-   "name": "[Director of Impact]",
-   "title": "Director of Impact",
-   "workEmail": "contact@example-instituto-pr.org",
-   "personalPhone": "REDACTED",
-   "notes": ""
-  },
-  {
-   "id": "conbridgeworkssociety1",
-   "orgId": "recbridgeworkssociety91",
-   "name": "[VP Programs]",
-   "title": "VP, Programs",
-   "workEmail": "contact@example-bridgeworks-.org",
-   "personalPhone": "REDACTED",
-   "notes": ""
-  },
-  {
-   "id": "conmarrowsociety1",
-   "orgId": "recmarrowsociety39",
-   "name": "[VP Programs]",
-   "title": "VP, Programs",
-   "workEmail": "contact@example-marrow-socie.org",
-   "personalPhone": "REDACTED",
-   "notes": ""
-  },
-  {
-   "id": "conhaldennetwork1",
-   "orgId": "rechaldennetwork24",
-   "name": "[Executive Director]",
-   "title": "VP, Programs",
-   "workEmail": "contact@example-halden-netwo.org",
-   "personalPhone": "REDACTED",
-   "notes": "Report is late — chase before the board meeting."
-  },
-  {
-   "id": "conredpuente1",
-   "orgId": "recredpuente91",
-   "name": "[Chief of Staff]",
-   "title": "Director of Impact",
-   "workEmail": "contact@example-red-puente.org",
-   "personalPhone": "REDACTED",
-   "notes": ""
-  },
-  {
-   "id": "conamkainitiative1",
-   "orgId": "recamkainitiative28",
-   "name": "[Director of Impact]",
-   "title": "Executive Director",
-   "workEmail": "contact@example-amka-initiat.org",
-   "personalPhone": "REDACTED",
-   "notes": ""
-  },
-  {
-   "id": "confoundryworks1",
-   "orgId": "recfoundryworks32",
-   "name": "[VP Programs]",
-   "title": "VP, Programs",
-   "workEmail": "contact@example-foundry-work.org",
-   "personalPhone": "REDACTED",
-   "notes": "Report is late — chase before the board meeting."
-  },
-  {
-   "id": "conthresholdcenter1",
-   "orgId": "recthresholdcenter35",
+   "id": "congroundworkproject1",
+   "orgId": "recgroundworkproject25",
    "name": "[Director of Impact]",
    "title": "VP, Programs",
-   "workEmail": "contact@example-threshold-ce.org",
-   "personalPhone": "REDACTED",
-   "notes": ""
-  },
-  {
-   "id": "conlanterncoalition1",
-   "orgId": "reclanterncoalition37",
-   "name": "[Executive Director]",
-   "title": "Director of Impact",
-   "workEmail": "contact@example-lantern-coal.org",
-   "personalPhone": "REDACTED",
-   "notes": ""
-  },
-  {
-   "id": "conmarrowcollaborative1",
-   "orgId": "recmarrowcollaborative97",
-   "name": "[Director of Impact]",
-   "title": "Director of Impact",
-   "workEmail": "contact@example-marrow-colla.org",
-   "personalPhone": "REDACTED",
-   "notes": ""
-  },
-  {
-   "id": "concolectivocamino1",
-   "orgId": "reccolectivocamino61",
-   "name": "[Executive Director]",
-   "title": "Executive Director",
-   "workEmail": "contact@example-colectivo-ca.org",
-   "personalPhone": "REDACTED",
-   "notes": ""
-  },
-  {
-   "id": "conzawaditrust1",
-   "orgId": "reczawaditrust58",
-   "name": "[VP Programs]",
-   "title": "VP, Programs",
-   "workEmail": "contact@example-zawadi-trust.org",
-   "personalPhone": "REDACTED",
-   "notes": "Report is late — chase before the board meeting."
-  },
-  {
-   "id": "concommonworkproject1",
-   "orgId": "reccommonworkproject81",
-   "name": "[Chief of Staff]",
-   "title": "VP, Programs",
-   "workEmail": "contact@example-commonwork-p.org",
-   "personalPhone": "REDACTED",
-   "notes": "Report is late — chase before the board meeting."
-  },
-  {
-   "id": "connextstepproject1",
-   "orgId": "recnextstepproject67",
-   "name": "[Director of Impact]",
-   "title": "Executive Director",
-   "workEmail": "contact@example-nextstep-pro.org",
-   "personalPhone": "REDACTED",
-   "notes": ""
-  },
-  {
-   "id": "congroundworkcarecollective1",
-   "orgId": "recgroundworkcarecollective93",
-   "name": "[Executive Director]",
-   "title": "VP, Programs",
-   "workEmail": "contact@example-groundwork-c.org",
-   "personalPhone": "REDACTED",
-   "notes": "Report is late — chase before the board meeting."
-  },
-  {
-   "id": "conpathwisesociety1",
-   "orgId": "recpathwisesociety78",
-   "name": "[Executive Director]",
-   "title": "VP, Programs",
-   "workEmail": "contact@example-pathwise-soc.org",
-   "personalPhone": "REDACTED",
-   "notes": ""
-  },
-  {
-   "id": "conmwangazaworks1",
-   "orgId": "recmwangazaworks77",
-   "name": "[Director of Impact]",
-   "title": "VP, Programs",
-   "workEmail": "contact@example-mwangaza-wor.org",
-   "personalPhone": "REDACTED",
-   "notes": ""
-  },
-  {
-   "id": "connextstepcooperative1",
-   "orgId": "recnextstepcooperative50",
-   "name": "[Chief of Staff]",
-   "title": "VP, Programs",
-   "workEmail": "contact@example-nextstep-coo.org",
-   "personalPhone": "REDACTED",
-   "notes": ""
-  },
-  {
-   "id": "connorthgatelabs1",
-   "orgId": "recnorthgatelabs76",
-   "name": "[Director of Impact]",
-   "title": "Director of Impact",
-   "workEmail": "contact@example-northgate-la.org",
-   "personalPhone": "REDACTED",
-   "notes": ""
-  },
-  {
-   "id": "conriverbendinstitute1",
-   "orgId": "recriverbendinstitute45",
-   "name": "[Executive Director]",
-   "title": "Director of Impact",
-   "workEmail": "contact@example-riverbend-in.org",
-   "personalPhone": "REDACTED",
-   "notes": ""
-  },
-  {
-   "id": "concommonworkskillsalliance1",
-   "orgId": "reccommonworkskillsalliance84",
-   "name": "[Director of Impact]",
-   "title": "VP, Programs",
-   "workEmail": "contact@example-commonwork-s.org",
-   "personalPhone": "REDACTED",
-   "notes": ""
-  },
-  {
-   "id": "conbridgeworksinitiative1",
-   "orgId": "recbridgeworksinitiative47",
-   "name": "[Executive Director]",
-   "title": "Executive Director",
-   "workEmail": "contact@example-bridgeworks-.org",
-   "personalPhone": "REDACTED",
-   "notes": "Report is late — chase before the board meeting."
-  },
-  {
-   "id": "conanchorcarecollective1",
-   "orgId": "recanchorcarecollective48",
-   "name": "[Director of Impact]",
-   "title": "Director of Impact",
-   "workEmail": "contact@example-anchor-care-.org",
-   "personalPhone": "REDACTED",
-   "notes": "Report is late — chase before the board meeting."
-  },
-  {
-   "id": "coninukaworks1",
-   "orgId": "recinukaworks96",
-   "name": "[VP Programs]",
-   "title": "Executive Director",
-   "workEmail": "contact@example-inuka-works.org",
-   "personalPhone": "REDACTED",
-   "notes": ""
-  },
-  {
-   "id": "consouthlineguild1",
-   "orgId": "recsouthlineguild77",
-   "name": "[Chief of Staff]",
-   "title": "VP, Programs",
-   "workEmail": "contact@example-southline-gu.org",
-   "personalPhone": "REDACTED",
-   "notes": ""
-  },
-  {
-   "id": "connextstepproject1",
-   "orgId": "recnextstepproject64",
-   "name": "[Chief of Staff]",
-   "title": "Executive Director",
-   "workEmail": "contact@example-nextstep-pro.org",
-   "personalPhone": "REDACTED",
-   "notes": ""
-  },
-  {
-   "id": "concolectivoraces1",
-   "orgId": "reccolectivoraces52",
-   "name": "[Director of Impact]",
-   "title": "Executive Director",
-   "workEmail": "contact@example-colectivo-ra.org",
-   "personalPhone": "REDACTED",
-   "notes": ""
-  },
-  {
-   "id": "confundacinenlace1",
-   "orgId": "recfundacinenlace83",
-   "name": "[Director of Impact]",
-   "title": "VP, Programs",
-   "workEmail": "contact@example-fundaci-n-en.org",
-   "personalPhone": "REDACTED",
-   "notes": ""
-  },
-  {
-   "id": "concolectivopuente1",
-   "orgId": "reccolectivopuente25",
-   "name": "[Director of Impact]",
-   "title": "VP, Programs",
-   "workEmail": "contact@example-colectivo-pu.org",
-   "personalPhone": "REDACTED",
-   "notes": ""
-  },
-  {
-   "id": "concolectivoprogreso1",
-   "orgId": "reccolectivoprogreso65",
-   "name": "[VP Programs]",
-   "title": "Director of Impact",
-   "workEmail": "contact@example-colectivo-pr.org",
-   "personalPhone": "REDACTED",
-   "notes": ""
-  },
-  {
-   "id": "contujengeworks1",
-   "orgId": "rectujengeworks76",
-   "name": "[Chief of Staff]",
-   "title": "Executive Director",
-   "workEmail": "contact@example-tujenge-work.org",
-   "personalPhone": "REDACTED",
-   "notes": ""
-  },
-  {
-   "id": "connorthgatesociety1",
-   "orgId": "recnorthgatesociety22",
-   "name": "[VP Programs]",
-   "title": "VP, Programs",
-   "workEmail": "contact@example-northgate-so.org",
-   "personalPhone": "REDACTED",
-   "notes": ""
-  },
-  {
-   "id": "consouthlinecoalition1",
-   "orgId": "recsouthlinecoalition97",
-   "name": "[Executive Director]",
-   "title": "VP, Programs",
-   "workEmail": "contact@example-southline-co.org",
-   "personalPhone": "REDACTED",
-   "notes": ""
-  },
-  {
-   "id": "confieldstonecooperative1",
-   "orgId": "recfieldstonecooperative97",
-   "name": "[VP Programs]",
-   "title": "Executive Director",
-   "workEmail": "contact@example-fieldstone-c.org",
-   "personalPhone": "REDACTED",
-   "notes": "Report is late — chase before the board meeting."
-  },
-  {
-   "id": "connuruinstitute1",
-   "orgId": "recnuruinstitute79",
-   "name": "[VP Programs]",
-   "title": "Executive Director",
-   "workEmail": "contact@example-nuru-institu.org",
-   "personalPhone": "REDACTED",
-   "notes": ""
-  },
-  {
-   "id": "conriverbendpartners1",
-   "orgId": "recriverbendpartners60",
-   "name": "[Chief of Staff]",
-   "title": "Director of Impact",
-   "workEmail": "contact@example-riverbend-pa.org",
+   "workEmail": "contact@example-groundwork-p.org",
    "personalPhone": "REDACTED",
    "notes": ""
   },
   {
    "id": "coninukatrust1",
    "orgId": "recinukatrust65",
-   "name": "[Director of Impact]",
+   "name": "[VP Programs]",
    "title": "Director of Impact",
    "workEmail": "contact@example-inuka-trust.org",
    "personalPhone": "REDACTED",
    "notes": ""
   },
   {
-   "id": "connorthgatecenter1",
-   "orgId": "recnorthgatecenter83",
-   "name": "[VP Programs]",
-   "title": "Executive Director",
-   "workEmail": "contact@example-northgate-ce.org",
-   "personalPhone": "REDACTED",
-   "notes": ""
-  },
-  {
-   "id": "conhaldencenter1",
-   "orgId": "rechaldencenter10",
-   "name": "[Director of Impact]",
-   "title": "VP, Programs",
-   "workEmail": "contact@example-halden-cente.org",
-   "personalPhone": "REDACTED",
-   "notes": ""
-  },
-  {
-   "id": "conbrightpathcoalition1",
-   "orgId": "recbrightpathcoalition18",
+   "id": "concedarlinepartners1",
+   "orgId": "reccedarlinepartners76",
    "name": "[Chief of Staff]",
    "title": "Executive Director",
+   "workEmail": "contact@example-cedarline-pa.org",
+   "personalPhone": "REDACTED",
+   "notes": ""
+  },
+  {
+   "id": "congroundworksociety1",
+   "orgId": "recgroundworksociety22",
+   "name": "[VP Programs]",
+   "title": "VP, Programs",
+   "workEmail": "contact@example-groundwork-s.org",
+   "personalPhone": "REDACTED",
+   "notes": ""
+  },
+  {
+   "id": "coninstitutoraces1",
+   "orgId": "recinstitutoraces97",
+   "name": "[Executive Director]",
+   "title": "VP, Programs",
+   "workEmail": "contact@example-instituto-ra.org",
+   "personalPhone": "REDACTED",
+   "notes": ""
+  },
+  {
+   "id": "coninstitutoenlace1",
+   "orgId": "recinstitutoenlace97",
+   "name": "[VP Programs]",
+   "title": "Executive Director",
+   "workEmail": "contact@example-instituto-en.org",
+   "personalPhone": "REDACTED",
+   "notes": "Report is late — chase before the board meeting."
+  },
+  {
+   "id": "concolectivopuente1",
+   "orgId": "reccolectivopuente79",
+   "name": "[VP Programs]",
+   "title": "Executive Director",
+   "workEmail": "contact@example-colectivo-pu.org",
+   "personalPhone": "REDACTED",
+   "notes": ""
+  },
+  {
+   "id": "conbrightpathcarecollective1",
+   "orgId": "recbrightpathcarecollective60",
+   "name": "[Chief of Staff]",
+   "title": "Director of Impact",
    "workEmail": "contact@example-brightpath-c.org",
    "personalPhone": "REDACTED",
    "notes": ""
   },
   {
-   "id": "congroundworkworks1",
-   "orgId": "recgroundworkworks31",
-   "name": "[Executive Director]",
-   "title": "VP, Programs",
-   "workEmail": "contact@example-groundwork-w.org",
-   "personalPhone": "REDACTED",
-   "notes": ""
-  },
-  {
-   "id": "conthresholdcollaborative1",
-   "orgId": "recthresholdcollaborative43",
+   "id": "contujengeinstitute1",
+   "orgId": "rectujengeinstitute65",
    "name": "[Director of Impact]",
    "title": "Director of Impact",
-   "workEmail": "contact@example-threshold-co.org",
+   "workEmail": "contact@example-tujenge-inst.org",
    "personalPhone": "REDACTED",
    "notes": ""
   },
   {
-   "id": "conkeystonecollaborative1",
-   "orgId": "reckeystonecollaborative90",
-   "name": "[Director of Impact]",
-   "title": "Executive Director",
-   "workEmail": "contact@example-keystone-col.org",
-   "personalPhone": "REDACTED",
-   "notes": ""
-  },
-  {
-   "id": "conpamojainitiative1",
-   "orgId": "recpamojainitiative46",
-   "name": "[Director of Impact]",
-   "title": "Executive Director",
-   "workEmail": "contact@example-pamoja-initi.org",
-   "personalPhone": "REDACTED",
-   "notes": ""
-  },
-  {
-   "id": "concrosswalkinitiative1",
-   "orgId": "reccrosswalkinitiative50",
-   "name": "[Executive Director]",
-   "title": "Executive Director",
-   "workEmail": "contact@example-crosswalk-in.org",
-   "personalPhone": "REDACTED",
-   "notes": "Report is late — chase before the board meeting."
-  },
-  {
-   "id": "conkindredpartners1",
-   "orgId": "reckindredpartners95",
-   "name": "[Director of Impact]",
-   "title": "Director of Impact",
-   "workEmail": "contact@example-kindred-part.org",
-   "personalPhone": "REDACTED",
-   "notes": ""
-  },
-  {
-   "id": "conharborcoalition1",
-   "orgId": "recharborcoalition47",
-   "name": "[Executive Director]",
-   "title": "Director of Impact",
-   "workEmail": "contact@example-harbor-coali.org",
-   "personalPhone": "REDACTED",
-   "notes": ""
-  },
-  {
-   "id": "contrailheadcoalition1",
-   "orgId": "rectrailheadcoalition27",
-   "name": "[Executive Director]",
-   "title": "Director of Impact",
-   "workEmail": "contact@example-trailhead-co.org",
-   "personalPhone": "REDACTED",
-   "notes": ""
-  },
-  {
-   "id": "conupliftinstitute1",
-   "orgId": "recupliftinstitute16",
+   "id": "consouthlinelabs1",
+   "orgId": "recsouthlinelabs83",
    "name": "[VP Programs]",
    "title": "Executive Director",
-   "workEmail": "contact@example-uplift-insti.org",
-   "personalPhone": "REDACTED",
-   "notes": ""
-  },
-  {
-   "id": "confundacinhorizonte1",
-   "orgId": "recfundacinhorizonte91",
-   "name": "[Chief of Staff]",
-   "title": "Director of Impact",
-   "workEmail": "contact@example-fundaci-n-ho.org",
-   "personalPhone": "REDACTED",
-   "notes": "Report is late — chase before the board meeting."
-  },
-  {
-   "id": "conmeridianguild1",
-   "orgId": "recmeridianguild82",
-   "name": "[VP Programs]",
-   "title": "VP, Programs",
-   "workEmail": "contact@example-meridian-gui.org",
-   "personalPhone": "REDACTED",
-   "notes": ""
-  },
-  {
-   "id": "connextstepguild1",
-   "orgId": "recnextstepguild59",
-   "name": "[Executive Director]",
-   "title": "VP, Programs",
-   "workEmail": "contact@example-nextstep-gui.org",
+   "workEmail": "contact@example-southline-la.org",
    "personalPhone": "REDACTED",
    "notes": ""
   },
   {
    "id": "conbrightpathlabs1",
-   "orgId": "recbrightpathlabs25",
-   "name": "[Chief of Staff]",
-   "title": "Director of Impact",
+   "orgId": "recbrightpathlabs10",
+   "name": "[Director of Impact]",
+   "title": "VP, Programs",
    "workEmail": "contact@example-brightpath-l.org",
+   "personalPhone": "REDACTED",
+   "notes": ""
+  },
+  {
+   "id": "conkindredproject1",
+   "orgId": "reckindredproject18",
+   "name": "[Chief of Staff]",
+   "title": "Executive Director",
+   "workEmail": "contact@example-kindred-proj.org",
+   "personalPhone": "REDACTED",
+   "notes": ""
+  },
+  {
+   "id": "conmwangazaworks1",
+   "orgId": "recmwangazaworks31",
+   "name": "[Executive Director]",
+   "title": "VP, Programs",
+   "workEmail": "contact@example-mwangaza-wor.org",
+   "personalPhone": "REDACTED",
+   "notes": ""
+  },
+  {
+   "id": "conrootworkinitiative1",
+   "orgId": "recrootworkinitiative43",
+   "name": "[Director of Impact]",
+   "title": "Director of Impact",
+   "workEmail": "contact@example-rootwork-ini.org",
+   "personalPhone": "REDACTED",
+   "notes": ""
+  },
+  {
+   "id": "conjengainitiative1",
+   "orgId": "recjengainitiative90",
+   "name": "[Director of Impact]",
+   "title": "Executive Director",
+   "workEmail": "contact@example-jenga-initia.org",
+   "personalPhone": "REDACTED",
+   "notes": ""
+  },
+  {
+   "id": "conjunctioninitiative1",
+   "orgId": "recjunctioninitiative46",
+   "name": "[Director of Impact]",
+   "title": "Executive Director",
+   "workEmail": "contact@example-junction-ini.org",
+   "personalPhone": "REDACTED",
+   "notes": ""
+  },
+  {
+   "id": "conpathwisecoalition1",
+   "orgId": "recpathwisecoalition50",
+   "name": "[Executive Director]",
+   "title": "Executive Director",
+   "workEmail": "contact@example-pathwise-coa.org",
    "personalPhone": "REDACTED",
    "notes": "Report is late — chase before the board meeting."
   },
   {
-   "id": "conriverbendsociety1",
-   "orgId": "recriverbendsociety14",
+   "id": "concorporacinadelante1",
+   "orgId": "reccorporacinadelante95",
+   "name": "[Director of Impact]",
+   "title": "Director of Impact",
+   "workEmail": "contact@example-corporaci-n-.org",
+   "personalPhone": "REDACTED",
+   "notes": ""
+  },
+  {
+   "id": "conlanternguild1",
+   "orgId": "reclanternguild47",
    "name": "[Executive Director]",
    "title": "Director of Impact",
-   "workEmail": "contact@example-riverbend-so.org",
+   "workEmail": "contact@example-lantern-guil.org",
    "personalPhone": "REDACTED",
    "notes": ""
   },
   {
-   "id": "concornerstoneskillsalliance1",
-   "orgId": "reccornerstoneskillsalliance32",
-   "name": "[Director of Impact]",
+   "id": "conpathwiselabs1",
+   "orgId": "recpathwiselabs27",
+   "name": "[Executive Director]",
+   "title": "Director of Impact",
+   "workEmail": "contact@example-pathwise-lab.org",
+   "personalPhone": "REDACTED",
+   "notes": ""
+  },
+  {
+   "id": "conpathwisecenter1",
+   "orgId": "recpathwisecenter16",
+   "name": "[VP Programs]",
    "title": "Executive Director",
-   "workEmail": "contact@example-cornerstone-.org",
+   "workEmail": "contact@example-pathwise-cen.org",
    "personalPhone": "REDACTED",
    "notes": ""
   },
   {
-   "id": "conmeridianpartners1",
-   "orgId": "recmeridianpartners70",
-   "name": "[Chief of Staff]",
-   "title": "VP, Programs",
-   "workEmail": "contact@example-meridian-par.org",
-   "personalPhone": "REDACTED",
-   "notes": ""
-  },
-  {
-   "id": "conwayfinderproject1",
-   "orgId": "recwayfinderproject14",
+   "id": "concommonworkproject1",
+   "orgId": "reccommonworkproject91",
    "name": "[Chief of Staff]",
    "title": "Director of Impact",
-   "workEmail": "contact@example-wayfinder-pr.org",
+   "workEmail": "contact@example-commonwork-p.org",
    "personalPhone": "REDACTED",
-   "notes": ""
+   "notes": "Report is late — chase before the board meeting."
   },
   {
-   "id": "conkeystonecarecollective1",
-   "orgId": "reckeystonecarecollective12",
+   "id": "conmwangazahub1",
+   "orgId": "recmwangazahub82",
    "name": "[VP Programs]",
    "title": "VP, Programs",
-   "workEmail": "contact@example-keystone-car.org",
+   "workEmail": "contact@example-mwangaza-hub.org",
    "personalPhone": "REDACTED",
    "notes": ""
   },
   {
-   "id": "concolectivoprogreso1",
-   "orgId": "reccolectivoprogreso31",
-   "name": "[Director of Impact]",
-   "title": "Executive Director",
-   "workEmail": "contact@example-colectivo-pr.org",
-   "personalPhone": "REDACTED",
-   "notes": ""
-  },
-  {
-   "id": "conpamojainstitute1",
-   "orgId": "recpamojainstitute83",
+   "id": "conthresholdinstitute1",
+   "orgId": "recthresholdinstitute59",
    "name": "[Executive Director]",
-   "title": "Executive Director",
-   "workEmail": "contact@example-pamoja-insti.org",
+   "title": "VP, Programs",
+   "workEmail": "contact@example-threshold-in.org",
    "personalPhone": "REDACTED",
    "notes": ""
   },
   {
-   "id": "conhaldenworks1",
-   "orgId": "rechaldenworks78",
+   "id": "conbridgeworkspartners1",
+   "orgId": "recbridgeworkspartners25",
    "name": "[Chief of Staff]",
-   "title": "VP, Programs",
-   "workEmail": "contact@example-halden-works.org",
+   "title": "Director of Impact",
+   "workEmail": "contact@example-bridgeworks-.org",
    "personalPhone": "REDACTED",
-   "notes": ""
+   "notes": "Report is late — chase before the board meeting."
   },
   {
-   "id": "conamkahub1",
-   "orgId": "recamkahub51",
+   "id": "conlanternproject1",
+   "orgId": "reclanternproject14",
    "name": "[Executive Director]",
-   "title": "VP, Programs",
-   "workEmail": "contact@example-amka-hub.org",
-   "personalPhone": "REDACTED",
-   "notes": ""
-  },
-  {
-   "id": "conkeystoneguild1",
-   "orgId": "reckeystoneguild72",
-   "name": "[Executive Director]",
-   "title": "Executive Director",
-   "workEmail": "contact@example-keystone-gui.org",
-   "personalPhone": "REDACTED",
-   "notes": ""
-  },
-  {
-   "id": "concolectivohorizonte1",
-   "orgId": "reccolectivohorizonte24",
-   "name": "[VP Programs]",
-   "title": "VP, Programs",
-   "workEmail": "contact@example-colectivo-ho.org",
-   "personalPhone": "REDACTED",
-   "notes": ""
-  },
-  {
-   "id": "conanchorskillsalliance1",
-   "orgId": "recanchorskillsalliance95",
-   "name": "[VP Programs]",
-   "title": "Executive Director",
-   "workEmail": "contact@example-anchor-skill.org",
+   "title": "Director of Impact",
+   "workEmail": "contact@example-lantern-proj.org",
    "personalPhone": "REDACTED",
    "notes": ""
   },
   {
    "id": "connorthgateworks1",
-   "orgId": "recnorthgateworks61",
+   "orgId": "recnorthgateworks32",
    "name": "[Director of Impact]",
-   "title": "Director of Impact",
+   "title": "Executive Director",
    "workEmail": "contact@example-northgate-wo.org",
    "personalPhone": "REDACTED",
    "notes": ""
@@ -1666,19 +1411,19 @@
  ],
  "interactions": [
   {
-   "id": "intfairwindcarecollective7",
-   "orgId": "recfairwindcarecollective95",
+   "id": "intcrosswalklabs7",
+   "orgId": "reccrosswalklabs95",
    "date": "2026-11-11",
    "type": "Site visit",
    "summary": "Site visit — completion strong, placement is the gap.",
    "attendees": [
-    "Sofia Restrepo"
+    "David Kang"
    ],
    "tier": "programs-only"
   },
   {
-   "id": "intinstitutoprogreso4",
-   "orgId": "recinstitutoprogreso56",
+   "id": "intfoundryinstitute4",
+   "orgId": "recfoundryinstitute56",
    "date": "2025-11-05",
    "type": "Site visit",
    "summary": "Site visit — completion strong, placement is the gap.",
@@ -1688,98 +1433,43 @@
    "tier": "programs-only"
   },
   {
-   "id": "intbridgeworkssociety3",
-   "orgId": "recbridgeworkssociety91",
+   "id": "intriverbendlabs3",
+   "orgId": "recriverbendlabs91",
    "date": "2026-07-16",
    "type": "Site visit",
    "summary": "Site visit — completion strong, placement is the gap.",
-   "attendees": [
-    "Tomas Nguyen"
-   ],
-   "tier": "programs-only"
-  },
-  {
-   "id": "intmarrowsociety6",
-   "orgId": "recmarrowsociety39",
-   "date": "2026-02-24",
-   "type": "Check-in",
-   "summary": "Reviewed the reporting template change with the grantee.",
-   "attendees": [
-    "Amara Boateng"
-   ],
-   "tier": "programs-only"
-  },
-  {
-   "id": "inthaldennetwork9",
-   "orgId": "rechaldennetwork24",
-   "date": "2025-11-09",
-   "type": "Check-in",
-   "summary": "Reviewed the reporting template change with the grantee.",
-   "attendees": [
-    "Marcus Bell"
-   ],
-   "tier": "programs-only"
-  },
-  {
-   "id": "intredpuente7",
-   "orgId": "recredpuente91",
-   "date": "2026-09-26",
-   "type": "Email",
-   "summary": "Renewal-scoping conversation; grantee expects pace to recover next year.",
-   "attendees": [
-    "David Kang"
-   ],
-   "tier": "programs-only"
-  },
-  {
-   "id": "intfoundryworks4",
-   "orgId": "recfoundryworks32",
-   "date": "2026-11-21",
-   "type": "Call",
-   "summary": "Discussed a revised ramp given a slower start.",
-   "attendees": [
-    "Marcus Bell"
-   ],
-   "tier": "programs-only"
-  },
-  {
-   "id": "intthresholdcenter5",
-   "orgId": "recthresholdcenter35",
-   "date": "2026-01-26",
-   "type": "Check-in",
-   "summary": "Site visit — completion strong, placement is the gap.",
-   "attendees": [
-    "Amara Boateng"
-   ],
-   "tier": "programs-only"
-  },
-  {
-   "id": "intnextstepproject1",
-   "orgId": "recnextstepproject67",
-   "date": "2026-01-14",
-   "type": "Email",
-   "summary": "Discussed a revised ramp given a slower start.",
    "attendees": [
     "Ruth Mensah"
    ],
    "tier": "programs-only"
   },
   {
-   "id": "intpathwisesociety3",
-   "orgId": "recpathwisesociety78",
-   "date": "2026-04-06",
-   "type": "Site visit",
-   "summary": "Discussed a revised ramp given a slower start.",
+   "id": "intriverbendcarecollective6",
+   "orgId": "recriverbendcarecollective39",
+   "date": "2026-02-24",
+   "type": "Check-in",
+   "summary": "Reviewed the reporting template change with the grantee.",
    "attendees": [
-    "Leah Fischer"
+    "Tomas Nguyen"
    ],
    "tier": "programs-only"
   },
   {
-   "id": "intnextstepcooperative7",
-   "orgId": "recnextstepcooperative50",
-   "date": "2025-06-09",
-   "type": "Site visit",
+   "id": "intcedarlinecarecollective9",
+   "orgId": "reccedarlinecarecollective24",
+   "date": "2025-11-09",
+   "type": "Check-in",
+   "summary": "Reviewed the reporting template change with the grantee.",
+   "attendees": [
+    "Dana Okafor"
+   ],
+   "tier": "programs-only"
+  },
+  {
+   "id": "intcolectivohorizonte7",
+   "orgId": "reccolectivohorizonte91",
+   "date": "2026-09-26",
+   "type": "Email",
    "summary": "Renewal-scoping conversation; grantee expects pace to recover next year.",
    "attendees": [
     "Nadia Haddad"
@@ -1787,43 +1477,76 @@
    "tier": "programs-only"
   },
   {
-   "id": "intnorthgatelabs7",
-   "orgId": "recnorthgatelabs76",
+   "id": "intwayfinderlabs4",
+   "orgId": "recwayfinderlabs32",
+   "date": "2026-11-21",
+   "type": "Call",
+   "summary": "Discussed a revised ramp given a slower start.",
+   "attendees": [
+    "Leah Fischer"
+   ],
+   "tier": "programs-only"
+  },
+  {
+   "id": "intinstitutoraces5",
+   "orgId": "recinstitutoraces35",
+   "date": "2026-01-26",
+   "type": "Check-in",
+   "summary": "Site visit — completion strong, placement is the gap.",
+   "attendees": [
+    "Nadia Haddad"
+   ],
+   "tier": "programs-only"
+  },
+  {
+   "id": "intcedarlineskillsalliance1",
+   "orgId": "reccedarlineskillsalliance67",
+   "date": "2026-01-14",
+   "type": "Email",
+   "summary": "Discussed a revised ramp given a slower start.",
+   "attendees": [
+    "Dana Okafor"
+   ],
+   "tier": "programs-only"
+  },
+  {
+   "id": "intfieldstonecarecollective3",
+   "orgId": "recfieldstonecarecollective78",
+   "date": "2026-04-06",
+   "type": "Site visit",
+   "summary": "Discussed a revised ramp given a slower start.",
+   "attendees": [
+    "Marcus Bell"
+   ],
+   "tier": "programs-only"
+  },
+  {
+   "id": "intnorthgatecarecollective7",
+   "orgId": "recnorthgatecarecollective50",
+   "date": "2025-06-09",
+   "type": "Site visit",
+   "summary": "Renewal-scoping conversation; grantee expects pace to recover next year.",
+   "attendees": [
+    "Marcus Bell"
+   ],
+   "tier": "programs-only"
+  },
+  {
+   "id": "intwayfindersociety7",
+   "orgId": "recwayfindersociety76",
    "date": "2025-02-15",
    "type": "Site visit",
    "summary": "Site visit — completion strong, placement is the gap.",
    "attendees": [
-    "Ruth Mensah"
+    "Dana Okafor"
    ],
    "tier": "programs-only"
   },
   {
-   "id": "intriverbendinstitute4",
-   "orgId": "recriverbendinstitute45",
+   "id": "introotworkguild4",
+   "orgId": "recrootworkguild45",
    "date": "2025-01-14",
    "type": "Email",
-   "summary": "Reviewed the reporting template change with the grantee.",
-   "attendees": [
-    "Ruth Mensah"
-   ],
-   "tier": "programs-only"
-  },
-  {
-   "id": "intinukaworks6",
-   "orgId": "recinukaworks96",
-   "date": "2025-01-25",
-   "type": "Site visit",
-   "summary": "Site visit — completion strong, placement is the gap.",
-   "attendees": [
-    "Sofia Restrepo"
-   ],
-   "tier": "programs-only"
-  },
-  {
-   "id": "intsouthlineguild2",
-   "orgId": "recsouthlineguild77",
-   "date": "2026-06-19",
-   "type": "Site visit",
    "summary": "Reviewed the reporting template change with the grantee.",
    "attendees": [
     "Marcus Bell"
@@ -1831,41 +1554,63 @@
    "tier": "programs-only"
   },
   {
-   "id": "intnextstepproject2",
-   "orgId": "recnextstepproject64",
-   "date": "2025-01-04",
-   "type": "Check-in",
+   "id": "intwayfinderproject6",
+   "orgId": "recwayfinderproject96",
+   "date": "2025-01-25",
+   "type": "Site visit",
    "summary": "Site visit — completion strong, placement is the gap.",
    "attendees": [
-    "Dana Okafor"
+    "Priya Raman"
    ],
    "tier": "programs-only"
   },
   {
-   "id": "intfundacinenlace4",
-   "orgId": "recfundacinenlace83",
-   "date": "2025-11-20",
-   "type": "Call",
+   "id": "intjunctioncollaborative2",
+   "orgId": "recjunctioncollaborative77",
+   "date": "2026-06-19",
+   "type": "Site visit",
    "summary": "Reviewed the reporting template change with the grantee.",
+   "attendees": [
+    "Tomas Nguyen"
+   ],
+   "tier": "programs-only"
+  },
+  {
+   "id": "introotworkguild2",
+   "orgId": "recrootworkguild64",
+   "date": "2025-01-04",
+   "type": "Check-in",
+   "summary": "Site visit — completion strong, placement is the gap.",
    "attendees": [
     "David Kang"
    ],
    "tier": "programs-only"
   },
   {
-   "id": "intcolectivopuente6",
-   "orgId": "reccolectivopuente25",
-   "date": "2025-12-01",
+   "id": "inttujengetrust4",
+   "orgId": "rectujengetrust83",
+   "date": "2025-11-20",
    "type": "Call",
-   "summary": "Site visit — completion strong, placement is the gap.",
+   "summary": "Reviewed the reporting template change with the grantee.",
    "attendees": [
-    "Dana Okafor"
+    "Sofia Restrepo"
    ],
    "tier": "programs-only"
   },
   {
-   "id": "intcolectivoprogreso2",
-   "orgId": "reccolectivoprogreso65",
+   "id": "intgroundworkproject6",
+   "orgId": "recgroundworkproject25",
+   "date": "2025-12-01",
+   "type": "Call",
+   "summary": "Site visit — completion strong, placement is the gap.",
+   "attendees": [
+    "Ruth Mensah"
+   ],
+   "tier": "programs-only"
+  },
+  {
+   "id": "intinukatrust2",
+   "orgId": "recinukatrust65",
    "date": "2025-01-04",
    "type": "Call",
    "summary": "Reviewed the reporting template change with the grantee.",
@@ -1875,8 +1620,8 @@
    "tier": "programs-only"
   },
   {
-   "id": "intnorthgatesociety8",
-   "orgId": "recnorthgatesociety22",
+   "id": "intgroundworksociety8",
+   "orgId": "recgroundworksociety22",
    "date": "2025-11-06",
    "type": "Email",
    "summary": "Discussed a revised ramp given a slower start.",
@@ -1886,32 +1631,54 @@
    "tier": "programs-only"
   },
   {
-   "id": "intsouthlinecoalition2",
-   "orgId": "recsouthlinecoalition97",
+   "id": "intinstitutoraces2",
+   "orgId": "recinstitutoraces97",
    "date": "2026-04-01",
    "type": "Site visit",
    "summary": "Discussed a revised ramp given a slower start.",
    "attendees": [
-    "Sofia Restrepo"
+    "Marcus Bell"
    ],
    "tier": "programs-only"
   },
   {
-   "id": "intfieldstonecooperative8",
-   "orgId": "recfieldstonecooperative97",
+   "id": "intinstitutoenlace8",
+   "orgId": "recinstitutoenlace97",
    "date": "2026-06-18",
    "type": "Check-in",
    "summary": "Site visit — completion strong, placement is the gap.",
    "attendees": [
-    "Nadia Haddad"
+    "Dana Okafor"
    ],
    "tier": "programs-only"
   },
   {
-   "id": "intinukatrust4",
-   "orgId": "recinukatrust65",
+   "id": "inttujengeinstitute4",
+   "orgId": "rectujengeinstitute65",
    "date": "2025-09-02",
    "type": "Email",
+   "summary": "Discussed a revised ramp given a slower start.",
+   "attendees": [
+    "Ruth Mensah"
+   ],
+   "tier": "programs-only"
+  },
+  {
+   "id": "intsouthlinelabs5",
+   "orgId": "recsouthlinelabs83",
+   "date": "2026-03-07",
+   "type": "Check-in",
+   "summary": "Discussed a revised ramp given a slower start.",
+   "attendees": [
+    "Priya Raman"
+   ],
+   "tier": "programs-only"
+  },
+  {
+   "id": "intbrightpathlabs3",
+   "orgId": "recbrightpathlabs10",
+   "date": "2025-02-23",
+   "type": "Check-in",
    "summary": "Discussed a revised ramp given a slower start.",
    "attendees": [
     "Leah Fischer"
@@ -1919,107 +1686,85 @@
    "tier": "programs-only"
   },
   {
-   "id": "intnorthgatecenter5",
-   "orgId": "recnorthgatecenter83",
-   "date": "2026-03-07",
-   "type": "Check-in",
-   "summary": "Discussed a revised ramp given a slower start.",
-   "attendees": [
-    "Amara Boateng"
-   ],
-   "tier": "programs-only"
-  },
-  {
-   "id": "inthaldencenter3",
-   "orgId": "rechaldencenter10",
-   "date": "2025-02-23",
-   "type": "Check-in",
-   "summary": "Discussed a revised ramp given a slower start.",
-   "attendees": [
-    "Priya Raman"
-   ],
-   "tier": "programs-only"
-  },
-  {
-   "id": "intbrightpathcoalition9",
-   "orgId": "recbrightpathcoalition18",
+   "id": "intkindredproject9",
+   "orgId": "reckindredproject18",
    "date": "2026-08-08",
    "type": "Check-in",
    "summary": "Discussed a revised ramp given a slower start.",
-   "attendees": [
-    "Priya Raman"
-   ],
-   "tier": "programs-only"
-  },
-  {
-   "id": "intgroundworkworks7",
-   "orgId": "recgroundworkworks31",
-   "date": "2026-06-09",
-   "type": "Call",
-   "summary": "Site visit — completion strong, placement is the gap.",
-   "attendees": [
-    "Sofia Restrepo"
-   ],
-   "tier": "programs-only"
-  },
-  {
-   "id": "intkeystonecollaborative5",
-   "orgId": "reckeystonecollaborative90",
-   "date": "2025-06-19",
-   "type": "Call",
-   "summary": "Renewal-scoping conversation; grantee expects pace to recover next year.",
-   "attendees": [
-    "Ruth Mensah"
-   ],
-   "tier": "programs-only"
-  },
-  {
-   "id": "intpamojainitiative7",
-   "orgId": "recpamojainitiative46",
-   "date": "2026-12-08",
-   "type": "Email",
-   "summary": "Renewal-scoping conversation; grantee expects pace to recover next year.",
-   "attendees": [
-    "Nadia Haddad"
-   ],
-   "tier": "programs-only"
-  },
-  {
-   "id": "intcrosswalkinitiative4",
-   "orgId": "reccrosswalkinitiative50",
-   "date": "2025-04-12",
-   "type": "Email",
-   "summary": "Renewal-scoping conversation; grantee expects pace to recover next year.",
-   "attendees": [
-    "Dana Okafor"
-   ],
-   "tier": "programs-only"
-  },
-  {
-   "id": "intkindredpartners8",
-   "orgId": "reckindredpartners95",
-   "date": "2025-12-10",
-   "type": "Call",
-   "summary": "Reviewed the reporting template change with the grantee.",
    "attendees": [
     "Marcus Bell"
    ],
    "tier": "programs-only"
   },
   {
-   "id": "inttrailheadcoalition9",
-   "orgId": "rectrailheadcoalition27",
-   "date": "2025-03-25",
-   "type": "Email",
-   "summary": "Discussed a revised ramp given a slower start.",
+   "id": "intmwangazaworks7",
+   "orgId": "recmwangazaworks31",
+   "date": "2026-06-09",
+   "type": "Call",
+   "summary": "Site visit — completion strong, placement is the gap.",
    "attendees": [
-    "Dana Okafor"
+    "Marcus Bell"
    ],
    "tier": "programs-only"
   },
   {
-   "id": "intupliftinstitute8",
-   "orgId": "recupliftinstitute16",
+   "id": "intjengainitiative5",
+   "orgId": "recjengainitiative90",
+   "date": "2025-06-19",
+   "type": "Call",
+   "summary": "Renewal-scoping conversation; grantee expects pace to recover next year.",
+   "attendees": [
+    "Sofia Restrepo"
+   ],
+   "tier": "programs-only"
+  },
+  {
+   "id": "intjunctioninitiative7",
+   "orgId": "recjunctioninitiative46",
+   "date": "2026-12-08",
+   "type": "Email",
+   "summary": "Renewal-scoping conversation; grantee expects pace to recover next year.",
+   "attendees": [
+    "Sofia Restrepo"
+   ],
+   "tier": "programs-only"
+  },
+  {
+   "id": "intpathwisecoalition4",
+   "orgId": "recpathwisecoalition50",
+   "date": "2025-04-12",
+   "type": "Email",
+   "summary": "Renewal-scoping conversation; grantee expects pace to recover next year.",
+   "attendees": [
+    "Sofia Restrepo"
+   ],
+   "tier": "programs-only"
+  },
+  {
+   "id": "intcorporacinadelante8",
+   "orgId": "reccorporacinadelante95",
+   "date": "2025-12-10",
+   "type": "Call",
+   "summary": "Reviewed the reporting template change with the grantee.",
+   "attendees": [
+    "Ruth Mensah"
+   ],
+   "tier": "programs-only"
+  },
+  {
+   "id": "intpathwiselabs9",
+   "orgId": "recpathwiselabs27",
+   "date": "2025-03-25",
+   "type": "Email",
+   "summary": "Discussed a revised ramp given a slower start.",
+   "attendees": [
+    "Nadia Haddad"
+   ],
+   "tier": "programs-only"
+  },
+  {
+   "id": "intpathwisecenter8",
+   "orgId": "recpathwisecenter16",
    "date": "2025-06-21",
    "type": "Call",
    "summary": "Reviewed the reporting template change with the grantee.",
@@ -2029,88 +1774,33 @@
    "tier": "programs-only"
   },
   {
-   "id": "intnextstepguild5",
-   "orgId": "recnextstepguild59",
+   "id": "intthresholdinstitute5",
+   "orgId": "recthresholdinstitute59",
    "date": "2026-09-27",
    "type": "Call",
    "summary": "Site visit — completion strong, placement is the gap.",
+   "attendees": [
+    "Nadia Haddad"
+   ],
+   "tier": "programs-only"
+  },
+  {
+   "id": "intbridgeworkspartners5",
+   "orgId": "recbridgeworkspartners25",
+   "date": "2025-12-21",
+   "type": "Site visit",
+   "summary": "Reviewed the reporting template change with the grantee.",
    "attendees": [
     "Sofia Restrepo"
    ],
    "tier": "programs-only"
   },
   {
-   "id": "intbrightpathlabs5",
-   "orgId": "recbrightpathlabs25",
-   "date": "2025-12-21",
-   "type": "Site visit",
-   "summary": "Reviewed the reporting template change with the grantee.",
-   "attendees": [
-    "Amara Boateng"
-   ],
-   "tier": "programs-only"
-  },
-  {
-   "id": "intcornerstoneskillsalliance4",
-   "orgId": "reccornerstoneskillsalliance32",
+   "id": "intnorthgateworks4",
+   "orgId": "recnorthgateworks32",
    "date": "2025-10-18",
    "type": "Call",
    "summary": "Reviewed the reporting template change with the grantee.",
-   "attendees": [
-    "Marcus Bell"
-   ],
-   "tier": "programs-only"
-  },
-  {
-   "id": "intkeystonecarecollective4",
-   "orgId": "reckeystonecarecollective12",
-   "date": "2026-02-09",
-   "type": "Email",
-   "summary": "Reviewed the reporting template change with the grantee.",
-   "attendees": [
-    "Amara Boateng"
-   ],
-   "tier": "programs-only"
-  },
-  {
-   "id": "intcolectivoprogreso4",
-   "orgId": "reccolectivoprogreso31",
-   "date": "2025-09-10",
-   "type": "Site visit",
-   "summary": "Reviewed the reporting template change with the grantee.",
-   "attendees": [
-    "Dana Okafor"
-   ],
-   "tier": "programs-only"
-  },
-  {
-   "id": "inthaldenworks9",
-   "orgId": "rechaldenworks78",
-   "date": "2026-01-14",
-   "type": "Call",
-   "summary": "Discussed a revised ramp given a slower start.",
-   "attendees": [
-    "Priya Raman"
-   ],
-   "tier": "programs-only"
-  },
-  {
-   "id": "intcolectivohorizonte2",
-   "orgId": "reccolectivohorizonte24",
-   "date": "2025-04-12",
-   "type": "Check-in",
-   "summary": "Renewal-scoping conversation; grantee expects pace to recover next year.",
-   "attendees": [
-    "Marcus Bell"
-   ],
-   "tier": "programs-only"
-  },
-  {
-   "id": "intnorthgateworks9",
-   "orgId": "recnorthgateworks61",
-   "date": "2026-04-06",
-   "type": "Check-in",
-   "summary": "Site visit — completion strong, placement is the gap.",
    "attendees": [
     "Nadia Haddad"
    ],

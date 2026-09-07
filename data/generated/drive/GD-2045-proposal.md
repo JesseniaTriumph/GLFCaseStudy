@@ -1,26 +1,26 @@
 ---
-title: Threshold Collaborative — proposal (GD-2045)
-author: Threshold Collaborative
-date: 2024-07-01
-folder: Learning for Action/2024/Threshold Collaborative
+title: Rootwork Initiative — proposal (GD-2045)
+author: Rootwork Initiative
+date: 2025-01-01
+folder: Powering Economic Opportunity/2025/Rootwork Initiative
 grant: GD-2045
 tier: team
 ---
 
-# Proposal — Threshold Collaborative
+# Proposal — Rootwork Initiative
 
-**Grant:** GD-2045 · **Fund:** Learning for Action · **Geography:** United States
+**Grant:** GD-2045 · **Fund:** Powering Economic Opportunity Fund · **Geography:** United States
 
 ## 1. Problem
-Threshold Collaborative proposes piloting an ai benefits navigator in tennessee.
+Rootwork Initiative proposes strengthening employer-matched apprenticeships in oregon.
 
 ## 2. Approach
 Sectoral partnership with employer commitments; outcomes tracked in the org's data system.
 
-## 3. Projected impact (model v3.5)
-- North Star ratio: 119x
-- Projected annual earnings gain per participant: $10314
-- Projected participants reached: 7245
+## 3. Projected impact (model v4.1)
+- North Star ratio: 40x
+- Projected annual earnings gain per participant: $4474
+- Projected participants reached: 1239
 
 ## 4. Budget
-USD 150,000.
+USD 600,000.

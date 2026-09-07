@@ -1,25 +1,25 @@
 ---
-title: Halden Center — Year 1 report
-author: Halden Center
-date: 2025-04-01
-folder: Future of Work/2024/Halden Center
+title: Brightpath Labs — Year 1 report
+author: Brightpath Labs
+date: 2026-07-13
+folder: Future of Work/2025/Brightpath Labs
 grant: GD-2042
 tier: team
 ---
 
-# Halden Center — Year 1 progress report
+# Brightpath Labs — Year 1 progress report
 
-**Grant:** GD-2042 · As reported 2025-04-01 · Impact model v3.5
+**Grant:** GD-2042 · As reported 2026-07-13 · Impact model v4.1
 
 ## Reach
-Participants reached: 1,770
+Participants reached: 1,086
 
 ## Earnings
-Reported annual earnings gain per participant: $6,070
-Median wage at placement: $22.94/hr (regional baseline $21.74/hr)
+Reported annual earnings gain per participant: $6,938
+Median wage at placement: $15.21/hr (regional baseline $12.45/hr)
 
 ## Narrative
-Year 1: 1,770 participants reached (~34% of target). Placement pace slowed mid-year; median wage at placement $22.94/hr vs a $21.44 regional baseline.
+Year 1: 1,086 participants reached (~22% of target). median wage at placement $15.21/hr vs a $13.71 regional baseline.
 
 ## Data note
 Outcomes are grantee-reported and verified on a sample. No participant identifiers included.

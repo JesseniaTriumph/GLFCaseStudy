@@ -1,16 +1,16 @@
 ---
-title: Foundry Works — proposal (GD-2010)
-author: Foundry Works
-date: 2021-03-01
-folder: Future of Work/2021/Foundry Works
+title: Wayfinder Labs — proposal (GD-2010)
+author: Wayfinder Labs
+date: 2022-01-01
+folder: Learning for Action/2022/Wayfinder Labs
 grant: GD-2010
 tier: team
 ---
 
-# Proposal — Foundry Works
+# Proposal — Wayfinder Labs
 
-Scaling a public-benefits eligibility screener in Michigan. Requested: USD 150,000 over 2021–2023.
+Piloting a sectoral training partnership in Michigan. Requested: USD 250,000 over 2022–2027.
 
-Expected reach: TBD participants. Projected annual earnings gain per participant: $TBD.
+Expected reach: 5997 participants. Projected annual earnings gain per participant: $10924.
 
 (2021–2023 proposal template — narrative sections free-form.)

@@ -1,18 +1,18 @@
 ---
-title: Colectivo Raíces — diligence memo
-author: Amara Boateng
-date: 2023-02-07
-folder: Learning for Action/2023/Colectivo Raíces
+title: Nextstep Skills Alliance — diligence memo
+author: Nadia Haddad
+date: 2024-01-26
+folder: Future of Work/2024/Nextstep Skills Alliance
 grant: GD-2030
 tier: programs-only
 ---
 
-# Diligence memo — Colectivo Raíces (GD-2030)
+# Diligence memo — Nextstep Skills Alliance (GD-2030)
 
-Program officer: Amara Boateng. Learning for Action.
+Program officer: Nadia Haddad. Future of Work Fund.
 
-**Recommendation:** fund at a reduced level pending a revised measurement plan.
+**Recommendation:** fund at the requested level.
 
-**Strengths:** strong local partnerships. **Risks:** scale-up path.
+**Strengths:** existing outcomes data. **Risks:** scale-up path.
 
 Candid note: a reference call raised a minor concern about reporting timeliness. Programs-only.

@@ -1,18 +1,18 @@
 ---
-title: Nextstep Cooperative — diligence memo
-author: Nadia Haddad
-date: 2022-04-16
-folder: Powering Economic Opportunity/2022/Nextstep Cooperative
+title: Northgate Care Collective — diligence memo
+author: Marcus Bell
+date: 2023-03-14
+folder: Learning for Action/2023/Northgate Care Collective
 grant: GD-2021
 tier: programs-only
 ---
 
-# Diligence memo — Nextstep Cooperative (GD-2021)
+# Diligence memo — Northgate Care Collective (GD-2021)
 
-Program officer: Nadia Haddad. Powering Economic Opportunity Fund.
+Program officer: Marcus Bell. Learning for Action.
 
-**Recommendation:** fund at a reduced level pending a revised measurement plan.
+**Recommendation:** fund with a reporting condition on the data layer.
 
-**Strengths:** strong local partnerships. **Risks:** scale-up path.
+**Strengths:** experienced team. **Risks:** concurrent program overlap.
 
-Candid note: the ED is stretched across two initiatives. Programs-only.
+Candid note: prior experience with them was positive. Programs-only.

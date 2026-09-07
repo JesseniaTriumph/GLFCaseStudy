@@ -1,18 +1,18 @@
 ---
-title: Crosswalk Initiative — diligence memo
-author: Dana Okafor
-date: 2025-01-16
-folder: Future of Work/2025/Crosswalk Initiative
+title: Pathwise Coalition — diligence memo
+author: Sofia Restrepo
+date: 2025-03-25
+folder: Future of Work/2025/Pathwise Coalition
 grant: GD-2048
 tier: programs-only
 ---
 
-# Diligence memo — Crosswalk Initiative (GD-2048)
+# Diligence memo — Pathwise Coalition (GD-2048)
 
-Program officer: Dana Okafor. Future of Work Fund.
+Program officer: Sofia Restrepo. Future of Work Fund.
 
-**Recommendation:** fund with a reporting condition on the data layer.
+**Recommendation:** fund at a reduced level pending a revised measurement plan.
 
-**Strengths:** strong local partnerships. **Risks:** data-collection capacity.
+**Strengths:** existing outcomes data. **Risks:** data-collection capacity.
 
-Candid note: board is mid-transition; watch continuity. Programs-only.
+Candid note: prior experience with them was positive. Programs-only.

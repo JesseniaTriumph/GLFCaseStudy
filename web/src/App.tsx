@@ -287,6 +287,18 @@ export function App() {
                     </div>
                     {deepDive && (
                       <div className="dd-body">
+                        {ans.followUps.cycle && ans.followUps.cycle.length > 0 && (
+                          <div className="dd-g">
+                            <h5>Where each grant is in its own cycle</h5>
+                            <ul>
+                              {ans.followUps.cycle.map((c, i) => (
+                                <li key={i}>
+                                  <b>{c.organization ?? c.grantId}</b> <span className="pill-src">{c.stage}</span> {c.summary}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
                         {ans.followUps.gaps.length > 0 && (
                           <div className="dd-g">
                             <h5>What would sharpen this answer</h5>

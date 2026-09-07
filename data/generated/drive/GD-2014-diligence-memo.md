@@ -1,18 +1,18 @@
 ---
-title: Colectivo Camino — diligence memo
+title: Zawadi Collective — diligence memo
 author: Tomas Nguyen
-date: 2022-07-13
-folder: Future of Work/2022/Colectivo Camino
+date: 2022-03-13
+folder: Future of Work/2022/Zawadi Collective
 grant: GD-2014
 tier: programs-only
 ---
 
-# Diligence memo — Colectivo Camino (GD-2014)
+# Diligence memo — Zawadi Collective (GD-2014)
 
 Program officer: Tomas Nguyen. Future of Work Fund.
 
 **Recommendation:** fund at the requested level.
 
-**Strengths:** existing outcomes data. **Risks:** data-collection capacity.
+**Strengths:** clear employer demand. **Risks:** data-collection capacity.
 
-Candid note: prior experience with them was positive. Programs-only.
+Candid note: the ED is stretched across two initiatives. Programs-only.

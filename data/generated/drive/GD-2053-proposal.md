@@ -1,26 +1,26 @@
 ---
-title: Fundación Horizonte — proposal (GD-2053)
-author: Fundación Horizonte
-date: 2025-05-01
-folder: Powering Economic Opportunity/2025/Fundación Horizonte
+title: Commonwork Project — proposal (GD-2053)
+author: Commonwork Project
+date: 2026-06-01
+folder: AI for Economic Opportunity/2026/Commonwork Project
 grant: GD-2053
 tier: team
 ---
 
-# Proposal — Fundación Horizonte
+# Proposal — Commonwork Project
 
-**Grant:** GD-2053 · **Fund:** Powering Economic Opportunity Fund · **Geography:** Colombia
+**Grant:** GD-2053 · **Fund:** AI for Economic Opportunity Fund · **Geography:** United States
 
 ## 1. Problem
-Fundación Horizonte proposes strengthening a caregiver placement network.
+Commonwork Project proposes scaling a wage-transparent placement pipeline in texas.
 
 ## 2. Approach
 Sectoral partnership with employer commitments; outcomes tracked in the org's data system.
 
 ## 3. Projected impact (model v4.1)
-- North Star ratio: 47x
-- Projected annual earnings gain per participant: $10356
-- Projected participants reached: 6916
+- North Star ratio: 113x
+- Projected annual earnings gain per participant: $6869
+- Projected participants reached: 1178
 
 ## 4. Budget
-USD 400,000.
+USD 150,000.

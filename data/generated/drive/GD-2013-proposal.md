@@ -1,15 +1,15 @@
 ---
-title: Marrow Collaborative — proposal (GD-2013)
-author: Marrow Collaborative
-date: 2022-01-01
-folder: AI for Economic Opportunity/2022/Marrow Collaborative
+title: Commonwork Project — proposal (GD-2013)
+author: Commonwork Project
+date: 2022-03-01
+folder: Learning for Action/2022/Commonwork Project
 grant: GD-2013
 tier: team
 ---
 
-# Proposal — Marrow Collaborative
+# Proposal — Commonwork Project
 
-Building employer-matched apprenticeships in Ohio. Requested: USD 100,000 over 2022–2024.
+Testing a rapid-reskilling program in Pennsylvania. Requested: USD 75,000 over 2022–2025.
 
 Expected reach: TBD participants. Projected annual earnings gain per participant: $TBD.
 

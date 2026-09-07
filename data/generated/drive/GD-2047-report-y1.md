@@ -1,25 +1,25 @@
 ---
-title: Pamoja Initiative — Year 1 report
-author: Pamoja Initiative
-date: 2025-03-01
-folder: Future of Work/2024/Pamoja Initiative
+title: Junction Initiative — Q1 Y1 report
+author: Junction Initiative
+date: 2025-09-12
+folder: Future of Work/2025/Junction Initiative
 grant: GD-2047
 tier: team
 ---
 
-# Pamoja Initiative — Year 1 progress report
+# Junction Initiative — Q1 Y1 progress report
 
-**Grant:** GD-2047 · As reported 2025-03-01 · Impact model v3.5
+**Grant:** GD-2047 · As reported 2025-09-12 · Impact model v4.1
 
 ## Reach
-Participants reached: 2,009
+Participants reached: 791
 
 ## Earnings
-Reported annual earnings gain per participant: $4,334
-Median wage at placement: $17.05/hr (regional baseline $15.04/hr)
+Reported annual earnings gain per participant: $7,014
+Median wage at placement: $18.88/hr (regional baseline $17.51/hr)
 
 ## Narrative
-Year 1: 2,009 participants reached (~52% of target). Placement pace slowed mid-year; median wage at placement $17.05/hr vs a $15.55 regional baseline.
+Q1 Y1: 791 participants reached (~10% of target). median wage at placement $18.88/hr vs a $17.38 regional baseline.
 
 ## Data note
 Outcomes are grantee-reported and verified on a sample. No participant identifiers included.

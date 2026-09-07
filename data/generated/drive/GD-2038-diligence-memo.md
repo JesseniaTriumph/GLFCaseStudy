@@ -1,18 +1,18 @@
 ---
-title: Nuru Institute — diligence memo
-author: David Kang
-date: 2024-07-20
-folder: Learning for Action/2024/Nuru Institute
+title: Colectivo Puente — diligence memo
+author: Nadia Haddad
+date: 2025-06-20
+folder: Powering Economic Opportunity/2025/Colectivo Puente
 grant: GD-2038
 tier: programs-only
 ---
 
-# Diligence memo — Nuru Institute (GD-2038)
+# Diligence memo — Colectivo Puente (GD-2038)
 
-Program officer: David Kang. Learning for Action.
+Program officer: Nadia Haddad. Powering Economic Opportunity Fund.
 
 **Recommendation:** fund with a reporting condition on the data layer.
 
-**Strengths:** clear employer demand. **Risks:** concurrent program overlap.
+**Strengths:** experienced team. **Risks:** scale-up path.
 
-Candid note: board is mid-transition; watch continuity. Programs-only.
+Candid note: prior experience with them was positive. Programs-only.

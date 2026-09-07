@@ -1,18 +1,18 @@
 ---
-title: Riverbend Partners — diligence memo
-author: David Kang
-date: 2024-08-12
-folder: Learning for Action/2024/Riverbend Partners
+title: Brightpath Care Collective — diligence memo
+author: Amara Boateng
+date: 2025-06-08
+folder: Learning for Action/2025/Brightpath Care Collective
 grant: GD-2039
 tier: programs-only
 ---
 
-# Diligence memo — Riverbend Partners (GD-2039)
+# Diligence memo — Brightpath Care Collective (GD-2039)
 
-Program officer: David Kang. Learning for Action.
+Program officer: Amara Boateng. Learning for Action.
 
 **Recommendation:** fund with a reporting condition on the data layer.
 
-**Strengths:** existing outcomes data. **Risks:** data-collection capacity.
+**Strengths:** experienced team. **Risks:** concurrent program overlap.
 
 Candid note: board is mid-transition; watch continuity. Programs-only.

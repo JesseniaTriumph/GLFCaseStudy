@@ -55,9 +55,17 @@ const index = await runPipeline([mockGivingData, mockDrive, mockAirtable, mockZo
   corpusLabel: CORPUS.corpusLabel, excludeTiers: [...CORPUS.excludeTiers], notCovered: CORPUS.notCovered, log: () => {},
 });
 
+// reporting cadence distribution — reporting does NOT come in uniformly
+const cadence: Record<string, number> = {};
+for (const fs of factSheets) {
+  const f = (fs.meta.reportingFrequency as string) ?? "unknown";
+  cadence[f] = (cadence[f] ?? 0) + 1;
+}
+
 const line = (n: number, label: string) => `  ${String(n).padStart(4)}  ${label}`;
 console.log(`\nCOMPASS — reconciliation report (full synthetic corpus)\n${"=".repeat(56)}`);
-console.log(`Spine: ${grantIds.size} grants in GivingData\n`);
+console.log(`Spine: ${grantIds.size} grants in GivingData`);
+console.log(`Reporting cadence (per grant, not uniform): ${Object.entries(cadence).map(([k, v]) => `${k} ${v}`).join(" · ")}\n`);
 console.log(`Corpus:`);
 console.log(line(gd.length, "GivingData records (fact sheets, reports, review notes, declined)"));
 console.log(line(drive.length, "Drive documents"));

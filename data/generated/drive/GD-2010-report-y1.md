@@ -1,16 +1,16 @@
 ---
-title: Foundry Works — Year 1 report
-author: Foundry Works
-date: 2022-05-01
-folder: Future of Work/2021/Foundry Works
+title: Wayfinder Labs — Year 1 report
+author: Wayfinder Labs
+date: 2024-02-13
+folder: Learning for Action/2022/Wayfinder Labs
 grant: GD-2010
 tier: team
 ---
 
-# Foundry Works — Year 1
+# Wayfinder Labs — Year 1
 
-Grant GD-2010. As of 2022-05-01. Served 1,338 participants; median wage at placement about $15.39/hr.
+Grant GD-2010. As of 2024-02-13. Served 1,327 participants; median wage at placement about $15.3/hr.
 
-Year 1: 1,338 participants reached (~48% of target). median wage at placement $15.39/hr vs a $13.89 regional baseline.
+Year 1: 1,327 participants reached (~22% of target). Placement pace slowed mid-period; median wage at placement $15.3/hr vs a $13.80 regional baseline.
 
 (Pre-2024 template — no standard sections.)

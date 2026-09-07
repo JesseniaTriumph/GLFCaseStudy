@@ -1,15 +1,15 @@
 ---
-title: Threshold Center — proposal (GD-2011)
-author: Threshold Center
-date: 2021-02-01
-folder: AI for Economic Opportunity/2021/Threshold Center
+title: Instituto Raíces — proposal (GD-2011)
+author: Instituto Raíces
+date: 2022-07-01
+folder: Powering Economic Opportunity/2022/Instituto Raíces
 grant: GD-2011
 tier: team
 ---
 
-# Proposal — Threshold Center
+# Proposal — Instituto Raíces
 
-Testing personalized career coaching in Pennsylvania. Requested: USD 250,000 over 2021–2023.
+Expanding a public-benefits eligibility screener. Requested: USD 75,000 over 2022–2023.
 
 Expected reach: TBD participants. Projected annual earnings gain per participant: $TBD.
 

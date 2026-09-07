@@ -1,18 +1,18 @@
 ---
-title: Fundación Horizonte — diligence memo
-author: Sofia Restrepo
-date: 2025-06-02
-folder: Powering Economic Opportunity/2025/Fundación Horizonte
+title: Commonwork Project — diligence memo
+author: Marcus Bell
+date: 2026-07-01
+folder: AI for Economic Opportunity/2026/Commonwork Project
 grant: GD-2053
 tier: programs-only
 ---
 
-# Diligence memo — Fundación Horizonte (GD-2053)
+# Diligence memo — Commonwork Project (GD-2053)
 
-Program officer: Sofia Restrepo. Powering Economic Opportunity Fund.
+Program officer: Marcus Bell. AI for Economic Opportunity Fund.
 
-**Recommendation:** fund at the requested level.
+**Recommendation:** fund at a reduced level pending a revised measurement plan.
 
-**Strengths:** strong local partnerships. **Risks:** scale-up path.
+**Strengths:** existing outcomes data. **Risks:** scale-up path.
 
-Candid note: a reference call raised a minor concern about reporting timeliness. Programs-only.
+Candid note: the ED is stretched across two initiatives. Programs-only.

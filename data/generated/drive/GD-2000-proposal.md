@@ -9,7 +9,7 @@ tier: team
 
 # Proposal — Crosswalk Coalition
 
-Scaling a sectoral training partnership in New Mexico. Requested: USD 150,000 over 2021–2023.
+Strengthening a caregiver placement network in New Mexico. Requested: USD 150,000 over 2021–2023.
 
 Expected reach: TBD participants. Projected annual earnings gain per participant: $TBD.
 

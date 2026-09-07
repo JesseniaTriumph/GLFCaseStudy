@@ -1,25 +1,25 @@
 ---
-title: Riverbend Partners — Year 1 report
-author: Riverbend Partners
-date: 2025-09-01
-folder: Learning for Action/2024/Riverbend Partners
+title: Brightpath Care Collective — Year 1 report
+author: Brightpath Care Collective
+date: 2026-07-24
+folder: Learning for Action/2025/Brightpath Care Collective
 grant: GD-2039
 tier: team
 ---
 
-# Riverbend Partners — Year 1 progress report
+# Brightpath Care Collective — Year 1 progress report
 
-**Grant:** GD-2039 · As reported 2025-09-01 · Impact model v3.5
+**Grant:** GD-2039 · As reported 2026-07-24 · Impact model v4.1
 
 ## Reach
-Participants reached: 668
+Participants reached: 929
 
 ## Earnings
-Reported annual earnings gain per participant: $5,681
-Median wage at placement: $22.03/hr (regional baseline $19.27/hr)
+Reported annual earnings gain per participant: $4,082
+Median wage at placement: $22.98/hr (regional baseline $20.87/hr)
 
 ## Narrative
-Year 1: 668 participants reached (~54% of target). median wage at placement $22.03/hr vs a $20.53 regional baseline.
+Year 1: 929 participants reached (~16% of target). Placement pace slowed mid-period; median wage at placement $22.98/hr vs a $21.48 regional baseline.
 
 ## Data note
 Outcomes are grantee-reported and verified on a sample. No participant identifiers included.

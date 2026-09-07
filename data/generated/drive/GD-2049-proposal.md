@@ -1,26 +1,26 @@
 ---
-title: Kindred Partners — proposal (GD-2049)
-author: Kindred Partners
-date: 2025-03-01
-folder: Learning for Action/2025/Kindred Partners
+title: Corporación Adelante — proposal (GD-2049)
+author: Corporación Adelante
+date: 2025-01-01
+folder: AI for Economic Opportunity/2025/Corporación Adelante
 grant: GD-2049
 tier: team
 ---
 
-# Proposal — Kindred Partners
+# Proposal — Corporación Adelante
 
-**Grant:** GD-2049 · **Fund:** Learning for Action · **Geography:** United States
+**Grant:** GD-2049 · **Fund:** AI for Economic Opportunity Fund · **Geography:** Colombia
 
 ## 1. Problem
-Kindred Partners proposes testing employer-matched apprenticeships in colorado.
+Corporación Adelante proposes building a sectoral training partnership.
 
 ## 2. Approach
 Sectoral partnership with employer commitments; outcomes tracked in the org's data system.
 
 ## 3. Projected impact (model v4.1)
-- North Star ratio: 84x
-- Projected annual earnings gain per participant: $10460
-- Projected participants reached: 7842
+- North Star ratio: 91x
+- Projected annual earnings gain per participant: $2899
+- Projected participants reached: 6535
 
 ## 4. Budget
-USD 50,000.
+USD 200,000.

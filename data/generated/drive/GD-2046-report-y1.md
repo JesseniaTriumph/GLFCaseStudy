@@ -1,25 +1,25 @@
 ---
-title: Keystone Collaborative — Year 1 report
-author: Keystone Collaborative
-date: 2025-05-01
-folder: AI for Economic Opportunity/2024/Keystone Collaborative
+title: Jenga Initiative — Year 1 report
+author: Jenga Initiative
+date: 2026-06-25
+folder: Powering Economic Opportunity/2025/Jenga Initiative
 grant: GD-2046
 tier: team
 ---
 
-# Keystone Collaborative — Year 1 progress report
+# Jenga Initiative — Year 1 progress report
 
-**Grant:** GD-2046 · As reported 2025-05-01 · Impact model v3.5
+**Grant:** GD-2046 · As reported 2026-06-25 · Impact model v4.1
 
 ## Reach
-Participants reached: 101
+Participants reached: 1,110
 
 ## Earnings
-Reported annual earnings gain per participant: $6,697
-Median wage at placement: $17.04/hr (regional baseline $14.63/hr)
+Reported annual earnings gain per participant: $7,322
+Median wage at placement: $16.94/hr (regional baseline $15.21/hr)
 
 ## Narrative
-Year 1: 101 participants reached (~31% of target). Placement pace slowed mid-year; median wage at placement $17.04/hr vs a $15.54 regional baseline.
+Year 1: 1,110 participants reached (~28% of target). median wage at placement $16.94/hr vs a $15.44 regional baseline.
 
 ## Data note
 Outcomes are grantee-reported and verified on a sample. No participant identifiers included.

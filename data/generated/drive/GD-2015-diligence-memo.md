@@ -1,18 +1,18 @@
 ---
-title: Zawadi Trust — diligence memo
+title: Marrow Cooperative — diligence memo
 author: Tomas Nguyen
-date: 2022-03-21
-folder: AI for Economic Opportunity/2022/Zawadi Trust
+date: 2022-01-24
+folder: Future of Work/2022/Marrow Cooperative
 grant: GD-2015
 tier: programs-only
 ---
 
-# Diligence memo — Zawadi Trust (GD-2015)
+# Diligence memo — Marrow Cooperative (GD-2015)
 
-Program officer: Tomas Nguyen. AI for Economic Opportunity Fund.
+Program officer: Tomas Nguyen. Future of Work Fund.
 
-**Recommendation:** fund at the requested level.
+**Recommendation:** fund with a reporting condition on the data layer.
 
-**Strengths:** clear employer demand. **Risks:** scale-up path.
+**Strengths:** experienced team. **Risks:** data-collection capacity.
 
-Candid note: prior experience with them was positive. Programs-only.
+Candid note: the ED is stretched across two initiatives. Programs-only.

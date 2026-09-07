@@ -1,16 +1,26 @@
 ---
-title: Nextstep Project — proposal (GD-2029)
-author: Nextstep Project
-date: 2023-03-01
-folder: AI for Economic Opportunity/2023/Nextstep Project
+title: Rootwork Guild — proposal (GD-2029)
+author: Rootwork Guild
+date: 2024-07-01
+folder: Learning for Action/2024/Rootwork Guild
 grant: GD-2029
 tier: team
 ---
 
-# Proposal — Nextstep Project
+# Proposal — Rootwork Guild
 
-Building personalized career coaching in North Carolina. Requested: USD 150,000 over 2023–2024.
+**Grant:** GD-2029 · **Fund:** Learning for Action · **Geography:** United States
 
-Expected reach: 5293 participants. Projected annual earnings gain per participant: $7644.
+## 1. Problem
+Rootwork Guild proposes scaling an outcomes data layer in michigan.
 
-(2021–2023 proposal template — narrative sections free-form.)
+## 2. Approach
+Sectoral partnership with employer commitments; outcomes tracked in the org's data system.
+
+## 3. Projected impact (model v3.5)
+- North Star ratio: 142x
+- Projected annual earnings gain per participant: $10519
+- Projected participants reached: 4149
+
+## 4. Budget
+USD 1,400,000.

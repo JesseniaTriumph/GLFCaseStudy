@@ -1,26 +1,26 @@
 ---
-title: Inuka Trust — proposal (GD-2040)
-author: Inuka Trust
-date: 2024-04-01
-folder: AI for Economic Opportunity/2024/Inuka Trust
+title: Tujenge Institute — proposal (GD-2040)
+author: Tujenge Institute
+date: 2025-03-01
+folder: Future of Work/2025/Tujenge Institute
 grant: GD-2040
 tier: team
 ---
 
-# Proposal — Inuka Trust
+# Proposal — Tujenge Institute
 
-**Grant:** GD-2040 · **Fund:** AI for Economic Opportunity Fund · **Geography:** Kenya
+**Grant:** GD-2040 · **Fund:** Future of Work Fund · **Geography:** Kenya
 
 ## 1. Problem
-Inuka Trust proposes expanding personalized career coaching.
+Tujenge Institute proposes building an outcomes data layer.
 
 ## 2. Approach
 Sectoral partnership with employer commitments; outcomes tracked in the org's data system.
 
-## 3. Projected impact (model v3.5)
-- North Star ratio: 26x
-- Projected annual earnings gain per participant: $6450
-- Projected participants reached: 1865
+## 3. Projected impact (model v4.1)
+- North Star ratio: 106x
+- Projected annual earnings gain per participant: $6831
+- Projected participants reached: 7113
 
 ## 4. Budget
-USD 100,000.
+USD 900,000.

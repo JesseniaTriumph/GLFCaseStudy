@@ -1,18 +1,18 @@
 ---
-title: Bridgeworks Society — diligence memo
-author: Tomas Nguyen
-date: 2021-08-09
-folder: Powering Economic Opportunity/2021/Bridgeworks Society
+title: Riverbend Labs — diligence memo
+author: Ruth Mensah
+date: 2021-01-21
+folder: Powering Economic Opportunity/2021/Riverbend Labs
 grant: GD-2005
 tier: programs-only
 ---
 
-# Diligence memo — Bridgeworks Society (GD-2005)
+# Diligence memo — Riverbend Labs (GD-2005)
 
-Program officer: Tomas Nguyen. Powering Economic Opportunity Fund.
+Program officer: Ruth Mensah. Powering Economic Opportunity Fund.
 
-**Recommendation:** fund at the requested level.
+**Recommendation:** fund at a reduced level pending a revised measurement plan.
 
-**Strengths:** strong local partnerships. **Risks:** concurrent program overlap.
+**Strengths:** clear employer demand. **Risks:** concurrent program overlap.
 
-Candid note: a reference call raised a minor concern about reporting timeliness. Programs-only.
+Candid note: board is mid-transition; watch continuity. Programs-only.

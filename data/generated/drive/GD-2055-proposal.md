@@ -1,26 +1,26 @@
 ---
-title: Nextstep Guild — proposal (GD-2055)
-author: Nextstep Guild
-date: 2025-07-01
-folder: Future of Work/2025/Nextstep Guild
+title: Threshold Institute — proposal (GD-2055)
+author: Threshold Institute
+date: 2026-02-01
+folder: Future of Work/2026/Threshold Institute
 grant: GD-2055
 tier: team
 ---
 
-# Proposal — Nextstep Guild
+# Proposal — Threshold Institute
 
 **Grant:** GD-2055 · **Fund:** Future of Work Fund · **Geography:** United States
 
 ## 1. Problem
-Nextstep Guild proposes scaling a rapid-reskilling program in colorado.
+Threshold Institute proposes piloting credential-completion supports in washington.
 
 ## 2. Approach
 Sectoral partnership with employer commitments; outcomes tracked in the org's data system.
 
 ## 3. Projected impact (model v4.1)
-- North Star ratio: 44x
-- Projected annual earnings gain per participant: $5988
-- Projected participants reached: 5245
+- North Star ratio: 63x
+- Projected annual earnings gain per participant: $5408
+- Projected participants reached: 1142
 
 ## 4. Budget
-USD 100,000.
+USD 1,400,000.

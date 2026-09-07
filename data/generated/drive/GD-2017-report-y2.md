@@ -1,16 +1,16 @@
 ---
-title: Nextstep Project — Year 3 report
-author: Nextstep Project
-date: 2025-05-01
-folder: Learning for Action/2022/Nextstep Project
+title: Cedarline Skills Alliance — H2 Y1 report
+author: Cedarline Skills Alliance
+date: 2023-08-08
+folder: AI for Economic Opportunity/2022/Cedarline Skills Alliance
 grant: GD-2017
 tier: team
 ---
 
-# Nextstep Project — Year 3
+# Cedarline Skills Alliance — H2 Y1
 
-Grant GD-2017. As of 2025-05-01. Served 4,630 participants; median wage at placement about $20.85/hr.
+Grant GD-2017. As of 2023-08-08. Served 1,788 participants; median wage at placement about $21.06/hr.
 
-Year 3: 4,630 participants reached (~83% of target). Placement pace slowed mid-year; median wage at placement $20.85/hr vs a $19.35 regional baseline.
+H2 Y1: 1,788 participants reached (~81% of target). median wage at placement $21.06/hr vs a $19.56 regional baseline.
 
 (Pre-2024 template — no standard sections.)

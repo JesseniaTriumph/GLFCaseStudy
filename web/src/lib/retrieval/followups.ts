@@ -1,6 +1,7 @@
 import type { CorpusIndex, FollowUps, IndexPerson } from "../core/types.js";
 import type { Scored } from "./search.js";
 import { suggestedQuestions as roleSuggestions, type FunctionKey } from "../roles.js";
+import { grantCycle, type GrantRequirement } from "../grant-cycle.js";
 
 export interface FollowupRoleCtx {
   functions: FunctionKey[];
@@ -66,6 +67,28 @@ export function suggestFollowups(
   // Role & cycle context (when on): add in-season questions for the asker's function.
   if (role) for (const q of roleSuggestions(role.functions, role.seasons, orgName)) suggestedQuestions.push(q);
 
+  // --- per-grant cycle: where is each grant in ITS OWN reporting / renewal schedule? ---
+  // Reporting cadence varies per grant (quarterly / semi-annual / annual / biennial); a
+  // grant ending in November may need a renewal LOI in August while another ends two years
+  // out. Read straight from each grant's requirement schedule + dates (index.grantMeta).
+  const cycle: NonNullable<FollowUps["cycle"]> = [];
+  for (const gid of grantIds) {
+    const raw = index.grantMeta?.[gid];
+    if (!raw) continue;
+    const c = grantCycle({
+      grantId: gid,
+      organization: raw.organization,
+      startDate: raw.startDate,
+      endDate: raw.endDate,
+      termYears: raw.termYears,
+      reportingFrequency: raw.reportingFrequency,
+      reportPeriodBasis: raw.reportPeriodBasis,
+      status: raw.grantStatus,
+      requirements: (raw.requirements ?? []) as GrantRequirement[],
+    });
+    cycle.push({ grantId: c.grantId, organization: c.organization, stage: c.stage, summary: c.summary });
+  }
+
   // --- draft email (only if there's a clear internal recipient with an address) ---
   const recipient = whoToAsk.find((w) => w.person.kind === "internal" && w.person.email);
   const draftEmail = recipient
@@ -83,7 +106,7 @@ export function suggestFollowups(
       }
     : null;
 
-  return { gaps: [...new Set(gaps)], whoToAsk, suggestedQuestions: [...new Set(suggestedQuestions)], draftEmail };
+  return { gaps: [...new Set(gaps)], whoToAsk, suggestedQuestions: [...new Set(suggestedQuestions)], draftEmail, cycle: cycle.length ? cycle : undefined };
 }
 
 function roleRank(p: IndexPerson): number {

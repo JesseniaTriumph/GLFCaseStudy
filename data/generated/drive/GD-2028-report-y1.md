@@ -1,16 +1,25 @@
 ---
-title: Southline Guild — Year 1 report
-author: Southline Guild
-date: 2024-03-01
-folder: Learning for Action/2023/Southline Guild
+title: Junction Collaborative — Year 1 report
+author: Junction Collaborative
+date: 2025-09-16
+folder: AI for Economic Opportunity/2024/Junction Collaborative
 grant: GD-2028
 tier: team
 ---
 
-# Southline Guild — Year 1
+# Junction Collaborative — Year 1 progress report
 
-Grant GD-2028. As of 2024-03-01. Served 1,424 participants; median wage at placement about $22.35/hr.
+**Grant:** GD-2028 · As reported 2025-09-16 · Impact model v3.5
 
-Year 1: 1,424 participants reached (~55% of target). median wage at placement $22.35/hr vs a $20.85 regional baseline.
+## Reach
+Participants reached: 3,350
 
-(Pre-2024 template — no standard sections.)
+## Earnings
+Reported annual earnings gain per participant: $10,374
+Median wage at placement: $20.91/hr (regional baseline $19.65/hr)
+
+## Narrative
+Year 1: 3,350 participants reached (~58% of target). median wage at placement $20.91/hr vs a $19.41 regional baseline.
+
+## Data note
+Outcomes are grantee-reported and verified on a sample. No participant identifiers included.

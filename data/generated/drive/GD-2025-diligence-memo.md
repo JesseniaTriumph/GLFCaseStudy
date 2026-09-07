@@ -1,18 +1,18 @@
 ---
-title: Bridgeworks Initiative — diligence memo
-author: Leah Fischer
-date: 2023-02-14
-folder: Powering Economic Opportunity/2023/Bridgeworks Initiative
+title: Cornerstone Collaborative — diligence memo
+author: Nadia Haddad
+date: 2023-05-03
+folder: AI for Economic Opportunity/2023/Cornerstone Collaborative
 grant: GD-2025
 tier: programs-only
 ---
 
-# Diligence memo — Bridgeworks Initiative (GD-2025)
+# Diligence memo — Cornerstone Collaborative (GD-2025)
 
-Program officer: Leah Fischer. Powering Economic Opportunity Fund.
+Program officer: Nadia Haddad. AI for Economic Opportunity Fund.
 
-**Recommendation:** fund at a reduced level pending a revised measurement plan.
+**Recommendation:** fund with a reporting condition on the data layer.
 
-**Strengths:** strong local partnerships. **Risks:** earnings attribution.
+**Strengths:** strong local partnerships. **Risks:** scale-up path.
 
-Candid note: board is mid-transition; watch continuity. Programs-only.
+Candid note: a reference call raised a minor concern about reporting timeliness. Programs-only.

@@ -1,16 +1,16 @@
 ---
-title: Halden Network — proposal (GD-2007)
-author: Halden Network
+title: Cedarline Care Collective — proposal (GD-2007)
+author: Cedarline Care Collective
 date: 2021-06-01
-folder: Powering Economic Opportunity/2021/Halden Network
+folder: AI for Economic Opportunity/2021/Cedarline Care Collective
 grant: GD-2007
 tier: team
 ---
 
-# Proposal — Halden Network
+# Proposal — Cedarline Care Collective
 
-Expanding a wage-transparent placement pipeline in Georgia. Requested: USD 900,000 over 2021–2024.
+Building employer-matched apprenticeships in Washington. Requested: USD 2,900,000 over 2021–2026.
 
-Expected reach: TBD participants. Projected annual earnings gain per participant: $TBD.
+Expected reach: 7236 participants. Projected annual earnings gain per participant: $5730.
 
 (2021–2023 proposal template — narrative sections free-form.)

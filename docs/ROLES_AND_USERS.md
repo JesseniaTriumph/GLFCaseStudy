@@ -31,8 +31,14 @@ requirement).
 | Close-out + ER | at term end + ~90 days | Grants Manager, Finance | "Final report in? ER documentation and last payment reconciled? File complete?" |
 | Post-grant learning | ongoing | Director of Impact, Comms | "What did this teach the thesis? Any result cleared for external use?" |
 
-`reportingCadence(termYears)` in `src/roles.ts` spells out the deadline set for a 1- vs
-2- vs multi-year grant.
+**Reporting is per-grant, not uniform.** `src/grant-cycle.ts` reads a single grant's
+requirement schedule + dates and returns where *that grant* is today: its cadence
+(quarterly / semi-annual / annual / biennial / final-only), its term, what's overdue,
+the next deadline (in N days), whether it's in the renewal window, and the re-application
+deadline. One grant can end in November and need a renewal LOI in August while another
+ends two years out and needs one in February — Compass shows each grant's own schedule in
+the Deep-dive panel. `portfolioDeadlines()` rolls these up into "what's due in the next 30
+days" and "what's overdue" across a set of grants.
 
 ---
 

@@ -1,16 +1,16 @@
 ---
-title: Pathwise Society — proposal (GD-2019)
-author: Pathwise Society
-date: 2022-05-01
-folder: AI for Economic Opportunity/2022/Pathwise Society
+title: Fieldstone Care Collective — proposal (GD-2019)
+author: Fieldstone Care Collective
+date: 2023-07-01
+folder: Learning for Action/2023/Fieldstone Care Collective
 grant: GD-2019
 tier: team
 ---
 
-# Proposal — Pathwise Society
+# Proposal — Fieldstone Care Collective
 
-Strengthening an AI benefits navigator in Georgia. Requested: USD 100,000 over 2022–2025.
+Scaling a public-benefits eligibility screener in Colorado. Requested: USD 150,000 over 2023–2024.
 
-Expected reach: 2194 participants. Projected annual earnings gain per participant: $7083.
+Expected reach: 1841 participants. Projected annual earnings gain per participant: $5624.
 
 (2021–2023 proposal template — narrative sections free-form.)

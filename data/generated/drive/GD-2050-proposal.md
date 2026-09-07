@@ -1,26 +1,26 @@
 ---
-title: Harbor Coalition — proposal (GD-2050)
-author: Harbor Coalition
-date: 2025-03-01
-folder: Learning for Action/2025/Harbor Coalition
+title: Lantern Guild — proposal (GD-2050)
+author: Lantern Guild
+date: 2026-04-01
+folder: Powering Economic Opportunity/2026/Lantern Guild
 grant: GD-2050
 tier: team
 ---
 
-# Proposal — Harbor Coalition
+# Proposal — Lantern Guild
 
-**Grant:** GD-2050 · **Fund:** Learning for Action · **Geography:** United States
+**Grant:** GD-2050 · **Fund:** Powering Economic Opportunity Fund · **Geography:** United States
 
 ## 1. Problem
-Harbor Coalition proposes strengthening a wage-transparent placement pipeline in massachusetts.
+Lantern Guild proposes testing a public-benefits eligibility screener in ohio.
 
 ## 2. Approach
 Sectoral partnership with employer commitments; outcomes tracked in the org's data system.
 
 ## 3. Projected impact (model v4.1)
-- North Star ratio: 97x
-- Projected annual earnings gain per participant: $10609
-- Projected participants reached: 5520
+- North Star ratio: 28x
+- Projected annual earnings gain per participant: $6878
+- Projected participants reached: 4550
 
 ## 4. Budget
-USD 200,000.
+USD 400,000.

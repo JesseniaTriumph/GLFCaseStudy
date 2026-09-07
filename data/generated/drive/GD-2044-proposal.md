@@ -1,26 +1,26 @@
 ---
-title: Groundwork Works — proposal (GD-2044)
-author: Groundwork Works
-date: 2024-03-01
-folder: Learning for Action/2024/Groundwork Works
+title: Mwangaza Works — proposal (GD-2044)
+author: Mwangaza Works
+date: 2025-06-01
+folder: Powering Economic Opportunity/2025/Mwangaza Works
 grant: GD-2044
 tier: team
 ---
 
-# Proposal — Groundwork Works
+# Proposal — Mwangaza Works
 
-**Grant:** GD-2044 · **Fund:** Learning for Action · **Geography:** United States
+**Grant:** GD-2044 · **Fund:** Powering Economic Opportunity Fund · **Geography:** Kenya
 
 ## 1. Problem
-Groundwork Works proposes piloting employer-matched apprenticeships in arizona.
+Mwangaza Works proposes expanding a sectoral training partnership.
 
 ## 2. Approach
 Sectoral partnership with employer commitments; outcomes tracked in the org's data system.
 
-## 3. Projected impact (model v3.5)
-- North Star ratio: 149x
-- Projected annual earnings gain per participant: $5495
-- Projected participants reached: 678
+## 3. Projected impact (model v4.1)
+- North Star ratio: 87x
+- Projected annual earnings gain per participant: $9681
+- Projected participants reached: 2630
 
 ## 4. Budget
-USD 100,000.
+USD 600,000.

@@ -1,18 +1,18 @@
 ---
-title: Nextstep Guild — diligence memo
-author: Sofia Restrepo
-date: 2025-08-03
-folder: Future of Work/2025/Nextstep Guild
+title: Threshold Institute — diligence memo
+author: Nadia Haddad
+date: 2026-03-15
+folder: Future of Work/2026/Threshold Institute
 grant: GD-2055
 tier: programs-only
 ---
 
-# Diligence memo — Nextstep Guild (GD-2055)
+# Diligence memo — Threshold Institute (GD-2055)
 
-Program officer: Sofia Restrepo. Future of Work Fund.
+Program officer: Nadia Haddad. Future of Work Fund.
 
-**Recommendation:** fund with a reporting condition on the data layer.
+**Recommendation:** fund at a reduced level pending a revised measurement plan.
 
-**Strengths:** strong local partnerships. **Risks:** data-collection capacity.
+**Strengths:** experienced team. **Risks:** concurrent program overlap.
 
 Candid note: the ED is stretched across two initiatives. Programs-only.

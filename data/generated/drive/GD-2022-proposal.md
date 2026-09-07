@@ -1,16 +1,16 @@
 ---
-title: Northgate Labs — proposal (GD-2022)
-author: Northgate Labs
-date: 2022-02-01
-folder: Future of Work/2022/Northgate Labs
+title: Wayfinder Society — proposal (GD-2022)
+author: Wayfinder Society
+date: 2023-05-01
+folder: Learning for Action/2023/Wayfinder Society
 grant: GD-2022
 tier: team
 ---
 
-# Proposal — Northgate Labs
+# Proposal — Wayfinder Society
 
-Scaling a public-benefits eligibility screener in Ohio. Requested: USD 150,000 over 2022–2025.
+Strengthening credential-completion supports in North Carolina. Requested: USD 100,000 over 2023–2025.
 
-Expected reach: TBD participants. Projected annual earnings gain per participant: $TBD.
+Expected reach: 6067 participants. Projected annual earnings gain per participant: $11667.
 
 (2021–2023 proposal template — narrative sections free-form.)

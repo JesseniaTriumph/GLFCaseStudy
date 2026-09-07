@@ -1,16 +1,16 @@
 ---
-title: Pathwise Society — Year 3 report
-author: Pathwise Society
-date: 2025-07-01
-folder: AI for Economic Opportunity/2022/Pathwise Society
+title: Fieldstone Care Collective — Q1 Y1 report
+author: Fieldstone Care Collective
+date: 2023-12-14
+folder: Learning for Action/2023/Fieldstone Care Collective
 grant: GD-2019
 tier: team
 ---
 
-# Pathwise Society — Year 3
+# Fieldstone Care Collective — Q1 Y1
 
-Grant GD-2019. As of 2025-07-01. Served 1,858 participants; median wage at placement about $17.49/hr.
+Grant GD-2019. As of 2023-12-14. Served 315 participants; median wage at placement about $22.63/hr.
 
-Year 3: 1,858 participants reached (~85% of target). median wage at placement $17.49/hr vs a $15.99 regional baseline.
+Q1 Y1: 315 participants reached (~17% of target). Placement pace slowed mid-period; median wage at placement $22.63/hr vs a $21.13 regional baseline.
 
 (Pre-2024 template — no standard sections.)

@@ -1,16 +1,16 @@
 ---
-title: Instituto Progreso — proposal (GD-2004)
-author: Instituto Progreso
-date: 2021-05-01
-folder: AI for Economic Opportunity/2021/Instituto Progreso
+title: Foundry Institute — proposal (GD-2004)
+author: Foundry Institute
+date: 2021-01-01
+folder: Powering Economic Opportunity/2021/Foundry Institute
 grant: GD-2004
 tier: team
 ---
 
-# Proposal — Instituto Progreso
+# Proposal — Foundry Institute
 
-Piloting an outcomes data layer. Requested: USD 900,000 over 2021–2023.
+Testing a caregiver placement network in Illinois. Requested: USD 400,000 over 2021–2023.
 
-Expected reach: 649 participants. Projected annual earnings gain per participant: $5799.
+Expected reach: TBD participants. Projected annual earnings gain per participant: $TBD.
 
 (2021–2023 proposal template — narrative sections free-form.)

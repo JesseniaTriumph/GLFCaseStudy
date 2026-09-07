@@ -1,16 +1,26 @@
 ---
-title: Tujenge Works — proposal (GD-2034)
-author: Tujenge Works
-date: 2023-06-01
-folder: Learning for Action/2023/Tujenge Works
+title: Cedarline Partners — proposal (GD-2034)
+author: Cedarline Partners
+date: 2024-05-01
+folder: Powering Economic Opportunity/2024/Cedarline Partners
 grant: GD-2034
 tier: team
 ---
 
-# Proposal — Tujenge Works
+# Proposal — Cedarline Partners
 
-Strengthening a public-benefits eligibility screener. Requested: USD 600,000 over 2023–2026.
+**Grant:** GD-2034 · **Fund:** Powering Economic Opportunity Fund · **Geography:** United States
 
-Expected reach: 685 participants. Projected annual earnings gain per participant: $10575.
+## 1. Problem
+Cedarline Partners proposes piloting a rapid-reskilling program in new york.
 
-(2021–2023 proposal template — narrative sections free-form.)
+## 2. Approach
+Sectoral partnership with employer commitments; outcomes tracked in the org's data system.
+
+## 3. Projected impact (model v3.5)
+- North Star ratio: 102x
+- Projected annual earnings gain per participant: $11934
+- Projected participants reached: 1011
+
+## 4. Budget
+USD 900,000.

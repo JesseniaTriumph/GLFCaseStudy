@@ -3,13 +3,233 @@
  "threads": [
   {
    "id": "zc-1",
+   "channel": "#care-economy",
+   "date": "2025-11-07",
+   "messages": [
+    {
+     "sender": "David Kang",
+     "at": "2025-11-07T14:09:00",
+     "text": "did we ever hear back from Brightpath Care Collective on the revised ramp?"
+    },
+    {
+     "sender": "David Kang",
+     "at": "2025-11-07T14:17:00",
+     "text": "I'd lean renew at a reduced level with a reporting condition"
+    },
+    {
+     "sender": "David Kang",
+     "at": "2025-11-07T14:27:00",
+     "text": "will add to GivingData review notes today"
+    }
+   ]
+  },
+  {
+   "id": "zc-2",
+   "channel": "#care-economy",
+   "date": "2026-10-26",
+   "messages": [
+    {
+     "sender": "Amara Boateng",
+     "at": "2026-10-26T14:00:00",
+     "text": "Wayfinder Labs's Year 1 numbers are in — placement is the weak spot again"
+    },
+    {
+     "sender": "Amara Boateng",
+     "at": "2026-10-26T14:14:00",
+     "text": "can someone put the rationale in the grant record? this thread will vanish"
+    },
+    {
+     "sender": "Marcus Bell",
+     "at": "2026-10-26T14:23:00",
+     "text": "will add to GivingData review notes today"
+    }
+   ]
+  },
+  {
+   "id": "zc-3",
+   "channel": "#future-of-work",
+   "date": "2025-07-03",
+   "messages": [
+    {
+     "sender": "Sofia Restrepo",
+     "at": "2025-07-03T14:03:00",
+     "text": "Instituto Raíces's Year 1 numbers are in — placement is the weak spot again"
+    },
+    {
+     "sender": "Priya Raman",
+     "at": "2025-07-03T14:12:00",
+     "text": "I'd lean renew at a reduced level with a reporting condition"
+    },
+    {
+     "sender": "Tomas Nguyen",
+     "at": "2025-07-03T14:21:00",
+     "text": "let's revisit after the board packet"
+    }
+   ]
+  },
+  {
+   "id": "zc-4",
+   "channel": "#future-of-work",
+   "date": "2026-01-11",
+   "messages": [
+    {
+     "sender": "Sofia Restrepo",
+     "at": "2026-01-11T14:07:00",
+     "text": "did we ever hear back from Tujenge Trust on the revised ramp?"
+    },
+    {
+     "sender": "Tomas Nguyen",
+     "at": "2026-01-11T14:18:00",
+     "text": "can someone put the rationale in the grant record? this thread will vanish"
+    },
+    {
+     "sender": "Leah Fischer",
+     "at": "2026-01-11T14:21:00",
+     "text": "ok decided: recommend renewal, reduced, condition on the data layer. writing it up now"
+    }
+   ]
+  },
+  {
+   "id": "zc-5",
+   "channel": "#programs",
+   "date": "2024-04-16",
+   "messages": [
+    {
+     "sender": "Nadia Haddad",
+     "at": "2024-04-16T14:07:00",
+     "text": "quick gut check on Lantern Guild (GD-2050) renewal — pace is behind but the site visit was encouraging"
+    },
+    {
+     "sender": "Nadia Haddad",
+     "at": "2024-04-16T14:18:00",
+     "text": "agree — let's not lose the relationship, the ED is doing the right things"
+    },
+    {
+     "sender": "Amara Boateng",
+     "at": "2024-04-16T14:29:00",
+     "text": "will add to GivingData review notes today"
+    }
+   ]
+  },
+  {
+   "id": "zc-6",
+   "channel": "#care-economy",
+   "date": "2026-11-01",
+   "messages": [
+    {
+     "sender": "Leah Fischer",
+     "at": "2026-11-01T14:01:00",
+     "text": "did we ever hear back from Lantern Guild on the revised ramp?"
+    },
+    {
+     "sender": "Leah Fischer",
+     "at": "2026-11-01T14:17:00",
+     "text": "I'd lean renew at a reduced level with a reporting condition"
+    },
+    {
+     "sender": "Ruth Mensah",
+     "at": "2026-11-01T14:25:00",
+     "text": "will add to GivingData review notes today"
+    }
+   ]
+  },
+  {
+   "id": "zc-7",
+   "channel": "#care-economy",
+   "date": "2024-09-19",
+   "messages": [
+    {
+     "sender": "Priya Raman",
+     "at": "2024-09-19T14:06:00",
+     "text": "Riverbend Care Collective's Year 1 numbers are in — placement is the weak spot again"
+    },
+    {
+     "sender": "Dana Okafor",
+     "at": "2024-09-19T14:18:00",
+     "text": "I'd lean renew at a reduced level with a reporting condition"
+    },
+    {
+     "sender": "Priya Raman",
+     "at": "2024-09-19T14:25:00",
+     "text": "let's revisit after the board packet"
+    }
+   ]
+  },
+  {
+   "id": "zc-8",
+   "channel": "#future-of-work",
+   "date": "2025-11-08",
+   "messages": [
+    {
+     "sender": "Marcus Bell",
+     "at": "2025-11-08T14:04:00",
+     "text": "did we ever hear back from Nextstep Partners on the revised ramp?"
+    },
+    {
+     "sender": "Leah Fischer",
+     "at": "2025-11-08T14:15:00",
+     "text": "I'd lean renew at a reduced level with a reporting condition"
+    },
+    {
+     "sender": "Priya Raman",
+     "at": "2025-11-08T14:22:00",
+     "text": "will add to GivingData review notes today"
+    }
+   ]
+  },
+  {
+   "id": "zc-9",
+   "channel": "#future-of-work",
+   "date": "2026-09-02",
+   "messages": [
+    {
+     "sender": "Tomas Nguyen",
+     "at": "2026-09-02T14:06:00",
+     "text": "Pathwise Center's Year 1 numbers are in — placement is the weak spot again"
+    },
+    {
+     "sender": "Leah Fischer",
+     "at": "2026-09-02T14:11:00",
+     "text": "agree — let's not lose the relationship, the ED is doing the right things"
+    },
+    {
+     "sender": "Amara Boateng",
+     "at": "2026-09-02T14:25:00",
+     "text": "ok decided: recommend renewal, reduced, condition on the data layer. writing it up now"
+    }
+   ]
+  },
+  {
+   "id": "zc-10",
+   "channel": "#ai-fund",
+   "date": "2024-06-19",
+   "messages": [
+    {
+     "sender": "Ruth Mensah",
+     "at": "2024-06-19T14:04:00",
+     "text": "quick gut check on Rootwork Initiative (GD-2045) renewal — pace is behind but the site visit was encouraging"
+    },
+    {
+     "sender": "Nadia Haddad",
+     "at": "2024-06-19T14:17:00",
+     "text": "I'd lean renew at a reduced level with a reporting condition"
+    },
+    {
+     "sender": "Priya Raman",
+     "at": "2024-06-19T14:27:00",
+     "text": "will add to GivingData review notes today"
+    }
+   ]
+  },
+  {
+   "id": "zc-11",
    "channel": "#impact-team",
    "date": "2024-04-20",
    "messages": [
     {
      "sender": "Amara Boateng",
      "at": "2024-04-20T14:03:00",
-     "text": "quick gut check on Groundwork Care Collective (GD-2018) renewal — pace is behind but the site visit was encouraging"
+     "text": "quick gut check on Marrow Cooperative (GD-2015) renewal — pace is behind but the site visit was encouraging"
     },
     {
      "sender": "Leah Fischer",
@@ -24,14 +244,14 @@
    ]
   },
   {
-   "id": "zc-2",
+   "id": "zc-12",
    "channel": "#impact-team",
    "date": "2024-01-11",
    "messages": [
     {
      "sender": "Dana Okafor",
      "at": "2024-01-11T14:07:00",
-     "text": "quick gut check on Zawadi Trust (GD-2015) renewal — pace is behind but the site visit was encouraging"
+     "text": "quick gut check on Commonwork Project (GD-2013) renewal — pace is behind but the site visit was encouraging"
     },
     {
      "sender": "Amara Boateng",
@@ -46,14 +266,14 @@
    ]
   },
   {
-   "id": "zc-3",
+   "id": "zc-13",
    "channel": "#programs",
    "date": "2024-10-04",
    "messages": [
     {
      "sender": "Priya Raman",
      "at": "2024-10-04T14:03:00",
-     "text": "did we ever hear back from Nuru Institute on the revised ramp?"
+     "text": "did we ever hear back from Groundwork Project on the revised ramp?"
     },
     {
      "sender": "Sofia Restrepo",
@@ -68,14 +288,14 @@
    ]
   },
   {
-   "id": "zc-4",
+   "id": "zc-14",
    "channel": "#impact-team",
    "date": "2026-03-02",
    "messages": [
     {
      "sender": "Leah Fischer",
      "at": "2026-03-02T14:03:00",
-     "text": "Wayfinder Project's Year 1 numbers are in — placement is the weak spot again"
+     "text": "Pathwise Labs's Year 1 numbers are in — placement is the weak spot again"
     },
     {
      "sender": "Nadia Haddad",
@@ -86,226 +306,6 @@
      "sender": "Priya Raman",
      "at": "2026-03-02T14:21:00",
      "text": "let's revisit after the board packet"
-    }
-   ]
-  },
-  {
-   "id": "zc-5",
-   "channel": "#programs",
-   "date": "2024-11-18",
-   "messages": [
-    {
-     "sender": "Nadia Haddad",
-     "at": "2024-11-18T14:07:00",
-     "text": "did we ever hear back from Colectivo Horizonte on the revised ramp?"
-    },
-    {
-     "sender": "Tomas Nguyen",
-     "at": "2024-11-18T14:17:00",
-     "text": "I'd lean renew at a reduced level with a reporting condition"
-    },
-    {
-     "sender": "David Kang",
-     "at": "2024-11-18T14:21:00",
-     "text": "let's revisit after the board packet"
-    }
-   ]
-  },
-  {
-   "id": "zc-6",
-   "channel": "#impact-team",
-   "date": "2024-05-11",
-   "messages": [
-    {
-     "sender": "Amara Boateng",
-     "at": "2024-05-11T14:07:00",
-     "text": "quick gut check on Northgate Society (GD-2035) renewal — pace is behind but the site visit was encouraging"
-    },
-    {
-     "sender": "David Kang",
-     "at": "2024-05-11T14:13:00",
-     "text": "can someone put the rationale in the grant record? this thread will vanish"
-    },
-    {
-     "sender": "Sofia Restrepo",
-     "at": "2024-05-11T14:27:00",
-     "text": "will add to GivingData review notes today"
-    }
-   ]
-  },
-  {
-   "id": "zc-7",
-   "channel": "#programs",
-   "date": "2024-10-15",
-   "messages": [
-    {
-     "sender": "Tomas Nguyen",
-     "at": "2024-10-15T14:09:00",
-     "text": "quick gut check on Kindred Partners (GD-2049) renewal — pace is behind but the site visit was encouraging"
-    },
-    {
-     "sender": "David Kang",
-     "at": "2024-10-15T14:16:00",
-     "text": "can someone put the rationale in the grant record? this thread will vanish"
-    },
-    {
-     "sender": "David Kang",
-     "at": "2024-10-15T14:27:00",
-     "text": "let's revisit after the board packet"
-    }
-   ]
-  },
-  {
-   "id": "zc-8",
-   "channel": "#programs",
-   "date": "2026-04-09",
-   "messages": [
-    {
-     "sender": "Nadia Haddad",
-     "at": "2026-04-09T14:08:00",
-     "text": "did we ever hear back from Fundación Enlace on the revised ramp?"
-    },
-    {
-     "sender": "Ruth Mensah",
-     "at": "2026-04-09T14:15:00",
-     "text": "agree — let's not lose the relationship, the ED is doing the right things"
-    },
-    {
-     "sender": "Dana Okafor",
-     "at": "2026-04-09T14:26:00",
-     "text": "will add to GivingData review notes today"
-    }
-   ]
-  },
-  {
-   "id": "zc-9",
-   "channel": "#impact-team",
-   "date": "2025-03-01",
-   "messages": [
-    {
-     "sender": "Leah Fischer",
-     "at": "2025-03-01T14:08:00",
-     "text": "did we ever hear back from Fundación Horizonte on the revised ramp?"
-    },
-    {
-     "sender": "Leah Fischer",
-     "at": "2025-03-01T14:15:00",
-     "text": "I'd lean renew at a reduced level with a reporting condition"
-    },
-    {
-     "sender": "Amara Boateng",
-     "at": "2025-03-01T14:22:00",
-     "text": "will add to GivingData review notes today"
-    }
-   ]
-  },
-  {
-   "id": "zc-10",
-   "channel": "#ai-fund",
-   "date": "2026-12-27",
-   "messages": [
-    {
-     "sender": "Marcus Bell",
-     "at": "2026-12-27T14:09:00",
-     "text": "did we ever hear back from Harbor Coalition on the revised ramp?"
-    },
-    {
-     "sender": "Sofia Restrepo",
-     "at": "2026-12-27T14:15:00",
-     "text": "I'd lean renew at a reduced level with a reporting condition"
-    },
-    {
-     "sender": "Nadia Haddad",
-     "at": "2026-12-27T14:28:00",
-     "text": "let's revisit after the board packet"
-    }
-   ]
-  },
-  {
-   "id": "zc-11",
-   "channel": "#impact-team",
-   "date": "2025-10-24",
-   "messages": [
-    {
-     "sender": "Leah Fischer",
-     "at": "2025-10-24T14:09:00",
-     "text": "Colectivo Raíces's Year 1 numbers are in — placement is the weak spot again"
-    },
-    {
-     "sender": "Ruth Mensah",
-     "at": "2025-10-24T14:10:00",
-     "text": "agree — let's not lose the relationship, the ED is doing the right things"
-    },
-    {
-     "sender": "Nadia Haddad",
-     "at": "2025-10-24T14:28:00",
-     "text": "ok decided: recommend renewal, reduced, condition on the data layer. writing it up now"
-    }
-   ]
-  },
-  {
-   "id": "zc-12",
-   "channel": "#ai-fund",
-   "date": "2026-01-22",
-   "messages": [
-    {
-     "sender": "Sofia Restrepo",
-     "at": "2026-01-22T14:02:00",
-     "text": "Zawadi Trust's Year 1 numbers are in — placement is the weak spot again"
-    },
-    {
-     "sender": "Tomas Nguyen",
-     "at": "2026-01-22T14:14:00",
-     "text": "can someone put the rationale in the grant record? this thread will vanish"
-    },
-    {
-     "sender": "Dana Okafor",
-     "at": "2026-01-22T14:20:00",
-     "text": "let's revisit after the board packet"
-    }
-   ]
-  },
-  {
-   "id": "zc-13",
-   "channel": "#programs",
-   "date": "2025-04-02",
-   "messages": [
-    {
-     "sender": "Amara Boateng",
-     "at": "2025-04-02T14:07:00",
-     "text": "quick gut check on Inuka Trust (GD-2040) renewal — pace is behind but the site visit was encouraging"
-    },
-    {
-     "sender": "David Kang",
-     "at": "2025-04-02T14:12:00",
-     "text": "agree — let's not lose the relationship, the ED is doing the right things"
-    },
-    {
-     "sender": "Dana Okafor",
-     "at": "2025-04-02T14:24:00",
-     "text": "will add to GivingData review notes today"
-    }
-   ]
-  },
-  {
-   "id": "zc-14",
-   "channel": "#care-economy",
-   "date": "2026-06-23",
-   "messages": [
-    {
-     "sender": "Marcus Bell",
-     "at": "2026-06-23T14:02:00",
-     "text": "Red Puente's Year 1 numbers are in — placement is the weak spot again"
-    },
-    {
-     "sender": "Tomas Nguyen",
-     "at": "2026-06-23T14:10:00",
-     "text": "can someone put the rationale in the grant record? this thread will vanish"
-    },
-    {
-     "sender": "Ruth Mensah",
-     "at": "2026-06-23T14:24:00",
-     "text": "ok decided: recommend renewal, reduced, condition on the data layer. writing it up now"
     }
    ]
   }

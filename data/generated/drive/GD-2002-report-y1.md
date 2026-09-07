@@ -1,16 +1,16 @@
 ---
-title: Tujenge Trust — Year 1 report
-author: Tujenge Trust
-date: 2022-05-01
-folder: Learning for Action/2021/Tujenge Trust
+title: Trailhead Labs — Q1 Y1 report
+author: Trailhead Labs
+date: 2021-11-25
+folder: Powering Economic Opportunity/2021/Trailhead Labs
 grant: GD-2002
 tier: team
 ---
 
-# Tujenge Trust — Year 1
+# Trailhead Labs — Q1 Y1
 
-Grant GD-2002. As of 2022-05-01. Served 1,840 participants; median wage at placement about $20.23/hr.
+Grant GD-2002. As of 2021-11-25. Served 510 participants; median wage at placement about $16.05/hr.
 
-Year 1: 1,840 participants reached (~37% of target). Placement pace slowed mid-year; median wage at placement $20.23/hr vs a $18.73 regional baseline.
+Q1 Y1: 510 participants reached (~14% of target). Placement pace slowed mid-period; median wage at placement $16.05/hr vs a $14.55 regional baseline.
 
 (Pre-2024 template — no standard sections.)

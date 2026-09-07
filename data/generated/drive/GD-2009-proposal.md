@@ -1,15 +1,15 @@
 ---
-title: Amka Initiative — proposal (GD-2009)
-author: Amka Initiative
-date: 2021-01-01
-folder: Powering Economic Opportunity/2021/Amka Initiative
+title: Nextstep Partners — proposal (GD-2009)
+author: Nextstep Partners
+date: 2021-04-01
+folder: Future of Work/2021/Nextstep Partners
 grant: GD-2009
 tier: team
 ---
 
-# Proposal — Amka Initiative
+# Proposal — Nextstep Partners
 
-Building employer-matched apprenticeships. Requested: USD 250,000 over 2021–2024.
+Building an outcomes data layer in Colorado. Requested: USD 900,000 over 2021–2022.
 
 Expected reach: TBD participants. Projected annual earnings gain per participant: $TBD.
 

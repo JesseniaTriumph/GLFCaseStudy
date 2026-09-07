@@ -1,15 +1,15 @@
 ---
-title: Red Puente — proposal (GD-2008)
-author: Red Puente
-date: 2021-05-01
-folder: Powering Economic Opportunity/2021/Red Puente
+title: Colectivo Horizonte — proposal (GD-2008)
+author: Colectivo Horizonte
+date: 2021-03-01
+folder: Powering Economic Opportunity/2021/Colectivo Horizonte
 grant: GD-2008
 tier: team
 ---
 
-# Proposal — Red Puente
+# Proposal — Colectivo Horizonte
 
-Strengthening an outcomes data layer. Requested: USD 250,000 over 2021–2022.
+Scaling an AI benefits navigator. Requested: USD 50,000 over 2021–2026.
 
 Expected reach: TBD participants. Projected annual earnings gain per participant: $TBD.
 

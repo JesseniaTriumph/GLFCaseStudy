@@ -1,18 +1,18 @@
 ---
-title: Lantern Coalition — diligence memo
-author: Nadia Haddad
-date: 2022-07-13
-folder: AI for Economic Opportunity/2022/Lantern Coalition
+title: Foundry Center — diligence memo
+author: David Kang
+date: 2022-01-23
+folder: Powering Economic Opportunity/2022/Foundry Center
 grant: GD-2012
 tier: programs-only
 ---
 
-# Diligence memo — Lantern Coalition (GD-2012)
+# Diligence memo — Foundry Center (GD-2012)
 
-Program officer: Nadia Haddad. AI for Economic Opportunity Fund.
+Program officer: David Kang. Powering Economic Opportunity Fund.
 
-**Recommendation:** fund with a reporting condition on the data layer.
+**Recommendation:** fund at the requested level.
 
-**Strengths:** clear employer demand. **Risks:** concurrent program overlap.
+**Strengths:** clear employer demand. **Risks:** data-collection capacity.
 
-Candid note: prior experience with them was positive. Programs-only.
+Candid note: the ED is stretched across two initiatives. Programs-only.

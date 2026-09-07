@@ -45,7 +45,8 @@ export const mockGivingData: SourceAdapter = {
         `Title: ${g.title}`,
         `Thesis area: ${g.thesisArea ?? "(untagged)"} · Geography: ${g.geography}`,
         `Amount: ${g.currency} ${g.amount.toLocaleString()} · Status: ${g.status}`,
-        `Term: ${g.startDate} to ${g.endDate}` + (g.coFunders?.length ? ` · Co-funders: ${g.coFunders.join(", ")}` : ""),
+        `Term: ${g.startDate} to ${g.endDate}` + (g.termYears ? ` (${g.termYears}-year)` : "") + (g.coFunders?.length ? ` · Co-funders: ${g.coFunders.join(", ")}` : ""),
+        g.reportingFrequency ? `Reporting cadence: ${g.reportingFrequency}` + (g.reportPeriodBasis ? ` · period basis: ${g.reportPeriodBasis}` : "") : "",
         ``,
         `## Projected impact (model ${g.projected.modelVersion})`,
         `North Star ratio: ${g.projected.northStar}x`,
@@ -69,6 +70,12 @@ export const mockGivingData: SourceAdapter = {
         programOfficer: g.programOfficer,
         projected: g.projected,
         requirements: g.requirements,
+        startDate: g.startDate,
+        endDate: g.endDate,
+        termYears: g.termYears ?? null,
+        reportingFrequency: g.reportingFrequency ?? null,
+        reportPeriodBasis: g.reportPeriodBasis ?? null,
+        grantStatus: g.status,
       }));
 
       // --- 2. one doc per reported period (team tier) ---

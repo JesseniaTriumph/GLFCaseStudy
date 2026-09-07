@@ -1,16 +1,16 @@
 ---
-title: Halden Network — Year 2 report
-author: Halden Network
-date: 2023-08-01
-folder: Powering Economic Opportunity/2021/Halden Network
+title: Cedarline Care Collective — Year 2 report
+author: Cedarline Care Collective
+date: 2023-08-16
+folder: AI for Economic Opportunity/2021/Cedarline Care Collective
 grant: GD-2007
 tier: team
 ---
 
-# Halden Network — Year 2
+# Cedarline Care Collective — Year 2
 
-Grant GD-2007. As of 2023-08-01. Served 196 participants; median wage at placement about $16.09/hr.
+Grant GD-2007. As of 2023-08-16. Served 3,450 participants; median wage at placement about $18.08/hr.
 
-Year 2: 196 participants reached (~52% of target). Placement pace slowed mid-year; median wage at placement $16.09/hr vs a $14.59 regional baseline.
+Year 2: 3,450 participants reached (~48% of target). Placement pace slowed mid-period; median wage at placement $18.08/hr vs a $16.58 regional baseline.
 
 (Pre-2024 template — no standard sections.)

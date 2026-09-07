@@ -1,18 +1,18 @@
 ---
-title: Mwangaza Works — diligence memo
-author: Dana Okafor
-date: 2022-02-24
-folder: Powering Economic Opportunity/2022/Mwangaza Works
+title: Pathwise Institute — diligence memo
+author: David Kang
+date: 2023-06-05
+folder: Future of Work/2023/Pathwise Institute
 grant: GD-2020
 tier: programs-only
 ---
 
-# Diligence memo — Mwangaza Works (GD-2020)
+# Diligence memo — Pathwise Institute (GD-2020)
 
-Program officer: Dana Okafor. Powering Economic Opportunity Fund.
+Program officer: David Kang. Future of Work Fund.
 
 **Recommendation:** fund at the requested level.
 
-**Strengths:** experienced team. **Risks:** earnings attribution.
+**Strengths:** strong local partnerships. **Risks:** earnings attribution.
 
 Candid note: a reference call raised a minor concern about reporting timeliness. Programs-only.

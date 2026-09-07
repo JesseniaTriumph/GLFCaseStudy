@@ -1,18 +1,18 @@
 ---
-title: Meridian Guild — diligence memo
-author: Dana Okafor
-date: 2025-07-03
-folder: AI for Economic Opportunity/2025/Meridian Guild
+title: Mwangaza Hub — diligence memo
+author: Amara Boateng
+date: 2026-02-23
+folder: Powering Economic Opportunity/2026/Mwangaza Hub
 grant: GD-2054
 tier: programs-only
 ---
 
-# Diligence memo — Meridian Guild (GD-2054)
+# Diligence memo — Mwangaza Hub (GD-2054)
 
-Program officer: Dana Okafor. AI for Economic Opportunity Fund.
+Program officer: Amara Boateng. Powering Economic Opportunity Fund.
 
 **Recommendation:** fund at the requested level.
 
 **Strengths:** clear employer demand. **Risks:** data-collection capacity.
 
-Candid note: a reference call raised a minor concern about reporting timeliness. Programs-only.
+Candid note: prior experience with them was positive. Programs-only.

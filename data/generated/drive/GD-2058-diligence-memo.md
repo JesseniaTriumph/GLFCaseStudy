@@ -1,18 +1,18 @@
 ---
-title: Cornerstone Skills Alliance — diligence memo
-author: Marcus Bell
-date: 2025-05-22
-folder: Learning for Action/2025/Cornerstone Skills Alliance
+title: Northgate Works — diligence memo
+author: Nadia Haddad
+date: 2026-04-19
+folder: Powering Economic Opportunity/2026/Northgate Works
 grant: GD-2058
 tier: programs-only
 ---
 
-# Diligence memo — Cornerstone Skills Alliance (GD-2058)
+# Diligence memo — Northgate Works (GD-2058)
 
-Program officer: Marcus Bell. Learning for Action.
+Program officer: Nadia Haddad. Powering Economic Opportunity Fund.
 
-**Recommendation:** fund at a reduced level pending a revised measurement plan.
+**Recommendation:** fund with a reporting condition on the data layer.
 
-**Strengths:** existing outcomes data. **Risks:** scale-up path.
+**Strengths:** existing outcomes data. **Risks:** data-collection capacity.
 
-Candid note: a reference call raised a minor concern about reporting timeliness. Programs-only.
+Candid note: the ED is stretched across two initiatives. Programs-only.

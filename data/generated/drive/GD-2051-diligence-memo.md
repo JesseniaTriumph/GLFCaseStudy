@@ -1,18 +1,18 @@
 ---
-title: Trailhead Coalition — diligence memo
-author: Dana Okafor
-date: 2025-01-06
-folder: Learning for Action/2025/Trailhead Coalition
+title: Pathwise Labs — diligence memo
+author: Nadia Haddad
+date: 2026-08-10
+folder: Powering Economic Opportunity/2026/Pathwise Labs
 grant: GD-2051
 tier: programs-only
 ---
 
-# Diligence memo — Trailhead Coalition (GD-2051)
+# Diligence memo — Pathwise Labs (GD-2051)
 
-Program officer: Dana Okafor. Learning for Action.
+Program officer: Nadia Haddad. Powering Economic Opportunity Fund.
 
-**Recommendation:** fund at a reduced level pending a revised measurement plan.
+**Recommendation:** fund with a reporting condition on the data layer.
 
 **Strengths:** strong local partnerships. **Risks:** earnings attribution.
 
-Candid note: board is mid-transition; watch continuity. Programs-only.
+Candid note: prior experience with them was positive. Programs-only.

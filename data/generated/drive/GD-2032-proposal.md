@@ -1,16 +1,26 @@
 ---
-title: Colectivo Puente — proposal (GD-2032)
-author: Colectivo Puente
-date: 2023-01-01
-folder: Learning for Action/2023/Colectivo Puente
+title: Groundwork Project — proposal (GD-2032)
+author: Groundwork Project
+date: 2024-05-01
+folder: Powering Economic Opportunity/2024/Groundwork Project
 grant: GD-2032
 tier: team
 ---
 
-# Proposal — Colectivo Puente
+# Proposal — Groundwork Project
 
-Scaling an AI benefits navigator. Requested: USD 600,000 over 2023–2025.
+**Grant:** GD-2032 · **Fund:** Powering Economic Opportunity Fund · **Geography:** United States
 
-Expected reach: 1376 participants. Projected annual earnings gain per participant: $3362.
+## 1. Problem
+Groundwork Project proposes strengthening employer-matched apprenticeships in new mexico.
 
-(2021–2023 proposal template — narrative sections free-form.)
+## 2. Approach
+Sectoral partnership with employer commitments; outcomes tracked in the org's data system.
+
+## 3. Projected impact (model v3.5)
+- North Star ratio: 94x
+- Projected annual earnings gain per participant: $4324
+- Projected participants reached: 3629
+
+## 4. Budget
+USD 600,000.

@@ -1,16 +1,25 @@
 ---
-title: Colectivo Raíces — Year 1 report
-author: Colectivo Raíces
-date: 2024-03-01
-folder: Learning for Action/2023/Colectivo Raíces
+title: Nextstep Skills Alliance — H2 Y1 report
+author: Nextstep Skills Alliance
+date: 2025-02-20
+folder: Future of Work/2024/Nextstep Skills Alliance
 grant: GD-2030
 tier: team
 ---
 
-# Colectivo Raíces — Year 1
+# Nextstep Skills Alliance — H2 Y1 progress report
 
-Grant GD-2030. As of 2024-03-01. Served 2,879 participants; median wage at placement about $16.41/hr.
+**Grant:** GD-2030 · As reported 2025-02-20 · Impact model v3.5
 
-Year 1: 2,879 participants reached (~40% of target). median wage at placement $16.41/hr vs a $14.91 regional baseline.
+## Reach
+Participants reached: 295
 
-(Pre-2024 template — no standard sections.)
+## Earnings
+Reported annual earnings gain per participant: $2,537
+Median wage at placement: $21.32/hr (regional baseline $18.87/hr)
+
+## Narrative
+H2 Y1: 295 participants reached (~31% of target). median wage at placement $21.32/hr vs a $19.82 regional baseline.
+
+## Data note
+Outcomes are grantee-reported and verified on a sample. No participant identifiers included.

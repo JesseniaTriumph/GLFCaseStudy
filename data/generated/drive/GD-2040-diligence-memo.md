@@ -1,18 +1,18 @@
 ---
-title: Inuka Trust — diligence memo
-author: Leah Fischer
-date: 2024-05-24
-folder: AI for Economic Opportunity/2024/Inuka Trust
+title: Tujenge Institute — diligence memo
+author: Ruth Mensah
+date: 2025-04-09
+folder: Future of Work/2025/Tujenge Institute
 grant: GD-2040
 tier: programs-only
 ---
 
-# Diligence memo — Inuka Trust (GD-2040)
+# Diligence memo — Tujenge Institute (GD-2040)
 
-Program officer: Leah Fischer. AI for Economic Opportunity Fund.
+Program officer: Ruth Mensah. Future of Work Fund.
 
-**Recommendation:** fund at the requested level.
+**Recommendation:** fund with a reporting condition on the data layer.
 
-**Strengths:** clear employer demand. **Risks:** earnings attribution.
+**Strengths:** existing outcomes data. **Risks:** concurrent program overlap.
 
 Candid note: prior experience with them was positive. Programs-only.

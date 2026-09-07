@@ -1,18 +1,18 @@
 ---
-title: Amka Initiative — diligence memo
-author: Leah Fischer
-date: 2021-01-11
-folder: Powering Economic Opportunity/2021/Amka Initiative
+title: Nextstep Partners — diligence memo
+author: Tomas Nguyen
+date: 2021-05-27
+folder: Future of Work/2021/Nextstep Partners
 grant: GD-2009
 tier: programs-only
 ---
 
-# Diligence memo — Amka Initiative (GD-2009)
+# Diligence memo — Nextstep Partners (GD-2009)
 
-Program officer: Leah Fischer. Powering Economic Opportunity Fund.
+Program officer: Tomas Nguyen. Future of Work Fund.
 
-**Recommendation:** fund with a reporting condition on the data layer.
+**Recommendation:** fund at the requested level.
 
-**Strengths:** experienced team. **Risks:** earnings attribution.
+**Strengths:** clear employer demand. **Risks:** earnings attribution.
 
-Candid note: the ED is stretched across two initiatives. Programs-only.
+Candid note: prior experience with them was positive. Programs-only.

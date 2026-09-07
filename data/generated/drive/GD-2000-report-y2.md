@@ -1,16 +1,16 @@
 ---
-title: Crosswalk Coalition — Year 2 report
+title: Crosswalk Coalition — Q2 Y1 report
 author: Crosswalk Coalition
-date: 2023-05-01
+date: 2021-11-26
 folder: Future of Work/2021/Crosswalk Coalition
 grant: GD-2000
 tier: team
 ---
 
-# Crosswalk Coalition — Year 2
+# Crosswalk Coalition — Q2 Y1
 
-Grant GD-2000. As of 2023-05-01. Served 2,540 participants; median wage at placement about $18.95/hr.
+Grant GD-2000. As of 2021-11-26. Served 1,363 participants; median wage at placement about $19.09/hr.
 
-Year 2: 2,540 participants reached (~118% of target). Placement pace slowed mid-year; median wage at placement $18.95/hr vs a $17.45 regional baseline.
+Q2 Y1: 1,363 participants reached (~22% of target). Placement pace slowed mid-period; median wage at placement $19.09/hr vs a $17.59 regional baseline.
 
 (Pre-2024 template — no standard sections.)

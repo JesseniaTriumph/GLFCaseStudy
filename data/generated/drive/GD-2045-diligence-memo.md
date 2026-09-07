@@ -1,18 +1,18 @@
 ---
-title: Threshold Collaborative — diligence memo
-author: Nadia Haddad
-date: 2024-08-15
-folder: Learning for Action/2024/Threshold Collaborative
+title: Rootwork Initiative — diligence memo
+author: Ruth Mensah
+date: 2025-02-08
+folder: Powering Economic Opportunity/2025/Rootwork Initiative
 grant: GD-2045
 tier: programs-only
 ---
 
-# Diligence memo — Threshold Collaborative (GD-2045)
+# Diligence memo — Rootwork Initiative (GD-2045)
 
-Program officer: Nadia Haddad. Learning for Action.
+Program officer: Ruth Mensah. Powering Economic Opportunity Fund.
 
-**Recommendation:** fund at a reduced level pending a revised measurement plan.
+**Recommendation:** fund with a reporting condition on the data layer.
 
-**Strengths:** existing outcomes data. **Risks:** scale-up path.
+**Strengths:** experienced team. **Risks:** earnings attribution.
 
-Candid note: prior experience with them was positive. Programs-only.
+Candid note: a reference call raised a minor concern about reporting timeliness. Programs-only.

@@ -1,26 +1,26 @@
 ---
-title: Cornerstone Skills Alliance — proposal (GD-2058)
-author: Cornerstone Skills Alliance
-date: 2025-04-01
-folder: Learning for Action/2025/Cornerstone Skills Alliance
+title: Northgate Works — proposal (GD-2058)
+author: Northgate Works
+date: 2026-03-01
+folder: Powering Economic Opportunity/2026/Northgate Works
 grant: GD-2058
 tier: team
 ---
 
-# Proposal — Cornerstone Skills Alliance
+# Proposal — Northgate Works
 
-**Grant:** GD-2058 · **Fund:** Learning for Action · **Geography:** United States
+**Grant:** GD-2058 · **Fund:** Powering Economic Opportunity Fund · **Geography:** United States
 
 ## 1. Problem
-Cornerstone Skills Alliance proposes expanding a public-benefits eligibility screener in new york.
+Northgate Works proposes strengthening a caregiver placement network in north carolina.
 
 ## 2. Approach
 Sectoral partnership with employer commitments; outcomes tracked in the org's data system.
 
 ## 3. Projected impact (model v4.1)
-- North Star ratio: 86x
-- Projected annual earnings gain per participant: $10697
-- Projected participants reached: 2605
+- North Star ratio: 34x
+- Projected annual earnings gain per participant: $5249
+- Projected participants reached: 3979
 
 ## 4. Budget
-USD 50,000.
+USD 1,400,000.

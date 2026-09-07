@@ -115,6 +115,17 @@ export interface GapReport {
   };
 }
 
+export interface GrantMeta {
+  organization?: string;
+  startDate?: string | null;
+  endDate?: string | null;
+  termYears?: number | null;
+  reportingFrequency?: string | null;
+  reportPeriodBasis?: string | null;
+  grantStatus?: string | null;
+  requirements?: { type: string; dueDate: string; status: string; submittedDocId?: string }[];
+}
+
 export interface EntityReviewItem {
   kind: "possible-duplicate-org" | "grant-without-org" | "org-without-grant";
   detail: string;
@@ -151,6 +162,8 @@ export interface CorpusIndex {
   gaps: GapReport;
   /** low-confidence entity-resolution calls a human should confirm (roadmap 2.3) */
   reviewQueue: EntityReviewItem[];
+  /** per-grant schedule metadata (dates, term, reporting cadence, requirements) for cycle logic */
+  grantMeta?: Record<string, GrantMeta>;
   /** coverage statement shown on every answer */
   coverage: {
     systems: string[];
@@ -180,6 +193,8 @@ export interface FollowUps {
   whoToAsk: { person: IndexPerson; why: string }[];
   suggestedQuestions: string[];
   draftEmail: { to: string; toName: string; subject: string; body: string } | null;
+  /** where each grant in the answer is in its own reporting/renewal cycle (per-grant, not portfolio-wide) */
+  cycle?: { grantId: string; organization?: string; stage: string; summary: string }[];
 }
 
 export interface Citation {

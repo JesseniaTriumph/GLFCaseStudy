@@ -156,6 +156,22 @@ export async function runPipeline(adapters: SourceAdapter[], opts: RunOptions): 
   const reviewQueue = entityReviewQueue(docs, entities);
   if (reviewQueue.length) log(`  entity review queue: ${reviewQueue.length} item(s) for a human to confirm`);
 
+  // per-grant schedule metadata for the cycle logic (docs/ROLES_AND_USERS.md)
+  const grantMeta: Record<string, import("../core/types.js").GrantMeta> = {};
+  for (const d of docs) {
+    if (d.meta.recordType !== "grant-fact-sheet" || !d.meta.grantId) continue;
+    grantMeta[d.meta.grantId as string] = {
+      organization: d.meta.organization as string,
+      startDate: (d.meta.startDate as string) ?? d.date,
+      endDate: (d.meta.endDate as string) ?? null,
+      termYears: (d.meta.termYears as number) ?? null,
+      reportingFrequency: (d.meta.reportingFrequency as string) ?? null,
+      reportPeriodBasis: (d.meta.reportPeriodBasis as string) ?? null,
+      grantStatus: (d.meta.grantStatus as string) ?? null,
+      requirements: (d.meta.requirements as any[]) ?? [],
+    };
+  }
+
   // ---------- 6. CHUNK ----------
   const rawChunks = docs.map(textForChunking).flatMap(chunkDoc);
 
@@ -249,6 +265,7 @@ export async function runPipeline(adapters: SourceAdapter[], opts: RunOptions): 
     dedupe,
     gaps,
     reviewQueue,
+    grantMeta,
     coverage: {
       systems: adapters.map((a) => a.label),
       dateRange: dates.length ? [dates[0]!, dates[dates.length - 1]!] : null,

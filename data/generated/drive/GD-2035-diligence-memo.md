@@ -1,18 +1,18 @@
 ---
-title: Northgate Society — diligence memo
+title: Groundwork Society — diligence memo
 author: Leah Fischer
-date: 2024-04-22
-folder: AI for Economic Opportunity/2024/Northgate Society
+date: 2024-05-08
+folder: Learning for Action/2024/Groundwork Society
 grant: GD-2035
 tier: programs-only
 ---
 
-# Diligence memo — Northgate Society (GD-2035)
+# Diligence memo — Groundwork Society (GD-2035)
 
-Program officer: Leah Fischer. AI for Economic Opportunity Fund.
+Program officer: Leah Fischer. Learning for Action.
 
-**Recommendation:** fund at a reduced level pending a revised measurement plan.
+**Recommendation:** fund with a reporting condition on the data layer.
 
-**Strengths:** clear employer demand. **Risks:** earnings attribution.
+**Strengths:** existing outcomes data. **Risks:** data-collection capacity.
 
-Candid note: the ED is stretched across two initiatives. Programs-only.
+Candid note: a reference call raised a minor concern about reporting timeliness. Programs-only.

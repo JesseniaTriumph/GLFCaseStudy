@@ -1,14 +1,14 @@
 ---
-title: Instituto Progreso — site visit notes
+title: Foundry Institute — site visit notes
 author: Amara Boateng
-date: 2022-05-13
-folder: AI for Economic Opportunity/2021/Instituto Progreso
+date: 2022-05-26
+folder: Powering Economic Opportunity/2021/Foundry Institute
 grant: GD-2004
 tier: programs-only
 ---
 
-# Site visit — Instituto Progreso
+# Site visit — Foundry Institute
 
-Amara Boateng, Colombia. Grant GD-2004.
+Amara Boateng, United States. Grant GD-2004.
 
-Completion looks slightly behind plan. The friction point is data collection for the retention milestones. Leadership is candid about the challenges. Programs-only.
+Completion looks on track. The friction point is transportation and childcare for participants. Leadership is candid about the challenges. Programs-only.

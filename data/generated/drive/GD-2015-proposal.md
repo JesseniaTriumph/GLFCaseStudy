@@ -1,16 +1,16 @@
 ---
-title: Zawadi Trust — proposal (GD-2015)
-author: Zawadi Trust
-date: 2022-02-01
-folder: AI for Economic Opportunity/2022/Zawadi Trust
+title: Marrow Cooperative — proposal (GD-2015)
+author: Marrow Cooperative
+date: 2022-01-01
+folder: Future of Work/2022/Marrow Cooperative
 grant: GD-2015
 tier: team
 ---
 
-# Proposal — Zawadi Trust
+# Proposal — Marrow Cooperative
 
-Building a public-benefits eligibility screener. Requested: USD 150,000 over 2022–2025.
+Scaling a sectoral training partnership in Kentucky. Requested: USD 2,900,000 over 2022–2024.
 
-Expected reach: 613 participants. Projected annual earnings gain per participant: $3120.
+Expected reach: TBD participants. Projected annual earnings gain per participant: $TBD.
 
 (2021–2023 proposal template — narrative sections free-form.)

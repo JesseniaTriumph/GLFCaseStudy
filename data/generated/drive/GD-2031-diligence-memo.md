@@ -1,18 +1,18 @@
 ---
-title: Fundación Enlace — diligence memo
-author: David Kang
-date: 2023-01-01
-folder: Future of Work/2023/Fundación Enlace
+title: Tujenge Trust — diligence memo
+author: Sofia Restrepo
+date: 2024-08-14
+folder: Powering Economic Opportunity/2024/Tujenge Trust
 grant: GD-2031
 tier: programs-only
 ---
 
-# Diligence memo — Fundación Enlace (GD-2031)
+# Diligence memo — Tujenge Trust (GD-2031)
 
-Program officer: David Kang. Future of Work Fund.
+Program officer: Sofia Restrepo. Powering Economic Opportunity Fund.
 
-**Recommendation:** fund at the requested level.
+**Recommendation:** fund with a reporting condition on the data layer.
 
-**Strengths:** strong local partnerships. **Risks:** scale-up path.
+**Strengths:** existing outcomes data. **Risks:** data-collection capacity.
 
 Candid note: board is mid-transition; watch continuity. Programs-only.

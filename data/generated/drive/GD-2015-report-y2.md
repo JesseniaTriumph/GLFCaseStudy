@@ -1,16 +1,16 @@
 ---
-title: Zawadi Trust — Year 2 report
-author: Zawadi Trust
-date: 2024-04-01
-folder: AI for Economic Opportunity/2022/Zawadi Trust
+title: Marrow Cooperative — H1 Y2 report
+author: Marrow Cooperative
+date: 2023-08-20
+folder: Future of Work/2022/Marrow Cooperative
 grant: GD-2015
 tier: team
 ---
 
-# Zawadi Trust — Year 2
+# Marrow Cooperative — H1 Y2
 
-Grant GD-2015. As of 2024-04-01. Served 329 participants; median wage at placement about $15.91/hr.
+Grant GD-2015. As of 2023-08-20. Served 737 participants; median wage at placement about $16.26/hr.
 
-Year 2: 329 participants reached (~54% of target). Placement pace slowed mid-year; median wage at placement $15.91/hr vs a $14.41 regional baseline.
+H1 Y2: 737 participants reached (~58% of target). median wage at placement $16.26/hr vs a $14.76 regional baseline.
 
 (Pre-2024 template — no standard sections.)
