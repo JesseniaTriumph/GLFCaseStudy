@@ -24,6 +24,8 @@ export interface RunOptions {
   embedderId?: string;
   /** if set, every ingested document's original bytes are written to this immutable raw store */
   rawDir?: string;
+  /** optional NER redactor (transformers.js) for free-text person names — opt-in */
+  nerRedactor?: import("./ner.js").NerRedactor;
 }
 
 export async function runPipeline(adapters: SourceAdapter[], opts: RunOptions): Promise<CorpusIndex> {
@@ -47,6 +49,20 @@ export async function runPipeline(adapters: SourceAdapter[], opts: RunOptions): 
     for (const d of docs) raw.put(d);
     const mf = raw.manifest();
     log(`  preserved ${mf.count} raw object(s), ${(mf.totalBytes / 1024).toFixed(1)} KB → ${opts.rawDir}`);
+  }
+
+  // ---------- 1c. NER NAME REDACTION (opt-in) ----------
+  if (opts.nerRedactor) {
+    log(`  NER name redaction with ${opts.nerRedactor.id}…`);
+    let nerNames = 0;
+    docs = await Promise.all(
+      docs.map(async (d) => {
+        const r = await opts.nerRedactor!.redact(d.text);
+        nerNames += r.findings.reduce((s, f) => s + f.count, 0);
+        return { ...d, text: r.text };
+      })
+    );
+    log(`  NER redacted ${nerNames} name span(s)`);
   }
 
   // ---------- 2. CLEAN + PII PASS ----------

@@ -11,7 +11,7 @@
  * is the honest baseline that keeps the demo corpus safe and shows the mechanism.
  */
 
-export type PiiKind = "email" | "phone" | "ssn" | "ein" | "card" | "bank" | "ip" | "dob" | "passport";
+export type PiiKind = "email" | "phone" | "ssn" | "ein" | "card" | "bank" | "ip" | "dob" | "passport" | "name";
 
 export interface PiiFinding {
   kind: PiiKind;

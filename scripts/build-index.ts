@@ -25,6 +25,13 @@ try {
 const ei = process.argv.indexOf("--embed");
 const embedderId = ei !== -1 ? process.argv[ei + 1] : process.env.COMPASS_EMBED || undefined;
 
+// COMPASS_PII_NER=true adds a local NER pass for free-text names (opt-in; adds a model download)
+let nerRedactor;
+if (process.env.COMPASS_PII_NER === "true") {
+  const { makeNerRedactor } = await import("../src/pipeline/ner.js");
+  nerRedactor = await makeNerRedactor(process.env.COMPASS_PII_NER_MODEL);
+}
+
 const { adapters, report } = await resolveAdapters();
 console.log("connectors:");
 for (const line of report) console.log(`  ${line}`);
@@ -37,6 +44,7 @@ const index = await runPipeline(adapters, {
   commit,
   embedderId,
   rawDir: fileURLToPath(new URL("../dist/raw/", import.meta.url)),
+  nerRedactor,
   log: (m) => console.log(m),
 });
 

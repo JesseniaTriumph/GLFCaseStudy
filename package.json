@@ -22,7 +22,8 @@
     "serve": "tsx scripts/serve.ts",
     "server:check": "tsx scripts/server-check.ts",
     "redteam": "tsx scripts/redteam.ts",
-    "ci": "tsx scripts/ci.ts"
+    "ci": "tsx scripts/ci.ts",
+    "build:index:ner": "COMPASS_PII_NER=true tsx scripts/build-index.ts"
   },
   "devDependencies": {
     "@types/node": "^22.9.0",
