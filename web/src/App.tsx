@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { answerQuestion } from "@compass/retrieval/answer.js";
-import type { Answer, CorpusIndex } from "@compass/core/types.js";
+import { answerQuestion } from "./lib/retrieval/answer.js";
+import type { Answer, CorpusIndex } from "./lib/core/types.js";
 import { PERSONAS } from "./principals.js";
 
 const EXAMPLES = [

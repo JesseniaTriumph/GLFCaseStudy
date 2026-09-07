@@ -1,94 +1,105 @@
 # Compass
 
-**A permission-aware way to ask years of grant knowledge one question.**
+**A permission-aware way to ask years of grant knowledge one question — and a working
+demonstration that the permission boundary is real, not a UI concept.**
 
-Built for the GitLab Foundation Programs team's problem: five years of grant reports and
-internal notes spread across Google Drive, GivingData, Airtable, and Zoom Chat, with no
-single source of truth. Compass connects the sources, cleans and de-duplicates them,
+Built for the GitLab Foundation case study. The problem: five years of grant reports and
+internal notes spread across Google Drive, GivingData, Airtable, and Zoom Team Chat, with
+no single source of truth. Compass connects the sources, cleans and de-duplicates them,
 resolves everything to the same grants and organizations, enforces who can see what, and
-answers questions **with a citation on every claim** and an honest statement of what it
-could not see.
+returns an **evidence brief** — every claim linked to a record the asker can already open,
+with an honest statement of what was and wasn't searched.
 
-> This repository is the working product skeleton that accompanies the strategy doc and
-> discovery guide. It runs a real pipeline on a **synthetic corpus** — the source
-> connectors are mocks behind the same interface the real ones would implement.
+> **All data here is synthetic and fictional.** No real GitLab Foundation grantee, staff
+> member, or record is represented. Organizations (Riverbend Care Collective, Ada Bridge
+> Institute, …) and people (Dana Okafor, Marcus Bell, …) are invented for demonstration.
 
-## What actually works here
+---
 
-```
-adapters ──▶ clean ──▶ dedupe ──▶ resolve entities ──▶ chunk ──▶ index ──▶ retrieve ──▶ cite
- (mock)     OCR gate   exact +      grant + org +        ~140 tok  BM25 +     ACL filter   [n] +
-            language   near +       fund + thesis                  tf-idf     + restricted  coverage
-            strip      cross-system                                hybrid     refusal       line
-```
+## The reframe
 
-- **Modular source adapters** (`src/adapters/`) — `SourceAdapter` is the one contract. The
-  mock Drive / GivingData / Airtable adapters and the real ones are interchangeable.
-- **Data-quality pipeline** (`src/pipeline/run.ts`) — extraction-confidence quarantine,
-  boilerplate stripping, exact + near + cross-system de-duplication with authoritative-copy
-  rules, entity resolution, and a **gap report** that reconciles against the grant spine.
-- **Hybrid retrieval** (`src/retrieval/search.ts`) — BM25 for exact terms (grant IDs,
-  dollar figures) + tf-idf cosine, then a **retrieval-time permission filter** that is the
-  security boundary.
-- **Grounded answers** (`src/retrieval/answer.ts`) — extractive by default (source text +
-  citations + confidence + coverage), generative if `ANTHROPIC_API_KEY` is set. Refuses
-  when support is thin or when the topic lives in the Restricted tier.
-- **Restricted tier is never indexed** — a metadata-only stub lets Compass say "that's
-  restricted" without the content being reachable.
-- **Graph join** — a doc that carries only a grant ID gets the organization attached (and
-  vice versa) so "how did X do vs projection" can join the projected field, the reported
-  field, and the PO note even though they live in different systems.
-- **"Deep dive"** (`src/retrieval/followups.ts`) — a toggleable panel surfaced beside
-  the answer: what would sharpen it, **who to ask** (the people actually associated with
-  the grants involved — PO, relationship owner, note authors, call attendees), suggested
-  questions, and a **draft email** when there's a clear recipient.
-- **Evaluation harness** (`scripts/eval.ts`) — a gold set with retrieval, refusal, and
-  **leakage** checks. Exits non-zero on any leak; wire it into CI.
+This is a **retrieval, permissioning, and citation** problem, not a chatbot problem. The
+model phrases; it does not decide. Every security-critical decision is enforced in
+deterministic code, outside the model.
 
-## Run it
+Evidence moves through six controlled stages: **Connect → Preserve → Resolve → Retrieve →
+Answer → Improve** (`docs/TRD.md`, `docs/ARCHITECTURE.md`).
+
+---
+
+## What actually runs (this is the skills demonstration)
 
 ```bash
 npm install
-npm run build:index          # runs the pipeline, prints the dedupe + gap report
-npm run eval                  # runs the gold set (8/8 should pass, 0 leaks)
 
-npm run ask -- "how did Carina perform against projection?"
-npm run ask -- --as programs "did we decline an AI upskilling applicant and why?"
-npm run ask -- --as other    "did we decline an AI upskilling applicant and why?"   # refused: permission
-npm run ask -- --as programs "what did the board discuss about staff compensation?" # refused: restricted
+npm run eval        # gold Q&A set: retrieval + refusal + PERMISSION-LEAK check
+                    #   → 8/8 pass, 0 leakage findings
+npm run security    # real RS256 OIDC token verification + tamper-evident audit log
+                    #   → 7/7: rejects a tampered token, a wrong-domain account, an
+                    #     expired token; detects an edited past audit entry
+npm run build:index # the pipeline: clean → dedupe (exact/near/cross-system) → grant↔org
+                    #   graph join → gap report + a signed build manifest
+npm run audit       # print + verify the hash-chained audit log
+
+npm run ask -- --as programs "how did Riverbend Care Collective perform against projection?"
+npm run ask -- --as other    "did we decline an AI upskilling applicant and why?"   # → refused: permission
+npm run ask -- --as programs "what did the board discuss about staff compensation?" # → refused: restricted tier not indexed
 ```
 
-Set `ANTHROPIC_API_KEY` to switch answers from extractive to generative (only the
-retrieved passages + the question are sent — never the whole corpus).
+### The web app
 
-## Going from mock to real
+```bash
+npm run web:build && npm --prefix web run preview     # build the index + serve the app
+# or for development:  npm run web:dev
+```
 
-Each mock adapter's header comments describe the real implementation. To swap one in:
-implement `SourceAdapter.pull()` against the real API (service account for Drive, API key
-for GivingData, scoped token for Airtable), keep emitting the same `SourceDoc` envelope,
-and register it in `src/config.ts`. Nothing downstream changes.
+Real in-browser hybrid retrieval over the built index, the retrieval-time permission
+filter, `Restricted`-tier exclusion, cited evidence briefs, coverage disclosure, and the
+toggleable Deep-dive panel — the **same modules** as the CLI and the eval harness. GitLab
+Foundation brand, light + dark, WCAG 2.1 AA. Self-contained (`web/src/lib/` is a copy of
+the shared retrieval/core modules) so it deploys anywhere:
 
-See [`ARCHITECTURE.md`](./ARCHITECTURE.md) and [`SECURITY.md`](./SECURITY.md).
+```bash
+cd web && npx vercel deploy        # or: netlify deploy --dir dist  /  any static host
+```
 
-## Status
+---
 
-| Area | State |
+## What's real vs. what's stubbed
+
+| | |
 |---|---|
-| Pipeline: clean / dedupe / resolve / graph join / gap report | working on mock data |
-| Hybrid retrieval + entity focus + permission filter + restricted refusal | working |
-| Extractive answers + citations + coverage | working |
-| "Deep dive" — gaps / who to ask / suggested questions / draft email | working (toggleable) |
-| Generative answers (Claude) | working when `ANTHROPIC_API_KEY` set |
-| Eval harness + gold set | working (8 cases) |
-| Web UI | next — React app over the built `corpus-index.json` |
-| Real connectors | interface defined; implementations are stubs |
-| Entity-resolution review queue | not built — low-confidence merges currently auto-apply (see limitations) |
+| **Real** | The pipeline (clean, dedupe, entity resolution, gap report, manifest). Hybrid retrieval (BM25 + tf-idf vector). **The permission filter — enforced per chunk, tested for zero leaks.** `Restricted` excluded from the index (metadata stub + refusal). RS256 ID-token verification. Hash-chained tamper-evident audit log. Content hashing. The eval harness. |
+| **Stubbed for the demo** | Google sign-in (a persona switch stands in — real verification is in `src/security/auth.ts`). Deep-link targets (example URLs). The connectors (mock adapters on synthetic fixtures — the real ones implement the same `SourceAdapter` interface). Generative answers (extractive by default; set `ANTHROPIC_API_KEY`). Embeddings (tf-idf stand-in behind the same interface — swap for BGE-M3). |
+| **Designed, not built** (see `deliverables/G_Security_Review.md`) | The OAuth callback + session layer, real connector credentials, a production PII scanner, monitoring/alerting, per-user rate limits, a pen test. **Prototype: `CONDITIONAL`. Production: `BLOCKED`** on those six items. |
 
-### Known limitations (deliberate, for a v0)
-- Entity resolution over-splits some orgs (e.g. "SOAR" vs "Shaping Our Appalachian
-  Region") — in the real product these go to a human review queue; here they just don't
-  merge, which is a useful illustration of why that queue exists.
-- The "semantic" signal is tf-idf cosine, not learned embeddings — swap `tfidfVector` for
-  a real embedder behind the same shape.
-- Synthetic corpus is small (~6 grants); it exercises every pipeline stage but is not a
-  scale test.
+---
+
+## Documentation
+
+Full standard build-doc set in [`docs/`](docs/README.md): PRD, TRD, DATA_MODEL (ERD),
+USER_FLOWS, LOGIC_TREES, WIREFRAMES, PRIOR_ART (build-vs-buy), SYSTEM_TOOLS, CROSS_PLATFORM,
+ROADMAP (step tracker), ROLE_AND_CYCLE_CONTEXT.
+
+Security: [`SECURITY.md`](SECURITY.md) · the full architecture is in the strategy doc §6 ·
+the lifecycle review (MAP/ATTACK/HARDEN/MONITOR/RESPOND) is `deliverables/G_Security_Review.md`.
+
+Two-minute demo script: [`DEMO.md`](DEMO.md).
+
+---
+
+## Layout
+
+```
+src/
+  core/types.ts          the canonical envelope, entities, chunks, citations
+  adapters/              SourceAdapter interface + mock Drive/GivingData/Airtable
+  pipeline/run.ts        clean → dedupe → resolve → chunk → index → gap report
+  retrieval/             search (hybrid + permission filter) · answer · followups · llm
+  security/              auth (OIDC verify) · audit (hash chain)
+scripts/                 build-index · eval · security-check · audit · ask
+eval/gold.json           the gold Q&A set
+web/                     React + Vite app (self-contained via web/src/lib/)
+data/mock/               synthetic fictional corpus
+docs/                    the build-doc set
+```

@@ -9,9 +9,7 @@
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "allowImportingTsExtensions": true,
-    "noEmit": true,
-    "baseUrl": ".",
-    "paths": { "@compass/*": ["../src/*"] }
+    "noEmit": true
   },
-  "include": ["src", "vite.config.ts", "../src"]
+  "include": ["src", "vite.config.ts"]
 }

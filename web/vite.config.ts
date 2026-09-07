@@ -1,12 +1,10 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import { fileURLToPath } from "node:url";
 
-// The retrieval + core modules are shared with the pipeline (../src). esbuild resolves
-// their `.js` import specifiers to the `.ts` sources; fs.allow lets Vite read them.
+// Self-contained. src/lib/ holds a copy of the retrieval + core modules shared with the
+// pipeline (../src) so this app deploys anywhere with no path aliases. In production the
+// two would be one package.
 export default defineConfig({
   plugins: [react()],
-  server: { fs: { allow: [fileURLToPath(new URL("..", import.meta.url))] } },
-  resolve: { alias: { "@compass": fileURLToPath(new URL("../src", import.meta.url)) } },
   base: "./",
 });

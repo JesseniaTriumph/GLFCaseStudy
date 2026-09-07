@@ -1,4 +1,4 @@
-import type { Principal } from "@compass/core/types.js";
+import type { Principal } from "./lib/core/types.js";
 
 /**
  * Demo personas. In production these come from Google OIDC + a Google Groups sync
