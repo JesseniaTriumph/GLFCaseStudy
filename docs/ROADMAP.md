@@ -169,15 +169,23 @@ vendor has been built and is gated by `npm run ci`.
 | 4.5 | Docs — RUNBOOK, INCIDENT_RESPONSE, CONTROLS_MATRIX, TABLETOP_EXERCISE, TIER_POLICY, SOURCE_OF_TRUTH_MATRIX, V1_CORPUS_AND_METRIC. |
 | 4.7 | Leadership decision packet — `deliverables/M_Decision_Packet.md`. |
 
-### Blocked on the Foundation (people / access / legal)
+### Not blocked — "build the best version now, swap at handoff"
+
+Full detail: **`docs/BUILD_NOW_VS_HANDOFF.md`**. Nothing below stops a pilot.
+
+| Step | What runs now | What swaps in at handoff |
+|---|---|---|
+| 3.6 | A **5-year synthetic corpus** (`npm run gen:corpus` → ~70 grants, ~110 declines, ~250 docs, Zoom threads, dirty data) + `npm run reconcile` | The real pull, when credentials arrive — same pipeline |
+| 1.3 | Credential-activated connectors; mock fallback | The keys in `.env` (`docs/CONNECTORS.md`) |
+| 1.4 | **Extractive mode** — cited passages, no AI vendor, $0 | A generative backend under a zero-retention agreement, or a self-hosted model — one setting (`docs/BUILD_NOW_VS_HANDOFF.md`) |
+| 1.5, 1.6, 1.8 | Tier policy, source-of-truth matrix, V1 corpus — **drafted** in `docs/` | The data owner's sign-off |
+| 1.7 | `eval/gold.json` (12) + `eval/gold-full.json` (10) | The 50–100 real questions, built *with* the Programs team |
+| 1.1, 1.9 | Documented role → question mapping (`docs/ROLES_AND_USERS.md`); timing-sheet template | Confirmation from 3–5 interviews + real baseline timings |
+| 4.8 | `docs/TABLETOP_EXERCISE.md` — full scenario | Running it once with the DRI, COO's office, counsel |
+
+### Genuinely needs an external party or a calendar
 
 | Step | Needs |
 |---|---|
-| 1.1, 1.9, 2.10, 3.9, 4.6 | Interviews, design partners, baseline timings, onboarding, a named trained owner |
-| 1.3 | Real credentials in the secret manager (`.env.example`, `docs/CONNECTORS.md` say exactly what) |
-| 1.4 | Executed zero-retention LLM agreement + DPA + counsel's cross-border determination |
-| 1.5, 1.6, 1.8 | Data-owner sign-off on the tier policy, source-of-truth matrix, and V1 corpus (all drafted in `docs/`) |
-| 1.7 | The 50–100-question gold set built *with* the Programs team (harness + a 11-case synthetic set exist) |
-| 3.6 | Backfilling the real five-year corpus |
-| 3.8 | Third-party penetration test (external vendor) |
-| 4.8 | Running the tabletop (scenario written) |
+| 3.8 | Third-party penetration test — an independent firm (~2-week engagement + remediation). `npm run redteam` + `npm run ci` are the hardened baseline it starts from. |
+| 2.10, 3.9, 4.6 | Design partners using it weekly, full-team onboarding, a named trained owner — the runbook + training doc are written |

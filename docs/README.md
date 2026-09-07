@@ -18,6 +18,7 @@ Standard build docs for Compass. Read in this order.
 | 11 | [CROSS_PLATFORM.md](CROSS_PLATFORM.md) | Web / PWA / iOS / Android strategy — shared core, thin shells |
 | 12 | [ROADMAP.md](ROADMAP.md) | Sequential implementation plan + the build/ops agent orchestration (sequential DAG + two loops) |
 | — | [CONNECTORS.md](CONNECTORS.md) | Going from mock data to live data — what each connector needs and who provides it |
+| — | [BUILD_NOW_VS_HANDOFF.md](BUILD_NOW_VS_HANDOFF.md) | For every "blocker": what runs now with what we have, and the one-line change at handoff |
 | — | [TIER_POLICY.md](TIER_POLICY.md) | The four-tier sensitivity scheme + the `never-ingest` list (data owner signs off) |
 | — | [SOURCE_OF_TRUTH_MATRIX.md](SOURCE_OF_TRUTH_MATRIX.md) | Which system wins per fact, and what happens when they disagree |
 | — | [V1_CORPUS_AND_METRIC.md](V1_CORPUS_AND_METRIC.md) | The V1 scope and the 6-month success metric |
