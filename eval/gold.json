@@ -63,6 +63,14 @@
       "expectRefusal": false
     },
     {
+      "id": "cross-portfolio-care-economy",
+      "_note": "A cross-portfolio synthesis question — should assemble from the care-economy grant + notes across systems, not refuse.",
+      "persona": "programs",
+      "question": "What have we funded in the care economy, and how is it going?",
+      "expectSources": ["givingdata:GD-1188"],
+      "expectRefusal": false
+    },
+    {
       "id": "conflicting-figures-shown-not-merged",
       "_note": "The Q3 board-update draft carries a stale Riverbend median-wage figure that disagrees with the final Year 1 report. Compass must show both, not silently pick one (roadmap 3.6). Confidence drops to medium.",
       "persona": "programs",
