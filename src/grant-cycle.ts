@@ -36,6 +36,8 @@ export interface GrantCycle {
   grantId: string;
   organization?: string;
   reportingFrequency: string;
+  /** "recorded" = read from a GivingData field; "inferred" = derived from the schedule spacing */
+  reportingFrequencyBasis: "recorded" | "inferred";
   reportPeriodBasis: string;
   termYears: number | null;
   /** where the grant is now */
@@ -54,6 +56,27 @@ export interface GrantCycle {
 
 const DAY = 86_400_000;
 const days = (fromISO: string, to: Date) => Math.round((new Date(fromISO).getTime() - to.getTime()) / DAY);
+
+/**
+ * Infer the reporting cadence from the spacing of the progress-report requirements when
+ * GivingData has no explicit `reporting_frequency` field. The median gap between
+ * consecutive report due dates → quarterly / semi-annual / annual / biennial. This is how
+ * Compass "assesses" cadence when it isn't recorded — and it says so ("inferred from N
+ * requirements", never presented as authoritative).
+ */
+export function inferCadence(requirements: GrantRequirement[]): { frequency: string; basis: "recorded" | "inferred"; from: number } {
+  const reports = requirements
+    .filter((r) => /report|check-?in|update/i.test(r.type) && !/final|proposal|renewal/i.test(r.type))
+    .map((r) => new Date(r.dueDate).getTime())
+    .sort((a, b) => a - b);
+  if (reports.length < 2) return { frequency: "final-only", basis: "inferred", from: reports.length };
+  const gaps = reports.slice(1).map((t, i) => (t - reports[i]!) / DAY);
+  gaps.sort((a, b) => a - b);
+  const median = gaps[Math.floor(gaps.length / 2)]!;
+  const frequency =
+    median <= 130 ? "quarterly" : median <= 240 ? "semi-annual" : median <= 460 ? "annual" : "biennial";
+  return { frequency, basis: "inferred", from: reports.length };
+}
 
 /** Read one grant's cycle relative to `today` (defaults to now). */
 export function grantCycle(g: GrantCycleInput, today = new Date(), renewalLeadDays = 120): GrantCycle {
@@ -86,10 +109,15 @@ export function grantCycle(g: GrantCycleInput, today = new Date(), renewalLeadDa
   else if (toEnd != null && toEnd <= 60) stage = "closing"; // within 60 days either side of term end
   else if (inRenewalWindow) stage = "renewal-window";
 
-  const freq = g.reportingFrequency ?? "annual";
-  const basis = g.reportPeriodBasis ?? "grant-year";
+  // cadence: use GivingData's recorded field if present, else infer it from the schedule
+  const inferred = inferCadence(reqs);
+  const freq = g.reportingFrequency ?? inferred.frequency;
+  const freqBasis: "recorded" | "inferred" = g.reportingFrequency ? "recorded" : "inferred";
+  const basis = g.reportPeriodBasis ?? "grant-year (assumed — not recorded)";
 
-  const parts: string[] = [`${freq} reporting${g.termYears ? `, ${g.termYears}-year term` : ""}`];
+  const parts: string[] = [
+    `${freq} reporting${freqBasis === "inferred" ? ` (inferred from ${inferred.from} requirement${inferred.from === 1 ? "" : "s"})` : ""}${g.termYears ? `, ${g.termYears}-year term` : ""}`,
+  ];
   if (overdue.length) parts.push(`${overdue.length} report(s) overdue (oldest by ${overdue[0]!.overdueByDays}d)`);
   if (nextDeadline) parts.push(`next: ${nextDeadline.type} in ${nextDeadline.inDays}d (${nextDeadline.dueDate})`);
   if (renewalDeadline && renewalDeadline.inDays > -30)
@@ -105,6 +133,7 @@ export function grantCycle(g: GrantCycleInput, today = new Date(), renewalLeadDa
     grantId: g.grantId,
     organization: g.organization,
     reportingFrequency: freq,
+    reportingFrequencyBasis: freqBasis,
     reportPeriodBasis: basis,
     termYears: g.termYears ?? null,
     stage,
