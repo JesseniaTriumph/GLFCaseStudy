@@ -16,3 +16,4 @@ secrets/
 
 # runtime feedback capture
 eval/feedback.jsonl
+dist/raw/

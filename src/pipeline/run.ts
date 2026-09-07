@@ -7,6 +7,7 @@ import type { SourceDoc, Chunk, CorpusIndex, EntityRef, DedupeReport, GapReport,
 import { tokenize, jaccard, tfidfVector, detectLanguage } from "../util/text.js";
 import { sha1 } from "../util/hash.js";
 import { scrubPii, looksLikeParticipantData } from "./pii.js";
+import { RawStore } from "./rawstore.js";
 
 const NEAR_DUP_THRESHOLD = 0.82;
 const QUARANTINE_BELOW = 0.6;
@@ -21,6 +22,8 @@ export interface RunOptions {
   commit?: string | null;
   /** learned-embedder id (e.g. "bge-small"); omit for the tf-idf default */
   embedderId?: string;
+  /** if set, every ingested document's original bytes are written to this immutable raw store */
+  rawDir?: string;
 }
 
 export async function runPipeline(adapters: SourceAdapter[], opts: RunOptions): Promise<CorpusIndex> {
@@ -37,6 +40,14 @@ export async function runPipeline(adapters: SourceAdapter[], opts: RunOptions): 
     docs.push(...pulled);
   }
   const seen = docs.length;
+
+  // ---------- 1b. PRESERVE — immutable content-addressed raw store ----------
+  if (opts.rawDir) {
+    const raw = new RawStore(opts.rawDir);
+    for (const d of docs) raw.put(d);
+    const mf = raw.manifest();
+    log(`  preserved ${mf.count} raw object(s), ${(mf.totalBytes / 1024).toFixed(1)} KB → ${opts.rawDir}`);
+  }
 
   // ---------- 2. CLEAN + PII PASS ----------
   let quarantined = 0;
@@ -92,6 +103,8 @@ export async function runPipeline(adapters: SourceAdapter[], opts: RunOptions): 
   // ---------- 5. RESOLVE ENTITIES ----------
   resolveEntities(restrictedStubDocs, () => {});
   const entities = resolveEntities(docs, log);
+  const reviewQueue = entityReviewQueue(docs, entities);
+  if (reviewQueue.length) log(`  entity review queue: ${reviewQueue.length} item(s) for a human to confirm`);
 
   // ---------- 6. CHUNK ----------
   const rawChunks = docs.flatMap(chunkDoc);
@@ -185,6 +198,7 @@ export async function runPipeline(adapters: SourceAdapter[], opts: RunOptions): 
     directory,
     dedupe,
     gaps,
+    reviewQueue,
     coverage: {
       systems: adapters.map((a) => a.label),
       dateRange: dates.length ? [dates[0]!, dates[dates.length - 1]!] : null,
@@ -370,6 +384,52 @@ function resolveEntities(docs: SourceDoc[], log: (m: string) => void): EntityRef
   const all = [...grants.values(), ...orgs.values(), ...funds.values(), ...theses.values()];
   log(`  resolved ${grants.size} grants, ${orgs.size} organizations, ${funds.size} funds, ${theses.size} thesis areas · joined ${joined} docs across grant<->org`);
   return all;
+}
+
+/**
+ * Flag entity-resolution calls a human should confirm (roadmap 2.3): two organization
+ * labels that look like the same org but resolved to different ids, and grants/orgs that
+ * never co-occur with the other side (a likely missing link). Nothing here is auto-merged
+ * — the queue is shown, and a reviewer decides.
+ */
+function entityReviewQueue(docs: SourceDoc[], entities: EntityRef[]): import("../core/types.js").EntityReviewItem[] {
+  const out: import("../core/types.js").EntityReviewItem[] = [];
+  const orgs = entities.filter((e) => e.kind === "organization");
+  const norm = (s: string) => new Set(tokenize(s).filter((t) => !/^(inc|the|foundation|fund|of|for|and)$/.test(t)));
+
+  for (let i = 0; i < orgs.length; i++)
+    for (let j = i + 1; j < orgs.length; j++) {
+      const a = orgs[i]!;
+      const b = orgs[j]!;
+      const sim = jaccard(norm(a.label), norm(b.label));
+      const prefix = a.label.toLowerCase().startsWith(b.label.toLowerCase().slice(0, 8)) || b.label.toLowerCase().startsWith(a.label.toLowerCase().slice(0, 8));
+      if (sim >= 0.5 && sim < 1) {
+        out.push({
+          kind: "possible-duplicate-org",
+          detail: `"${a.label}" and "${b.label}" look like the same organization (name overlap ${(sim * 100).toFixed(0)}%${prefix ? ", shared prefix" : ""})`,
+          candidates: [a.id, b.id],
+          confidence: sim,
+        });
+      }
+    }
+
+  const grantsWithOrg = new Set<string>();
+  const orgsWithGrant = new Set<string>();
+  for (const d of docs) {
+    const g = d.entities.find((e) => e.kind === "grant");
+    const o = d.entities.find((e) => e.kind === "organization");
+    if (g && o) {
+      grantsWithOrg.add(g.id);
+      orgsWithGrant.add(o.id);
+    }
+  }
+  for (const e of entities) {
+    if (e.kind === "grant" && !grantsWithOrg.has(e.id))
+      out.push({ kind: "grant-without-org", detail: `Grant ${e.id} is never linked to an organization`, candidates: [e.id], confidence: 0.4 });
+    if (e.kind === "organization" && !orgsWithGrant.has(e.id))
+      out.push({ kind: "org-without-grant", detail: `"${e.label}" is never linked to a grant`, candidates: [e.id], confidence: 0.5 });
+  }
+  return out.sort((a, b) => a.confidence - b.confidence);
 }
 
 function dedupeRefs(refs: EntityRef[]): EntityRef[] {

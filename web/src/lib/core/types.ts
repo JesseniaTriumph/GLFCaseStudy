@@ -112,6 +112,14 @@ export interface GapReport {
   };
 }
 
+export interface EntityReviewItem {
+  kind: "possible-duplicate-org" | "grant-without-org" | "org-without-grant";
+  detail: string;
+  candidates: string[];
+  /** 0–1; lower = more urgent to review */
+  confidence: number;
+}
+
 export interface BuildManifest {
   builtAt: string;
   /** git commit the pipeline was at, for reproducibility (§6.5) */
@@ -138,6 +146,8 @@ export interface CorpusIndex {
   directory: IndexPerson[];
   dedupe: DedupeReport;
   gaps: GapReport;
+  /** low-confidence entity-resolution calls a human should confirm (roadmap 2.3) */
+  reviewQueue: EntityReviewItem[];
   /** coverage statement shown on every answer */
   coverage: {
     systems: string[];

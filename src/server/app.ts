@@ -149,6 +149,16 @@ export function createApp(deps: ServerDeps) {
         record({ type: "admin", user: s.email, action: "revoke", detail: body.all ? "all" : body.sub });
         return json(res, 200, { ok: true });
       }
+      if (path === "/admin/review" && req.method === "GET") {
+        const s = adminSession();
+        if (!s) return json(res, 403, { error: "admin only" });
+        return json(res, 200, {
+          entityReviewQueue: deps.index.reviewQueue,
+          excluded: deps.index.gaps.excluded,
+          dedupe: deps.index.dedupe,
+          killSwitch: killSwitch.engaged,
+        });
+      }
       if (path === "/admin/killswitch" && req.method === "POST") {
         const s = adminSession();
         if (!s) return json(res, 403, { error: "admin only" });

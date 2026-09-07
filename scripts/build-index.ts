@@ -36,6 +36,7 @@ const index = await runPipeline(adapters, {
   notCovered: CORPUS.notCovered,
   commit,
   embedderId,
+  rawDir: fileURLToPath(new URL("../dist/raw/", import.meta.url)),
   log: (m) => console.log(m),
 });
 
@@ -74,5 +75,9 @@ console.log(
     (ex.lowExtractionConfidence.count ? ` (${ex.lowExtractionConfidence.ids.join(", ")})` : "") +
     ` · ${ex.sensitivityTier} sensitivity-tier · ${ex.duplicates} duplicate(s)`
 );
+if (index.reviewQueue.length) {
+  console.log(`entity review queue (${index.reviewQueue.length}):`);
+  for (const r of index.reviewQueue) console.log(`  [${r.kind}] ${r.detail}`);
+}
 console.log(`embedder: ${index.embedder ? `${index.embedder.id} (${index.embedder.dims}d)` : "tf-idf (default)"}`);
 console.log(`written -> ${embedderId ? OUT_LOCAL : OUT}`);
