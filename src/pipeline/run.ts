@@ -6,6 +6,7 @@ import type { SourceAdapter } from "../adapters/types.js";
 import type { SourceDoc, Chunk, CorpusIndex, EntityRef, DedupeReport, GapReport, Tier, IndexPerson } from "../core/types.js";
 import { tokenize, jaccard, tfidfVector, detectLanguage } from "../util/text.js";
 import { sha1 } from "../util/hash.js";
+import { scrubPii, looksLikeParticipantData } from "./pii.js";
 
 const NEAR_DUP_THRESHOLD = 0.82;
 const QUARANTINE_BELOW = 0.6;
@@ -37,10 +38,34 @@ export async function runPipeline(adapters: SourceAdapter[], opts: RunOptions): 
   }
   const seen = docs.length;
 
-  // ---------- 2. CLEAN ----------
+  // ---------- 2. CLEAN + PII PASS ----------
   let quarantined = 0;
+  let piiRedactions = 0;
+  let piiTierRaised = 0;
   docs = docs
-    .map((d) => ({ ...d, text: clean(d.text), language: d.language === "unknown" ? detectLanguage(d.text) : d.language }))
+    .map((d) => {
+      const cleaned = clean(d.text);
+      // PII redaction at intake (§6.3, security review A7): scrub direct identifiers,
+      // and raise the tier when a document clearly carries named participant data.
+      const pii = scrubPii(cleaned);
+      const findingCount = pii.findings.reduce((s, f) => s + f.count, 0);
+      piiRedactions += findingCount;
+      let tier = d.tier;
+      if ((pii.score >= 1.5 || looksLikeParticipantData(pii.text)) && tier !== "restricted" && tier !== "never-ingest") {
+        tier = "restricted";
+        piiTierRaised++;
+        log(`  PII: raised ${d.id} → restricted (score ${pii.score.toFixed(1)}${looksLikeParticipantData(pii.text) ? ", participant-data pattern" : ""})`);
+      } else if (findingCount) {
+        log(`  PII: redacted ${findingCount} identifier(s) in ${d.id} [${pii.findings.map((f) => f.kind).join(", ")}]`);
+      }
+      return {
+        ...d,
+        text: pii.text,
+        tier,
+        language: d.language === "unknown" ? detectLanguage(pii.text) : d.language,
+        meta: { ...d.meta, piiFindings: pii.findings },
+      };
+    })
     .filter((d) => {
       if (d.extractionConfidence < QUARANTINE_BELOW) {
         quarantined++;
@@ -121,9 +146,9 @@ export async function runPipeline(adapters: SourceAdapter[], opts: RunOptions): 
 
   const dates = docs.map((d) => d.date).filter(Boolean).sort() as string[];
   log(
-    `  seen ${seen} · quarantined ${quarantined} · tier-excluded ${tierExcluded} · ` +
-      `exact dups ${dedupe.exactDuplicates} · near dups ${dedupe.nearDuplicates} · cross-system links ${dedupe.crossSystemLinks} · ` +
-      `chunks ${chunks.length}`
+    `  seen ${seen} · quarantined ${quarantined} · PII redactions ${piiRedactions} · PII tier-raised ${piiTierRaised} · ` +
+      `tier-excluded ${tierExcluded} · exact dups ${dedupe.exactDuplicates} · near dups ${dedupe.nearDuplicates} · ` +
+      `cross-system links ${dedupe.crossSystemLinks} · chunks ${chunks.length}`
   );
 
   // Build manifest — records exactly what is in the index and how it got there (§6.5).

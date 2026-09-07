@@ -63,23 +63,32 @@ export async function answerQuestion(
 
   // Refuse when nothing solidly matches — a weak lexical brush is not an answer.
   const topWeak = hits.length > 0 && hits[0]!.bm25 < 1.6 && hits[0]!.semantic < 0.08;
+  // The question names a specific person/org, but nothing Compass can see mentions it.
+  // Don't hand back a confident-looking brief about adjacent grantees — say so.
+  const unknownSubject = unrecognizedNamedSubject(question, index, hits);
   const topBm25 = hits[0]?.bm25 ?? 0;
   // Restricted content dominates when its metadata match is as on-topic as our best real hit.
   const restrictedMatched = withheld.tiers.includes("restricted");
   const restrictedDominates = restrictedMatched && withheld.restrictedTopScore >= topBm25 * 0.7;
   const permissionBlocked = hits.length === 0 && withheld.count > 0;
 
-  if (hits.length === 0 || topWeak || restrictedDominates) {
+  if (hits.length === 0 || topWeak || restrictedDominates || unknownSubject) {
     let text: string;
     let reason: string;
     if (restrictedDominates) {
       text =
-        `This question would require material in the Restricted tier (board / compensation / legal). ` +
+        `This question would require material in the Restricted tier (board, compensation, legal, or named participant data). ` +
         `That content is not indexed and Compass will not answer from it. If you need it, request it through the COO's office.`;
       reason = "matching topic is Restricted-tier; not indexed";
     } else if (permissionBlocked) {
       text = `${withheld.count} passage(s) match this question but sit outside what you can retrieve in this workspace. I can't answer it here.`;
       reason = "required sources are outside the caller's permission scope";
+    } else if (unknownSubject) {
+      text =
+        `Nothing Compass can see names the person or organization you asked about. ` +
+        `If this is a program participant or client, that data is held out of the index by policy. ` +
+        `Otherwise the source may not be connected yet. ${coverage}`;
+      reason = `named subject not present in any retrievable source`;
     } else {
       text = `I don't have anything in what I can see that solidly answers this. ${coverage}`;
       reason = "no strong match in the corpus";
@@ -229,6 +238,39 @@ function gradeConfidence(hits: Scored[]): { level: Answer["confidence"]; reason:
   if (strong >= 1)
     return { level: "medium", reason: `partial evidence — ${strong} close match(es); verify against the cited sources` };
   return { level: "low", reason: "thin evidence — treat as a lead, not an answer" };
+}
+
+/**
+ * If the question names a specific person or multi-word proper entity, and neither the
+ * resolved-entity directory nor any retrieved passage mentions it, Compass has nothing on
+ * that subject — refuse plainly rather than answer from adjacent material. This is also
+ * what makes a query about a quarantined named participant fail closed.
+ */
+function unrecognizedNamedSubject(question: string, index: CorpusIndex, hits: Scored[]): string | null {
+  // capitalized 2+ word phrases, ignoring ones that start the sentence
+  const names = new Set<string>();
+  const re = /(?<=[a-z,;:]\s|["“'(]\s?)([A-Z][a-z]+(?:\s+[A-Z][a-z]+){1,3})/g;
+  for (const m of question.matchAll(re)) names.add(m[1]!);
+  // also catch a leading "Tell me about X" / "participant X" where X follows a keyword
+  const kw = question.match(/\b(?:participant|client|beneficiary|about|regarding|for)\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+){1,3})/);
+  if (kw) names.add(kw[1]!);
+  if (!names.size) return null;
+
+  const known = [
+    ...index.entities.map((e) => e.label.toLowerCase()),
+    ...index.directory.map((p) => p.name.toLowerCase()),
+  ];
+  const hitText = hits.map((h) => h.chunk.text.toLowerCase()).join("  ");
+
+  for (const name of names) {
+    const n = name.toLowerCase();
+    const inEntities = known.some((k) => k.includes(n) || n.includes(k));
+    const inHits = hitText.includes(n);
+    // common English word-pairs slip through the regex; require it to look like a name
+    const looksNominal = /^[A-Z][a-z]+\s+[A-Z][a-z]+/.test(name);
+    if (looksNominal && !inEntities && !inHits) return name;
+  }
+  return null;
 }
 
 function coverageStatement(index: CorpusIndex): string {
