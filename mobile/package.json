@@ -1,0 +1,20 @@
+{
+  "name": "compass-mobile",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Compass iOS + Android shell (Expo). Shares the TypeScript retrieval core with the web app; talks to the same session-gated /api/ask.",
+  "main": "index.ts",
+  "scripts": {
+    "start": "expo start",
+    "ios": "expo start --ios",
+    "android": "expo start --android"
+  },
+  "dependencies": {
+    "expo": "~51.0.0",
+    "expo-auth-session": "~5.5.2",
+    "expo-secure-store": "~13.0.2",
+    "react": "18.2.0",
+    "react-native": "0.74.5"
+  },
+  "//": "Not installed in this repo — this is a scaffold (roadmap 4.4). `cd mobile && npm install && npx expo start`."
+}

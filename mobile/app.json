@@ -1,0 +1,13 @@
+{
+  "expo": {
+    "name": "Compass",
+    "slug": "compass",
+    "scheme": "compass",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "ios": { "bundleIdentifier": "org.gitlabfoundation.compass", "supportsTablet": true },
+    "android": { "package": "org.gitlabfoundation.compass" },
+    "plugins": ["expo-secure-store"]
+  }
+}

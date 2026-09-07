@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Compass — embed</title>
+<style>
+  :root { color-scheme: light dark; font: 14px/1.5 -apple-system, "Segoe UI", Roboto, system-ui, sans-serif; }
+  body { margin: 0; padding: 12px; background: Canvas; color: CanvasText; }
+  form { display: flex; gap: 8px; }
+  input { flex: 1; padding: 8px 10px; border: 1px solid GrayText; border-radius: 8px; background: Field; color: FieldText; }
+  button { padding: 8px 14px; border: 0; border-radius: 8px; background: #028090; color: #fff; cursor: pointer; }
+  .brief { margin-top: 12px; white-space: pre-wrap; }
+  .meta { margin-top: 8px; font-size: 12px; color: GrayText; }
+  .cite { color: #028090; }
+  a { color: inherit; }
+</style>
+</head>
+<body>
+<!--
+  Compass embeddable answer widget (roadmap 4.1 — "a surface where the team works").
+  Drop this into GivingData / a Notion page / an intranet via an <iframe>:
+     <iframe src="https://compass.gitlabfoundation.org/embed.html" style="width:100%;height:340px;border:0"></iframe>
+  It calls the same session-gated /api/ask as the main app — the viewer must already
+  be signed in to Compass in that browser (the session cookie is sent with credentials:'include').
+  Pass ?api=https://compass... to point at a non-same-origin server.
+-->
+<form id="f">
+  <input id="q" placeholder="Ask Compass about a grant, org, or thesis…" aria-label="question" />
+  <button>Ask</button>
+</form>
+<div id="out" class="brief"></div>
+<div id="meta" class="meta"></div>
+<script>
+  const api = new URLSearchParams(location.search).get("api") || "";
+  const f = document.getElementById("f"), q = document.getElementById("q"),
+        out = document.getElementById("out"), meta = document.getElementById("meta");
+  f.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const question = q.value.trim();
+    if (!question) return;
+    out.textContent = "…"; meta.textContent = "";
+    try {
+      const r = await fetch(api + "/api/ask", {
+        method: "POST", credentials: "include",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ question }),
+      });
+      if (r.status === 401) { out.textContent = "Sign in to Compass first."; return; }
+      if (r.status === 429) { out.textContent = "Rate limit — try again shortly."; return; }
+      const a = await r.json();
+      out.textContent = a.text || "(no answer)";
+      const cites = (a.citations || []).map((c, i) => `[${i + 1}] ${c.system} · ${c.ref}`).join("   ");
+      meta.textContent = `${a.confidence} — ${a.confidenceReason || ""}\n${a.coverage || ""}\n${cites}`;
+    } catch (err) {
+      out.textContent = "Could not reach Compass.";
+    }
+  });
+</script>
+</body>
+</html>
