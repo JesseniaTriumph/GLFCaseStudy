@@ -31,6 +31,9 @@ if (process.env.COMPASS_PII_NER === "true") {
   const { makeNerRedactor } = await import("../src/pipeline/ner.js");
   nerRedactor = await makeNerRedactor(process.env.COMPASS_PII_NER_MODEL);
 }
+// COMPASS_TRANSLATE = mt | api | glossary — render non-English docs into English at intake
+const { resolveTranslator } = await import("../src/pipeline/translate.js");
+const translator = await resolveTranslator();
 
 const { adapters, report } = await resolveAdapters();
 console.log("connectors:");
@@ -45,6 +48,7 @@ const index = await runPipeline(adapters, {
   embedderId,
   rawDir: fileURLToPath(new URL("../dist/raw/", import.meta.url)),
   nerRedactor,
+  translator,
   log: (m) => console.log(m),
 });
 

@@ -26,6 +26,8 @@ export interface RunOptions {
   rawDir?: string;
   /** optional NER redactor (transformers.js) for free-text person names — opt-in */
   nerRedactor?: import("./ner.js").NerRedactor;
+  /** optional translator — non-English docs get an English rendering for retrieval + the brief */
+  translator?: import("./translate.js").Translator | null;
 }
 
 export async function runPipeline(adapters: SourceAdapter[], opts: RunOptions): Promise<CorpusIndex> {
@@ -114,6 +116,24 @@ export async function runPipeline(adapters: SourceAdapter[], opts: RunOptions): 
       return true;
     });
 
+  // ---------- 2b. TRANSLATE non-English docs to English for retrieval + the brief ----------
+  // The citation still deep-links to the original; the chunk carries `translated: true`.
+  if (opts.translator) {
+    let translatedCount = 0;
+    docs = await Promise.all(
+      docs.map(async (d) => {
+        if (d.language !== "es") return d;
+        const en = await opts.translator!.toEnglish(d.text, d.language);
+        if (en && en !== d.text) {
+          translatedCount++;
+          return { ...d, meta: { ...d.meta, englishText: en, translated: true, sourceLang: d.language, translator: opts.translator!.id } };
+        }
+        return d;
+      })
+    );
+    if (translatedCount) log(`  translated ${translatedCount} non-English document(s) to English (${opts.translator.id})`);
+  }
+
   // ---------- 3. TIER EXCLUSION (defence in depth) ----------
   // Excluded docs are dropped from the index. For docs that are Restricted BY POLICY
   // (board / compensation / legal / declined-applicant) we keep a metadata-only stub so
@@ -137,7 +157,7 @@ export async function runPipeline(adapters: SourceAdapter[], opts: RunOptions): 
   if (reviewQueue.length) log(`  entity review queue: ${reviewQueue.length} item(s) for a human to confirm`);
 
   // ---------- 6. CHUNK ----------
-  const rawChunks = docs.flatMap(chunkDoc);
+  const rawChunks = docs.map(textForChunking).flatMap(chunkDoc);
 
   // ---------- 7. INDEX (df, tf-idf vectors) ----------
   const df: Record<string, number> = {};
@@ -546,7 +566,17 @@ function chunkDoc(d: SourceDoc): Omit<Chunk, "vector">[] {
     acl: d.acl,
     entities: d.entities,
     tokens: tokenize(`${d.title}\n${text}${bridge}`),
+    ...(d.meta.translated ? { translated: true, sourceLang: d.meta.sourceLang as string } : {}),
   }));
+}
+
+/**
+ * When a document was translated (meta.englishText set), we chunk the English so the brief
+ * is readable and English queries retrieve it well; the original stays in the raw store and
+ * the citation deep-links to it. This runs just before chunking.
+ */
+function textForChunking(d: SourceDoc): SourceDoc {
+  return d.meta.englishText ? { ...d, text: d.meta.englishText as string } : d;
 }
 
 // ---------------------------------------------------------------------------

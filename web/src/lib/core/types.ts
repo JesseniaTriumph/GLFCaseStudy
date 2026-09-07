@@ -79,6 +79,9 @@ export interface Chunk {
    * "matching content is restricted" without the content ever being retrievable.
    */
   restrictedStub?: boolean;
+  /** set when this chunk's text is a machine translation; `sourceLang` is the original */
+  translated?: boolean;
+  sourceLang?: string;
 }
 
 export interface DedupeReport {
@@ -197,6 +200,8 @@ export interface Citation {
   /** the exact text to highlight at the destination */
   highlight: string;
   tier: Tier;
+  /** set when the cited passage was machine-translated from `sourceLang`; the deep-link still points to the original */
+  translatedFrom?: string;
 }
 
 export interface Answer {

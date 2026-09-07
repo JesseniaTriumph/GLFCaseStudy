@@ -19,10 +19,12 @@ const full = process.env.COMPASS_CORPUS === "full";
 const GOLD = fileURLToPath(new URL(full ? "../eval/gold-full.json" : "../eval/gold.json", import.meta.url));
 const gold = JSON.parse(await readFile(GOLD, "utf8"));
 
+const { resolveTranslator } = await import("../src/pipeline/translate.js");
 const index = await runPipeline(ADAPTERS, {
   corpusLabel: CORPUS.corpusLabel,
   excludeTiers: [...CORPUS.excludeTiers],
   notCovered: CORPUS.notCovered,
+  translator: await resolveTranslator(),
   log: () => {},
 });
 

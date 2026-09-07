@@ -207,9 +207,12 @@ function buildCitations(hits: Scored[]): Citation[] {
       snippet: clean.slice(0, 220),
       highlight,
       tier: h.chunk.tier,
+      ...(h.chunk.translated ? { translatedFrom: h.chunk.sourceLang ?? "another language" } : {}),
     };
   });
 }
+
+const LANG = (code: string) => ({ es: "Spanish", fr: "French", pt: "Portuguese" }[code] ?? code);
 
 function pickHighlight(text: string): string {
   const sentences = text.split(/(?<=[.!?])\s+/).filter((s) => s.length > 20);
@@ -250,10 +253,10 @@ function extractiveAnswer(question: string, hits: Scored[], citations: Citation[
   lines.push(
     `_Evidence brief — ${hits.length} passage(s) across ${systems.size} system(s). No generative model is configured, so this is the source evidence with citations, not a written synthesis._\n`
   );
-  const byDoc = new Map<string, { title: string; system: string; n: number; texts: string[] }>();
+  const byDoc = new Map<string, { title: string; system: string; n: number; texts: string[]; translatedFrom?: string }>();
   hits.forEach((h, i) => {
     const key = h.chunk.docId;
-    const e = byDoc.get(key) ?? { title: h.chunk.docTitle, system: h.chunk.system, n: i + 1, texts: [] };
+    const e = byDoc.get(key) ?? { title: h.chunk.docTitle, system: h.chunk.system, n: i + 1, texts: [], translatedFrom: h.chunk.translated ? h.chunk.sourceLang : undefined };
     // drop markdown heading lines — the doc title already names the source
     e.texts.push(
       h.chunk.text
@@ -265,7 +268,8 @@ function extractiveAnswer(question: string, hits: Scored[], citations: Citation[
     byDoc.set(key, e);
   });
   for (const e of byDoc.values()) {
-    lines.push(`**${e.title}** _(${e.system})_ [${e.n}]`);
+    const tr = e.translatedFrom ? ` _· machine translation from ${LANG(e.translatedFrom)} — verify against the source_` : "";
+    lines.push(`**${e.title}** _(${e.system})_ [${e.n}]${tr}`);
     lines.push(e.texts.join("\n\n"));
     lines.push("");
   }
