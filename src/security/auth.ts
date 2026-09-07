@@ -102,11 +102,19 @@ export function principalFromGroups(userId: string, groups: string[], groupsReso
   const g = new Set(groups.map((x) => x.toLowerCase()));
   if (!groupsResolved) return { userId, groups: [], allowedTiers: [] };
   const allowedTiers: Tier[] = ["team"];
-  // Programs + Impact see diligence notes, review scorecards, interaction logs.
-  if (g.has("programs") || g.has("impact") || g.has("executive") || g.has("leadership") ||
-      g.has("donor-engagement") || g.has("partnerships") || g.has("finance") || g.has("grants-ops"))
-    allowedTiers.push("programs-only");
-  // `restricted` is never granted to any principal in v1 — by design.
+  // programs-only (diligence memos, review scorecards, the interaction log, Zoom threads):
+  // Programs, Impact, leadership, Finance/Grants-Ops, Partnerships. NOT the external-facing
+  // Impact Advisory function, NOT Comms, NOT the board — those see team tier only.
+  const PROGRAMS_ONLY = new Set([
+    "programs", "program-officer", "program-ops", "program-associate", "program-coordinator",
+    "impact", "impact-measurement", "impact-modeling", "impact-director",
+    "executive", "leadership", "ceo", "coo", "operations",
+    "donor-engagement", "partnerships", "development",
+    "finance", "accounting", "grants-ops", "grants-compliance", "grants-management",
+    "legal", "counsel",
+  ]);
+  if ([...g].some((x) => PROGRAMS_ONLY.has(x))) allowedTiers.push("programs-only");
+  // `restricted` is never granted to any principal — by design.
   return { userId, groups: [...g], allowedTiers };
 }
 

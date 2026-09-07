@@ -6,7 +6,8 @@ Standard build docs for Compass. Read in this order.
 |---|---|---|
 | 1 | [PROJECT_OVERVIEW.md](PROJECT_OVERVIEW.md) | What Compass is, in one page |
 | 2 | [PRD.md](PRD.md) | Product requirements — problem (5 Whys), personas, use cases, functional + non-functional requirements, success metrics |
-| 3 | [ROLE_AND_CYCLE_CONTEXT.md](ROLE_AND_CYCLE_CONTEXT.md) | Role- and calendar-aware query scoping (toggleable feature) |
+| 3 | [ROLES_AND_USERS.md](ROLES_AND_USERS.md) | Every function in the real ~17-person org — responsibilities, the questions they bring to Compass, the seasonal + grant-lifecycle timing that drives them |
+| 3b | [ROLE_AND_CYCLE_CONTEXT.md](ROLE_AND_CYCLE_CONTEXT.md) | The design rationale for the toggleable Role & cycle feature (not a permission gate) |
 | 4 | [USER_FLOWS.md](USER_FLOWS.md) | Journey map + every flow (ask, dossier, ingestion, admin) as diagrams |
 | 5 | [LOGIC_TREES.md](LOGIC_TREES.md) | The deterministic decision logic — answer/refusal, permission filter, dedupe, release gate |
 | 6 | [WIREFRAMES.md](WIREFRAMES.md) | Every screen, every breakpoint; built vs. to-build |
