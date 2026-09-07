@@ -11,10 +11,18 @@ entitled to see.
 ## The reframe
 
 This is a **retrieval, permissioning, and citation** problem, not a chatbot problem. The
-hard, valuable work is connecting four messy sources, cleaning and de-duplicating them so
-nothing is missed or double-counted, resolving everything to the same grants and
-organizations, and enforcing who can see what. The language model is the last and least
-risky component — it phrases; it does not decide.
+hard, valuable work is connecting four systems that hold different kinds of truth —
+**connecting the records without flattening their meaning** — de-duplicating so nothing is
+missed or double-counted, resolving everything to the same grants and organizations, and
+enforcing who can see what. The language model is the last and least risky component — it
+phrases; it does not decide.
+
+Compass returns an **evidence brief**, not a chat reply: the claim, its citations, the
+coverage it drew on, and a confidence read that describes *evidence quality — never the
+model's certainty*. Evidence moves through six controlled stages:
+**Connect → Preserve → Resolve → Retrieve → Answer → Improve** (`TRD.md`, `ARCHITECTURE.md`).
+And the product is designed to **fail visibly** — a conflict, a coverage gap, or an
+abstention — never a confident guess.
 
 ## Why it fits GitLab Foundation
 

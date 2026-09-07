@@ -177,13 +177,20 @@ function extractiveAnswer(question: string, hits: Scored[], citations: Citation[
   return lines.join("\n").trim();
 }
 
+/**
+ * Confidence describes the strength of the *evidence retrieved* — not the model's certainty.
+ * It is computed only from retrieval signals (match strength, spread across systems),
+ * never from the model's self-report.
+ */
 function gradeConfidence(hits: Scored[]): { level: Answer["confidence"]; reason: string } {
   const top = hits[0]!;
   const systems = new Set(hits.slice(0, 5).map((h) => h.chunk.system)).size;
   const strong = hits.filter((h) => h.bm25 > 2 || h.semantic > 0.12).length;
-  if (top.bm25 > 3 && strong >= 2) return { level: "high", reason: `${strong} strong matches across ${systems} system(s)` };
-  if (strong >= 1) return { level: "medium", reason: `partial support — ${strong} strong match(es), verify against sources` };
-  return { level: "low", reason: "weak retrieval — treat as a lead, not an answer" };
+  if (top.bm25 > 3 && strong >= 2)
+    return { level: "high", reason: `strong evidence — ${strong} close matches across ${systems} system(s)` };
+  if (strong >= 1)
+    return { level: "medium", reason: `partial evidence — ${strong} close match(es); verify against the cited sources` };
+  return { level: "low", reason: "thin evidence — treat as a lead, not an answer" };
 }
 
 function coverageStatement(index: CorpusIndex): string {
