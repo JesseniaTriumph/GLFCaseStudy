@@ -8,7 +8,7 @@ import { writeFile, mkdir } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { execSync } from "node:child_process";
 import { runPipeline } from "../src/pipeline/run.js";
-import { ADAPTERS, CORPUS } from "../src/config.js";
+import { resolveAdapters, CORPUS } from "../src/config.js";
 import { AuditLog } from "../src/security/audit.js";
 
 const OUT = fileURLToPath(new URL("../web/public/corpus-index.json", import.meta.url));
@@ -25,7 +25,12 @@ try {
 const ei = process.argv.indexOf("--embed");
 const embedderId = ei !== -1 ? process.argv[ei + 1] : process.env.COMPASS_EMBED || undefined;
 
-const index = await runPipeline(ADAPTERS, {
+const { adapters, report } = await resolveAdapters();
+console.log("connectors:");
+for (const line of report) console.log(`  ${line}`);
+console.log("");
+
+const index = await runPipeline(adapters, {
   corpusLabel: CORPUS.corpusLabel,
   excludeTiers: [...CORPUS.excludeTiers],
   notCovered: CORPUS.notCovered,

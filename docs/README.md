@@ -16,6 +16,7 @@ Standard build docs for Compass. Read in this order.
 | 10 | [SYSTEM_TOOLS.md](SYSTEM_TOOLS.md) | Infrastructure, APIs, credentials, provisioning checklist |
 | 11 | [CROSS_PLATFORM.md](CROSS_PLATFORM.md) | Web / PWA / iOS / Android strategy — shared core, thin shells |
 | 12 | [ROADMAP.md](ROADMAP.md) | Sequential implementation plan + the build/ops agent orchestration (sequential DAG + two loops) |
+| — | [CONNECTORS.md](CONNECTORS.md) | Going from mock data to live data — what each connector needs and who provides it |
 | — | [../ARCHITECTURE.md](../ARCHITECTURE.md) | The running code's architecture (as-built) |
 | — | [../SECURITY.md](../SECURITY.md) | Security controls: built vs. still-needed |
 | — | `deliverables/A_Strategy_Doc.md` §6 | The full security architecture (OAuth → integrity → hardening → IR) |

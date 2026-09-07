@@ -14,12 +14,15 @@
  * `npm run server:check` for the full flow against a mock IdP.
  */
 import { runPipeline } from "../src/pipeline/run.js";
-import { ADAPTERS, CORPUS } from "../src/config.js";
+import { resolveAdapters, CORPUS } from "../src/config.js";
 import { createApp } from "../src/server/app.js";
 import { claudeLLM } from "../src/retrieval/llm.js";
 import { AuditLog } from "../src/security/audit.js";
 
-const index = await runPipeline(ADAPTERS, {
+const { adapters, report } = await resolveAdapters();
+report.forEach((l) => console.log(`connector · ${l}`));
+
+const index = await runPipeline(adapters, {
   corpusLabel: CORPUS.corpusLabel,
   excludeTiers: [...CORPUS.excludeTiers],
   notCovered: CORPUS.notCovered,

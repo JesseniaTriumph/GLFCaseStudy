@@ -6,6 +6,8 @@ web/public/corpus-index.json
 *.local
 .env
 .env.*
+!.env.example
+secrets/
 .DS_Store
 
 # transformers.js model cache

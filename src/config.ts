@@ -3,13 +3,44 @@ import type { Principal } from "./core/types.js";
 import { mockDrive } from "./adapters/mockDrive.js";
 import { mockGivingData } from "./adapters/mockGivingData.js";
 import { mockAirtable } from "./adapters/mockAirtable.js";
+import { makeAirtableAdapter } from "./adapters/airtable.js";
+import { makeGivingDataAdapter } from "./adapters/givingData.js";
+import { makeGoogleDriveAdapter } from "./adapters/googleDrive.js";
 
 /**
- * v1 corpus definition. Swap the mock adapters for real ones here — nothing downstream changes.
- * Real adapters to add later: driveRealAdapter, givingDataApiAdapter, airtableApiAdapter,
- * and (only after governance review) notionAdapter. Zoom Chat is deliberately absent.
+ * Default adapter set = the synthetic mock corpus. The eval harness, the security checks,
+ * and `npm run ask` all run against this so results are reproducible.
  */
 export const ADAPTERS: SourceAdapter[] = [mockGivingData, mockDrive, mockAirtable];
+
+/**
+ * The real ingest path. `build:index` and `serve` call this: for each system, if the
+ * connector's credentials are present in the environment it uses the live connector,
+ * otherwise it falls back to that system's mock. So the moment the Foundation provides a
+ * credential, that source goes live — nothing else changes.
+ *
+ * Credentials per connector are documented in `docs/CONNECTORS.md` and `.env.example`.
+ */
+export async function resolveAdapters(env: NodeJS.ProcessEnv = process.env): Promise<{ adapters: SourceAdapter[]; report: string[] }> {
+  const report: string[] = [];
+  const pick = async (name: string, real: SourceAdapter | null | Promise<SourceAdapter | null>, mock: SourceAdapter) => {
+    let r: SourceAdapter | null = null;
+    try {
+      r = await real;
+    } catch (e) {
+      report.push(`${name}: real connector configured but failed to initialise — ${(e as Error).message}. Using mock.`);
+    }
+    report.push(`${name}: ${r ? "LIVE (" + r.label + ")" : "mock (no credentials in env)"}`);
+    return r ?? mock;
+  };
+
+  const adapters = [
+    await pick("GivingData", makeGivingDataAdapter(env), mockGivingData),
+    await pick("Google Drive", makeGoogleDriveAdapter(env), mockDrive),
+    await pick("Airtable", makeAirtableAdapter(env), mockAirtable),
+  ];
+  return { adapters, report };
+}
 
 export const CORPUS = {
   corpusLabel: "v1 mock corpus — GivingData + 3 Shared Drives + Airtable Relationships",
