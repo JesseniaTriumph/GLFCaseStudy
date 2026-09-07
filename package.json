@@ -16,7 +16,9 @@
     "web:dev": "npm --prefix web run dev",
     "web:build": "npm run build:index && npm --prefix web run build",
     "typecheck": "tsc --noEmit",
-    "eval:pg": "tsx scripts/eval-pg.ts"
+    "eval:pg": "tsx scripts/eval-pg.ts",
+    "build:index:embed": "tsx scripts/build-index.ts --embed bge-small",
+    "eval:embed": "COMPASS_EMBED=bge-small tsx scripts/eval.ts"
   },
   "devDependencies": {
     "@types/node": "^22.9.0",
@@ -24,6 +26,7 @@
     "typescript": "^5.6.3"
   },
   "dependencies": {
-    "@electric-sql/pglite": "^0.5.8"
+    "@electric-sql/pglite": "^0.5.8",
+    "@huggingface/transformers": "^4.2.0"
   }
 }

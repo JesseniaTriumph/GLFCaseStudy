@@ -1,5 +1,6 @@
 import type { Chunk, CorpusIndex, Principal } from "../core/types.js";
 import { tokenize, tfidfVector, cosine } from "../util/text.js";
+import { cosineDense } from "../embed/embedder.js";
 
 const BM25_K1 = 1.4;
 const BM25_B = 0.75;
@@ -33,7 +34,13 @@ export function mayRead(chunk: Pick<Chunk, "tier" | "acl">, principal: Principal
  * cosine + entity boost, entity focus, per-doc de-duplication. This is the ranking half —
  * identical whether the permitted set came from an in-memory filter or a SQL WHERE clause.
  */
-export function rankPermitted(permitted: Chunk[], query: string, index: CorpusIndex, k: number): Scored[] {
+export function rankPermitted(
+  permitted: Chunk[],
+  query: string,
+  index: CorpusIndex,
+  k: number,
+  queryDense?: number[]
+): Scored[] {
   const qTokens = tokenize(query);
   const qVec = tfidfVector(qTokens, index.df, index.docCount);
   const qSet = new Set(qTokens);
@@ -41,7 +48,13 @@ export function rankPermitted(permitted: Chunk[], query: string, index: CorpusIn
   const scored: Scored[] = [];
   for (const c of permitted) {
     const bm25 = bm25Score(c, qSet, index);
-    const semantic = cosine(qVec, c.vector);
+    // learned embedding when the index has one; tf-idf cosine otherwise. Sentence-transformer
+    // cosines have a high baseline (~0.4 for unrelated English), so rescale into roughly the
+    // same range the downstream thresholds expect from tf-idf.
+    const semantic =
+      queryDense && c.dense
+        ? Math.max(0, (cosineDense(queryDense, c.dense) - 0.4) * 0.5)
+        : cosine(qVec, c.vector);
     const eBoost = entityBoost(c, query);
     if (bm25 === 0 && semantic < 0.02 && eBoost === 0) continue;
     scored.push({ chunk: c, score: 0.6 * normalize(bm25, 8) + 0.4 * semantic + eBoost, bm25, semantic });
@@ -81,7 +94,13 @@ export function stubScore(stub: Chunk, query: string, index: CorpusIndex): numbe
  * boundary), then ranks the permitted set. The SQL-backed path (src/db/store.ts) does the
  * same split as a WHERE clause and calls rankPermitted directly.
  */
-export function retrieve(index: CorpusIndex, query: string, principal: Principal, k = 8): RetrieveResult {
+export function retrieve(
+  index: CorpusIndex,
+  query: string,
+  principal: Principal,
+  k = 8,
+  queryDense?: number[]
+): RetrieveResult {
   const permitted: Chunk[] = [];
   let withheldCount = 0;
   let restrictedTopScore = 0;
@@ -105,7 +124,7 @@ export function retrieve(index: CorpusIndex, query: string, principal: Principal
     }
   }
 
-  const hits = rankPermitted(permitted, query, index, k);
+  const hits = rankPermitted(permitted, query, index, k, queryDense);
   return { hits, withheld: { count: withheldCount, tiers: [...withheldTiers], restrictedTopScore } };
 }
 

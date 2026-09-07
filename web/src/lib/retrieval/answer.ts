@@ -27,7 +27,8 @@ export interface AnswerOptions {
     index: CorpusIndex,
     question: string,
     principal: Principal,
-    k: number
+    k: number,
+    queryDense?: number[]
   ) => RetrieveResult | Promise<RetrieveResult>;
 }
 
@@ -43,7 +44,15 @@ export async function answerQuestion(
   principal: Principal,
   opts: AnswerOptions = {}
 ): Promise<Answer> {
-  const { hits, withheld } = await (opts.retriever ?? retrieve)(index, question, principal, opts.k ?? 8);
+  // embed the query the same way the index was built, if it uses a learned embedder
+  let queryDense: number[] | undefined;
+  if (index.embedder) {
+    const { getEmbedder } = await import("../embed/embedder.js");
+    const e = await getEmbedder(index.embedder.id);
+    if (e) queryDense = (await e.embed([question]))[0];
+  }
+
+  const { hits, withheld } = await (opts.retriever ?? retrieve)(index, question, principal, opts.k ?? 8, queryDense);
 
   // Role & cycle context (off unless opts.roleContext is set): if the query is ambiguous,
   // note the reading Compass applied — always disclosed, never a silent scope change.

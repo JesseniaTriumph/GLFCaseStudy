@@ -21,11 +21,16 @@ try {
   /* not a git repo */
 }
 
+// `--embed bge-small` (or COMPASS_EMBED) opts into learned embeddings; default is tf-idf
+const ei = process.argv.indexOf("--embed");
+const embedderId = ei !== -1 ? process.argv[ei + 1] : process.env.COMPASS_EMBED || undefined;
+
 const index = await runPipeline(ADAPTERS, {
   corpusLabel: CORPUS.corpusLabel,
   excludeTiers: [...CORPUS.excludeTiers],
   notCovered: CORPUS.notCovered,
   commit,
+  embedderId,
   log: (m) => console.log(m),
 });
 
@@ -42,11 +47,15 @@ try {
   /* best effort */
 }
 
-await mkdir(fileURLToPath(new URL("../web/public/", import.meta.url)), { recursive: true });
 await mkdir(fileURLToPath(new URL("../dist/", import.meta.url)), { recursive: true });
 const json = JSON.stringify(index);
-await writeFile(OUT, json);
 await writeFile(OUT_LOCAL, json);
+// The web app runs retrieval in the browser and can't host a transformer — it always
+// uses the tf-idf index. `--embed` builds are for the CLI / eval only.
+if (!embedderId) {
+  await mkdir(fileURLToPath(new URL("../web/public/", import.meta.url)), { recursive: true });
+  await writeFile(OUT, json);
+}
 
 console.log(`\nindex: ${index.chunks.length} chunks · ${index.entities.length} entities`);
 console.log(`manifest: commit ${index.manifest.commit ?? "(none)"} · digest ${index.manifest.contentDigest.slice(0, 16)}… · built ${index.manifest.builtAt}`);
@@ -54,4 +63,5 @@ console.log(`dedupe: ${index.dedupe.exactDuplicates} exact, ${index.dedupe.nearD
 console.log(`gap report:`);
 for (const [g, missing] of Object.entries(index.gaps.missingByGrant)) console.log(`  ${g}: ${missing.join("; ")}`);
 if (index.gaps.untaggedGrants.length) console.log(`  untagged grants: ${index.gaps.untaggedGrants.join(", ")}`);
-console.log(`written -> ${OUT}`);
+console.log(`embedder: ${index.embedder ? `${index.embedder.id} (${index.embedder.dims}d)` : "tf-idf (default)"}`);
+console.log(`written -> ${embedderId ? OUT_LOCAL : OUT}`);

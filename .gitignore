@@ -7,3 +7,7 @@ web/public/corpus-index.json
 .env
 .env.*
 .DS_Store
+
+# transformers.js model cache
+.cache/
+**/.cache/

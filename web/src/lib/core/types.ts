@@ -69,8 +69,10 @@ export interface Chunk {
   entities: EntityRef[];
   /** token list, lowercased, for BM25 */
   tokens: string[];
-  /** sparse tf-idf vector: term -> weight, for the semantic-ish signal */
+  /** sparse tf-idf vector: term -> weight, for the semantic-ish signal (always present) */
   vector: Record<string, number>;
+  /** dense learned embedding (unit-normalised) — present only on an `--embed` build */
+  dense?: number[];
   /**
    * Metadata-only stub for an excluded (restricted) document: the index knows a doc on
    * this topic EXISTS but holds none of its content. Lets retrieval report an honest
@@ -110,6 +112,8 @@ export interface CorpusIndex {
   builtAt: string;
   corpusLabel: string;
   manifest: BuildManifest;
+  /** set when the index was built with learned embeddings — retrieval embeds the query the same way */
+  embedder?: { id: string; dims: number };
   chunks: Chunk[];
   /** doc-frequency per term across the corpus, for BM25 + idf */
   df: Record<string, number>;

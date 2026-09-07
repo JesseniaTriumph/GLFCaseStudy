@@ -18,6 +18,8 @@ export interface RunOptions {
   log?: (msg: string) => void;
   /** git commit the build ran at — recorded in the manifest for reproducibility (§6.5) */
   commit?: string | null;
+  /** learned-embedder id (e.g. "bge-small"); omit for the tf-idf default */
+  embedderId?: string;
 }
 
 export async function runPipeline(adapters: SourceAdapter[], opts: RunOptions): Promise<CorpusIndex> {
@@ -95,6 +97,24 @@ export async function runPipeline(adapters: SourceAdapter[], opts: RunOptions): 
     });
   }
 
+  // ---------- 7b. LEARNED EMBEDDINGS (opt-in) ----------
+  let embedderMeta: { id: string; dims: number } | undefined;
+  if (opts.embedderId) {
+    const { getEmbedder } = await import("../embed/embedder.js");
+    const e = await getEmbedder(opts.embedderId);
+    if (e) {
+      log(`  embedding ${chunks.length} chunks with ${e.id} (${e.dims}d)…`);
+      const texts = chunks.map((c) => `${c.docTitle}\n${c.text}`.slice(0, 2000));
+      const vecs: number[][] = [];
+      for (let i = 0; i < texts.length; i += 16) vecs.push(...(await e.embed(texts.slice(i, i + 16))));
+      chunks.forEach((c, i) => (c.dense = vecs[i]));
+      embedderMeta = { id: e.id, dims: e.dims };
+      log(`  embeddings done`);
+    } else {
+      log(`  embedder "${opts.embedderId}" unavailable — using tf-idf only`);
+    }
+  }
+
   // ---------- 8. GAP REPORT + DIRECTORY ----------
   const gaps = gapReport(docs);
   const directory = buildDirectory(docs);
@@ -124,6 +144,7 @@ export async function runPipeline(adapters: SourceAdapter[], opts: RunOptions): 
       sourceCounts: perSystem,
       contentDigest,
     },
+    embedder: embedderMeta,
     chunks,
     df,
     docCount,

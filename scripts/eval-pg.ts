@@ -16,16 +16,19 @@ import { PgStore } from "../src/db/store.js";
 
 const gold = JSON.parse(await readFile(fileURLToPath(new URL("../eval/gold.json", import.meta.url)), "utf8"));
 
+const embedderId = process.env.COMPASS_EMBED || undefined;
 const index = await runPipeline(ADAPTERS, {
   corpusLabel: CORPUS.corpusLabel,
   excludeTiers: [...CORPUS.excludeTiers],
   notCovered: CORPUS.notCovered,
+  embedderId,
   log: () => {},
 });
+const embedder = index.embedder ? await (await import("../src/embed/embedder.js")).getEmbedder(index.embedder.id) : null;
 
 const store = await PgStore.open();
 await store.load(index);
-console.log("loaded corpus into Postgres (PGlite)\n");
+console.log(`loaded corpus into Postgres (PGlite) · embeddings: ${index.embedder?.id ?? "tf-idf"}\n`);
 
 // --- SQL visibility check, per persona ---
 console.log("\x1b[1mVisibility — straight from SQL\x1b[0m");
@@ -41,7 +44,8 @@ console.log();
 // --- the gold set, through the SQL retriever ---
 let pass = 0;
 let leaks = 0;
-const retriever = (_i: unknown, q: string, pr: (typeof PRINCIPALS)[string], k: number) => store.retrieve(q, pr, k);
+const retriever = (_i: unknown, q: string, pr: (typeof PRINCIPALS)[string], k: number, qd?: number[]) =>
+  store.retrieve(q, pr, k, qd);
 
 for (const c of gold.cases) {
   const principal = PRINCIPALS[c.persona as keyof typeof PRINCIPALS];
