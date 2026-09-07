@@ -40,6 +40,10 @@ npm run eval:pg     # the SAME gold set, retrieval through Postgres (PGlite, zer
 npm run security    # real RS256 OIDC token verification + tamper-evident audit log
                     #   → 7/7: rejects a tampered token, a wrong-domain account, an
                     #     expired token; detects an edited past audit entry
+npm run server:check # the HTTP server + the FULL OIDC login flow against a mock Google IdP
+                    #   → 7/7: /api/ask is 401 without a session; login→callback verifies a
+                    #     real RS256 ID token and sets an HMAC session cookie; the
+                    #     restricted question is refused; logout returns to 401
 npm run build:index # the pipeline: clean → dedupe (exact/near/cross-system) → grant↔org
                     #   graph join → gap report + a signed build manifest
 npm run audit       # print + verify the hash-chained audit log
@@ -75,8 +79,9 @@ cd web && npx vercel deploy        # or: netlify deploy --dir dist  /  any stati
 |---|---|
 | **Real** | The pipeline (clean, dedupe, entity resolution, gap report, manifest). Hybrid retrieval (BM25 + tf-idf vector). **The permission filter — enforced per chunk, tested for zero leaks, and runnable as a SQL `WHERE` clause on Postgres (`src/db/store.ts`, `npm run eval:pg`).** `Restricted` excluded from the index (metadata stub + refusal). RS256 ID-token verification. Hash-chained tamper-evident audit log. Content hashing. The eval harness. |
 | **Real, opt-in** | **Learned embeddings** — `npm run build:index:embed` runs `bge-small-en-v1.5` locally via transformers.js (no API key, weights cached after first run) and `npm run eval:embed` / `COMPASS_EMBED=bge-small npm run eval:pg` pass 8/8, 0 leaks on it. Default stays tf-idf (offline-guaranteed). Same `Embedder` interface fronts BGE-M3 / a managed endpoint in production. |
-| **Stubbed for the demo** | Google sign-in (a persona switch stands in — real verification is in `src/security/auth.ts`). Deep-link targets (example URLs). The connectors (mock adapters on synthetic fixtures — the real ones implement the same `SourceAdapter` interface). Generative answers (extractive by default; set `ANTHROPIC_API_KEY`). The web app always uses the tf-idf index (it runs retrieval in the browser). |
-| **Designed, not built** (see `deliverables/G_Security_Review.md`) | The OAuth callback + session layer, real connector credentials, a production PII scanner, monitoring/alerting, per-user rate limits, a pen test. **Prototype: `CONDITIONAL`. Production: `BLOCKED`** on those six items. |
+| **Real** (server) | `src/server/` — the HTTP API + the **full OIDC Authorization-Code + PKCE flow**: `/auth/login` → Google → `/auth/callback` verifies the RS256 ID token and sets an HMAC-signed `HttpOnly; Secure; SameSite=Strict` session cookie; `/api/ask` builds a `Principal` from the session's groups and runs the same permission-filtered `answerQuestion`. `npm run server:check` drives the whole flow against a mock Google IdP → 7/7. `npm run serve` runs it against a real Google OAuth client. |
+| **Stubbed for the demo** | The connectors (mock adapters on synthetic fixtures — real ones implement the same `SourceAdapter` interface). Deep-link targets (example URLs). Generative answers (extractive by default; set `ANTHROPIC_API_KEY`). Google Groups → permission-groups sync (a `resolveGroups` stub; production = a read-only Admin SDK lookup). The web SPA uses a persona switch + the tf-idf index (it runs retrieval in the browser). |
+| **Designed, not built** (see `deliverables/G_Security_Review.md`) | Real connector credentials, a production PII scanner, monitoring/alerting, per-user rate limits, a pen test. **Prototype: `CONDITIONAL`. Production: `BLOCKED`** on those items. |
 
 ---
 

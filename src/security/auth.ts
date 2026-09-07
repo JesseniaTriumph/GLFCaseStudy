@@ -88,18 +88,22 @@ export function verifyIdToken(token: string, jwks: Jwk[], cfg: OidcConfig): IdTo
   return claims;
 }
 
+/** Build a Principal from a user id + their permission groups. The tier mapping lives here. */
+export function principalFromGroups(userId: string, groups: string[]): Principal {
+  const g = new Set(groups.map((x) => x.toLowerCase()));
+  const allowedTiers: Tier[] = ["team"];
+  // Programs + Impact see diligence notes, review scorecards, interaction logs.
+  if (g.has("programs") || g.has("impact") || g.has("executive") || g.has("leadership") ||
+      g.has("donor-engagement") || g.has("partnerships") || g.has("finance") || g.has("grants-ops"))
+    allowedTiers.push("programs-only");
+  // `restricted` is never granted to any principal in v1 — by design.
+  return { userId, groups: [...g], allowedTiers };
+}
+
 /**
  * Map verified claims + the user's Google Groups (read-only Admin SDK lookup in production)
  * to a Compass Principal. This is what the retrieval-time filter (§6.3) enforces against.
  */
 export function principalFromClaims(claims: IdTokenClaims, groups: string[]): Principal {
-  const g = new Set(groups.map((x) => x.toLowerCase()));
-  const allowedTiers: Tier[] = ["team"];
-  if (g.has("programs")) allowedTiers.push("programs-only");
-  // `restricted` is never granted to any principal in v1 — by design.
-  return {
-    userId: claims.email.split("@")[0] ?? claims.sub,
-    groups: [...g],
-    allowedTiers,
-  };
+  return principalFromGroups(claims.email.split("@")[0] ?? claims.sub, groups);
 }
