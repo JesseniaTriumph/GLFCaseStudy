@@ -200,6 +200,26 @@ const req = async (path: string, opts: RequestInit = {}) => {
       served.confidence !== "refused" &&
       (served.citations?.length ?? 0) >= 1
   );
+
+  // the fail-closed test account: session issued, but a group-lookup failure → 403, no content
+  const jar2 = { c: "" };
+  const freq = async (p: string, o: RequestInit = {}) => {
+    const x = await fetch(BASE + p, { ...o, redirect: "manual", headers: { ...(o.headers || {}), cookie: jar2.c } });
+    const s = x.headers.get("set-cookie");
+    if (s) jar2.c = s.split(";")[0]!;
+    return x;
+  };
+  await freq("/auth/demo?persona=unmapped", { headers: { accept: "application/json" } });
+  const denied = await freq("/api/ask", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ question: "how did Riverbend Care Collective do?" }),
+  });
+  const deniedBody = (await denied.json()) as { error?: string; text?: string };
+  ok(
+    "unmapped account → 403, retrieves nothing (fail closed)",
+    denied.status === 403 && !/riverbend/i.test(JSON.stringify(deniedBody))
+  );
 }
 
 // 2. login → 302 to IdP

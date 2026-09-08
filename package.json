@@ -23,6 +23,7 @@
     "eval:embed": "COMPASS_EMBED=bge-small tsx scripts/eval.ts",
     "serve": "tsx scripts/serve.ts",
     "demo": "COMPASS_CORPUS=full npm run -s build:index:full && npm --prefix web run -s build && COMPASS_CORPUS=full tsx scripts/serve.ts",
+    "pentest": "COMPASS_CORPUS=full npm run -s build:index:full && npm --prefix web run -s build && COMPASS_CORPUS=full COMPASS_PENTEST=1 COMPASS_EGRESS_ENFORCE=1 COMPASS_SESSION_SECRET=${COMPASS_SESSION_SECRET:-pentest-fixed-secret-not-for-production} COMPASS_AUDIT_LOG=${COMPASS_AUDIT_LOG:-dist/pentest-audit.jsonl} tsx scripts/serve.ts",
     "server:check": "tsx scripts/server-check.ts",
     "redteam": "tsx scripts/redteam.ts",
     "ci": "tsx scripts/ci.ts",

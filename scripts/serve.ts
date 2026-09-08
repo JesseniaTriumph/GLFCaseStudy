@@ -93,10 +93,17 @@ const app = createApp({
 });
 
 app.listen(port, () => {
+  if (process.env.COMPASS_PENTEST === "1") {
+    console.log("\n══════════════════════════════════════════════════════════════════");
+    console.log("  COMPASS — PENETRATION-TEST MODE");
+    console.log("  Synthetic corpus only. See PENTEST.md for scope + test accounts.");
+    console.log("  Egress enforced · fixed session secret · audit → " + (process.env.COMPASS_AUDIT_LOG ?? "dist/pentest-audit.jsonl"));
+    console.log("══════════════════════════════════════════════════════════════════");
+  }
   console.log(`\nCompass on http://localhost:${port}`);
   console.log(`  web app:   ${hasWeb ? "served at /" : "NOT built — run `npm run demo` (builds web first) or `npm --prefix web run build`"}`);
   console.log(`  Google sign-in: ${clientId ? "configured" : "not configured — set COMPASS_OAUTH_CLIENT_ID (see docs/DEMO_HOSTING.md)"}`);
-  console.log(`  demo personas:  ${demoLogin ? "on — /auth/demo?persona=<key>" : "off (COMPASS_NO_DEMO=1)"}`);
+  console.log(`  demo personas:  ${demoLogin ? "on — /auth/demo?persona=<key> (programs·comms·board·ceo·coo·finance·unmapped·…)" : "off (COMPASS_NO_DEMO=1)"}`);
   console.log(`  group source:   ${groupMode}`);
   if (allowedEmails.length) console.log(`  access list:    ${allowedEmails.length} email(s)`);
   console.log(`  index: ${index.chunks.length} chunks, embedder ${index.embedder?.id ?? "tf-idf"}`);

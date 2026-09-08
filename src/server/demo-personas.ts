@@ -24,6 +24,12 @@ export interface DemoPersona {
   name: string;
   /** permission groups — drive the tier filter via principalFromGroups() */
   groups: string[];
+  /**
+   * false → simulate a failed Google Groups lookup: the session is issued but the
+   * principal is denied every tier (fail-closed). For pen-testing / verifying the
+   * HOPE-lesson behaviour. Defaults to true.
+   */
+  groupsResolved?: boolean;
 }
 
 export const DEMO_PERSONAS: DemoPersona[] = [
@@ -39,6 +45,7 @@ export const DEMO_PERSONAS: DemoPersona[] = [
   { key: "finance", label: "Finance (CFO / Controller)", note: "commitments vs. disbursements, payout — team + programs-only", sub: "demo-t-cude", email: "t.cude@gitlabfoundation.example", name: "Tracy Cude", groups: ["finance", "accounting"] },
   { key: "comms", label: "Communications & Marketing", note: "externally-cleared results only — team tier only", sub: "demo-c-jax", email: "c.jax@gitlabfoundation.example", name: "C.J. Jax", groups: ["comms"] },
   { key: "board", label: "Board member", note: "read-only, portfolio-level — team tier only", sub: "demo-c-whit", email: "c.whit@gitlabfoundation.example", name: "Casey Whit", groups: ["board"] },
+  { key: "unmapped", label: "Unmapped account (group lookup failed)", note: "fail-closed test — session issued, but retrieves NOTHING", sub: "demo-unmapped", email: "u.unmapped@gitlabfoundation.example", name: "Unmapped User", groups: [], groupsResolved: false },
 ];
 
 export const demoPersona = (key: string): DemoPersona | undefined => DEMO_PERSONAS.find((p) => p.key === key);

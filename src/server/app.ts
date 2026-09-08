@@ -159,7 +159,9 @@ export function createApp(deps: ServerDeps) {
         return json(res, 200, {
           oauthConfigured: deps.oauthConfigured ?? false,
           demoLogin: deps.demoLogin ?? false,
-          personas: deps.demoLogin ? DEMO_PERSONAS.map((p) => ({ key: p.key, label: p.label, note: p.note })) : [],
+          personas: deps.demoLogin
+            ? DEMO_PERSONAS.filter((p) => p.groupsResolved !== false).map((p) => ({ key: p.key, label: p.label, note: p.note }))
+            : [],
           corpusLabel: deps.index.corpusLabel,
         });
       }
@@ -177,7 +179,7 @@ export function createApp(deps: ServerDeps) {
       if (path === "/auth/demo" && deps.demoLogin) {
         const persona = demoPersona(url.searchParams.get("persona") ?? "");
         if (!persona) return json(res, 400, { error: "unknown persona", personas: DEMO_PERSONAS.map((p) => p.key) });
-        const token = issueSession({ sub: persona.sub, email: persona.email, name: persona.name, groups: persona.groups, groupsResolved: true });
+        const token = issueSession({ sub: persona.sub, email: persona.email, name: persona.name, groups: persona.groups, groupsResolved: persona.groupsResolved ?? true });
         record({ type: "auth", user: persona.email, result: "ok", reason: "demo" });
         const wantsJson = (req.headers.accept ?? "").includes("application/json");
         if (wantsJson) return json(res, 200, { ok: true, email: persona.email, name: persona.name }, { "set-cookie": cookieHeader(token, secure) });
