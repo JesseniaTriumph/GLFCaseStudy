@@ -49,4 +49,8 @@ npm run tune           # weekly: propose a retrieval change from feedback + eval
 npm run ask -- --as programs "how did Riverbend Care Collective perform against projection?"
 ```
 
-Prototype UI: `deliverables/compass_mvp.html` (published Artifact).
+The MVP is the web app: `npm run web:dev` (or `npm run web:build && npm --prefix web run preview`).
+It runs the real retrieval, the permission filter, `Restricted` exclusion, conflict
+surfacing, the Deep-dive panel with per-grant cycle, and the toggleable Role & cycle
+context — the same modules as the CLI and the eval harness, on the synthetic 5-year corpus.
+Deploy: `cd web && npx vercel deploy`.

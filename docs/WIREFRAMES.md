@@ -1,9 +1,11 @@
 # Compass — Wireframes
 
-Low-fidelity structure for every screen. The **working prototype** (`deliverables/compass_mvp.html`,
-published Artifact) is the high-fidelity reference for the Ask and Dossier screens on
-desktop. These wireframes cover all screens and all breakpoints, and mark what is built
-vs. to build.
+Low-fidelity structure for every screen. The **running MVP** is `web/` (React + Vite) —
+`npm run web:dev`. It is the high-fidelity reference: Ask, Grantee dossier, and "How it
+works" tabs, 12 personas, the Deep-dive panel (gaps, who-to-ask, draft email, per-grant
+cycle), conflict surfacing, and the toggleable Role & cycle context — all running the same
+retrieval and permission modules as the CLI and the eval harness. These wireframes cover
+all screens and breakpoints and mark what is built vs. to build.
 
 Legend: `[built]` in the prototype · `[spec]` designed here, not yet built.
 
