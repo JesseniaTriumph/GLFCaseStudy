@@ -117,6 +117,7 @@ export interface GapReport {
 
 export interface GrantMeta {
   organization?: string;
+  fund?: string;
   startDate?: string | null;
   endDate?: string | null;
   termYears?: number | null;
@@ -124,6 +125,7 @@ export interface GrantMeta {
   reportPeriodBasis?: string | null;
   grantStatus?: string | null;
   requirements?: { type: string; dueDate: string; status: string; submittedDocId?: string }[];
+  projected?: { northStar?: number | null; annualEarningsDelta?: number | null; lifetimeEarningsDelta?: number | null; participants?: number | null; modelVersion?: string } | null;
 }
 
 export interface EntityReviewItem {

@@ -162,6 +162,7 @@ export async function runPipeline(adapters: SourceAdapter[], opts: RunOptions): 
     if (d.meta.recordType !== "grant-fact-sheet" || !d.meta.grantId) continue;
     grantMeta[d.meta.grantId as string] = {
       organization: d.meta.organization as string,
+      fund: (d.meta.fund as string) ?? undefined,
       startDate: (d.meta.startDate as string) ?? d.date,
       endDate: (d.meta.endDate as string) ?? null,
       termYears: (d.meta.termYears as number) ?? null,
@@ -169,6 +170,7 @@ export async function runPipeline(adapters: SourceAdapter[], opts: RunOptions): 
       reportPeriodBasis: (d.meta.reportPeriodBasis as string) ?? null,
       grantStatus: (d.meta.grantStatus as string) ?? null,
       requirements: (d.meta.requirements as any[]) ?? [],
+      projected: (d.meta.projected as any) ?? null,
     };
   }
 
