@@ -252,10 +252,7 @@ export function App() {
                 <div className="question">{ans.question}</div>
                 <div className="answer-card">
                   <div className="answer-body">{renderAnswer(ans.text, setActiveCite, activeCite)}</div>
-                  <div className="coverage">
-                    <b>Searched:</b>
-                    <span>{ans.coverage}</span>
-                  </div>
+                  <div className="coverage">{ans.coverage}</div>
                   <div className="meta">
                     <span className={"conf " + ans.confidence}>● {ans.confidence} — {ans.confidenceReason}</span>
                     {ans.confidence !== "refused" && (
