@@ -149,11 +149,14 @@ What's left is not engineering — it splits three ways:
 2. **Only the Foundation can authorize** — least-privilege credentials (1.3), the
    zero-retention LLM agreement + DPA + Colombia/Kenya determination (1.4), the data
    owner's sign-off on the tier policy / source-of-truth matrix / v1 corpus (1.5, 1.6,
-   1.8). Drafts are ready; they need a signature and an admin issuing keys.
-3. **Needs an outside party or cloud infra** — a third-party penetration test (3.8), the
-   real 5-year data backfill (3.6 — proven against a synthetic 5-year corpus), Redis
-   behind the rate-limiter/revocation store, a KMS for connector secrets, off-host audit
-   *storage* (the streaming hook exists), running the tabletop (4.8 — scenario written).
+   1.8). The sign-off is now a single page: `deliverables/Q_Data_Owner_Signoff.md`. The
+   Google Directory group resolver is **built** (`src/security/directory.ts`) — it needs
+   the admin to issue a read-only service account.
+3. **Needs an outside party or cloud infra** — a third-party penetration test (3.8; scope
+   of work written: `deliverables/P_PenTest_Scope.md`), the real 5-year data backfill (3.6
+   — proven against a synthetic 5-year corpus), Redis behind the rate-limiter/revocation
+   store, a KMS for secrets, off-host audit *storage* (the streaming hook exists), running
+   the tabletop (4.8 — scenario written). Step-by-step: `docs/DEPLOY_CHECKLIST.md`.
 
 Nice-to-haves that are *not* blockers and could go deeper: a cross-encoder reranker (2.5),
 a fuller native Expo app (4.4 — the web app is now an installable PWA covering iOS +
@@ -166,10 +169,13 @@ answer runs through the real server-side permission filter, not a client-side sw
 persona switch is a real demo sign-in and real Google OIDC drops in with `docs/DEMO_HOSTING.md`.
 Installable PWA. Hardened response headers on API + web, asserted in CI. `npm run deps:audit`
 (OWASP A06) in the gate. Full control state in `docs/HARDEN_CHECKLIST.md`. A **unit suite**
-(`npm run test` / `npm run coverage`, ~112 cases, ~97% line coverage on the logic modules)
+(`npm run test` / `npm run coverage`, ~126 cases, ~97% line coverage on the logic modules)
 is now step 2 of the gate. A full front-to-back click-through fixed two wiring gaps: the
 web feedback buttons now POST to `/api/feedback`, and `corpus-index.json` is no longer
-served with an immutable cache.
+served with an immutable cache. **Get-to-100 code:** the real Google Directory group
+resolver (`src/security/directory.ts` — cached, fail-closed, suspended-account check) and
+an in-process egress allowlist (`src/util/egress.ts` — OWASP A10). `.github/` CI + Dependabot.
+New docs: pen-test SOW, `DEPLOY_CHECKLIST.md`, `Q_Data_Owner_Signoff.md`.
 
 ### Done — runs and is tested
 
@@ -190,7 +196,8 @@ served with an immutable cache.
 | 3.2 | PII pass (deterministic + participant heuristic + quarantine); **optional NER name pass** (`src/pipeline/ner.ts`). |
 | 3.3 | **Indirect-prompt-injection**: 15 planted fixtures + intake pattern-stripping + injection-score quarantine + behavioural red-team cases. |
 | 3.4 | **Multilingual (Spanish)**: stopwords + bilingual bridge + **translation at intake** (`src/pipeline/translate.ts` — mt / api / glossary); an English query retrieves *and reads* a Spanish report, citation still points to the original. OCR quality gate. |
-| 3.5 | **Promotion gate** (`npm run ci`, includes `eval:full`); anomaly alerts (`src/security/monitor.ts`); **off-host audit stream** (`webhookSink`). |
+| 3.5 | **Promotion gate** (`npm run ci`, includes `eval:full` + the unit suite + `deps:audit`); anomaly alerts (`src/security/monitor.ts`); **off-host audit stream** (`webhookSink`); `.github/workflows/ci.yml` + Dependabot. |
+| 3.8 | Group resolution — real **Admin SDK Directory** resolver (`src/security/directory.ts`, cached, fail-closed, suspended-account check). Egress allowlist (`src/util/egress.ts`, OWASP A10). Pen-test SOW + `DEPLOY_CHECKLIST.md` written. |
 | 3.6 | **5-year synthetic corpus** (`npm run gen:corpus` → ~59 grants, ~110 declines, ~260 docs, Zoom threads, template drift, a migration boundary, duplicate orgs, conflicting figures) + `npm run reconcile`; conflicts **shown, not merged**. |
 | 3.7 | Role & cycle context (`src/roles.ts`, 12 personas, toggleable) + **per-grant cycle logic** (`src/grant-cycle.ts` — cadence read or inferred, overdue, next deadline, renewal window) + **portfolio-schedule answers** ("what's due / overdue / renewals"). |
 | 4.1 | Additional surface — embeddable answer widget (`web/public/embed.html`). |
