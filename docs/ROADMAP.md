@@ -165,7 +165,11 @@ impact-model connector (3.1 — needs the discovery answer on where the model li
 answer runs through the real server-side permission filter, not a client-side switch; the
 persona switch is a real demo sign-in and real Google OIDC drops in with `docs/DEMO_HOSTING.md`.
 Installable PWA. Hardened response headers on API + web, asserted in CI. `npm run deps:audit`
-(OWASP A06) in the gate. Full control state in `docs/HARDEN_CHECKLIST.md`.
+(OWASP A06) in the gate. Full control state in `docs/HARDEN_CHECKLIST.md`. A **unit suite**
+(`npm run test` / `npm run coverage`, ~112 cases, ~97% line coverage on the logic modules)
+is now step 2 of the gate. A full front-to-back click-through fixed two wiring gaps: the
+web feedback buttons now POST to `/api/feedback`, and `corpus-index.json` is no longer
+served with an immutable cache.
 
 ### Done — runs and is tested
 
@@ -175,11 +179,12 @@ Installable PWA. Hardened response headers on API + web, asserted in CI. `npm ru
 | 2.2 | Preserve — immutable content-addressed raw store (`src/pipeline/rawstore.ts`) + manifest. Extraction-confidence + injection quarantine. |
 | 2.3 | Resolve — entity graph, grant↔org join, dedupe (exact/near/cross-system), **entity review queue** (`/admin/review`, `build:index` output). |
 | 2.4 | Retrieve — hybrid BM25 + tf-idf; **permission filter as a SQL `WHERE` clause** (`src/db/store.ts`, `npm run eval:pg` 12/12, 0 leaks); Restricted excluded. |
-| 2.5 | Learned embeddings — `bge-small` via transformers.js, opt-in, eval-passing. bge-m3 registered as the multilingual option. |
+| 2.5 | Learned embeddings — `bge-small` + `minilm` registered (`src/embed/embedder.ts`), via transformers.js, opt-in (`--embed`), eval-passing. bge-m3 (multilingual) + a cross-encoder reranker are the planned upgrades — not yet wired. |
 | 2.6 | Answer — evidence brief, inline deep-link citations, coverage line, **operational confidence** (coverage/agreement/freshness/completeness), abstention, **conflict surfacing**. |
 | 2.7 | Web app + the **full OIDC Authorization-Code + PKCE flow** (`src/server/`, `npm run server:check` 16/16). Served by the API on one origin (`npm run demo`) — every answer through the server-side filter; persona switch = real demo sign-in; real Google OIDC via `docs/DEMO_HOSTING.md`. Installable PWA. "How it works" panel. Embeddable widget. |
 | 2.8 | SSO+MFA-ready, session + **server-side revocation**, tamper-evident audit log, **kill switch**, admin-group gating. |
-| 2.9 | Feedback control (`/api/feedback` → `eval/feedback.jsonl`); **`npm run redteam`** (16 cases, injection/jailbreak/exfil/PII) inside **`npm run ci`**. |
+| 2.9 | Feedback control — the web thumbs-up/down POST to `/api/feedback` → `eval/feedback.jsonl` (read by `npm run tune`); **`npm run redteam`** (16 cases, injection/jailbreak/exfil/PII) inside **`npm run ci`**. |
+| — | **Unit suite** — `npm run test` (node:test, ~112 cases) + `npm run coverage`; step 2 of the promotion gate. Covers auth / session / oauth / limits / static / monitor / audit / search / grant-cycle / pii / translate / roles / text at ~97% line. |
 | 2.11 | Per-user rate + cost limits → 429 + Retry-After. |
 | 3.1 | Airtable adapter done; **Notion connector** built (gated). |
 | 3.2 | PII pass (deterministic + participant heuristic + quarantine); **optional NER name pass** (`src/pipeline/ner.ts`). |

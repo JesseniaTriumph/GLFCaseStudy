@@ -431,10 +431,15 @@ function isEnumerationRequest(question: string): boolean {
  */
 function maybeScheduleAnswer(index: CorpusIndex, question: string, principal: Principal): Answer | null {
   const q = question.toLowerCase();
-  const isSchedule =
-    /\b(due|overdue|deadline|coming up|upcoming|renewal|re-?application|report[s]? (due|left|remaining)|what'?s (due|left|coming))\b/.test(q) &&
-    /\b(portfolio|my grants|our grants|across|all grants|next \d+ days?|next (month|quarter|week)|this (month|quarter|week|fy|fiscal year)|which grants?)\b/.test(q);
-  if (!isSchedule || !index.grantMeta) return null;
+  const scheduleKw =
+    /\b(due|overdue|deadline|coming up|upcoming|renewal|re-?application|report[s]? (due|left|remaining))\b|\bwhat'?s (due|left|coming|overdue)\b/.test(q);
+  const scopeKw =
+    /\b(portfolio|my grants|our grants|across|all grants|next \d+ days?|next (month|quarter|week)|this (month|quarter|week|fy|fiscal year)|which grants?|right now|currently|at the moment|at present|anything (due|overdue)|reports? (are |is )?overdue|overdue reports?)\b/.test(q);
+  // don't hijack a question that names one grantee — entity-focused retrieval handles that
+  const namesAnOrg = index.entities.some(
+    (e) => e.kind === "organization" && e.label.length > 4 && q.includes(e.label.toLowerCase())
+  );
+  if (!scheduleKw || !scopeKw || namesAnOrg || !index.grantMeta) return null;
 
   // window: "next N days", or a sensible default per phrasing
   const m = q.match(/next (\d+) days?/);
