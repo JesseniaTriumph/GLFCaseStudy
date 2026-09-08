@@ -9,17 +9,19 @@
  *
  * Gate steps:
  *   1. typecheck              the code compiles
- *   2. build:index            the pipeline runs clean
- *   3. eval                   gold set — retrieval + refusal + zero permission leaks
- *   4. eval:pg                the same gold set through the SQL permission filter
- *   5. security               OIDC token verification + tamper-evident audit chain
- *   6. server:check           full OIDC login flow + rate limit + kill switch + revocation
- *   7. redteam                adversarial suite — injection, jailbreak, exfiltration, PII
+ *   2. deps:audit             no high/critical advisory in shipping deps (OWASP A06)
+ *   3. build:index            the pipeline runs clean
+ *   4. eval                   gold set — retrieval + refusal + zero permission leaks
+ *   5. eval:pg                the same gold set through the SQL permission filter
+ *   6. security               OIDC token verification + tamper-evident audit chain
+ *   7. server:check           full OIDC login flow + rate limit + kill switch + revocation
+ *   8. redteam                adversarial suite — injection, jailbreak, exfiltration, PII
  */
 import { spawnSync } from "node:child_process";
 
 const STEPS: Array<[string, string]> = [
   ["typecheck", "npm run -s typecheck"],
+  ["deps:audit", "npm run -s deps:audit"],
   ["build:index", "npm run -s build:index"],
   ["eval", "npm run -s eval"],
   ["eval:pg", "npm run -s eval:pg"],

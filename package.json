@@ -29,7 +29,8 @@
     "gen:corpus": "tsx scripts/gen-corpus.ts",
     "eval:full": "COMPASS_CORPUS=full tsx scripts/eval.ts",
     "build:index:full": "COMPASS_CORPUS=full tsx scripts/build-index.ts",
-    "reconcile": "tsx scripts/reconcile.ts"
+    "reconcile": "tsx scripts/reconcile.ts",
+    "deps:audit": "tsx scripts/deps-audit.ts"
   },
   "devDependencies": {
     "@types/node": "^22.9.0",
@@ -37,7 +38,9 @@
     "typescript": "^5.6.3"
   },
   "dependencies": {
-    "@electric-sql/pglite": "^0.5.8",
+    "@electric-sql/pglite": "^0.5.8"
+  },
+  "optionalDependencies": {
     "@huggingface/transformers": "^4.2.0"
   }
 }

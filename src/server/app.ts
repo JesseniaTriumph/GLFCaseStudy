@@ -129,9 +129,18 @@ export function createApp(deps: ServerDeps) {
   return createServer(async (req, res) => {
     const url = new URL(req.url ?? "/", `http://${req.headers.host ?? "localhost"}`);
     const path = url.pathname;
-    // security headers on everything
+    // security headers on everything (OWASP A05 — security misconfiguration).
+    // This process is a JSON API only: it renders no HTML and no cross-origin caller is
+    // allowed (the web app and the embed widget are served same-origin, so there is no
+    // CORS allowlist by design). The headers below make that posture explicit.
     res.setHeader("X-Content-Type-Options", "nosniff");
     res.setHeader("Referrer-Policy", "same-origin");
+    res.setHeader("Content-Security-Policy", "default-src 'none'; frame-ancestors 'none'; base-uri 'none'");
+    res.setHeader("X-Frame-Options", "DENY");
+    res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
+    res.setHeader("Cross-Origin-Resource-Policy", "same-origin");
+    res.setHeader("Permissions-Policy", "camera=(), microphone=(), geolocation=(), browsing-topics=()");
+    if (secure) res.setHeader("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
 
     try {
       if (path === "/health") return json(res, 200, { ok: true, chunks: deps.index.chunks.length });
