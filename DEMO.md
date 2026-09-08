@@ -3,11 +3,17 @@
 All data is synthetic and fictional. For the 7-minute presentation, keep it to the four
 beats in Part 1. Part 2 is for the technical Q&A.
 
+**The full word-for-word walk-through with the permission-boundary moment is in
+`deliverables/O_Demo_Script.md`.** This file is the short version.
+
 ---
 
 ## Part 1 — the 7-minute demo (web app, screen-share)
 
-`npm run web:dev` (the built index ships the 5-year synthetic corpus).
+`npm run demo` — builds the web app and starts one server: the UI, the API, sign-in, and a
+demo persona switch, all on `http://localhost:8787`. Every answer goes through the real
+server-side permission filter. (For real Google sign-in instead of personas, see
+`docs/DEMO_HOSTING.md`.)
 
 1. **One supported answer.** Ask *"How did Riverbend Care Collective perform against what
    they projected, and did the program officer flag anything?"*

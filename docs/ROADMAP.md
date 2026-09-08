@@ -138,9 +138,9 @@ Narrow the corpus or the user group. **Never** skip a security exit criterion.
 
 ## Build status (what's done in `compass/` vs. what needs the Foundation)
 
-**Every capability in the plan is built and tested** (`npm run ci` — eval 12/12 · eval:pg
-12/12 · eval:full 12/12 · redteam 16/16 · security 9/9 · server 12/12). What's left is not
-engineering — it splits three ways:
+**Every capability in the plan is built and tested** (`npm run ci` — deps:audit · eval
+12/12 · eval:pg 12/12 · eval:full 12/12 · redteam 16/16 · security 9/9 · server 16/16).
+What's left is not engineering — it splits three ways:
 
 1. **Only the Foundation's people can produce it** — the real 50–100-question gold set
    with verified answers (1.7), design partners using it weekly (2.10), baseline task
@@ -156,8 +156,16 @@ engineering — it splits three ways:
    *storage* (the streaming hook exists), running the tabletop (4.8 — scenario written).
 
 Nice-to-haves that are *not* blockers and could go deeper: a cross-encoder reranker (2.5),
-the web MVP wired to the live OIDC server rather than a persona switch (2.7), a fuller Expo
-app (4.4 — scaffolded), an impact-model connector (3.1 — needs their Tableau setup).
+a fuller native Expo app (4.4 — the web app is now an installable PWA covering iOS +
+Android; native is only for MDM-catalog distribution or deep biometric integration), an
+impact-model connector (3.1 — needs the discovery answer on where the model lives; see
+`E_Discovery_Questions.md` §5).
+
+**Done since:** the web app is now served by the API on one origin (`npm run demo`) — every
+answer runs through the real server-side permission filter, not a client-side switch; the
+persona switch is a real demo sign-in and real Google OIDC drops in with `docs/DEMO_HOSTING.md`.
+Installable PWA. Hardened response headers on API + web, asserted in CI. `npm run deps:audit`
+(OWASP A06) in the gate. Full control state in `docs/HARDEN_CHECKLIST.md`.
 
 ### Done — runs and is tested
 
@@ -169,7 +177,7 @@ app (4.4 — scaffolded), an impact-model connector (3.1 — needs their Tableau
 | 2.4 | Retrieve — hybrid BM25 + tf-idf; **permission filter as a SQL `WHERE` clause** (`src/db/store.ts`, `npm run eval:pg` 12/12, 0 leaks); Restricted excluded. |
 | 2.5 | Learned embeddings — `bge-small` via transformers.js, opt-in, eval-passing. bge-m3 registered as the multilingual option. |
 | 2.6 | Answer — evidence brief, inline deep-link citations, coverage line, **operational confidence** (coverage/agreement/freshness/completeness), abstention, **conflict surfacing**. |
-| 2.7 | Web app + the **full OIDC Authorization-Code + PKCE flow** (`src/server/`, `npm run server:check` 12/12). "How it works" panel. Embeddable widget. |
+| 2.7 | Web app + the **full OIDC Authorization-Code + PKCE flow** (`src/server/`, `npm run server:check` 16/16). Served by the API on one origin (`npm run demo`) — every answer through the server-side filter; persona switch = real demo sign-in; real Google OIDC via `docs/DEMO_HOSTING.md`. Installable PWA. "How it works" panel. Embeddable widget. |
 | 2.8 | SSO+MFA-ready, session + **server-side revocation**, tamper-evident audit log, **kill switch**, admin-group gating. |
 | 2.9 | Feedback control (`/api/feedback` → `eval/feedback.jsonl`); **`npm run redteam`** (16 cases, injection/jailbreak/exfil/PII) inside **`npm run ci`**. |
 | 2.11 | Per-user rate + cost limits → 429 + Retry-After. |

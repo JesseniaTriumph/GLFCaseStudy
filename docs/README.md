@@ -42,15 +42,26 @@ npm run eval           # gold set: retrieval + refusal + permission-leak — 11/
 npm run eval:pg        # the same gold set through the SQL permission filter — 11/11
 npm run redteam        # adversarial suite: injection, jailbreak, exfiltration, PII — 16/16, 0 leaks
 npm run security       # OIDC token verify + fail-closed auth + tamper-evident audit — 9/9
-npm run server:check   # full OIDC login + rate limit + kill switch + revocation + stats — 12/12
+npm run server:check   # full OIDC login + demo sign-in + hardened headers + rate limit + kill switch — 16/16
+npm run deps:audit     # OWASP A06 — fails on any high/critical advisory in shipping deps
+npm run demo           # one URL: web app + API + sign-in, every answer through the real permission filter
 npm run audit          # print + verify the hash-chained audit log
 npm run stats          # usage / trust / cost snapshot from the audit log
 npm run tune           # weekly: propose a retrieval change from feedback + eval deltas (never auto-applies)
 npm run ask -- --as programs "how did Riverbend Care Collective perform against projection?"
 ```
 
-The MVP is the web app: `npm run web:dev` (or `npm run web:build && npm --prefix web run preview`).
-It runs the real retrieval, the permission filter, `Restricted` exclusion, conflict
-surfacing, the Deep-dive panel with per-grant cycle, and the toggleable Role & cycle
-context — the same modules as the CLI and the eval harness, on the synthetic 5-year corpus.
-Deploy: `cd web && npx vercel deploy`.
+The MVP is the web app. Two ways to run it:
+
+- **`npm run demo`** — one server on `http://localhost:8787` serves the web app + the API +
+  sign-in. Every answer goes through `POST /api/ask`: the **server-side** permission
+  filter, the rate limiter, the audit log. A demo persona switch stands in for Google
+  sign-in (or configure real OIDC — `docs/DEMO_HOSTING.md`). This is the one to demo.
+- **`npm run web:dev`** — the SPA alone, retrieval in the browser, no server. Deploys to
+  any static host (`cd web && npx vercel deploy`). Good for a shareable link; the
+  permission filter runs client-side here, so it's the demo build, not the secure one.
+
+Either way it runs the real retrieval, `Restricted` exclusion, conflict surfacing, the
+Deep-dive panel with per-grant cycle, and the toggleable Role & cycle context — the same
+modules as the CLI and the eval harness, on the synthetic 5-year corpus. The web app is
+also an installable PWA (Add to Home Screen, iOS + Android).

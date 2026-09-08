@@ -19,7 +19,7 @@ into `npm run ci`, so a regression on either blocks promotion.
 | AC-3 | Retrieval-time access control as the security boundary | CSF PR.DS, AI RMF MEASURE 2.7 | The permission filter runs before ranking, in code — also as a SQL `WHERE` clause (`src/db/store.ts`); `npm run eval` / `eval:pg` prove zero leaks | ✅ |
 | AC-4 | Session management | 800-53 SC-23, SC-10 | HMAC-signed `HttpOnly; Secure; SameSite=Strict` cookie, 8h TTL; per-user + global server-side revocation (`revokeUser` / `revokeAll`); logout revokes | ✅ |
 | AC-5 | Rate / cost limiting | CSF PR.IR-04, 800-53 SC-5, OWASP A04 / LLM10 | Per-user token buckets (request rate + LLM cost) → 429 + Retry-After (`src/server/limits.ts`); production = Redis | 🟡 |
-| AC-6 | HTTP response hardening | 800-53 SC-18, OWASP A05 | Every response carries `Content-Security-Policy: default-src 'none'; frame-ancestors 'none'`, `X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff`, `Cross-Origin-Opener-Policy` / `-Resource-Policy: same-origin`, `Permissions-Policy`, and HSTS in prod (`src/server/app.ts`). The API renders no HTML and allows no cross-origin caller — the web app + embed widget are served same-origin, so there is no CORS allowlist by design | ✅ |
+| AC-6 | HTTP response hardening | 800-53 SC-18, OWASP A05 | JSON API: `Content-Security-Policy: default-src 'none'; frame-ancestors 'none'`, `X-Frame-Options: DENY`, nosniff, COOP/CORP `same-origin`, `Permissions-Policy`, HSTS in prod. Web app (`src/server/static.ts`): a page CSP allowing only `self` + Google Fonts — no third-party script, frame, or XHR. `npm run server:check` asserts both. No CORS allowlist by design — API + web app are one origin | ✅ |
 | AC-7 | Request-body limits | 800-53 SC-5, OWASP A04 / LLM10 | 64 KB body cap (`req.destroy()` past it), question truncated to 2 000 chars, all `/api/feedback` fields type-guarded and length-capped (`src/server/app.ts`) | ✅ |
 | DP-1 | Sensitivity classification (four tiers + never-ingest) | CSF ID.AM-05, SOC 2 C1.1 | `Tier` model; `docs/TIER_POLICY.md`; data owner signs off | 🟡 |
 | DP-2 | Restricted content never indexed | CSF PR.DS-01, 800-53 SC-28 | Tier exclusion at ingest; metadata-only stub for policy-restricted docs; PII-raised docs leave no stub | ✅ |
@@ -52,7 +52,7 @@ into `npm run ci`, so a regression on either blocks promotion.
 | A02 | Cryptographic failures | RS256 ID-token verification; HMAC-signed `HttpOnly; Secure; SameSite=Strict` session cookie; SHA-256 hash chain on the audit log; TLS + HSTS in prod (AC-1, AC-4, IN-2, IN-3) | ✅ / 🟡 (KMS) |
 | A03 | Injection | Parameterized SQL only; React auto-escapes rendered answers; no `dangerouslySetInnerHTML`; prompt injection handled separately under LLM01 (SC-4) | ✅ |
 | A04 | Insecure design | Threat model + tier policy; immutable raw store, index fully derived; adversarial eval (`npm run redteam`) is a release gate; body / question / cost caps (SC-4, IN-1, AI-5, AC-7) | ✅ |
-| A05 | Security misconfiguration | CSP `default-src 'none'; frame-ancestors 'none'`, `X-Frame-Options: DENY`, nosniff, COOP/CORP `same-origin`, `Permissions-Policy`, HSTS in prod; no CORS allowlist by design; `/health` leaks only a chunk count (AC-6) | ✅ |
+| A05 | Security misconfiguration | Hardened response headers on the API *and* a page-scoped CSP on the web app, both asserted by `npm run server:check`; no CORS allowlist by design; `/health` leaks only a chunk count; `/api/config` exposes sign-in options but no identity (AC-6). Remaining items (TLS config, private network, egress allowlist) are deployment-environment — tracked in `docs/HARDEN_CHECKLIST.md` §3 | ✅ (code) / 🟡 (deploy) |
 | A06 | Vulnerable & outdated components | `npm run deps:audit` in CI fails on high/critical in shipping deps; transformers.js moved to `optionalDependencies` so its unfixable native-dep advisories don't reach the default path (SC-3) | ✅ |
 | A07 | Identification & auth failures | Google OIDC Authorization-Code + PKCE + `state`; `iss/aud/exp/iat/hd/email_verified` all checked; constant-time session verify; 8 h TTL; per-user + global server-side revocation; logout revokes (AC-1, AC-4) | ✅ |
 | A08 | Software & data integrity failures | Hash-chained tamper-evident audit log; build manifest = git commit + content digest; content-addressed raw store; CI promotion gate (IN-2, IN-3, AI-5) | ✅ |
@@ -94,3 +94,9 @@ have no upstream fix. They are quarantined in `optionalDependencies`: the defaul
 the whole CI path load none of them. `npm run deps:audit` prints them as an informational
 line so the risk is visible if the Foundation later enables the `mt` translator, NER, or a
 dense-embedding build.
+
+**The full control-by-control state — what's done, what's left, and who has to do it — is
+in `docs/HARDEN_CHECKLIST.md`.** The short version of "what gets us to 100": a third-party
+penetration test, the production deployment (Redis / KMS / private network / egress
+allowlist), the Google Groups integration, a data-owner sign-off on the tiers, and — only
+for written synthesis — a zero-retention LLM agreement.
