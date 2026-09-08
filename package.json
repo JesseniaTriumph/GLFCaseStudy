@@ -16,6 +16,8 @@
     "web:dev": "npm --prefix web run dev",
     "web:build": "COMPASS_CORPUS=full npm run build:index:full && npm --prefix web run build",
     "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --test test/*.test.ts",
+    "coverage": "node --import tsx --test --experimental-test-coverage test/*.test.ts",
     "eval:pg": "tsx scripts/eval-pg.ts",
     "build:index:embed": "tsx scripts/build-index.ts --embed bge-small",
     "eval:embed": "COMPASS_EMBED=bge-small tsx scripts/eval.ts",

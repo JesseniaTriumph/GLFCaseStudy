@@ -9,19 +9,22 @@
  *
  * Gate steps:
  *   1. typecheck              the code compiles
- *   2. deps:audit             no high/critical advisory in shipping deps (OWASP A06)
- *   3. build:index            the pipeline runs clean
- *   4. eval                   gold set — retrieval + refusal + zero permission leaks
- *   5. eval:pg                the same gold set through the SQL permission filter
+ *   2. test                   unit suite (node:test) — ~110 cases over the logic modules
+ *   3. deps:audit             no high/critical advisory in shipping deps (OWASP A06)
+ *   4. build:index            the pipeline runs clean
+ *   5. eval / eval:pg / eval:full   gold sets — retrieval + refusal + zero permission leaks
  *   6. security               OIDC token verification + tamper-evident audit chain
  *   7. web:build              the web app compiles (also gives server:check something to serve)
  *   8. server:check           full OIDC login flow + demo sign-in + headers + rate limit + kill switch
  *   9. redteam                adversarial suite — injection, jailbreak, exfiltration, PII
+ *
+ * `npm run coverage` prints line/branch/function coverage for the unit suite.
  */
 import { spawnSync } from "node:child_process";
 
 const STEPS: Array<[string, string]> = [
   ["typecheck", "npm run -s typecheck"],
+  ["test", "npm run -s test"],
   ["deps:audit", "npm run -s deps:audit"],
   ["build:index", "npm run -s build:index"],
   ["eval", "npm run -s eval"],
