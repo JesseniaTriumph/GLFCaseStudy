@@ -1,18 +1,18 @@
 ---
-title: Northgate Works — proposal (GD-2058)
-author: Northgate Works
+title: Cedarline Works — proposal (GD-2058)
+author: Cedarline Works
 date: 2026-03-01
-folder: Powering Economic Opportunity/2026/Northgate Works
+folder: Powering Economic Opportunity/2026/Cedarline Works
 grant: GD-2058
 tier: team
 ---
 
-# Proposal — Northgate Works
+# Proposal — Cedarline Works
 
 **Grant:** GD-2058 · **Fund:** Powering Economic Opportunity Fund · **Geography:** United States
 
 ## 1. Problem
-Northgate Works proposes strengthening a caregiver placement network in north carolina.
+Cedarline Works proposes strengthening a caregiver placement network in north carolina.
 
 ## 2. Approach
 Sectoral partnership with employer commitments; outcomes tracked in the org's data system.

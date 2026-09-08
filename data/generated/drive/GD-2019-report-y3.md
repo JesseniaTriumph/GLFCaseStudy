@@ -1,13 +1,13 @@
 ---
-title: Fieldstone Care Collective — Q3 Y1 report
-author: Fieldstone Care Collective
+title: Kindred Care Collective — Q3 Y1 report
+author: Kindred Care Collective
 date: 2024-06-14
-folder: Learning for Action/2023/Fieldstone Care Collective
+folder: Learning for Action/2023/Kindred Care Collective
 grant: GD-2019
 tier: team
 ---
 
-# Fieldstone Care Collective — Q3 Y1
+# Kindred Care Collective — Q3 Y1
 
 Grant GD-2019. As of 2024-06-14. Served 1,635 participants; median wage at placement about $18.89/hr.
 

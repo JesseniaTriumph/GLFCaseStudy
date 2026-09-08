@@ -1,18 +1,18 @@
 ---
-title: Junction Collaborative — proposal (GD-2028)
-author: Junction Collaborative
+title: Trailhead Collaborative — proposal (GD-2028)
+author: Trailhead Collaborative
 date: 2024-07-01
-folder: AI for Economic Opportunity/2024/Junction Collaborative
+folder: AI for Economic Opportunity/2024/Trailhead Collaborative
 grant: GD-2028
 tier: team
 ---
 
-# Proposal — Junction Collaborative
+# Proposal — Trailhead Collaborative
 
 **Grant:** GD-2028 · **Fund:** AI for Economic Opportunity Fund · **Geography:** United States
 
 ## 1. Problem
-Junction Collaborative proposes building personalized career coaching in colorado.
+Trailhead Collaborative proposes building personalized career coaching in colorado.
 
 ## 2. Approach
 Sectoral partnership with employer commitments; outcomes tracked in the org's data system.

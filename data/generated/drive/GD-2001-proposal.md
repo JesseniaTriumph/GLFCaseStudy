@@ -1,13 +1,13 @@
 ---
-title: Commonwork Cooperative — proposal (GD-2001)
-author: Commonwork Cooperative
+title: Uplift Cooperative — proposal (GD-2001)
+author: Uplift Cooperative
 date: 2021-05-01
-folder: AI for Economic Opportunity/2021/Commonwork Cooperative
+folder: AI for Economic Opportunity/2021/Uplift Cooperative
 grant: GD-2001
 tier: team
 ---
 
-# Proposal — Commonwork Cooperative
+# Proposal — Uplift Cooperative
 
 Testing credential-completion supports in Texas. Requested: USD 150,000 over 2021–2026.
 

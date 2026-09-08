@@ -1,18 +1,18 @@
 ---
-title: Cedarline Partners — proposal (GD-2034)
-author: Cedarline Partners
+title: Harbor Partners — proposal (GD-2034)
+author: Harbor Partners
 date: 2024-05-01
-folder: Powering Economic Opportunity/2024/Cedarline Partners
+folder: Powering Economic Opportunity/2024/Harbor Partners
 grant: GD-2034
 tier: team
 ---
 
-# Proposal — Cedarline Partners
+# Proposal — Harbor Partners
 
 **Grant:** GD-2034 · **Fund:** Powering Economic Opportunity Fund · **Geography:** United States
 
 ## 1. Problem
-Cedarline Partners proposes piloting a rapid-reskilling program in new york.
+Harbor Partners proposes piloting a rapid-reskilling program in new york.
 
 ## 2. Approach
 Sectoral partnership with employer commitments; outcomes tracked in the org's data system.

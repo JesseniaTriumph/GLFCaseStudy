@@ -1,13 +1,13 @@
 ---
-title: Pathwise Center — site visit notes
+title: Keystone Center — site visit notes
 author: Amara Boateng
 date: 2027-11-24
-folder: Learning for Action/2026/Pathwise Center
+folder: Learning for Action/2026/Keystone Center
 grant: GD-2052
 tier: programs-only
 ---
 
-# Site visit — Pathwise Center
+# Site visit — Keystone Center
 
 Amara Boateng, United States. Grant GD-2052.
 

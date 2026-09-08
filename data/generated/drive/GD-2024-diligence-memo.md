@@ -1,13 +1,13 @@
 ---
-title: Crosswalk Skills Alliance — diligence memo
+title: Groundwork Skills Alliance — diligence memo
 author: Priya Raman
 date: 2023-07-22
-folder: AI for Economic Opportunity/2023/Crosswalk Skills Alliance
+folder: AI for Economic Opportunity/2023/Groundwork Skills Alliance
 grant: GD-2024
 tier: programs-only
 ---
 
-# Diligence memo — Crosswalk Skills Alliance (GD-2024)
+# Diligence memo — Groundwork Skills Alliance (GD-2024)
 
 Program officer: Priya Raman. AI for Economic Opportunity Fund.
 

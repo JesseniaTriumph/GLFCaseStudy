@@ -1,13 +1,13 @@
 ---
-title: Nextstep Skills Alliance — H1 Y3 report
-author: Nextstep Skills Alliance
+title: Threshold Skills Alliance — H1 Y3 report
+author: Threshold Skills Alliance
 date: 2026-08-20
-folder: Future of Work/2024/Nextstep Skills Alliance
+folder: Future of Work/2024/Threshold Skills Alliance
 grant: GD-2030
 tier: team
 ---
 
-# Nextstep Skills Alliance — H1 Y3 progress report
+# Threshold Skills Alliance — H1 Y3 progress report
 
 **Grant:** GD-2030 · As reported 2026-08-20 · Impact model v3.5
 

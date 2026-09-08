@@ -1,13 +1,13 @@
 ---
-title: Junction Initiative — Q4 Y1 report
-author: Junction Initiative
+title: Trailhead Initiative — Q4 Y1 report
+author: Trailhead Initiative
 date: 2026-06-12
-folder: Future of Work/2025/Junction Initiative
+folder: Future of Work/2025/Trailhead Initiative
 grant: GD-2047
 tier: team
 ---
 
-# Junction Initiative — Q4 Y1 progress report
+# Trailhead Initiative — Q4 Y1 progress report
 
 **Grant:** GD-2047 · As reported 2026-06-12 · Impact model v4.1
 

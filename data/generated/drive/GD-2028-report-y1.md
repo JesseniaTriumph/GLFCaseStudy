@@ -1,13 +1,13 @@
 ---
-title: Junction Collaborative — Year 1 report
-author: Junction Collaborative
+title: Trailhead Collaborative — Year 1 report
+author: Trailhead Collaborative
 date: 2025-09-16
-folder: AI for Economic Opportunity/2024/Junction Collaborative
+folder: AI for Economic Opportunity/2024/Trailhead Collaborative
 grant: GD-2028
 tier: team
 ---
 
-# Junction Collaborative — Year 1 progress report
+# Trailhead Collaborative — Year 1 progress report
 
 **Grant:** GD-2028 · As reported 2025-09-16 · Impact model v3.5
 

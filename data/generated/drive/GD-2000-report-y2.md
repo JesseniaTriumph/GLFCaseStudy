@@ -1,13 +1,13 @@
 ---
-title: Crosswalk Coalition — Q2 Y1 report
-author: Crosswalk Coalition
+title: Groundwork Coalition — Q2 Y1 report
+author: Groundwork Coalition
 date: 2021-11-26
-folder: Future of Work/2021/Crosswalk Coalition
+folder: Future of Work/2021/Groundwork Coalition
 grant: GD-2000
 tier: team
 ---
 
-# Crosswalk Coalition — Q2 Y1
+# Groundwork Coalition — Q2 Y1
 
 Grant GD-2000. As of 2021-11-26. Served 1,363 participants; median wage at placement about $19.09/hr.
 

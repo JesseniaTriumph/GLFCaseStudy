@@ -1,13 +1,13 @@
 ---
-title: Northgate Care Collective — diligence memo
+title: Brightpath Care Collective — diligence memo
 author: Marcus Bell
 date: 2023-03-14
-folder: Learning for Action/2023/Northgate Care Collective
+folder: Learning for Action/2023/Brightpath Care Collective
 grant: GD-2021
 tier: programs-only
 ---
 
-# Diligence memo — Northgate Care Collective (GD-2021)
+# Diligence memo — Brightpath Care Collective (GD-2021)
 
 Program officer: Marcus Bell. Learning for Action.
 

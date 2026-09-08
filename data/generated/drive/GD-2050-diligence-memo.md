@@ -1,13 +1,13 @@
 ---
-title: Lantern Guild — diligence memo
+title: Commonwork Guild — diligence memo
 author: Ruth Mensah
 date: 2026-05-04
-folder: Powering Economic Opportunity/2026/Lantern Guild
+folder: Powering Economic Opportunity/2026/Commonwork Guild
 grant: GD-2050
 tier: programs-only
 ---
 
-# Diligence memo — Lantern Guild (GD-2050)
+# Diligence memo — Commonwork Guild (GD-2050)
 
 Program officer: Ruth Mensah. Powering Economic Opportunity Fund.
 

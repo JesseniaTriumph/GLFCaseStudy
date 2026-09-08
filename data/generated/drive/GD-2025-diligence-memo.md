@@ -1,13 +1,13 @@
 ---
-title: Cornerstone Collaborative — diligence memo
+title: Threshold Collaborative — diligence memo
 author: Nadia Haddad
 date: 2023-05-03
-folder: AI for Economic Opportunity/2023/Cornerstone Collaborative
+folder: AI for Economic Opportunity/2023/Threshold Collaborative
 grant: GD-2025
 tier: programs-only
 ---
 
-# Diligence memo — Cornerstone Collaborative (GD-2025)
+# Diligence memo — Threshold Collaborative (GD-2025)
 
 Program officer: Nadia Haddad. AI for Economic Opportunity Fund.
 

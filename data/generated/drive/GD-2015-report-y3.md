@@ -1,13 +1,13 @@
 ---
-title: Marrow Cooperative — H2 Y2 report
-author: Marrow Cooperative
+title: Dovetail Cooperative — H2 Y2 report
+author: Dovetail Cooperative
 date: 2024-02-20
-folder: Future of Work/2022/Marrow Cooperative
+folder: Future of Work/2022/Dovetail Cooperative
 grant: GD-2015
 tier: team
 ---
 
-# Marrow Cooperative — H2 Y2
+# Dovetail Cooperative — H2 Y2
 
 Grant GD-2015. As of 2024-02-20. Served 1,332 participants; median wage at placement about $22.79/hr.
 

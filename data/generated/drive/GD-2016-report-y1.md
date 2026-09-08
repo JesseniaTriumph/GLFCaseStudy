@@ -1,13 +1,13 @@
 ---
-title: Cornerstone Care Collective — H1 Y1 report
-author: Cornerstone Care Collective
+title: Pathwise Care Collective — H1 Y1 report
+author: Pathwise Care Collective
 date: 2022-09-12
-folder: Powering Economic Opportunity/2022/Cornerstone Care Collective
+folder: Powering Economic Opportunity/2022/Pathwise Care Collective
 grant: GD-2016
 tier: team
 ---
 
-# Cornerstone Care Collective — H1 Y1
+# Pathwise Care Collective — H1 Y1
 
 Grant GD-2016. As of 2022-09-12. Served 523 participants; median wage at placement about $18.5/hr.
 

@@ -1,13 +1,13 @@
 ---
-title: Wayfinder Society — Year 1 report
-author: Wayfinder Society
+title: Kindred Society — Year 1 report
+author: Kindred Society
 date: 2024-07-01
-folder: Learning for Action/2023/Wayfinder Society
+folder: Learning for Action/2023/Kindred Society
 grant: GD-2022
 tier: team
 ---
 
-# Wayfinder Society — Year 1
+# Kindred Society — Year 1
 
 Grant GD-2022. As of 2024-07-01. Served 3,506 participants; median wage at placement about $19.11/hr.
 

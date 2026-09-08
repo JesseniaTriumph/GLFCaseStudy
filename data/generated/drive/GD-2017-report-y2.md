@@ -1,13 +1,13 @@
 ---
-title: Cedarline Skills Alliance — H2 Y1 report
-author: Cedarline Skills Alliance
+title: Brightpath Skills Alliance — H2 Y1 report
+author: Brightpath Skills Alliance
 date: 2023-08-08
-folder: AI for Economic Opportunity/2022/Cedarline Skills Alliance
+folder: AI for Economic Opportunity/2022/Brightpath Skills Alliance
 grant: GD-2017
 tier: team
 ---
 
-# Cedarline Skills Alliance — H2 Y1
+# Brightpath Skills Alliance — H2 Y1
 
 Grant GD-2017. As of 2023-08-08. Served 1,788 participants; median wage at placement about $21.06/hr.
 

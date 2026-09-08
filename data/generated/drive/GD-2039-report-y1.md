@@ -1,13 +1,13 @@
 ---
-title: Brightpath Care Collective — Year 1 report
-author: Brightpath Care Collective
+title: Fieldstone Care Collective — Year 1 report
+author: Fieldstone Care Collective
 date: 2026-07-24
-folder: Learning for Action/2025/Brightpath Care Collective
+folder: Learning for Action/2025/Fieldstone Care Collective
 grant: GD-2039
 tier: team
 ---
 
-# Brightpath Care Collective — Year 1 progress report
+# Fieldstone Care Collective — Year 1 progress report
 
 **Grant:** GD-2039 · As reported 2026-07-24 · Impact model v4.1
 

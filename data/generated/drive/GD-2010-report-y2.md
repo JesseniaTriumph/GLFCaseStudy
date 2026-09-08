@@ -1,13 +1,13 @@
 ---
-title: Wayfinder Labs — Year 2 report
-author: Wayfinder Labs
+title: Kindred Labs — Year 2 report
+author: Kindred Labs
 date: 2026-02-13
-folder: Learning for Action/2022/Wayfinder Labs
+folder: Learning for Action/2022/Kindred Labs
 grant: GD-2010
 tier: team
 ---
 
-# Wayfinder Labs — Year 2
+# Kindred Labs — Year 2
 
 Grant GD-2010. As of 2026-02-13. Served 4,074 participants; median wage at placement about $18.55/hr.
 

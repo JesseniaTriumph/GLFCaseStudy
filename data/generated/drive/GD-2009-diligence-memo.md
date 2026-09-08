@@ -1,13 +1,13 @@
 ---
-title: Nextstep Partners — diligence memo
+title: Cornerstone Partners — diligence memo
 author: Tomas Nguyen
 date: 2021-05-27
-folder: Future of Work/2021/Nextstep Partners
+folder: Future of Work/2021/Cornerstone Partners
 grant: GD-2009
 tier: programs-only
 ---
 
-# Diligence memo — Nextstep Partners (GD-2009)
+# Diligence memo — Cornerstone Partners (GD-2009)
 
 Program officer: Tomas Nguyen. Future of Work Fund.
 

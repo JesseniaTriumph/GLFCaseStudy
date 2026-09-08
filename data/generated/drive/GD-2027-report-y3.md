@@ -1,13 +1,13 @@
 ---
-title: Wayfinder Project — Q3 Y1 report
-author: Wayfinder Project
+title: Kindred Project — Q3 Y1 report
+author: Kindred Project
 date: 2024-06-02
-folder: AI for Economic Opportunity/2023/Wayfinder Project
+folder: AI for Economic Opportunity/2023/Kindred Project
 grant: GD-2027
 tier: team
 ---
 
-# Wayfinder Project — Q3 Y1
+# Kindred Project — Q3 Y1
 
 Grant GD-2027. As of 2024-06-02. Served 2,420 participants; median wage at placement about $21.99/hr.
 

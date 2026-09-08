@@ -1,13 +1,13 @@
 ---
-title: Rootwork Initiative — diligence memo
+title: Halden Initiative — diligence memo
 author: Ruth Mensah
 date: 2025-02-08
-folder: Powering Economic Opportunity/2025/Rootwork Initiative
+folder: Powering Economic Opportunity/2025/Halden Initiative
 grant: GD-2045
 tier: programs-only
 ---
 
-# Diligence memo — Rootwork Initiative (GD-2045)
+# Diligence memo — Halden Initiative (GD-2045)
 
 Program officer: Ruth Mensah. Powering Economic Opportunity Fund.
 

@@ -1,18 +1,18 @@
 ---
-title: Pathwise Center — proposal (GD-2052)
-author: Pathwise Center
+title: Keystone Center — proposal (GD-2052)
+author: Keystone Center
 date: 2026-05-01
-folder: Learning for Action/2026/Pathwise Center
+folder: Learning for Action/2026/Keystone Center
 grant: GD-2052
 tier: team
 ---
 
-# Proposal — Pathwise Center
+# Proposal — Keystone Center
 
 **Grant:** GD-2052 · **Fund:** Learning for Action · **Geography:** United States
 
 ## 1. Problem
-Pathwise Center proposes testing credential-completion supports in new york.
+Keystone Center proposes testing credential-completion supports in new york.
 
 ## 2. Approach
 Sectoral partnership with employer commitments; outcomes tracked in the org's data system.

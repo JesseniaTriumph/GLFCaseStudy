@@ -1,13 +1,13 @@
 ---
-title: Marrow Cooperative — proposal (GD-2015)
-author: Marrow Cooperative
+title: Dovetail Cooperative — proposal (GD-2015)
+author: Dovetail Cooperative
 date: 2022-01-01
-folder: Future of Work/2022/Marrow Cooperative
+folder: Future of Work/2022/Dovetail Cooperative
 grant: GD-2015
 tier: team
 ---
 
-# Proposal — Marrow Cooperative
+# Proposal — Dovetail Cooperative
 
 Scaling a sectoral training partnership in Kentucky. Requested: USD 2,900,000 over 2022–2024.
 

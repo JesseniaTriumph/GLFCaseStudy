@@ -1,18 +1,18 @@
 ---
-title: Junction Initiative — proposal (GD-2047)
-author: Junction Initiative
+title: Trailhead Initiative — proposal (GD-2047)
+author: Trailhead Initiative
 date: 2025-04-01
-folder: Future of Work/2025/Junction Initiative
+folder: Future of Work/2025/Trailhead Initiative
 grant: GD-2047
 tier: team
 ---
 
-# Proposal — Junction Initiative
+# Proposal — Trailhead Initiative
 
 **Grant:** GD-2047 · **Fund:** Future of Work Fund · **Geography:** United States
 
 ## 1. Problem
-Junction Initiative proposes building a caregiver placement network in massachusetts.
+Trailhead Initiative proposes building a caregiver placement network in massachusetts.
 
 ## 2. Approach
 Sectoral partnership with employer commitments; outcomes tracked in the org's data system.

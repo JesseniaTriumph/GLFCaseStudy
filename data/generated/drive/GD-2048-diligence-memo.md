@@ -1,13 +1,13 @@
 ---
-title: Pathwise Coalition — diligence memo
+title: Bridgeworks Coalition — diligence memo
 author: Sofia Restrepo
 date: 2025-03-25
-folder: Future of Work/2025/Pathwise Coalition
+folder: Future of Work/2025/Bridgeworks Coalition
 grant: GD-2048
 tier: programs-only
 ---
 
-# Diligence memo — Pathwise Coalition (GD-2048)
+# Diligence memo — Bridgeworks Coalition (GD-2048)
 
 Program officer: Sofia Restrepo. Future of Work Fund.
 

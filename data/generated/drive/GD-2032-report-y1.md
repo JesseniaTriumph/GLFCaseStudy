@@ -1,13 +1,13 @@
 ---
-title: Groundwork Project — H1 Y1 report
-author: Groundwork Project
+title: Cornerstone Project — H1 Y1 report
+author: Cornerstone Project
 date: 2025-01-08
-folder: Powering Economic Opportunity/2024/Groundwork Project
+folder: Powering Economic Opportunity/2024/Cornerstone Project
 grant: GD-2032
 tier: team
 ---
 
-# Groundwork Project — H1 Y1 progress report
+# Cornerstone Project — H1 Y1 progress report
 
 **Grant:** GD-2032 · As reported 2025-01-08 · Impact model v3.5
 

@@ -1,13 +1,13 @@
 ---
-title: Wayfinder Project — diligence memo
+title: Kindred Project — diligence memo
 author: Priya Raman
 date: 2023-08-20
-folder: AI for Economic Opportunity/2023/Wayfinder Project
+folder: AI for Economic Opportunity/2023/Kindred Project
 grant: GD-2027
 tier: programs-only
 ---
 
-# Diligence memo — Wayfinder Project (GD-2027)
+# Diligence memo — Kindred Project (GD-2027)
 
 Program officer: Priya Raman. AI for Economic Opportunity Fund.
 

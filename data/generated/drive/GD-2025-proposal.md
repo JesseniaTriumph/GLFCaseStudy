@@ -1,13 +1,13 @@
 ---
-title: Cornerstone Collaborative — proposal (GD-2025)
-author: Cornerstone Collaborative
+title: Threshold Collaborative — proposal (GD-2025)
+author: Threshold Collaborative
 date: 2023-04-01
-folder: AI for Economic Opportunity/2023/Cornerstone Collaborative
+folder: AI for Economic Opportunity/2023/Threshold Collaborative
 grant: GD-2025
 tier: team
 ---
 
-# Proposal — Cornerstone Collaborative
+# Proposal — Threshold Collaborative
 
 Testing personalized career coaching in Tennessee. Requested: USD 150,000 over 2023–2024.
 

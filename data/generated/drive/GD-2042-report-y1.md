@@ -1,13 +1,13 @@
 ---
-title: Brightpath Labs — Year 1 report
-author: Brightpath Labs
+title: Harbor Labs — Year 1 report
+author: Harbor Labs
 date: 2026-07-13
-folder: Future of Work/2025/Brightpath Labs
+folder: Future of Work/2025/Harbor Labs
 grant: GD-2042
 tier: team
 ---
 
-# Brightpath Labs — Year 1 progress report
+# Harbor Labs — Year 1 progress report
 
 **Grant:** GD-2042 · As reported 2026-07-13 · Impact model v4.1
 

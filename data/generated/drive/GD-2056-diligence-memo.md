@@ -1,13 +1,13 @@
 ---
-title: Bridgeworks Partners — diligence memo
+title: Southline Partners — diligence memo
 author: Sofia Restrepo
 date: 2026-08-27
-folder: Future of Work/2026/Bridgeworks Partners
+folder: Future of Work/2026/Southline Partners
 grant: GD-2056
 tier: programs-only
 ---
 
-# Diligence memo — Bridgeworks Partners (GD-2056)
+# Diligence memo — Southline Partners (GD-2056)
 
 Program officer: Sofia Restrepo. Future of Work Fund.
 

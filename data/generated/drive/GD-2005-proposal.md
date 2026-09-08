@@ -1,13 +1,13 @@
 ---
-title: Riverbend Labs — proposal (GD-2005)
-author: Riverbend Labs
+title: Northgate Labs — proposal (GD-2005)
+author: Northgate Labs
 date: 2021-01-01
-folder: Powering Economic Opportunity/2021/Riverbend Labs
+folder: Powering Economic Opportunity/2021/Northgate Labs
 grant: GD-2005
 tier: team
 ---
 
-# Proposal — Riverbend Labs
+# Proposal — Northgate Labs
 
 Scaling employer-matched apprenticeships in New York. Requested: USD 100,000 over 2021–2022.
 

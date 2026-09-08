@@ -1,13 +1,13 @@
 ---
-title: Marrow Cooperative — diligence memo
+title: Dovetail Cooperative — diligence memo
 author: Tomas Nguyen
 date: 2022-01-24
-folder: Future of Work/2022/Marrow Cooperative
+folder: Future of Work/2022/Dovetail Cooperative
 grant: GD-2015
 tier: programs-only
 ---
 
-# Diligence memo — Marrow Cooperative (GD-2015)
+# Diligence memo — Dovetail Cooperative (GD-2015)
 
 Program officer: Tomas Nguyen. Future of Work Fund.
 

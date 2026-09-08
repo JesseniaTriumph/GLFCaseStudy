@@ -1,13 +1,13 @@
 ---
-title: Northgate Care Collective — proposal (GD-2021)
-author: Northgate Care Collective
+title: Brightpath Care Collective — proposal (GD-2021)
+author: Brightpath Care Collective
 date: 2023-02-01
-folder: Learning for Action/2023/Northgate Care Collective
+folder: Learning for Action/2023/Brightpath Care Collective
 grant: GD-2021
 tier: team
 ---
 
-# Proposal — Northgate Care Collective
+# Proposal — Brightpath Care Collective
 
 Scaling a wage-transparent placement pipeline in North Carolina. Requested: USD 100,000 over 2023–2024.
 

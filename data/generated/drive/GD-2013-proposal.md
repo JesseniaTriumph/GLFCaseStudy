@@ -1,13 +1,13 @@
 ---
-title: Commonwork Project — proposal (GD-2013)
-author: Commonwork Project
+title: Foundry Project — proposal (GD-2013)
+author: Foundry Project
 date: 2022-03-01
-folder: Learning for Action/2022/Commonwork Project
+folder: Learning for Action/2022/Foundry Project
 grant: GD-2013
 tier: team
 ---
 
-# Proposal — Commonwork Project
+# Proposal — Foundry Project
 
 Testing a rapid-reskilling program in Pennsylvania. Requested: USD 75,000 over 2022–2025.
 

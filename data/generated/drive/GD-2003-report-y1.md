@@ -1,13 +1,13 @@
 ---
-title: Crosswalk Labs — Year 1 report
-author: Crosswalk Labs
+title: Groundwork Labs — Year 1 report
+author: Groundwork Labs
 date: 2022-03-21
-folder: Powering Economic Opportunity/2021/Crosswalk Labs
+folder: Powering Economic Opportunity/2021/Groundwork Labs
 grant: GD-2003
 tier: team
 ---
 
-# Crosswalk Labs — Year 1
+# Groundwork Labs — Year 1
 
 Grant GD-2003. As of 2022-03-21. Served 697 participants; median wage at placement about $20.45/hr.
 

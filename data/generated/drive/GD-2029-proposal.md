@@ -1,18 +1,18 @@
 ---
-title: Rootwork Guild — proposal (GD-2029)
-author: Rootwork Guild
+title: Halden Guild — proposal (GD-2029)
+author: Halden Guild
 date: 2024-07-01
-folder: Learning for Action/2024/Rootwork Guild
+folder: Learning for Action/2024/Halden Guild
 grant: GD-2029
 tier: team
 ---
 
-# Proposal — Rootwork Guild
+# Proposal — Halden Guild
 
 **Grant:** GD-2029 · **Fund:** Learning for Action · **Geography:** United States
 
 ## 1. Problem
-Rootwork Guild proposes scaling an outcomes data layer in michigan.
+Halden Guild proposes scaling an outcomes data layer in michigan.
 
 ## 2. Approach
 Sectoral partnership with employer commitments; outcomes tracked in the org's data system.

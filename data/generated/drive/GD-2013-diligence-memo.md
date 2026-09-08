@@ -1,13 +1,13 @@
 ---
-title: Commonwork Project — diligence memo
+title: Foundry Project — diligence memo
 author: Dana Okafor
 date: 2022-04-25
-folder: Learning for Action/2022/Commonwork Project
+folder: Learning for Action/2022/Foundry Project
 grant: GD-2013
 tier: programs-only
 ---
 
-# Diligence memo — Commonwork Project (GD-2013)
+# Diligence memo — Foundry Project (GD-2013)
 
 Program officer: Dana Okafor. Learning for Action.
 

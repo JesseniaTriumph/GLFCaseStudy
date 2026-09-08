@@ -1,13 +1,13 @@
 ---
-title: Kindred Project — diligence memo
+title: Anchor Project — diligence memo
 author: Marcus Bell
 date: 2025-01-04
-folder: Powering Economic Opportunity/2025/Kindred Project
+folder: Powering Economic Opportunity/2025/Anchor Project
 grant: GD-2043
 tier: programs-only
 ---
 
-# Diligence memo — Kindred Project (GD-2043)
+# Diligence memo — Anchor Project (GD-2043)
 
 Program officer: Marcus Bell. Powering Economic Opportunity Fund.
 

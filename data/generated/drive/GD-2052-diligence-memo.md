@@ -1,13 +1,13 @@
 ---
-title: Pathwise Center — diligence memo
+title: Keystone Center — diligence memo
 author: Amara Boateng
 date: 2026-06-21
-folder: Learning for Action/2026/Pathwise Center
+folder: Learning for Action/2026/Keystone Center
 grant: GD-2052
 tier: programs-only
 ---
 
-# Diligence memo — Pathwise Center (GD-2052)
+# Diligence memo — Keystone Center (GD-2052)
 
 Program officer: Amara Boateng. Learning for Action.
 

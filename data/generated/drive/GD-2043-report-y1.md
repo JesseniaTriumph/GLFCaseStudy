@@ -1,13 +1,13 @@
 ---
-title: Kindred Project — Year 1 report
-author: Kindred Project
+title: Anchor Project — Year 1 report
+author: Anchor Project
 date: 2026-02-05
-folder: Powering Economic Opportunity/2025/Kindred Project
+folder: Powering Economic Opportunity/2025/Anchor Project
 grant: GD-2043
 tier: team
 ---
 
-# Kindred Project — Year 1 progress report
+# Anchor Project — Year 1 progress report
 
 **Grant:** GD-2043 · As reported 2026-02-05 · Impact model v4.1
 

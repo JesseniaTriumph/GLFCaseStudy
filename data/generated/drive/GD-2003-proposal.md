@@ -1,13 +1,13 @@
 ---
-title: Crosswalk Labs — proposal (GD-2003)
-author: Crosswalk Labs
+title: Groundwork Labs — proposal (GD-2003)
+author: Groundwork Labs
 date: 2021-01-01
-folder: Powering Economic Opportunity/2021/Crosswalk Labs
+folder: Powering Economic Opportunity/2021/Groundwork Labs
 grant: GD-2003
 tier: team
 ---
 
-# Proposal — Crosswalk Labs
+# Proposal — Groundwork Labs
 
 Testing a public-benefits eligibility screener in Colorado. Requested: USD 250,000 over 2021–2026.
 

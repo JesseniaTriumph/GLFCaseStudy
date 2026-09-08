@@ -1,13 +1,13 @@
 ---
-title: Pathwise Institute — Q2 Y1 report
-author: Pathwise Institute
+title: Keystone Institute — Q2 Y1 report
+author: Keystone Institute
 date: 2024-01-18
-folder: Future of Work/2023/Pathwise Institute
+folder: Future of Work/2023/Keystone Institute
 grant: GD-2020
 tier: team
 ---
 
-# Pathwise Institute — Q2 Y1
+# Keystone Institute — Q2 Y1
 
 Grant GD-2020. As of 2024-01-18. Served 1,216 participants; median wage at placement about $21.95/hr.
 

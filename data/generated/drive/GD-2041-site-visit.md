@@ -1,13 +1,13 @@
 ---
-title: Southline Labs — site visit notes
+title: Fairwind Labs — site visit notes
 author: Priya Raman
 date: 2026-09-16
-folder: Future of Work/2025/Southline Labs
+folder: Future of Work/2025/Fairwind Labs
 grant: GD-2041
 tier: programs-only
 ---
 
-# Site visit — Southline Labs
+# Site visit — Fairwind Labs
 
 Priya Raman, United States. Grant GD-2041.
 

@@ -1,13 +1,13 @@
 ---
-title: Cornerstone Collaborative — site visit notes
+title: Threshold Collaborative — site visit notes
 author: Nadia Haddad
 date: 2024-11-27
-folder: AI for Economic Opportunity/2023/Cornerstone Collaborative
+folder: AI for Economic Opportunity/2023/Threshold Collaborative
 grant: GD-2025
 tier: programs-only
 ---
 
-# Site visit — Cornerstone Collaborative
+# Site visit — Threshold Collaborative
 
 Nadia Haddad, United States. Grant GD-2025.
 

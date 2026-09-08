@@ -1,13 +1,13 @@
 ---
-title: Brightpath Labs — diligence memo
+title: Harbor Labs — diligence memo
 author: Leah Fischer
 date: 2025-06-15
-folder: Future of Work/2025/Brightpath Labs
+folder: Future of Work/2025/Harbor Labs
 grant: GD-2042
 tier: programs-only
 ---
 
-# Diligence memo — Brightpath Labs (GD-2042)
+# Diligence memo — Harbor Labs (GD-2042)
 
 Program officer: Leah Fischer. Future of Work Fund.
 

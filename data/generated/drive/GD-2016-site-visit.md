@@ -1,13 +1,13 @@
 ---
-title: Cornerstone Care Collective — site visit notes
+title: Pathwise Care Collective — site visit notes
 author: Marcus Bell
 date: 2023-08-14
-folder: Powering Economic Opportunity/2022/Cornerstone Care Collective
+folder: Powering Economic Opportunity/2022/Pathwise Care Collective
 grant: GD-2016
 tier: programs-only
 ---
 
-# Site visit — Cornerstone Care Collective
+# Site visit — Pathwise Care Collective
 
 Marcus Bell, United States. Grant GD-2016.
 

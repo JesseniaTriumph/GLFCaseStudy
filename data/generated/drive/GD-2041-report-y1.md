@@ -1,13 +1,13 @@
 ---
-title: Southline Labs — Q1 Y1 report
-author: Southline Labs
+title: Fairwind Labs — Q1 Y1 report
+author: Fairwind Labs
 date: 2025-12-20
-folder: Future of Work/2025/Southline Labs
+folder: Future of Work/2025/Fairwind Labs
 grant: GD-2041
 tier: team
 ---
 
-# Southline Labs — Q1 Y1 progress report
+# Fairwind Labs — Q1 Y1 progress report
 
 **Grant:** GD-2041 · As reported 2025-12-20 · Impact model v4.1
 

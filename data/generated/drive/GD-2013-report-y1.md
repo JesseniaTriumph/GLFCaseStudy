@@ -1,13 +1,13 @@
 ---
-title: Commonwork Project — Q1 Y1 report
-author: Commonwork Project
+title: Foundry Project — Q1 Y1 report
+author: Foundry Project
 date: 2022-08-14
-folder: Learning for Action/2022/Commonwork Project
+folder: Learning for Action/2022/Foundry Project
 grant: GD-2013
 tier: team
 ---
 
-# Commonwork Project — Q1 Y1
+# Foundry Project — Q1 Y1
 
 Grant GD-2013. As of 2022-08-14. Served 155 participants; median wage at placement about $21.61/hr.
 

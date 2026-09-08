@@ -1,18 +1,18 @@
 ---
-title: Groundwork Society — proposal (GD-2035)
-author: Groundwork Society
+title: Cornerstone Society — proposal (GD-2035)
+author: Cornerstone Society
 date: 2024-04-01
-folder: Learning for Action/2024/Groundwork Society
+folder: Learning for Action/2024/Cornerstone Society
 grant: GD-2035
 tier: team
 ---
 
-# Proposal — Groundwork Society
+# Proposal — Cornerstone Society
 
 **Grant:** GD-2035 · **Fund:** Learning for Action · **Geography:** United States
 
 ## 1. Problem
-Groundwork Society proposes expanding a caregiver placement network in colorado.
+Cornerstone Society proposes expanding a caregiver placement network in colorado.
 
 ## 2. Approach
 Sectoral partnership with employer commitments; outcomes tracked in the org's data system.

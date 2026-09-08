@@ -1,13 +1,13 @@
 ---
-title: Foundry Institute — diligence memo
+title: Crosswalk Institute — diligence memo
 author: Amara Boateng
 date: 2021-01-26
-folder: Powering Economic Opportunity/2021/Foundry Institute
+folder: Powering Economic Opportunity/2021/Crosswalk Institute
 grant: GD-2004
 tier: programs-only
 ---
 
-# Diligence memo — Foundry Institute (GD-2004)
+# Diligence memo — Crosswalk Institute (GD-2004)
 
 Program officer: Amara Boateng. Powering Economic Opportunity Fund.
 

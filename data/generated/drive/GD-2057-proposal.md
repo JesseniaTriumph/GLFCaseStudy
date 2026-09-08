@@ -1,18 +1,18 @@
 ---
-title: Lantern Project — proposal (GD-2057)
-author: Lantern Project
+title: Commonwork Project — proposal (GD-2057)
+author: Commonwork Project
 date: 2026-06-01
-folder: AI for Economic Opportunity/2026/Lantern Project
+folder: AI for Economic Opportunity/2026/Commonwork Project
 grant: GD-2057
 tier: team
 ---
 
-# Proposal — Lantern Project
+# Proposal — Commonwork Project
 
 **Grant:** GD-2057 · **Fund:** AI for Economic Opportunity Fund · **Geography:** United States
 
 ## 1. Problem
-Lantern Project proposes strengthening a sectoral training partnership in washington.
+Commonwork Project proposes strengthening a sectoral training partnership in washington.
 
 ## 2. Approach
 Sectoral partnership with employer commitments; outcomes tracked in the org's data system.

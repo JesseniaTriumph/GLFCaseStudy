@@ -1,13 +1,13 @@
 ---
-title: Pathwise Labs — diligence memo
+title: Bridgeworks Labs — diligence memo
 author: Nadia Haddad
 date: 2026-08-10
-folder: Powering Economic Opportunity/2026/Pathwise Labs
+folder: Powering Economic Opportunity/2026/Bridgeworks Labs
 grant: GD-2051
 tier: programs-only
 ---
 
-# Diligence memo — Pathwise Labs (GD-2051)
+# Diligence memo — Bridgeworks Labs (GD-2051)
 
 Program officer: Nadia Haddad. Powering Economic Opportunity Fund.
 

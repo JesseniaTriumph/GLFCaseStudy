@@ -1,18 +1,18 @@
 ---
-title: Threshold Institute — proposal (GD-2055)
-author: Threshold Institute
+title: Bridgeworks Institute — proposal (GD-2055)
+author: Bridgeworks Institute
 date: 2026-02-01
-folder: Future of Work/2026/Threshold Institute
+folder: Future of Work/2026/Bridgeworks Institute
 grant: GD-2055
 tier: team
 ---
 
-# Proposal — Threshold Institute
+# Proposal — Bridgeworks Institute
 
 **Grant:** GD-2055 · **Fund:** Future of Work Fund · **Geography:** United States
 
 ## 1. Problem
-Threshold Institute proposes piloting credential-completion supports in washington.
+Bridgeworks Institute proposes piloting credential-completion supports in washington.
 
 ## 2. Approach
 Sectoral partnership with employer commitments; outcomes tracked in the org's data system.

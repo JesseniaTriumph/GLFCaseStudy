@@ -1,13 +1,13 @@
 ---
-title: Northgate Works — diligence memo
+title: Cedarline Works — diligence memo
 author: Nadia Haddad
 date: 2026-04-19
-folder: Powering Economic Opportunity/2026/Northgate Works
+folder: Powering Economic Opportunity/2026/Cedarline Works
 grant: GD-2058
 tier: programs-only
 ---
 
-# Diligence memo — Northgate Works (GD-2058)
+# Diligence memo — Cedarline Works (GD-2058)
 
 Program officer: Nadia Haddad. Powering Economic Opportunity Fund.
 

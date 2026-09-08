@@ -1,13 +1,13 @@
 ---
-title: Nextstep Skills Alliance — diligence memo
+title: Threshold Skills Alliance — diligence memo
 author: Nadia Haddad
 date: 2024-01-26
-folder: Future of Work/2024/Nextstep Skills Alliance
+folder: Future of Work/2024/Threshold Skills Alliance
 grant: GD-2030
 tier: programs-only
 ---
 
-# Diligence memo — Nextstep Skills Alliance (GD-2030)
+# Diligence memo — Threshold Skills Alliance (GD-2030)
 
 Program officer: Nadia Haddad. Future of Work Fund.
 

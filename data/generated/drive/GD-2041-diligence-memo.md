@@ -1,13 +1,13 @@
 ---
-title: Southline Labs — diligence memo
+title: Fairwind Labs — diligence memo
 author: Priya Raman
 date: 2025-08-09
-folder: Future of Work/2025/Southline Labs
+folder: Future of Work/2025/Fairwind Labs
 grant: GD-2041
 tier: programs-only
 ---
 
-# Diligence memo — Southline Labs (GD-2041)
+# Diligence memo — Fairwind Labs (GD-2041)
 
 Program officer: Priya Raman. Future of Work Fund.
 

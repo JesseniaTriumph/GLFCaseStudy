@@ -1,13 +1,13 @@
 ---
-title: Riverbend Care Collective — Year 2 report
-author: Riverbend Care Collective
+title: Northgate Care Collective — Year 2 report
+author: Northgate Care Collective
 date: 2023-02-24
-folder: Powering Economic Opportunity/2021/Riverbend Care Collective
+folder: Powering Economic Opportunity/2021/Northgate Care Collective
 grant: GD-2006
 tier: team
 ---
 
-# Riverbend Care Collective — Year 2
+# Northgate Care Collective — Year 2
 
 Grant GD-2006. As of 2023-02-24. Served 8,532 participants; median wage at placement about $15.52/hr.
 

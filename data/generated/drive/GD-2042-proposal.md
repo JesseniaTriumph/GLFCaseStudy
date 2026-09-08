@@ -1,18 +1,18 @@
 ---
-title: Brightpath Labs — proposal (GD-2042)
-author: Brightpath Labs
+title: Harbor Labs — proposal (GD-2042)
+author: Harbor Labs
 date: 2025-05-01
-folder: Future of Work/2025/Brightpath Labs
+folder: Future of Work/2025/Harbor Labs
 grant: GD-2042
 tier: team
 ---
 
-# Proposal — Brightpath Labs
+# Proposal — Harbor Labs
 
 **Grant:** GD-2042 · **Fund:** Future of Work Fund · **Geography:** United States
 
 ## 1. Problem
-Brightpath Labs proposes expanding a public-benefits eligibility screener in oregon.
+Harbor Labs proposes expanding a public-benefits eligibility screener in oregon.
 
 ## 2. Approach
 Sectoral partnership with employer commitments; outcomes tracked in the org's data system.

@@ -1,13 +1,13 @@
 ---
-title: Pathwise Institute — proposal (GD-2020)
-author: Pathwise Institute
+title: Keystone Institute — proposal (GD-2020)
+author: Keystone Institute
 date: 2023-05-01
-folder: Future of Work/2023/Pathwise Institute
+folder: Future of Work/2023/Keystone Institute
 grant: GD-2020
 tier: team
 ---
 
-# Proposal — Pathwise Institute
+# Proposal — Keystone Institute
 
 Building employer-matched apprenticeships in New York. Requested: USD 400,000 over 2023–2026.
 

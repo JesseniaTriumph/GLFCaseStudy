@@ -1,13 +1,13 @@
 ---
-title: Fieldstone Care Collective — diligence memo
+title: Kindred Care Collective — diligence memo
 author: Marcus Bell
 date: 2023-08-12
-folder: Learning for Action/2023/Fieldstone Care Collective
+folder: Learning for Action/2023/Kindred Care Collective
 grant: GD-2019
 tier: programs-only
 ---
 
-# Diligence memo — Fieldstone Care Collective (GD-2019)
+# Diligence memo — Kindred Care Collective (GD-2019)
 
 Program officer: Marcus Bell. Learning for Action.
 

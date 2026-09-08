@@ -1,13 +1,13 @@
 ---
-title: Riverbend Labs — site visit notes
+title: Northgate Labs — site visit notes
 author: Ruth Mensah
 date: 2022-08-25
-folder: Powering Economic Opportunity/2021/Riverbend Labs
+folder: Powering Economic Opportunity/2021/Northgate Labs
 grant: GD-2005
 tier: programs-only
 ---
 
-# Site visit — Riverbend Labs
+# Site visit — Northgate Labs
 
 Ruth Mensah, United States. Grant GD-2005.
 

@@ -1,13 +1,13 @@
 ---
-title: Brightpath Care Collective — diligence memo
+title: Fieldstone Care Collective — diligence memo
 author: Amara Boateng
 date: 2025-06-08
-folder: Learning for Action/2025/Brightpath Care Collective
+folder: Learning for Action/2025/Fieldstone Care Collective
 grant: GD-2039
 tier: programs-only
 ---
 
-# Diligence memo — Brightpath Care Collective (GD-2039)
+# Diligence memo — Fieldstone Care Collective (GD-2039)
 
 Program officer: Amara Boateng. Learning for Action.
 

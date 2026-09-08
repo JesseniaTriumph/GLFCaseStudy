@@ -1,13 +1,13 @@
 ---
-title: Trailhead Labs — Q1 Y1 report
-author: Trailhead Labs
+title: Commonwork Labs — Q1 Y1 report
+author: Commonwork Labs
 date: 2021-11-25
-folder: Powering Economic Opportunity/2021/Trailhead Labs
+folder: Powering Economic Opportunity/2021/Commonwork Labs
 grant: GD-2002
 tier: team
 ---
 
-# Trailhead Labs — Q1 Y1
+# Commonwork Labs — Q1 Y1
 
 Grant GD-2002. As of 2021-11-25. Served 510 participants; median wage at placement about $16.05/hr.
 

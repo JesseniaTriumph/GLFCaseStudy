@@ -1,13 +1,13 @@
 ---
-title: Commonwork Cooperative — Year 2 report
-author: Commonwork Cooperative
+title: Uplift Cooperative — Year 2 report
+author: Uplift Cooperative
 date: 2025-07-01
-folder: AI for Economic Opportunity/2021/Commonwork Cooperative
+folder: AI for Economic Opportunity/2021/Uplift Cooperative
 grant: GD-2001
 tier: team
 ---
 
-# Commonwork Cooperative — Year 2
+# Uplift Cooperative — Year 2
 
 Grant GD-2001. As of 2025-07-01. Served 1,198 participants; median wage at placement about $20.78/hr.
 

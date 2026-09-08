@@ -1,13 +1,13 @@
 ---
-title: Groundwork Project — diligence memo
+title: Cornerstone Project — diligence memo
 author: Ruth Mensah
 date: 2024-06-12
-folder: Powering Economic Opportunity/2024/Groundwork Project
+folder: Powering Economic Opportunity/2024/Cornerstone Project
 grant: GD-2032
 tier: programs-only
 ---
 
-# Diligence memo — Groundwork Project (GD-2032)
+# Diligence memo — Cornerstone Project (GD-2032)
 
 Program officer: Ruth Mensah. Powering Economic Opportunity Fund.
 

@@ -1,13 +1,13 @@
 ---
-title: Foundry Center — proposal (GD-2012)
-author: Foundry Center
+title: Steady Center — proposal (GD-2012)
+author: Steady Center
 date: 2022-01-01
-folder: Powering Economic Opportunity/2022/Foundry Center
+folder: Powering Economic Opportunity/2022/Steady Center
 grant: GD-2012
 tier: team
 ---
 
-# Proposal — Foundry Center
+# Proposal — Steady Center
 
 Scaling a sectoral training partnership in Texas. Requested: USD 600,000 over 2022–2023.
 

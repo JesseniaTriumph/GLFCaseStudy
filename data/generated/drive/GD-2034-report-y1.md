@@ -1,13 +1,13 @@
 ---
-title: Cedarline Partners — Year 1 report
-author: Cedarline Partners
+title: Harbor Partners — Year 1 report
+author: Harbor Partners
 date: 2025-07-07
-folder: Powering Economic Opportunity/2024/Cedarline Partners
+folder: Powering Economic Opportunity/2024/Harbor Partners
 grant: GD-2034
 tier: team
 ---
 
-# Cedarline Partners — Year 1 progress report
+# Harbor Partners — Year 1 progress report
 
 **Grant:** GD-2034 · As reported 2025-07-07 · Impact model v3.5
 

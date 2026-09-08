@@ -1,13 +1,13 @@
 ---
-title: Wayfinder Project — proposal (GD-2027)
-author: Wayfinder Project
+title: Kindred Project — proposal (GD-2027)
+author: Kindred Project
 date: 2023-07-01
-folder: AI for Economic Opportunity/2023/Wayfinder Project
+folder: AI for Economic Opportunity/2023/Kindred Project
 grant: GD-2027
 tier: team
 ---
 
-# Proposal — Wayfinder Project
+# Proposal — Kindred Project
 
 Piloting an AI benefits navigator in New Mexico. Requested: USD 300,000 over 2023–2024.
 

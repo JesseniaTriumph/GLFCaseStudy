@@ -1,18 +1,18 @@
 ---
-title: Kindred Project — proposal (GD-2043)
-author: Kindred Project
+title: Anchor Project — proposal (GD-2043)
+author: Anchor Project
 date: 2025-01-01
-folder: Powering Economic Opportunity/2025/Kindred Project
+folder: Powering Economic Opportunity/2025/Anchor Project
 grant: GD-2043
 tier: team
 ---
 
-# Proposal — Kindred Project
+# Proposal — Anchor Project
 
 **Grant:** GD-2043 · **Fund:** Powering Economic Opportunity Fund · **Geography:** United States
 
 ## 1. Problem
-Kindred Project proposes testing a wage-transparent placement pipeline in massachusetts.
+Anchor Project proposes testing a wage-transparent placement pipeline in massachusetts.
 
 ## 2. Approach
 Sectoral partnership with employer commitments; outcomes tracked in the org's data system.

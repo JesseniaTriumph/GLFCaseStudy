@@ -1,13 +1,13 @@
 ---
-title: Trailhead Labs — proposal (GD-2002)
-author: Trailhead Labs
+title: Commonwork Labs — proposal (GD-2002)
+author: Commonwork Labs
 date: 2021-06-01
-folder: Powering Economic Opportunity/2021/Trailhead Labs
+folder: Powering Economic Opportunity/2021/Commonwork Labs
 grant: GD-2002
 tier: team
 ---
 
-# Proposal — Trailhead Labs
+# Proposal — Commonwork Labs
 
 Piloting an outcomes data layer in Illinois. Requested: USD 50,000 over 2021–2023.
 

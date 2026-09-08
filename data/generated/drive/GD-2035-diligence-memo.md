@@ -1,13 +1,13 @@
 ---
-title: Groundwork Society — diligence memo
+title: Cornerstone Society — diligence memo
 author: Leah Fischer
 date: 2024-05-08
-folder: Learning for Action/2024/Groundwork Society
+folder: Learning for Action/2024/Cornerstone Society
 grant: GD-2035
 tier: programs-only
 ---
 
-# Diligence memo — Groundwork Society (GD-2035)
+# Diligence memo — Cornerstone Society (GD-2035)
 
 Program officer: Leah Fischer. Learning for Action.
 

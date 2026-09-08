@@ -1,13 +1,13 @@
 ---
-title: Foundry Institute — proposal (GD-2004)
-author: Foundry Institute
+title: Crosswalk Institute — proposal (GD-2004)
+author: Crosswalk Institute
 date: 2021-01-01
-folder: Powering Economic Opportunity/2021/Foundry Institute
+folder: Powering Economic Opportunity/2021/Crosswalk Institute
 grant: GD-2004
 tier: team
 ---
 
-# Proposal — Foundry Institute
+# Proposal — Crosswalk Institute
 
 Testing a caregiver placement network in Illinois. Requested: USD 400,000 over 2021–2023.
 

@@ -1,13 +1,13 @@
 ---
-title: Rootwork Guild — Q3 Y1 report
-author: Rootwork Guild
+title: Halden Guild — Q3 Y1 report
+author: Halden Guild
 date: 2025-06-06
-folder: Learning for Action/2024/Rootwork Guild
+folder: Learning for Action/2024/Halden Guild
 grant: GD-2029
 tier: team
 ---
 
-# Rootwork Guild — Q3 Y1 progress report
+# Halden Guild — Q3 Y1 progress report
 
 **Grant:** GD-2029 · As reported 2025-06-06 · Impact model v3.5
 

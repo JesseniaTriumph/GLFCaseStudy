@@ -1,13 +1,13 @@
 ---
-title: Wayfinder Project — site visit notes
+title: Kindred Project — site visit notes
 author: Priya Raman
 date: 2024-02-04
-folder: AI for Economic Opportunity/2023/Wayfinder Project
+folder: AI for Economic Opportunity/2023/Kindred Project
 grant: GD-2027
 tier: programs-only
 ---
 
-# Site visit — Wayfinder Project
+# Site visit — Kindred Project
 
 Priya Raman, United States. Grant GD-2027.
 

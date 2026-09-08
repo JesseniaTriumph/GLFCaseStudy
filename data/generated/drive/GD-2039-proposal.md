@@ -1,18 +1,18 @@
 ---
-title: Brightpath Care Collective — proposal (GD-2039)
-author: Brightpath Care Collective
+title: Fieldstone Care Collective — proposal (GD-2039)
+author: Fieldstone Care Collective
 date: 2025-05-01
-folder: Learning for Action/2025/Brightpath Care Collective
+folder: Learning for Action/2025/Fieldstone Care Collective
 grant: GD-2039
 tier: team
 ---
 
-# Proposal — Brightpath Care Collective
+# Proposal — Fieldstone Care Collective
 
 **Grant:** GD-2039 · **Fund:** Learning for Action · **Geography:** United States
 
 ## 1. Problem
-Brightpath Care Collective proposes expanding an outcomes data layer in ohio.
+Fieldstone Care Collective proposes expanding an outcomes data layer in ohio.
 
 ## 2. Approach
 Sectoral partnership with employer commitments; outcomes tracked in the org's data system.

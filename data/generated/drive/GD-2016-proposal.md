@@ -1,13 +1,13 @@
 ---
-title: Cornerstone Care Collective — proposal (GD-2016)
-author: Cornerstone Care Collective
+title: Pathwise Care Collective — proposal (GD-2016)
+author: Pathwise Care Collective
 date: 2022-01-01
-folder: Powering Economic Opportunity/2022/Cornerstone Care Collective
+folder: Powering Economic Opportunity/2022/Pathwise Care Collective
 grant: GD-2016
 tier: team
 ---
 
-# Proposal — Cornerstone Care Collective
+# Proposal — Pathwise Care Collective
 
 Testing an outcomes data layer in California. Requested: USD 150,000 over 2022–2023.
 

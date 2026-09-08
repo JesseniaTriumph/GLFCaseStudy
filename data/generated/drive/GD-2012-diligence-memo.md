@@ -1,13 +1,13 @@
 ---
-title: Foundry Center — diligence memo
+title: Steady Center — diligence memo
 author: David Kang
 date: 2022-01-23
-folder: Powering Economic Opportunity/2022/Foundry Center
+folder: Powering Economic Opportunity/2022/Steady Center
 grant: GD-2012
 tier: programs-only
 ---
 
-# Diligence memo — Foundry Center (GD-2012)
+# Diligence memo — Steady Center (GD-2012)
 
 Program officer: David Kang. Powering Economic Opportunity Fund.
 

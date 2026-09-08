@@ -1,13 +1,13 @@
 ---
-title: Junction Initiative — diligence memo
+title: Trailhead Initiative — diligence memo
 author: Sofia Restrepo
 date: 2025-05-21
-folder: Future of Work/2025/Junction Initiative
+folder: Future of Work/2025/Trailhead Initiative
 grant: GD-2047
 tier: programs-only
 ---
 
-# Diligence memo — Junction Initiative (GD-2047)
+# Diligence memo — Trailhead Initiative (GD-2047)
 
 Program officer: Sofia Restrepo. Future of Work Fund.
 

@@ -1,18 +1,18 @@
 ---
-title: Pathwise Coalition — proposal (GD-2048)
-author: Pathwise Coalition
+title: Bridgeworks Coalition — proposal (GD-2048)
+author: Bridgeworks Coalition
 date: 2025-02-01
-folder: Future of Work/2025/Pathwise Coalition
+folder: Future of Work/2025/Bridgeworks Coalition
 grant: GD-2048
 tier: team
 ---
 
-# Proposal — Pathwise Coalition
+# Proposal — Bridgeworks Coalition
 
 **Grant:** GD-2048 · **Fund:** Future of Work Fund · **Geography:** United States
 
 ## 1. Problem
-Pathwise Coalition proposes piloting personalized career coaching in tennessee.
+Bridgeworks Coalition proposes piloting personalized career coaching in tennessee.
 
 ## 2. Approach
 Sectoral partnership with employer commitments; outcomes tracked in the org's data system.

@@ -1,18 +1,18 @@
 ---
-title: Pathwise Labs — proposal (GD-2051)
-author: Pathwise Labs
+title: Bridgeworks Labs — proposal (GD-2051)
+author: Bridgeworks Labs
 date: 2026-07-01
-folder: Powering Economic Opportunity/2026/Pathwise Labs
+folder: Powering Economic Opportunity/2026/Bridgeworks Labs
 grant: GD-2051
 tier: team
 ---
 
-# Proposal — Pathwise Labs
+# Proposal — Bridgeworks Labs
 
 **Grant:** GD-2051 · **Fund:** Powering Economic Opportunity Fund · **Geography:** United States
 
 ## 1. Problem
-Pathwise Labs proposes strengthening an ai benefits navigator in ohio.
+Bridgeworks Labs proposes strengthening an ai benefits navigator in ohio.
 
 ## 2. Approach
 Sectoral partnership with employer commitments; outcomes tracked in the org's data system.

@@ -1,13 +1,13 @@
 ---
-title: Cedarline Care Collective — diligence memo
+title: Brightpath Care Collective — diligence memo
 author: Dana Okafor
 date: 2021-07-09
-folder: AI for Economic Opportunity/2021/Cedarline Care Collective
+folder: AI for Economic Opportunity/2021/Brightpath Care Collective
 grant: GD-2007
 tier: programs-only
 ---
 
-# Diligence memo — Cedarline Care Collective (GD-2007)
+# Diligence memo — Brightpath Care Collective (GD-2007)
 
 Program officer: Dana Okafor. AI for Economic Opportunity Fund.
 

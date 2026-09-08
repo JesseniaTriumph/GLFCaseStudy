@@ -1,13 +1,13 @@
 ---
-title: Crosswalk Coalition — site visit notes
+title: Groundwork Coalition — site visit notes
 author: Priya Raman
 date: 2022-09-19
-folder: Future of Work/2021/Crosswalk Coalition
+folder: Future of Work/2021/Groundwork Coalition
 grant: GD-2000
 tier: programs-only
 ---
 
-# Site visit — Crosswalk Coalition
+# Site visit — Groundwork Coalition
 
 Priya Raman, United States. Grant GD-2000.
 

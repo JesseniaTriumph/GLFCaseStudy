@@ -1,13 +1,13 @@
 ---
-title: Cedarline Partners — site visit notes
+title: Harbor Partners — site visit notes
 author: Marcus Bell
 date: 2025-05-17
-folder: Powering Economic Opportunity/2024/Cedarline Partners
+folder: Powering Economic Opportunity/2024/Harbor Partners
 grant: GD-2034
 tier: programs-only
 ---
 
-# Site visit — Cedarline Partners
+# Site visit — Harbor Partners
 
 Marcus Bell, United States. Grant GD-2034.
 

@@ -1,13 +1,13 @@
 ---
-title: Rootwork Initiative — Year 1 report
-author: Rootwork Initiative
+title: Halden Initiative — Year 1 report
+author: Halden Initiative
 date: 2026-03-21
-folder: Powering Economic Opportunity/2025/Rootwork Initiative
+folder: Powering Economic Opportunity/2025/Halden Initiative
 grant: GD-2045
 tier: team
 ---
 
-# Rootwork Initiative — Year 1 progress report
+# Halden Initiative — Year 1 progress report
 
 **Grant:** GD-2045 · As reported 2026-03-21 · Impact model v4.1
 

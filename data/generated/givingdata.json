@@ -27,43 +27,43 @@
   },
   {
    "id": "org-g101",
-   "name": "Commonwork Cooperative",
+   "name": "Uplift Cooperative",
    "geography": "United States",
    "ein": "XX-XXXX848"
   },
   {
    "id": "org-g102",
-   "name": "Trailhead Labs",
+   "name": "Commonwork Labs",
    "geography": "United States",
    "ein": "XX-XXXX447"
   },
   {
    "id": "org-g103",
-   "name": "Crosswalk Labs",
+   "name": "Groundwork Labs",
    "geography": "United States",
    "ein": "XX-XXXX501"
   },
   {
    "id": "org-g104",
-   "name": "Foundry Institute",
+   "name": "Crosswalk Institute",
    "geography": "United States",
    "ein": "XX-XXXX589"
   },
   {
    "id": "org-g105",
-   "name": "Riverbend Labs",
+   "name": "Northgate Labs",
    "geography": "United States",
    "ein": "XX-XXXX478"
   },
   {
    "id": "org-g106",
-   "name": "Riverbend Care Collective",
+   "name": "Northgate Care Collective",
    "geography": "United States",
    "ein": "XX-XXXX915"
   },
   {
    "id": "org-g107",
-   "name": "Cedarline Care Collective",
+   "name": "Brightpath Care Collective",
    "geography": "United States",
    "ein": "XX-XXXX734"
   },
@@ -75,13 +75,13 @@
   },
   {
    "id": "org-g109",
-   "name": "Nextstep Partners",
+   "name": "Cornerstone Partners",
    "geography": "United States",
    "ein": "XX-XXXX519"
   },
   {
    "id": "org-g110",
-   "name": "Wayfinder Labs",
+   "name": "Kindred Labs",
    "geography": "United States",
    "ein": "XX-XXXX712"
   },
@@ -93,13 +93,13 @@
   },
   {
    "id": "org-g112",
-   "name": "Foundry Center",
+   "name": "Steady Center",
    "geography": "United States",
    "ein": "XX-XXXX494"
   },
   {
    "id": "org-g113",
-   "name": "Commonwork Project",
+   "name": "Foundry Project",
    "geography": "United States",
    "ein": "XX-XXXX530"
   },
@@ -111,19 +111,19 @@
   },
   {
    "id": "org-g115",
-   "name": "Marrow Cooperative",
+   "name": "Dovetail Cooperative",
    "geography": "United States",
    "ein": "XX-XXXX381"
   },
   {
    "id": "org-g116",
-   "name": "Cornerstone Care Collective",
+   "name": "Pathwise Care Collective",
    "geography": "United States",
    "ein": "XX-XXXX552"
   },
   {
    "id": "org-g117",
-   "name": "Cedarline Skills Alliance",
+   "name": "Brightpath Skills Alliance",
    "geography": "United States",
    "ein": "XX-XXXX441"
   },
@@ -135,73 +135,73 @@
   },
   {
    "id": "org-g119",
-   "name": "Fieldstone Care Collective",
+   "name": "Kindred Care Collective",
    "geography": "United States",
    "ein": "XX-XXXX522"
   },
   {
    "id": "org-g120",
-   "name": "Pathwise Institute",
+   "name": "Keystone Institute",
    "geography": "United States",
    "ein": "XX-XXXX625"
   },
   {
    "id": "org-g121",
-   "name": "Northgate Care Collective",
+   "name": "Brightpath Care Collective",
    "geography": "United States",
    "ein": "XX-XXXX269"
   },
   {
    "id": "org-g122",
-   "name": "Wayfinder Society",
+   "name": "Kindred Society",
    "geography": "United States",
    "ein": "XX-XXXX736"
   },
   {
    "id": "org-g123",
-   "name": "Rootwork Guild",
+   "name": "Halden Guild",
    "geography": "United States",
    "ein": "XX-XXXX742"
   },
   {
    "id": "org-g124",
-   "name": "Crosswalk Skills Alliance",
+   "name": "Groundwork Skills Alliance",
    "geography": "United States",
    "ein": "XX-XXXX189"
   },
   {
    "id": "org-g125",
-   "name": "Cornerstone Collaborative",
+   "name": "Threshold Collaborative",
    "geography": "United States",
    "ein": "XX-XXXX920"
   },
   {
    "id": "org-g126",
-   "name": "Bridgeworks Works",
+   "name": "Southline Works",
    "geography": "United States",
    "ein": "XX-XXXX608"
   },
   {
    "id": "org-g127",
-   "name": "Wayfinder Project",
+   "name": "Kindred Project",
    "geography": "United States",
    "ein": "XX-XXXX209"
   },
   {
    "id": "org-g128",
-   "name": "Junction Collaborative",
+   "name": "Trailhead Collaborative",
    "geography": "United States",
    "ein": "XX-XXXX133"
   },
   {
    "id": "org-g129",
-   "name": "Rootwork Guild",
+   "name": "Halden Guild",
    "geography": "United States",
    "ein": "XX-XXXX950"
   },
   {
    "id": "org-g130",
-   "name": "Nextstep Skills Alliance",
+   "name": "Threshold Skills Alliance",
    "geography": "United States",
    "ein": "XX-XXXX379"
   },
@@ -213,7 +213,7 @@
   },
   {
    "id": "org-g132",
-   "name": "Groundwork Project",
+   "name": "Cornerstone Project",
    "geography": "United States",
    "ein": "XX-XXXX123"
   },
@@ -225,13 +225,13 @@
   },
   {
    "id": "org-g134",
-   "name": "Cedarline Partners",
+   "name": "Harbor Partners",
    "geography": "United States",
    "ein": "XX-XXXX397"
   },
   {
    "id": "org-g135",
-   "name": "Groundwork Society",
+   "name": "Cornerstone Society",
    "geography": "United States",
    "ein": "XX-XXXX931"
   },
@@ -255,7 +255,7 @@
   },
   {
    "id": "org-g139",
-   "name": "Brightpath Care Collective",
+   "name": "Fieldstone Care Collective",
    "geography": "United States",
    "ein": "XX-XXXX975"
   },
@@ -267,19 +267,19 @@
   },
   {
    "id": "org-g141",
-   "name": "Southline Labs",
+   "name": "Fairwind Labs",
    "geography": "United States",
    "ein": "XX-XXXX264"
   },
   {
    "id": "org-g142",
-   "name": "Brightpath Labs",
+   "name": "Harbor Labs",
    "geography": "United States",
    "ein": "XX-XXXX312"
   },
   {
    "id": "org-g143",
-   "name": "Kindred Project",
+   "name": "Anchor Project",
    "geography": "United States",
    "ein": "XX-XXXX839"
   },
@@ -291,7 +291,7 @@
   },
   {
    "id": "org-g145",
-   "name": "Rootwork Initiative",
+   "name": "Halden Initiative",
    "geography": "United States",
    "ein": "XX-XXXX427"
   },
@@ -303,13 +303,13 @@
   },
   {
    "id": "org-g147",
-   "name": "Junction Initiative",
+   "name": "Trailhead Initiative",
    "geography": "United States",
    "ein": "XX-XXXX763"
   },
   {
    "id": "org-g148",
-   "name": "Pathwise Coalition",
+   "name": "Bridgeworks Coalition",
    "geography": "United States",
    "ein": "XX-XXXX338"
   },
@@ -321,25 +321,25 @@
   },
   {
    "id": "org-g150",
-   "name": "Lantern Guild",
+   "name": "Commonwork Guild",
    "geography": "United States",
    "ein": "XX-XXXX300"
   },
   {
    "id": "org-g151",
-   "name": "Pathwise Labs",
+   "name": "Bridgeworks Labs",
    "geography": "United States",
    "ein": "XX-XXXX847"
   },
   {
    "id": "org-g152",
-   "name": "Pathwise Center",
+   "name": "Keystone Center",
    "geography": "United States",
    "ein": "XX-XXXX331"
   },
   {
    "id": "org-g153",
-   "name": "Commonwork Project",
+   "name": "Foundry Project",
    "geography": "United States",
    "ein": "XX-XXXX331"
   },
@@ -351,25 +351,25 @@
   },
   {
    "id": "org-g155",
-   "name": "Threshold Institute",
+   "name": "Bridgeworks Institute",
    "geography": "United States",
    "ein": "XX-XXXX583"
   },
   {
    "id": "org-g156",
-   "name": "Bridgeworks Partners",
+   "name": "Southline Partners",
    "geography": "United States",
    "ein": "XX-XXXX437"
   },
   {
    "id": "org-g157",
-   "name": "Lantern Project",
+   "name": "Commonwork Project",
    "geography": "United States",
    "ein": "XX-XXXX298"
   },
   {
    "id": "org-g158",
-   "name": "Northgate Works",
+   "name": "Cedarline Works",
    "geography": "United States",
    "ein": "XX-XXXX973"
   }
@@ -558,7 +558,7 @@
   {
    "id": "GD-2001",
    "organizationId": "org-g101",
-   "organizationName": "Commonwork Cooperative",
+   "organizationName": "Uplift Cooperative",
    "fundId": "fund-ai4eo",
    "fund": "AI for Economic Opportunity Fund",
    "programOfficer": "David Kang",
@@ -647,7 +647,7 @@
   {
    "id": "GD-2002",
    "organizationId": "org-g102",
-   "organizationName": "Trailhead Labs",
+   "organizationName": "Commonwork Labs",
    "fundId": "fund-peo",
    "fund": "Powering Economic Opportunity Fund",
    "programOfficer": "Tomas Nguyen",
@@ -797,7 +797,7 @@
   {
    "id": "GD-2003",
    "organizationId": "org-g103",
-   "organizationName": "Crosswalk Labs",
+   "organizationName": "Groundwork Labs",
    "fundId": "fund-peo",
    "fund": "Powering Economic Opportunity Fund",
    "programOfficer": "David Kang",
@@ -911,7 +911,7 @@
   {
    "id": "GD-2004",
    "organizationId": "org-g104",
-   "organizationName": "Foundry Institute",
+   "organizationName": "Crosswalk Institute",
    "fundId": "fund-peo",
    "fund": "Powering Economic Opportunity Fund",
    "programOfficer": "Amara Boateng",
@@ -965,7 +965,7 @@
   {
    "id": "GD-2005",
    "organizationId": "org-g105",
-   "organizationName": "Riverbend Labs",
+   "organizationName": "Northgate Labs",
    "fundId": "fund-peo",
    "fund": "Powering Economic Opportunity Fund",
    "programOfficer": "Ruth Mensah",
@@ -1016,7 +1016,7 @@
   {
    "id": "GD-2006",
    "organizationId": "org-g106",
-   "organizationName": "Riverbend Care Collective",
+   "organizationName": "Northgate Care Collective",
    "fundId": "fund-peo",
    "fund": "Powering Economic Opportunity Fund",
    "programOfficer": "Tomas Nguyen",
@@ -1098,7 +1098,7 @@
   {
    "id": "GD-2007",
    "organizationId": "org-g107",
-   "organizationName": "Cedarline Care Collective",
+   "organizationName": "Brightpath Care Collective",
    "fundId": "fund-ai4eo",
    "fund": "AI for Economic Opportunity Fund",
    "programOfficer": "Dana Okafor",
@@ -1292,7 +1292,7 @@
   {
    "id": "GD-2009",
    "organizationId": "org-g109",
-   "organizationName": "Nextstep Partners",
+   "organizationName": "Cornerstone Partners",
    "fundId": "fund-fow",
    "fund": "Future of Work Fund",
    "programOfficer": "Tomas Nguyen",
@@ -1342,7 +1342,7 @@
   {
    "id": "GD-2010",
    "organizationId": "org-g110",
-   "organizationName": "Wayfinder Labs",
+   "organizationName": "Kindred Labs",
    "fundId": "fund-lfa",
    "fund": "Learning for Action",
    "programOfficer": "Leah Fischer",
@@ -1540,7 +1540,7 @@
   {
    "id": "GD-2012",
    "organizationId": "org-g112",
-   "organizationName": "Foundry Center",
+   "organizationName": "Steady Center",
    "fundId": "fund-peo",
    "fund": "Powering Economic Opportunity Fund",
    "programOfficer": "David Kang",
@@ -1588,7 +1588,7 @@
   {
    "id": "GD-2013",
    "organizationId": "org-g113",
-   "organizationName": "Commonwork Project",
+   "organizationName": "Foundry Project",
    "fundId": "fund-lfa",
    "fund": "Learning for Action",
    "programOfficer": "Dana Okafor",
@@ -1863,7 +1863,7 @@
   {
    "id": "GD-2015",
    "organizationId": "org-g115",
-   "organizationName": "Marrow Cooperative",
+   "organizationName": "Dovetail Cooperative",
    "fundId": "fund-fow",
    "fund": "Future of Work Fund",
    "programOfficer": "Tomas Nguyen",
@@ -1969,7 +1969,7 @@
   {
    "id": "GD-2016",
    "organizationId": "org-g116",
-   "organizationName": "Cornerstone Care Collective",
+   "organizationName": "Pathwise Care Collective",
    "fundId": "fund-peo",
    "fund": "Powering Economic Opportunity Fund",
    "programOfficer": "Marcus Bell",
@@ -2034,7 +2034,7 @@
   {
    "id": "GD-2017",
    "organizationId": "org-g117",
-   "organizationName": "Cedarline Skills Alliance",
+   "organizationName": "Brightpath Skills Alliance",
    "fundId": "fund-ai4eo",
    "fund": "AI for Economic Opportunity Fund",
    "programOfficer": "Dana Okafor",
@@ -2189,7 +2189,7 @@
   {
    "id": "GD-2019",
    "organizationId": "org-g119",
-   "organizationName": "Fieldstone Care Collective",
+   "organizationName": "Kindred Care Collective",
    "fundId": "fund-lfa",
    "fund": "Learning for Action",
    "programOfficer": "Marcus Bell",
@@ -2303,7 +2303,7 @@
   {
    "id": "GD-2020",
    "organizationId": "org-g120",
-   "organizationName": "Pathwise Institute",
+   "organizationName": "Keystone Institute",
    "fundId": "fund-fow",
    "fund": "Future of Work Fund",
    "programOfficer": "David Kang",
@@ -2504,7 +2504,7 @@
   {
    "id": "GD-2021",
    "organizationId": "org-g121",
-   "organizationName": "Northgate Care Collective",
+   "organizationName": "Brightpath Care Collective",
    "fundId": "fund-lfa",
    "fund": "Learning for Action",
    "programOfficer": "Marcus Bell",
@@ -2551,7 +2551,7 @@
   {
    "id": "GD-2022",
    "organizationId": "org-g122",
-   "organizationName": "Wayfinder Society",
+   "organizationName": "Kindred Society",
    "fundId": "fund-lfa",
    "fund": "Learning for Action",
    "programOfficer": "Dana Okafor",
@@ -2614,7 +2614,7 @@
   {
    "id": "GD-2023",
    "organizationId": "org-g123",
-   "organizationName": "Rootwork Guild",
+   "organizationName": "Halden Guild",
    "fundId": "fund-fow",
    "fund": "Future of Work Fund",
    "programOfficer": "Marcus Bell",
@@ -2725,7 +2725,7 @@
   {
    "id": "GD-2024",
    "organizationId": "org-g124",
-   "organizationName": "Crosswalk Skills Alliance",
+   "organizationName": "Groundwork Skills Alliance",
    "fundId": "fund-ai4eo",
    "fund": "AI for Economic Opportunity Fund",
    "programOfficer": "Priya Raman",
@@ -2774,7 +2774,7 @@
   {
    "id": "GD-2025",
    "organizationId": "org-g125",
-   "organizationName": "Cornerstone Collaborative",
+   "organizationName": "Threshold Collaborative",
    "fundId": "fund-ai4eo",
    "fund": "AI for Economic Opportunity Fund",
    "programOfficer": "Nadia Haddad",
@@ -2820,7 +2820,7 @@
   {
    "id": "GD-2026",
    "organizationId": "org-g126",
-   "organizationName": "Bridgeworks Works",
+   "organizationName": "Southline Works",
    "fundId": "fund-lfa",
    "fund": "Learning for Action",
    "programOfficer": "Sofia Restrepo",
@@ -2980,7 +2980,7 @@
   {
    "id": "GD-2027",
    "organizationId": "org-g127",
-   "organizationName": "Wayfinder Project",
+   "organizationName": "Kindred Project",
    "fundId": "fund-ai4eo",
    "fund": "AI for Economic Opportunity Fund",
    "programOfficer": "Priya Raman",
@@ -3094,7 +3094,7 @@
   {
    "id": "GD-2028",
    "organizationId": "org-g128",
-   "organizationName": "Junction Collaborative",
+   "organizationName": "Trailhead Collaborative",
    "fundId": "fund-ai4eo",
    "fund": "AI for Economic Opportunity Fund",
    "programOfficer": "Tomas Nguyen",
@@ -3164,7 +3164,7 @@
   {
    "id": "GD-2029",
    "organizationId": "org-g129",
-   "organizationName": "Rootwork Guild",
+   "organizationName": "Halden Guild",
    "fundId": "fund-lfa",
    "fund": "Learning for Action",
    "programOfficer": "David Kang",
@@ -3323,7 +3323,7 @@
   {
    "id": "GD-2030",
    "organizationId": "org-g130",
-   "organizationName": "Nextstep Skills Alliance",
+   "organizationName": "Threshold Skills Alliance",
    "fundId": "fund-fow",
    "fund": "Future of Work Fund",
    "programOfficer": "Nadia Haddad",
@@ -3525,7 +3525,7 @@
   {
    "id": "GD-2032",
    "organizationId": "org-g132",
-   "organizationName": "Groundwork Project",
+   "organizationName": "Cornerstone Project",
    "fundId": "fund-peo",
    "fund": "Powering Economic Opportunity Fund",
    "programOfficer": "Ruth Mensah",
@@ -3722,7 +3722,7 @@
   {
    "id": "GD-2034",
    "organizationId": "org-g134",
-   "organizationName": "Cedarline Partners",
+   "organizationName": "Harbor Partners",
    "fundId": "fund-peo",
    "fund": "Powering Economic Opportunity Fund",
    "programOfficer": "Marcus Bell",
@@ -3801,7 +3801,7 @@
   {
    "id": "GD-2035",
    "organizationId": "org-g135",
-   "organizationName": "Groundwork Society",
+   "organizationName": "Cornerstone Society",
    "fundId": "fund-lfa",
    "fund": "Learning for Action",
    "programOfficer": "Leah Fischer",
@@ -4197,7 +4197,7 @@
   {
    "id": "GD-2039",
    "organizationId": "org-g139",
-   "organizationName": "Brightpath Care Collective",
+   "organizationName": "Fieldstone Care Collective",
    "fundId": "fund-lfa",
    "fund": "Learning for Action",
    "programOfficer": "Amara Boateng",
@@ -4388,7 +4388,7 @@
   {
    "id": "GD-2041",
    "organizationId": "org-g141",
-   "organizationName": "Southline Labs",
+   "organizationName": "Fairwind Labs",
    "fundId": "fund-fow",
    "fund": "Future of Work Fund",
    "programOfficer": "Priya Raman",
@@ -4493,7 +4493,7 @@
   {
    "id": "GD-2042",
    "organizationId": "org-g142",
-   "organizationName": "Brightpath Labs",
+   "organizationName": "Harbor Labs",
    "fundId": "fund-fow",
    "fund": "Future of Work Fund",
    "programOfficer": "Leah Fischer",
@@ -4551,7 +4551,7 @@
   {
    "id": "GD-2043",
    "organizationId": "org-g143",
-   "organizationName": "Kindred Project",
+   "organizationName": "Anchor Project",
    "fundId": "fund-peo",
    "fund": "Powering Economic Opportunity Fund",
    "programOfficer": "Marcus Bell",
@@ -4700,7 +4700,7 @@
   {
    "id": "GD-2045",
    "organizationId": "org-g145",
-   "organizationName": "Rootwork Initiative",
+   "organizationName": "Halden Initiative",
    "fundId": "fund-peo",
    "fund": "Powering Economic Opportunity Fund",
    "programOfficer": "Ruth Mensah",
@@ -4828,7 +4828,7 @@
   {
    "id": "GD-2047",
    "organizationId": "org-g147",
-   "organizationName": "Junction Initiative",
+   "organizationName": "Trailhead Initiative",
    "fundId": "fund-fow",
    "fund": "Future of Work Fund",
    "programOfficer": "Sofia Restrepo",
@@ -4961,7 +4961,7 @@
   {
    "id": "GD-2048",
    "organizationId": "org-g148",
-   "organizationName": "Pathwise Coalition",
+   "organizationName": "Bridgeworks Coalition",
    "fundId": "fund-fow",
    "fund": "Future of Work Fund",
    "programOfficer": "Sofia Restrepo",
@@ -5051,7 +5051,7 @@
   {
    "id": "GD-2050",
    "organizationId": "org-g150",
-   "organizationName": "Lantern Guild",
+   "organizationName": "Commonwork Guild",
    "fundId": "fund-peo",
    "fund": "Powering Economic Opportunity Fund",
    "programOfficer": "Ruth Mensah",
@@ -5099,7 +5099,7 @@
   {
    "id": "GD-2051",
    "organizationId": "org-g151",
-   "organizationName": "Pathwise Labs",
+   "organizationName": "Bridgeworks Labs",
    "fundId": "fund-peo",
    "fund": "Powering Economic Opportunity Fund",
    "programOfficer": "Nadia Haddad",
@@ -5138,7 +5138,7 @@
   {
    "id": "GD-2052",
    "organizationId": "org-g152",
-   "organizationName": "Pathwise Center",
+   "organizationName": "Keystone Center",
    "fundId": "fund-lfa",
    "fund": "Learning for Action",
    "programOfficer": "Amara Boateng",
@@ -5204,7 +5204,7 @@
   {
    "id": "GD-2053",
    "organizationId": "org-g153",
-   "organizationName": "Commonwork Project",
+   "organizationName": "Foundry Project",
    "fundId": "fund-ai4eo",
    "fund": "AI for Economic Opportunity Fund",
    "programOfficer": "Marcus Bell",
@@ -5299,7 +5299,7 @@
   {
    "id": "GD-2055",
    "organizationId": "org-g155",
-   "organizationName": "Threshold Institute",
+   "organizationName": "Bridgeworks Institute",
    "fundId": "fund-fow",
    "fund": "Future of Work Fund",
    "programOfficer": "Nadia Haddad",
@@ -5346,7 +5346,7 @@
   {
    "id": "GD-2056",
    "organizationId": "org-g156",
-   "organizationName": "Bridgeworks Partners",
+   "organizationName": "Southline Partners",
    "fundId": "fund-fow",
    "fund": "Future of Work Fund",
    "programOfficer": "Sofia Restrepo",
@@ -5407,7 +5407,7 @@
   {
    "id": "GD-2057",
    "organizationId": "org-g157",
-   "organizationName": "Lantern Project",
+   "organizationName": "Commonwork Project",
    "fundId": "fund-ai4eo",
    "fund": "AI for Economic Opportunity Fund",
    "programOfficer": "Tomas Nguyen",
@@ -5469,7 +5469,7 @@
   {
    "id": "GD-2058",
    "organizationId": "org-g158",
-   "organizationName": "Northgate Works",
+   "organizationName": "Cedarline Works",
    "fundId": "fund-peo",
    "fund": "Powering Economic Opportunity Fund",
    "programOfficer": "Nadia Haddad",

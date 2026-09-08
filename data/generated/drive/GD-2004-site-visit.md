@@ -1,13 +1,13 @@
 ---
-title: Foundry Institute — site visit notes
+title: Crosswalk Institute — site visit notes
 author: Amara Boateng
 date: 2022-05-26
-folder: Powering Economic Opportunity/2021/Foundry Institute
+folder: Powering Economic Opportunity/2021/Crosswalk Institute
 grant: GD-2004
 tier: programs-only
 ---
 
-# Site visit — Foundry Institute
+# Site visit — Crosswalk Institute
 
 Amara Boateng, United States. Grant GD-2004.
 

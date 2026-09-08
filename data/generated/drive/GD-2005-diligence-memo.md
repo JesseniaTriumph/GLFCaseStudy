@@ -1,13 +1,13 @@
 ---
-title: Riverbend Labs — diligence memo
+title: Northgate Labs — diligence memo
 author: Ruth Mensah
 date: 2021-01-21
-folder: Powering Economic Opportunity/2021/Riverbend Labs
+folder: Powering Economic Opportunity/2021/Northgate Labs
 grant: GD-2005
 tier: programs-only
 ---
 
-# Diligence memo — Riverbend Labs (GD-2005)
+# Diligence memo — Northgate Labs (GD-2005)
 
 Program officer: Ruth Mensah. Powering Economic Opportunity Fund.
 

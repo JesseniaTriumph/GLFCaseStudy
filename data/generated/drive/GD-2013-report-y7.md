@@ -1,13 +1,13 @@
 ---
-title: Commonwork Project — Q3 Y2 report
-author: Commonwork Project
+title: Foundry Project — Q3 Y2 report
+author: Foundry Project
 date: 2024-02-14
-folder: Learning for Action/2022/Commonwork Project
+folder: Learning for Action/2022/Foundry Project
 grant: GD-2013
 tier: team
 ---
 
-# Commonwork Project — Q3 Y2
+# Foundry Project — Q3 Y2
 
 Grant GD-2013. As of 2024-02-14. Served 1,038 participants; median wage at placement about $22.58/hr.
 

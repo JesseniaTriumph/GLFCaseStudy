@@ -1,13 +1,13 @@
 ---
-title: Bridgeworks Works — Q1 Y2 report
-author: Bridgeworks Works
+title: Southline Works — Q1 Y2 report
+author: Southline Works
 date: 2024-06-10
-folder: Learning for Action/2023/Bridgeworks Works
+folder: Learning for Action/2023/Southline Works
 grant: GD-2026
 tier: team
 ---
 
-# Bridgeworks Works — Q1 Y2
+# Southline Works — Q1 Y2
 
 Grant GD-2026. As of 2024-06-10. Served 3,714 participants; median wage at placement about $15.24/hr.
 

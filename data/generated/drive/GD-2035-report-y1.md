@@ -1,13 +1,13 @@
 ---
-title: Groundwork Society — Year 1 report
-author: Groundwork Society
+title: Cornerstone Society — Year 1 report
+author: Cornerstone Society
 date: 2025-06-06
-folder: Learning for Action/2024/Groundwork Society
+folder: Learning for Action/2024/Cornerstone Society
 grant: GD-2035
 tier: team
 ---
 
-# Groundwork Society — Year 1 progress report
+# Cornerstone Society — Year 1 progress report
 
 **Grant:** GD-2035 · As reported 2025-06-06 · Impact model v3.5
 

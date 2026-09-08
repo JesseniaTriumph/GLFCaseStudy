@@ -1,18 +1,18 @@
 ---
-title: Bridgeworks Partners — proposal (GD-2056)
-author: Bridgeworks Partners
+title: Southline Partners — proposal (GD-2056)
+author: Southline Partners
 date: 2026-07-01
-folder: Future of Work/2026/Bridgeworks Partners
+folder: Future of Work/2026/Southline Partners
 grant: GD-2056
 tier: team
 ---
 
-# Proposal — Bridgeworks Partners
+# Proposal — Southline Partners
 
 **Grant:** GD-2056 · **Fund:** Future of Work Fund · **Geography:** United States
 
 ## 1. Problem
-Bridgeworks Partners proposes expanding personalized career coaching in new york.
+Southline Partners proposes expanding personalized career coaching in new york.
 
 ## 2. Approach
 Sectoral partnership with employer commitments; outcomes tracked in the org's data system.

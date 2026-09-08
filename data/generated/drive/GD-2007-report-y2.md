@@ -1,13 +1,13 @@
 ---
-title: Cedarline Care Collective — Year 2 report
-author: Cedarline Care Collective
+title: Brightpath Care Collective — Year 2 report
+author: Brightpath Care Collective
 date: 2023-08-16
-folder: AI for Economic Opportunity/2021/Cedarline Care Collective
+folder: AI for Economic Opportunity/2021/Brightpath Care Collective
 grant: GD-2007
 tier: team
 ---
 
-# Cedarline Care Collective — Year 2
+# Brightpath Care Collective — Year 2
 
 Grant GD-2007. As of 2023-08-16. Served 3,450 participants; median wage at placement about $18.08/hr.
 
