@@ -19,8 +19,8 @@ regression is a hard stop, not a warning.
 | `Restricted` tier never enters the index (metadata stub only for policy-restricted docs) | ✅ | — |
 | Refusals reveal no count and don't confirm a match exists | ✅ | — |
 | Zero permission leaks across the gold set + full-corpus set | ✅ `eval` / `eval:full` / `eval:pg` | — |
-| Google Groups → permission groups, synced and cached | 🟡 (stubbed as a map) | A read-only Admin SDK Directory integration + a cache. ~1 day once the Workspace admin issues the scope. |
-| Account deactivation cuts Compass access immediately | 🟡 (`/admin/revoke` exists) | Wire it to the same trigger that disables the Google account (discovery X10). |
+| Google Groups → permission groups, synced and cached | 🟡 (**built** — `src/security/directory.ts`) | The Admin SDK Directory resolver + TTL cache + fail-closed are written and unit-tested. Needs the Workspace admin to issue a read-only service account with domain-wide delegation (`admin.directory.group.readonly`) and set `GOOGLE_DIRECTORY_SUBJECT`. Falls back to the demo map until then. |
+| Account deactivation cuts Compass access immediately | 🟡 (`/admin/revoke` + optional active-check) | `COMPASS_DIRECTORY_ACTIVE_CHECK=1` makes every sign-in also verify the account isn't suspended/archived (rejects → fail closed). For instant cut-off on the *existing* session, still wire `/admin/revoke` to the deprovisioning trigger (discovery X10). |
 
 ## 2 · Identity & session
 
@@ -117,7 +117,7 @@ in order:
 
 1. **Third-party penetration test** — the one thing a self-graded suite can't replace.
 2. **Redis + KMS + private network + egress allowlist** — the production deployment, ~1 week.
-3. **Google Groups integration + deactivation trigger** — ~2 days once the Workspace admin issues the scope.
+3. **Google Groups integration** — *the resolver is built and tested* (`src/security/directory.ts`); it needs the Workspace admin to issue a read-only service account, then it's a config change. Still wire `/admin/revoke` to the deprovisioning trigger for instant session cut-off.
 4. **Data-owner sign-off** on the tier policy and `never-ingest` list — a meeting, not code.
 5. **Zero-retention LLM agreement** — only needed to turn on written synthesis; extractive needs nothing.
 6. **Run the tabletop; name the DRI.**

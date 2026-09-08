@@ -20,6 +20,7 @@ import { resolveAdapters, CORPUS } from "../src/config.js";
 import { createApp } from "../src/server/app.js";
 import { claudeLLM } from "../src/retrieval/llm.js";
 import { AuditLog, webhookSink } from "../src/security/audit.js";
+import { resolveGroupResolver } from "../src/security/directory.js";
 
 const { adapters, report } = await resolveAdapters();
 report.forEach((l) => console.log(`connector · ${l}`));
@@ -43,6 +44,11 @@ const allowedEmails = (process.env.COMPASS_ALLOWED_EMAILS ?? "")
   .split(",")
   .map((e) => e.trim().toLowerCase())
   .filter(Boolean);
+
+// group → tier resolution: the real Google Directory lookup when a service account is
+// configured, else the static demo map. Fails closed either way (a throw in the resolver
+// → groupsResolved:false → the principal can retrieve nothing).
+const { resolver: resolveGroups, mode: groupMode } = resolveGroupResolver();
 
 const audit = new AuditLog(
   process.env.COMPASS_AUDIT_LOG ?? "dist/audit.log",
@@ -69,11 +75,7 @@ const app = createApp({
     jwks: "https://www.googleapis.com/oauth2/v3/certs",
     hostedDomain: process.env.COMPASS_HD ?? "gitlabfoundation.org",
     allowedEmails,
-    // production: a read-only Google Admin SDK Directory lookup, cached. Here: a stub.
-    resolveGroups: async (email) => {
-      const map = JSON.parse(process.env.COMPASS_GROUP_MAP ?? "{}") as Record<string, string[]>;
-      return map[email] ?? ["programs"];
-    },
+    resolveGroups,
   },
 });
 
@@ -82,6 +84,7 @@ app.listen(port, () => {
   console.log(`  web app:   ${hasWeb ? "served at /" : "NOT built — run `npm run demo` (builds web first) or `npm --prefix web run build`"}`);
   console.log(`  Google sign-in: ${clientId ? "configured" : "not configured — set COMPASS_OAUTH_CLIENT_ID (see docs/DEMO_HOSTING.md)"}`);
   console.log(`  demo personas:  ${demoLogin ? "on — /auth/demo?persona=<key>" : "off (COMPASS_NO_DEMO=1)"}`);
+  console.log(`  group source:   ${groupMode}`);
   if (allowedEmails.length) console.log(`  access list:    ${allowedEmails.length} email(s)`);
   console.log(`  index: ${index.chunks.length} chunks, embedder ${index.embedder?.id ?? "tf-idf"}`);
 });

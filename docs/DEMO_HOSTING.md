@@ -65,8 +65,15 @@ npm run demo
 
 `COMPASS_GROUP_MAP` stands in for the production Google Groups lookup — it maps each
 tester's email to the permission groups they should have, so you can demo "this person
-sees programs-only, that person doesn't" with real accounts. In production this is a
-read-only Admin SDK Directory call, cached.
+sees programs-only, that person doesn't" with real accounts.
+
+**In production**, set `GOOGLE_SA_KEY_JSON` (or `GOOGLE_SA_KEY_FILE`) + `GOOGLE_DIRECTORY_SUBJECT`
+(an admin to impersonate) and the server uses the real read-only Admin SDK Directory lookup
+instead — cached for `COMPASS_DIRECTORY_TTL_SEC` (default 300), fail-closed on any error.
+Add `COMPASS_DIRECTORY_ACTIVE_CHECK=1` to also reject a suspended/archived account at
+sign-in. The service account needs `admin.directory.group.readonly` (and
+`admin.directory.user.readonly` for the active check), granted via domain-wide delegation.
+The startup log prints which source is active (`group source: …`).
 
 With `COMPASS_OAUTH_CLIENT_ID` set, the web app shows "Sign in with Google". You can leave
 the demo personas on alongside it (handy — flip to a persona to show the boundary, then

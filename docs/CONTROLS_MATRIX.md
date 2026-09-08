@@ -15,7 +15,7 @@ into `npm run ci`, so a regression on either blocks promotion.
 | # | Control | Framework refs | How Compass implements it | Status |
 |---|---|---|---|---|
 | AC-1 | Identity: federated SSO, hosted-domain enforced | CSF PR.AA, 800-53 IA-2/IA-8, SOC 2 CC6.1 | Google OIDC Authorization-Code + PKCE; RS256 ID-token verification checks `iss/aud/exp/iat/hd/email_verified` (`src/security/auth.ts`) | ✅ |
-| AC-2 | Authorization: least privilege, group-driven | CSF PR.AA-05, 800-53 AC-3/AC-6 | Tier + ACL per chunk; `principalFromGroups` maps Google Groups → allowed tiers; **fails closed** if the group lookup fails | ✅ |
+| AC-2 | Authorization: least privilege, group-driven | CSF PR.AA-05, 800-53 AC-3/AC-6, OWASP A01 | Tier + ACL per chunk; `principalFromGroups` maps Google Groups → allowed tiers; **fails closed** if the group lookup fails. Group source: a read-only Admin SDK Directory resolver with a TTL cache + optional suspended-account check (`src/security/directory.ts`, unit-tested), or the demo map | ✅ / 🟡 (SA credential) |
 | AC-3 | Retrieval-time access control as the security boundary | CSF PR.DS, AI RMF MEASURE 2.7 | The permission filter runs before ranking, in code — also as a SQL `WHERE` clause (`src/db/store.ts`); `npm run eval` / `eval:pg` prove zero leaks | ✅ |
 | AC-4 | Session management | 800-53 SC-23, SC-10 | HMAC-signed `HttpOnly; Secure; SameSite=Strict` cookie, 8h TTL; per-user + global server-side revocation (`revokeUser` / `revokeAll`); logout revokes | ✅ |
 | AC-5 | Rate / cost limiting | CSF PR.IR-04, 800-53 SC-5, OWASP A04 / LLM10 | Per-user token buckets (request rate + LLM cost) → 429 + Retry-After (`src/server/limits.ts`); production = Redis | 🟡 |
