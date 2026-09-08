@@ -203,6 +203,24 @@ export function App() {
     }
   }
 
+  // Thumbs up / down → POST to /api/feedback (server mode) so the signal reaches
+  // eval/feedback.jsonl, which `npm run tune` reads. A no-op on a static host.
+  async function sendFeedback(verdict: "up" | "down") {
+    const next = fb === verdict ? null : verdict;
+    setFb(next);
+    if (!next || !serverMode || !ans) return;
+    try {
+      await fetch("/api/feedback", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({ question: ans.question, answerText: ans.text.slice(0, 400), verdict: next }),
+      });
+    } catch {
+      /* best effort — the local state still reflects the click */
+    }
+  }
+
   // Server mode: switching persona means signing in as that fictional user, so the real
   // server-side permission filter re-runs. Offline mode: it's a local principal swap.
   async function switchPersona(key: keyof typeof PERSONAS) {
@@ -361,8 +379,9 @@ export function App() {
                       </button>
                     )}
                     <span className="fb">
-                      <button aria-pressed={fb === "up"} onClick={() => setFb(fb === "up" ? null : "up")} title="Useful">▲</button>
-                      <button aria-pressed={fb === "down"} onClick={() => setFb(fb === "down" ? null : "down")} title="Wrong / incomplete">▼</button>
+                      <button aria-pressed={fb === "up"} onClick={() => void sendFeedback("up")} title="Useful">▲</button>
+                      <button aria-pressed={fb === "down"} onClick={() => void sendFeedback("down")} title="Wrong / incomplete">▼</button>
+                      {fb && <span className="fb-ack">thanks — logged</span>}
                     </span>
                   </div>
                   {external && (

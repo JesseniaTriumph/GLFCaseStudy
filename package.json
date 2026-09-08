@@ -22,7 +22,7 @@
     "build:index:embed": "tsx scripts/build-index.ts --embed bge-small",
     "eval:embed": "COMPASS_EMBED=bge-small tsx scripts/eval.ts",
     "serve": "tsx scripts/serve.ts",
-    "demo": "npm --prefix web run build && COMPASS_CORPUS=full tsx scripts/serve.ts",
+    "demo": "COMPASS_CORPUS=full npm run -s build:index:full && npm --prefix web run -s build && COMPASS_CORPUS=full tsx scripts/serve.ts",
     "server:check": "tsx scripts/server-check.ts",
     "redteam": "tsx scripts/redteam.ts",
     "ci": "tsx scripts/ci.ts",

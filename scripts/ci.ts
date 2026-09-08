@@ -31,7 +31,7 @@ const STEPS: Array<[string, string]> = [
   ["eval:pg", "npm run -s eval:pg"],
   ["eval:full", "npm run -s eval:full"],
   ["security", "npm run -s security"],
-  ["web:build", "npm --prefix web run -s build"],
+  ["web:build", "npm run -s web:build"], // full-corpus index + vite build — leaves web/dist deploy-ready
   ["server:check", "npm run -s server:check"],
   ["redteam", "npm run -s redteam"],
 ];

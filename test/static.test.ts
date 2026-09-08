@@ -31,8 +31,9 @@ const req = (method = "GET") => ({ method });
 const root = mkdtempSync(join(tmpdir(), "compass-web-"));
 mkdirSync(join(root, "assets"));
 writeFileSync(join(root, "index.html"), "<!doctype html><title>Compass</title>");
-writeFileSync(join(root, "assets", "app.js"), "console.log(1)");
+writeFileSync(join(root, "assets", "index-a1b2c3d4.js"), "console.log(1)");
 writeFileSync(join(root, "manifest.webmanifest"), "{}");
+writeFileSync(join(root, "corpus-index.json"), '{"chunks":[]}');
 
 test("no root → handler is a no-op that returns false", () => {
   const h = makeStaticHandler(undefined);
@@ -50,14 +51,22 @@ test("serves index.html with the app CSP and no-cache", async () => {
   assert.equal(res.headers["cache-control"], "no-cache");
 });
 
-test("hashed assets get long immutable caching and a locked-down CSP", () => {
+test("content-hashed assets get long immutable caching and a locked-down CSP", () => {
   const h = makeStaticHandler(root);
   const res = fakeRes();
-  h(req("HEAD") as any, res, "/assets/app.js");
+  h(req("HEAD") as any, res, "/assets/index-a1b2c3d4.js");
   assert.equal(res.statusCode, 200);
   assert.match(res.headers["cache-control"], /immutable/);
   assert.equal(res.headers["content-security-policy"], "default-src 'none'");
   assert.match(res.headers["content-type"], /javascript/);
+});
+
+test("corpus-index.json is served no-cache (it is rebuilt on every index build)", () => {
+  const h = makeStaticHandler(root);
+  const res = fakeRes();
+  h(req("HEAD") as any, res, "/corpus-index.json");
+  assert.equal(res.statusCode, 200);
+  assert.equal(res.headers["cache-control"], "no-cache");
 });
 
 test("path traversal is rejected", () => {

@@ -94,11 +94,11 @@ export function makeStaticHandler(root: string | undefined): StaticHandler {
     res.setHeader("x-frame-options", "DENY");
     res.setHeader("cross-origin-opener-policy", "same-origin");
     res.setHeader("cross-origin-resource-policy", "same-origin");
-    // hashed build assets are immutable; html and the manifest must revalidate
-    res.setHeader(
-      "cache-control",
-      isHtml || ext === ".webmanifest" || rel === "sw.js" ? "no-cache" : "public, max-age=31536000, immutable"
-    );
+    // ONLY Vite's content-hashed output under /assets is safe to cache immutably.
+    // Everything else at the root — index.html, sw.js, the manifest, and
+    // corpus-index.json (rebuilt on every index build) — must revalidate.
+    const hashedAsset = /^assets\//.test(rel) && /-[A-Za-z0-9_]{8,}\.\w+$/.test(rel);
+    res.setHeader("cache-control", hashedAsset ? "public, max-age=31536000, immutable" : "no-cache");
 
     if (req.method === "HEAD") {
       res.writeHead(200).end();
