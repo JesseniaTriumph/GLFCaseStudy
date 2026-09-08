@@ -1,0 +1,28 @@
+name: ci
+
+# The promotion gate. A permission-leak finding or a red-team regression fails the build.
+# Nothing merges to the default branch without this green.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm ci --prefix web
+      - name: promotion gate (typecheck · test · deps:audit · eval ×3 · security · server:check · redteam)
+        run: npm run ci
