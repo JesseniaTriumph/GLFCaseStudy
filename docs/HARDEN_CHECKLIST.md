@@ -115,8 +115,8 @@ regression is a hard stop, not a warning.
 Everything above is either ✅ or has a named owner. The items that actually move the needle,
 in order:
 
-1. **Third-party penetration test** — the one thing a self-graded suite can't replace.
-2. **Redis + KMS + private network + egress allowlist** — the production deployment, ~1 week.
+1. **Third-party penetration test** — the one thing a self-graded suite can't replace. Statement of work is written: `deliverables/P_PenTest_Scope.md`.
+2. **Redis + KMS + private network + egress enforcement** — the production deployment. Step-by-step: `docs/DEPLOY_CHECKLIST.md`. The egress guard and the Directory resolver are now built (§3, §1) — this is mostly standing up the infra and flipping flags.
 3. **Google Groups integration** — *the resolver is built and tested* (`src/security/directory.ts`); it needs the Workspace admin to issue a read-only service account, then it's a config change. Still wire `/admin/revoke` to the deprovisioning trigger for instant session cut-off.
 4. **Data-owner sign-off** on the tier policy and `never-ingest` list — a meeting, not code.
 5. **Zero-retention LLM agreement** — only needed to turn on written synthesis; extractive needs nothing.
