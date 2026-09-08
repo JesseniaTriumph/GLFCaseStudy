@@ -138,8 +138,26 @@ Narrow the corpus or the user group. **Never** skip a security exit criterion.
 
 ## Build status (what's done in `compass/` vs. what needs the Foundation)
 
-Everything that can be built without the Foundation's people, credentials, or an external
-vendor has been built and is gated by `npm run ci`.
+**Every capability in the plan is built and tested** (`npm run ci` — eval 12/12 · eval:pg
+12/12 · eval:full 12/12 · redteam 16/16 · security 9/9 · server 12/12). What's left is not
+engineering — it splits three ways:
+
+1. **Only the Foundation's people can produce it** — the real 50–100-question gold set
+   with verified answers (1.7), design partners using it weekly (2.10), baseline task
+   timings (1.9), full-team onboarding (3.9), a named trained owner (4.6), the discovery
+   interviews (1.1). A gold set I write only tests whether Compass agrees with *me*.
+2. **Only the Foundation can authorize** — least-privilege credentials (1.3), the
+   zero-retention LLM agreement + DPA + Colombia/Kenya determination (1.4), the data
+   owner's sign-off on the tier policy / source-of-truth matrix / v1 corpus (1.5, 1.6,
+   1.8). Drafts are ready; they need a signature and an admin issuing keys.
+3. **Needs an outside party or cloud infra** — a third-party penetration test (3.8), the
+   real 5-year data backfill (3.6 — proven against a synthetic 5-year corpus), Redis
+   behind the rate-limiter/revocation store, a KMS for connector secrets, off-host audit
+   *storage* (the streaming hook exists), running the tabletop (4.8 — scenario written).
+
+Nice-to-haves that are *not* blockers and could go deeper: a cross-encoder reranker (2.5),
+the web MVP wired to the live OIDC server rather than a persona switch (2.7), a fuller Expo
+app (4.4 — scaffolded), an impact-model connector (3.1 — needs their Tableau setup).
 
 ### Done — runs and is tested
 
@@ -148,7 +166,7 @@ vendor has been built and is gated by `npm run ci`.
 | 2.1 | Real connectors for Drive / GivingData / Airtable behind `SourceAdapter`, credential-activated (+ Zoom and Notion, gated). Mock fallback per source. |
 | 2.2 | Preserve — immutable content-addressed raw store (`src/pipeline/rawstore.ts`) + manifest. Extraction-confidence + injection quarantine. |
 | 2.3 | Resolve — entity graph, grant↔org join, dedupe (exact/near/cross-system), **entity review queue** (`/admin/review`, `build:index` output). |
-| 2.4 | Retrieve — hybrid BM25 + tf-idf; **permission filter as a SQL `WHERE` clause** (`src/db/store.ts`, `npm run eval:pg` 11/11, 0 leaks); Restricted excluded. |
+| 2.4 | Retrieve — hybrid BM25 + tf-idf; **permission filter as a SQL `WHERE` clause** (`src/db/store.ts`, `npm run eval:pg` 12/12, 0 leaks); Restricted excluded. |
 | 2.5 | Learned embeddings — `bge-small` via transformers.js, opt-in, eval-passing. bge-m3 registered as the multilingual option. |
 | 2.6 | Answer — evidence brief, inline deep-link citations, coverage line, **operational confidence** (coverage/agreement/freshness/completeness), abstention, **conflict surfacing**. |
 | 2.7 | Web app + the **full OIDC Authorization-Code + PKCE flow** (`src/server/`, `npm run server:check` 12/12). "How it works" panel. Embeddable widget. |
@@ -158,16 +176,17 @@ vendor has been built and is gated by `npm run ci`.
 | 3.1 | Airtable adapter done; **Notion connector** built (gated). |
 | 3.2 | PII pass (deterministic + participant heuristic + quarantine); **optional NER name pass** (`src/pipeline/ner.ts`). |
 | 3.3 | **Indirect-prompt-injection**: 15 planted fixtures + intake pattern-stripping + injection-score quarantine + behavioural red-team cases. |
-| 3.4 | **Multilingual (Spanish)**: stopwords + bilingual keyword bridge; an English question retrieves a Spanish report (`gold` case). OCR quality gate exists. |
-| 3.5 | **Promotion gate** (`npm run ci`); anomaly alerts (`src/security/monitor.ts`); **off-host audit stream** (`webhookSink`). |
-| 3.6 | Conflicting figures **shown, not merged**; confidence drops to medium. |
-| 3.7 | Role & cycle context — done (`src/roles.ts`, toggleable). |
+| 3.4 | **Multilingual (Spanish)**: stopwords + bilingual bridge + **translation at intake** (`src/pipeline/translate.ts` — mt / api / glossary); an English query retrieves *and reads* a Spanish report, citation still points to the original. OCR quality gate. |
+| 3.5 | **Promotion gate** (`npm run ci`, includes `eval:full`); anomaly alerts (`src/security/monitor.ts`); **off-host audit stream** (`webhookSink`). |
+| 3.6 | **5-year synthetic corpus** (`npm run gen:corpus` → ~59 grants, ~110 declines, ~260 docs, Zoom threads, template drift, a migration boundary, duplicate orgs, conflicting figures) + `npm run reconcile`; conflicts **shown, not merged**. |
+| 3.7 | Role & cycle context (`src/roles.ts`, 12 personas, toggleable) + **per-grant cycle logic** (`src/grant-cycle.ts` — cadence read or inferred, overdue, next deadline, renewal window) + **portfolio-schedule answers** ("what's due / overdue / renewals"). |
 | 4.1 | Additional surface — embeddable answer widget (`web/public/embed.html`). |
 | 4.2 | Weekly tuning loop — `npm run tune` proposes a change, never applies it. |
 | 4.3 | Usage / trust / cost snapshot — `GET /admin/stats`, `npm run stats`. |
 | 4.4 | Expo iOS + Android **scaffold** (`mobile/`) sharing the TS core + the same `/api/ask`. |
-| 4.5 | Docs — RUNBOOK, INCIDENT_RESPONSE, CONTROLS_MATRIX, TABLETOP_EXERCISE, TIER_POLICY, SOURCE_OF_TRUTH_MATRIX, V1_CORPUS_AND_METRIC. |
-| 4.7 | Leadership decision packet — `deliverables/M_Decision_Packet.md`. |
+| 4.5 | Docs — RUNBOOK, INCIDENT_RESPONSE, CONTROLS_MATRIX, TABLETOP_EXERCISE, TIER_POLICY, SOURCE_OF_TRUTH_MATRIX, V1_CORPUS_AND_METRIC, GRANT_METADATA, ROLES_AND_USERS, BUILD_NOW_VS_HANDOFF. |
+| 4.7 | Leadership decision packet — `deliverables/M_Decision_Packet.md`. Code-weakness review — `deliverables/N_Code_Review.md`. |
+| — | **Grantee dossier** — the "renewal prep in one view": each grant's status + own cycle, projected-vs-reported, a relationship timeline, records. `web/` Grantee dossier tab. |
 
 ### Not blocked — "build the best version now, swap at handoff"
 
@@ -175,11 +194,11 @@ Full detail: **`docs/BUILD_NOW_VS_HANDOFF.md`**. Nothing below stops a pilot.
 
 | Step | What runs now | What swaps in at handoff |
 |---|---|---|
-| 3.6 | A **5-year synthetic corpus** (`npm run gen:corpus` → ~70 grants, ~110 declines, ~250 docs, Zoom threads, dirty data) + `npm run reconcile` | The real pull, when credentials arrive — same pipeline |
+| 3.6 | A **5-year synthetic corpus** (`npm run gen:corpus` → ~59 grants, ~110 declines, ~260 docs, Zoom threads, dirty data) + `npm run reconcile` | The real pull, when credentials arrive — same pipeline |
 | 1.3 | Credential-activated connectors; mock fallback | The keys in `.env` (`docs/CONNECTORS.md`) |
 | 1.4 | **Extractive mode** — cited passages, no AI vendor, $0 | A generative backend under a zero-retention agreement, or a self-hosted model — one setting (`docs/BUILD_NOW_VS_HANDOFF.md`) |
 | 1.5, 1.6, 1.8 | Tier policy, source-of-truth matrix, V1 corpus — **drafted** in `docs/` | The data owner's sign-off |
-| 1.7 | `eval/gold.json` (12) + `eval/gold-full.json` (10) | The 50–100 real questions, built *with* the Programs team |
+| 1.7 | `eval/gold.json` (12) + `eval/gold-full.json` (12) | The 50–100 real questions, built *with* the Programs team |
 | 1.1, 1.9 | Documented role → question mapping (`docs/ROLES_AND_USERS.md`); timing-sheet template | Confirmation from 3–5 interviews + real baseline timings |
 | 4.8 | `docs/TABLETOP_EXERCISE.md` — full scenario | Running it once with the DRI, COO's office, counsel |
 
