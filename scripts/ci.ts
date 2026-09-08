@@ -14,8 +14,9 @@
  *   4. eval                   gold set — retrieval + refusal + zero permission leaks
  *   5. eval:pg                the same gold set through the SQL permission filter
  *   6. security               OIDC token verification + tamper-evident audit chain
- *   7. server:check           full OIDC login flow + rate limit + kill switch + revocation
- *   8. redteam                adversarial suite — injection, jailbreak, exfiltration, PII
+ *   7. web:build              the web app compiles (also gives server:check something to serve)
+ *   8. server:check           full OIDC login flow + demo sign-in + headers + rate limit + kill switch
+ *   9. redteam                adversarial suite — injection, jailbreak, exfiltration, PII
  */
 import { spawnSync } from "node:child_process";
 
@@ -27,6 +28,7 @@ const STEPS: Array<[string, string]> = [
   ["eval:pg", "npm run -s eval:pg"],
   ["eval:full", "npm run -s eval:full"],
   ["security", "npm run -s security"],
+  ["web:build", "npm --prefix web run -s build"],
   ["server:check", "npm run -s server:check"],
   ["redteam", "npm run -s redteam"],
 ];

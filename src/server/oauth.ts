@@ -26,6 +26,12 @@ export interface OAuthConfig {
   hostedDomain: string;
   /** how to resolve a user's permission groups from their verified identity */
   resolveGroups: (email: string, sub: string) => Promise<string[]> | string[];
+  /**
+   * Optional explicit allowlist (lowercased emails). When set, a verified account whose
+   * email is not on the list is rejected even if the hosted-domain check passed. Used to
+   * scope a pilot / demo to a named set of people ("send us the emails ahead of time").
+   */
+  allowedEmails?: string[];
 }
 
 const b64u = (b: Buffer) => b.toString("base64url");
@@ -102,6 +108,11 @@ export async function handleCallback(cfg: OAuthConfig, code: string, state: stri
     hostedDomain: cfg.hostedDomain,
   };
   const claims = verifyIdToken(tokens.id_token, await getJwks(cfg.jwks), oidc);
+
+  // --- optional pilot/demo allowlist (checked after the domain + signature checks) ---
+  if (cfg.allowedEmails?.length && !cfg.allowedEmails.includes(claims.email.toLowerCase())) {
+    throw new Error(`${claims.email} is not on the Compass access list`);
+  }
 
   // --- resolve groups and issue the Compass session ---
   // Fail closed if the group lookup errors (HOPE lesson: a broken integration key must not

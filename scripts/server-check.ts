@@ -15,6 +15,8 @@
  */
 import { createServer } from "node:http";
 import { generateKeyPairSync, createSign } from "node:crypto";
+import { fileURLToPath } from "node:url";
+import { existsSync } from "node:fs";
 import { runPipeline } from "../src/pipeline/run.js";
 import { ADAPTERS, CORPUS } from "../src/config.js";
 import { createApp } from "../src/server/app.js";
@@ -107,6 +109,7 @@ try {
 } catch {
   /* fresh */
 }
+const webRoot = fileURLToPath(new URL("../web/dist", import.meta.url));
 const app = createApp({
   index,
   secureCookies: false,
@@ -116,6 +119,9 @@ const app = createApp({
   audit: new AuditLog(AUDIT_PATH),
   onSignal: (s) => signals.push(s),
   feedbackLog: "/tmp/compass-server-check-feedback.jsonl",
+  webRoot: existsSync(webRoot) ? webRoot : undefined,
+  demoLogin: true,
+  oauthConfigured: true,
 });
 await new Promise<void>((r) => app.listen(0, "127.0.0.1", r));
 const port = (app.address() as { port: number }).port;
@@ -135,6 +141,65 @@ const req = async (path: string, opts: RequestInit = {}) => {
 {
   const r = await fetch(BASE + "/api/ask", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ question: "hi" }) });
   ok("POST /api/ask with no session → 401", r.status === 401);
+  // OWASP A05: the JSON API locks itself down on every response
+  const csp = r.headers.get("content-security-policy") ?? "";
+  ok(
+    "API responses carry the hardened security headers",
+    /default-src 'none'/.test(csp) &&
+      /frame-ancestors 'none'/.test(csp) &&
+      r.headers.get("x-frame-options") === "DENY" &&
+      r.headers.get("x-content-type-options") === "nosniff" &&
+      r.headers.get("cross-origin-opener-policy") === "same-origin",
+    csp.slice(0, 40) + "…"
+  );
+}
+
+// 1b. the built web app is served same-origin with an app-appropriate CSP
+{
+  const r = await fetch(BASE + "/");
+  const body = await r.text();
+  const csp = r.headers.get("content-security-policy") ?? "";
+  ok(
+    "GET / serves the web app with a page CSP (no third-party script, no framing)",
+    r.status === 200 &&
+      /<!doctype html>/i.test(body) &&
+      /script-src 'self'/.test(csp) &&
+      !/script-src[^;]*\*/.test(csp) &&
+      r.headers.get("x-frame-options") === "DENY"
+  );
+  const cfg = await fetch(BASE + "/api/config").then((x) => x.json() as Promise<{ demoLogin?: boolean; oauthConfigured?: boolean }>);
+  ok("GET /api/config advertises sign-in options without leaking identity", cfg.demoLogin === true && cfg.oauthConfigured === true);
+}
+
+// 1c. demo sign-in issues a REAL session and the same permission filter applies to it
+{
+  const jar = { c: "" };
+  const dreq = async (p: string, o: RequestInit = {}) => {
+    const x = await fetch(BASE + p, { ...o, redirect: "manual", headers: { ...(o.headers || {}), cookie: jar.c } });
+    const s = x.headers.get("set-cookie");
+    if (s) jar.c = s.split(";")[0]!;
+    return x;
+  };
+  await dreq("/auth/demo?persona=comms", { headers: { accept: "application/json" } });
+  const me = await dreq("/api/me").then((x) => x.json() as Promise<{ groups?: string[] }>);
+  const refused = await dreq("/api/ask", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ question: "what did the board discuss about staff compensation?" }),
+  }).then((x) => x.json() as Promise<{ confidence?: string }>);
+  await dreq("/auth/demo?persona=ceo", { headers: { accept: "application/json" } });
+  const served = await dreq("/api/ask", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ question: "how did Riverbend Care Collective perform against projection?" }),
+  }).then((x) => x.json() as Promise<{ confidence?: string; citations?: unknown[] }>);
+  ok(
+    "demo sign-in → real session, real filter: Comms is refused board comp, CEO gets the Riverbend brief",
+    me.groups?.includes("comms") === true &&
+      refused.confidence === "refused" &&
+      served.confidence !== "refused" &&
+      (served.citations?.length ?? 0) >= 1
+  );
 }
 
 // 2. login → 302 to IdP

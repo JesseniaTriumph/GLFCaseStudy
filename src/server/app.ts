@@ -20,11 +20,12 @@ import { principalFromGroups } from "../security/auth.js";
 import { answerQuestion } from "../retrieval/answer.js";
 import { functionsForGroups } from "../roles.js";
 import { beginLogin, handleCallback, type OAuthConfig } from "./oauth.js";
-import { issueSession as _issue, verifySession, cookieHeader, clearCookieHeader, readCookie, revokeUser, revokeAll } from "./session.js";
+import { issueSession, verifySession, cookieHeader, clearCookieHeader, readCookie, revokeUser, revokeAll } from "./session.js";
+import { makeStaticHandler } from "./static.js";
+import { DEMO_PERSONAS, demoPersona } from "./demo-personas.js";
 import { RateLimiter } from "./limits.js";
 import { Monitor, type Signal } from "../security/monitor.js";
 import { AuditLog, type AuditEvent } from "../security/audit.js";
-void _issue;
 
 export interface ServerDeps {
   index: CorpusIndex;
@@ -43,6 +44,12 @@ export interface ServerDeps {
   onSignal?: (s: Signal) => void;
   /** append target for /api/feedback (default: eval/feedback.jsonl) */
   feedbackLog?: string;
+  /** absolute path to the built web app (web/dist). When set, the SPA is served same-origin. */
+  webRoot?: string;
+  /** mount `/auth/demo?persona=<key>` — issues a real session for a fictional user. Demo only. */
+  demoLogin?: boolean;
+  /** whether real Google OIDC is configured (drives what the web app's sign-in bar shows) */
+  oauthConfigured?: boolean;
 }
 
 /**
@@ -118,6 +125,7 @@ export function createApp(deps: ServerDeps) {
   const secure = deps.secureCookies ?? process.env.NODE_ENV === "production";
   const limiter = deps.limiter ?? new RateLimiter();
   const monitor = deps.monitor ?? new Monitor();
+  const serveStatic = makeStaticHandler(deps.webRoot);
 
   const record = (ev: AuditEvent) => {
     deps.audit?.append(ev);
@@ -145,10 +153,35 @@ export function createApp(deps: ServerDeps) {
     try {
       if (path === "/health") return json(res, 200, { ok: true, chunks: deps.index.chunks.length });
 
+      // What the web app needs to render its sign-in bar: is real Google sign-in wired,
+      // and is the demo persona switch available. No identity, nothing sensitive.
+      if (path === "/api/config") {
+        return json(res, 200, {
+          oauthConfigured: deps.oauthConfigured ?? false,
+          demoLogin: deps.demoLogin ?? false,
+          personas: deps.demoLogin ? DEMO_PERSONAS.map((p) => ({ key: p.key, label: p.label, note: p.note })) : [],
+          corpusLabel: deps.index.corpusLabel,
+        });
+      }
+
       // ---- auth ----
       if (path === "/auth/login" && req.method === "GET") {
         const { url: authUrl } = beginLogin(deps.oauth);
         res.writeHead(302, { location: authUrl });
+        return res.end();
+      }
+
+      // Demo sign-in: issue a REAL session for a fictional user. Every downstream check
+      // (permission filter, rate limit, audit, revocation) runs exactly as in production —
+      // only the identity provider is stubbed. Mounted only when `demoLogin` is on.
+      if (path === "/auth/demo" && deps.demoLogin) {
+        const persona = demoPersona(url.searchParams.get("persona") ?? "");
+        if (!persona) return json(res, 400, { error: "unknown persona", personas: DEMO_PERSONAS.map((p) => p.key) });
+        const token = issueSession({ sub: persona.sub, email: persona.email, name: persona.name, groups: persona.groups, groupsResolved: true });
+        record({ type: "auth", user: persona.email, result: "ok", reason: "demo" });
+        const wantsJson = (req.headers.accept ?? "").includes("application/json");
+        if (wantsJson) return json(res, 200, { ok: true, email: persona.email, name: persona.name }, { "set-cookie": cookieHeader(token, secure) });
+        res.writeHead(302, { location: "/", "set-cookie": cookieHeader(token, secure) });
         return res.end();
       }
 
@@ -290,6 +323,9 @@ export function createApp(deps: ServerDeps) {
         });
         return json(res, 200, ans);
       }
+
+      // Anything else: the built web app (same origin). Unknown /api|/auth|/admin paths 404.
+      if (!/^\/(api|auth|admin)\b/.test(path) && serveStatic(req, res, path)) return;
 
       return json(res, 404, { error: "not found" });
     } catch (e) {

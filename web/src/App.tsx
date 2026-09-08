@@ -82,10 +82,19 @@ function frag(s: string, onCite: (n: number) => void, active: number | null): Re
   return out;
 }
 
+type Me = { email: string; name?: string; groups: string[] };
+type ServerCfg = { oauthConfigured: boolean; demoLogin: boolean };
+
 export function App() {
   const { theme, setTheme } = useTheme();
   const [index, setIndex] = useState<CorpusIndex | null>(null);
   const [err, setErr] = useState<string | null>(null);
+  // null = still probing; true = an API server is serving this page (answers go through it);
+  // false = static host, retrieval runs in the browser with the persona switch.
+  const [serverMode, setServerMode] = useState<boolean | null>(null);
+  const [cfg, setCfg] = useState<ServerCfg | null>(null);
+  const [me, setMe] = useState<Me | null>(null);
+  const [needAuth, setNeedAuth] = useState(false);
   const [persona, setPersona] = useState<keyof typeof PERSONAS>("programs");
   const [tab, setTab] = useState<"ask" | "dossier" | "how">("ask");
   const [q, setQ] = useState("");
@@ -109,12 +118,40 @@ export function App() {
     }
   });
 
+  // Is this page served by the Compass API, or by a static host?
   useEffect(() => {
+    let done = false;
+    fetch("/api/config", { credentials: "include" })
+      .then((r) => (r.ok ? r.json() : Promise.reject()))
+      .then(async (c: ServerCfg) => {
+        done = true;
+        setCfg(c);
+        setServerMode(true);
+        let m: Me | null = await fetch("/api/me", { credentials: "include" }).then((r) => (r.ok ? r.json() : null));
+        // start the demo already signed in as the default persona, so the first question
+        // just works — real Google sign-in (when configured) is one click from the bar
+        if (!m && c.demoLogin) {
+          await fetch(`/auth/demo?persona=${persona}`, { headers: { accept: "application/json" }, credentials: "include" });
+          m = await fetch("/api/me", { credentials: "include" }).then((r) => (r.ok ? r.json() : null));
+        }
+        setMe(m);
+      })
+      .catch(() => {
+        if (!done) setServerMode(false);
+      });
+  }, []);
+
+  // The corpus index still backs the Grantee dossier + How-it-works views in both modes,
+  // and drives retrieval in offline mode. A miss is only fatal offline.
+  useEffect(() => {
+    if (serverMode === null) return;
     fetch("./corpus-index.json")
       .then((r) => (r.ok ? r.json() : Promise.reject(new Error("index not found — run `npm run build:index`"))))
       .then(setIndex)
-      .catch((e) => setErr(String(e)));
-  }, []);
+      .catch((e) => {
+        if (!serverMode) setErr(String(e));
+      });
+  }, [serverMode]);
 
   useEffect(() => {
     try {
@@ -126,25 +163,65 @@ export function App() {
   }, [deepDive, roleCtx]);
 
   async function ask(question: string) {
-    if (!index || !question.trim()) return;
+    if (!question.trim() || serverMode === null) return;
     setBusy(true);
     setActiveCite(null);
     setFb(null);
     setExternal(false);
-    const a = await answerQuestion(index, question.trim(), PERSONAS[persona].principal, {
-      followUps: deepDive,
-      roleContext: roleCtx ? { functions: personaFunctions(persona) } : undefined,
-    });
-    setAns(a);
-    setQ(question);
-    setBusy(false);
+    setNeedAuth(false);
+    try {
+      let a: Answer;
+      if (serverMode) {
+        const r = await fetch("/api/ask", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          credentials: "include",
+          body: JSON.stringify({ question: question.trim(), deepDive, roleContext: roleCtx }),
+        });
+        if (r.status === 401) {
+          setNeedAuth(true);
+          setAns(null);
+          return;
+        }
+        if (!r.ok) {
+          const e = (await r.json().catch(() => ({}))) as { error?: string };
+          setErr(e.error || `server error ${r.status}`);
+          return;
+        }
+        a = (await r.json()) as Answer;
+      } else {
+        if (!index) return;
+        a = await answerQuestion(index, question.trim(), PERSONAS[persona].principal, {
+          followUps: deepDive,
+          roleContext: roleCtx ? { functions: personaFunctions(persona) } : undefined,
+        });
+      }
+      setAns(a);
+      setQ(question);
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  // Server mode: switching persona means signing in as that fictional user, so the real
+  // server-side permission filter re-runs. Offline mode: it's a local principal swap.
+  async function switchPersona(key: keyof typeof PERSONAS) {
+    setPersona(key);
+    if (serverMode && cfg?.demoLogin) {
+      await fetch(`/auth/demo?persona=${encodeURIComponent(key)}`, {
+        headers: { accept: "application/json" },
+        credentials: "include",
+      });
+      const m = await fetch("/api/me", { credentials: "include" }).then((r) => (r.ok ? r.json() : null));
+      setMe(m);
+    }
   }
 
   // re-run when persona / deepDive / roleCtx changes and there's a live question
   useEffect(() => {
-    if (ans && q) void ask(q);
+    if ((ans || needAuth) && q) void ask(q);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [persona, deepDive, roleCtx]);
+  }, [persona, me, deepDive, roleCtx]);
 
   const orgs = useMemo(() => {
     if (!index) return [];
@@ -152,7 +229,14 @@ export function App() {
   }, [index]);
 
   if (err) return <div className="shell"><div className="loading">{err}</div></div>;
+  if (serverMode === null) return <div className="shell"><div className="loading">Connecting…</div></div>;
   if (!index) return <div className="shell"><div className="loading">Loading corpus…</div></div>;
+
+  const tiersOf = (groups: string[]) => {
+    const g = new Set(groups.map((x) => x.toLowerCase()));
+    const P = ["programs", "program-ops", "impact", "impact-measurement", "impact-director", "leadership", "ceo", "coo", "operations", "partnerships", "donor-engagement", "finance", "accounting", "grants-ops", "grants-compliance", "legal", "counsel"];
+    return [...g].some((x) => P.includes(x)) ? "team + programs-only" : "team";
+  };
 
   return (
     <div className="shell">
@@ -191,12 +275,28 @@ export function App() {
       </div>
       <div className="strip">
         <span className="lbl">Signed in as</span>
-        <select className="persona" value={persona} onChange={(e) => setPersona(e.target.value as keyof typeof PERSONAS)}>
+        <select className="persona" value={persona} onChange={(e) => void switchPersona(e.target.value as keyof typeof PERSONAS)}>
           {Object.entries(PERSONAS).map(([k, v]) => (
             <option key={k} value={k}>{v.label}</option>
           ))}
         </select>
-        <span className="persona-note">{PERSONAS[persona].note} · in production this is Google sign-in</span>
+        {serverMode ? (
+          <span className="persona-note">
+            {me ? (
+              <>
+                <b>{me.name ?? me.email}</b> · access: {tiersOf(me.groups)} · every answer runs through the server-side
+                permission filter{me.email.endsWith(".example") ? " (demo sign-in)" : ""}
+              </>
+            ) : needAuth ? (
+              <>not signed in — pick a persona above{cfg?.oauthConfigured ? <> or <a href="/auth/login">sign in with Google</a></> : ""}</>
+            ) : (
+              <>{PERSONAS[persona].note}</>
+            )}
+            {cfg?.oauthConfigured && me && !me.email.endsWith(".example") && <> · <a href="/auth/logout">sign out</a></>}
+          </span>
+        ) : (
+          <span className="persona-note">{PERSONAS[persona].note} · retrieval runs in your browser here; in production this is Google sign-in on the server</span>
+        )}
       </div>
       <div className="strip">
         <span className="lbl">Features</span>
@@ -389,13 +489,15 @@ export function App() {
       {tab === "how" && <HowItWorks index={index} />}
 
       <footer>
-        <b>What runs here:</b> the real pipeline output (`corpus-index.json`) with in-browser hybrid retrieval, the
-        retrieval-time permission filter, `Restricted`-tier exclusion, cited answers, coverage disclosure, and the
-        toggleable Deep dive — the same modules as the CLI and eval harness. <br />
+        <b>What runs here:</b>{" "}
+        {serverMode
+          ? "answers come from the Compass API on this same origin — every request carries your session, runs through the server-side permission filter, is rate-limited and written to the tamper-evident audit log. The permission boundary is real; only the identity provider is stubbed when you use a demo persona."
+          : "the real pipeline output (`corpus-index.json`) with in-browser hybrid retrieval and the retrieval-time permission filter — the same modules as the CLI and eval harness. On a static host like this one the filter runs client-side; the server build enforces it before anything reaches the browser."}
+        <br />
         <b>What is synthetic:</b> the corpus — grants, figures, quotes, and documents are illustrative composites built
         on public information about GitLab Foundation grantees, not real records. <br />
-        <b>What is stubbed for the demo:</b> Google sign-in (a persona switch stands in), deep-link targets (example
-        URLs), and generative answers (extractive by default; set `ANTHROPIC_API_KEY` for the CLI).
+        <b>What is stubbed:</b> {serverMode ? "the identity provider (a demo persona stands in for Google sign-in unless it's configured)" : "Google sign-in (a persona switch stands in)"}, deep-link targets (example
+        URLs), and generative answers (extractive by default; a zero-retention model is a config value).
       </footer>
     </div>
   );
@@ -403,7 +505,7 @@ export function App() {
 
 function Dossier({ index, persona }: { index: CorpusIndex; persona: keyof typeof PERSONAS }) {
   const principal = PERSONAS[persona].principal;
-  const allowed = new Set(principal.allowedTiers);
+  const allowed = new Set<string>(principal.allowedTiers);
   const pr = new Set([`user:${principal.userId}`, ...principal.groups.map((g) => `group:${g}`), "*"]);
   const canRead = (c: { restrictedStub?: boolean; tier: string; acl: string[] }) =>
     !c.restrictedStub && allowed.has(c.tier) && c.acl.some((a) => pr.has(a));
