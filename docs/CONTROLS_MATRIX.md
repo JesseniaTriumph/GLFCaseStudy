@@ -40,7 +40,7 @@ into `npm run ci`, so a regression on either blocks promotion.
 | RS-2 | Incident playbooks | CSF RS.MI, 800-53 IR-8 | `docs/INCIDENT_RESPONSE.md` (P1–P7); tabletop = `docs/TABLETOP_EXERCISE.md` | 📝 (playbooks written; not yet exercised) |
 | RS-3 | Third-party penetration test | SOC 2 CC4.1, 800-53 CA-8 | Scoped; external vendor; a Phase 3 exit criterion | 📝 |
 | SC-1 | Connector credentials in a KMS | 800-53 SC-12, SC-28, OWASP A02 | Designed; `secrets/` git-ignored; production = Cloud KMS / Secret Manager | 📝 |
-| SC-2 | Egress allowlist | 800-53 SC-7, OWASP A10 | Designed; production network policy. Known SSRF vector (connector pagination) already fixed in code: `sameHost()` check + page cap (`src/adapters/givingData.ts`) | 🟡 |
+| SC-2 | Egress allowlist | 800-53 SC-7, OWASP A10 | In-process `fetch` guard (`src/util/egress.ts`, unit-tested): allowlist from the enabled connectors + IdP, cloud-metadata (169.254.169.254) and RFC-1918 blocked by default, report-only → enforce via `COMPASS_EGRESS_ENFORCE=1`. Network-layer policy is the primary control. Connector-pagination SSRF fixed separately (`sameHost()` + page cap) | 🟡 (code) / ⬜ (network) |
 | SC-3 | Dependency vulnerability gate | 800-53 RA-5, SI-2, OWASP A06 | `npm run deps:audit` fails the CI gate on any high/critical advisory in shipping deps (root runtime + web runtime). The transformers.js backends are `optionalDependencies` (their libvips/onnxruntime advisories are informational — reachable only with `COMPASS_TRANSLATE=mt`, `COMPASS_PII_NER=true`, or an `--embed` build) | ✅ |
 | SC-4 | Parameterized queries | 800-53 SI-10, OWASP A03 | The SQL permission filter uses bound parameters only (`WHERE tier = ANY($1) AND acl && $2`); no string-built SQL. Answer text is rendered as escaped markdown, never raw HTML | ✅ |
 
@@ -57,7 +57,7 @@ into `npm run ci`, so a regression on either blocks promotion.
 | A07 | Identification & auth failures | Google OIDC Authorization-Code + PKCE + `state`; `iss/aud/exp/iat/hd/email_verified` all checked; constant-time session verify; 8 h TTL; per-user + global server-side revocation; logout revokes (AC-1, AC-4) | ✅ |
 | A08 | Software & data integrity failures | Hash-chained tamper-evident audit log; build manifest = git commit + content digest; content-addressed raw store; CI promotion gate (IN-2, IN-3, AI-5) | ✅ |
 | A09 | Logging & monitoring failures | Tamper-evident JSONL audit; `src/security/monitor.ts` raises restricted-probing / auth-brute / broad-sweep / withheld-surge / cost-spike signals; off-host streaming hook; `GET /admin/stats` (IN-3, IN-4, MO-1, MO-2) | ✅ / 🟡 (off-host sink) |
-| A10 | Server-side request forgery (SSRF) | Connector-pagination SSRF fixed: `sameHost()` check + 10 000-page cap (`src/adapters/givingData.ts`); egress allowlist designed for the production network (SC-2) | 🟡 |
+| A10 | Server-side request forgery (SSRF) | Connector-pagination SSRF fixed: `sameHost()` check + 10 000-page cap. In-process egress `fetch` guard (`src/util/egress.ts`) — allowlist + metadata/RFC-1918 block, enforce with one env flag. Network-layer egress policy still belongs in the deployment (SC-2) | 🟡 |
 
 ## OWASP Top 10 for LLM Applications (2025)
 

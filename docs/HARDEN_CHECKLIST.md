@@ -47,7 +47,7 @@ regression is a hard stop, not a warning.
 | Web app CSP: `self` + Google Fonts only, no third-party script/frame/xhr | ✅ | Self-host the two fonts to remove even that one third-party origin (~1 hour). |
 | TLS 1.2+ only, HSTS preload, HTTPS enforced at the load balancer | ⬜ | Deployment config. |
 | No public inbound except 443; API, Redis, audit sink, raw store on a private network | ⬜ | Deployment / network policy. |
-| Egress allowlist (the server can only reach the connector APIs + the IdP) | ⬜ | Network policy. The one code-path SSRF vector (connector pagination) is already fixed: `sameHost()` + page cap. |
+| Egress allowlist (the server can only reach the connector APIs + the IdP) | 🟡 (**in-process guard built**) | `src/util/egress.ts` wraps `fetch`: allowlist derived from the enabled connectors, cloud-metadata + RFC-1918 blocked by default, report-only unless `COMPASS_EGRESS_ENFORCE=1`. The network-layer policy (firewall / NetworkPolicy) is still the primary control. The one code-path SSRF vector (connector pagination) was already fixed: `sameHost()` + page cap. |
 | Container image scanning in the deploy pipeline | ⬜ | Trivy / Grype in CI. `npm run deps:audit` already covers the npm tree. |
 
 ## 4 · Prompt injection & LLM attack surface

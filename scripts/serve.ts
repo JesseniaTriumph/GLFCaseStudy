@@ -21,6 +21,19 @@ import { createApp } from "../src/server/app.js";
 import { claudeLLM } from "../src/retrieval/llm.js";
 import { AuditLog, webhookSink } from "../src/security/audit.js";
 import { resolveGroupResolver } from "../src/security/directory.js";
+import { installEgressGuard, defaultAllowlist } from "../src/util/egress.js";
+
+// Egress allowlist (OWASP A10). Report-only unless COMPASS_EGRESS_ENFORCE=1.
+const egressAllow = defaultAllowlist();
+if (process.env.COMPASS_EGRESS_ENFORCE === "1") {
+  installEgressGuard(egressAllow);
+  console.log(`egress: ENFORCED — allowlist: ${egressAllow.join(", ")}`);
+} else {
+  installEgressGuard(egressAllow, {
+    onBlock: (host, url) => console.warn(`[EGRESS] would block ${host} (${url.slice(0, 80)}) — set COMPASS_EGRESS_ENFORCE=1 to enforce`),
+  });
+  console.log(`egress: report-only (${egressAllow.length} hosts allowed) — set COMPASS_EGRESS_ENFORCE=1 to enforce`);
+}
 
 const { adapters, report } = await resolveAdapters();
 report.forEach((l) => console.log(`connector · ${l}`));
