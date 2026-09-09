@@ -45,9 +45,9 @@
     "deps:audit": "tsx scripts/deps-audit.ts"
   },
   "devDependencies": {
-    "@types/node": "^22.9.0",
-    "eslint": "^9.39.5",
-    "eslint-plugin-react-hooks": "^5.2.0",
+    "@types/node": "^26.4.1",
+    "eslint": "^10.10.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
     "tsx": "^4.19.2",
     "typescript": "^5.6.3",
     "typescript-eslint": "^8.70.0"
