@@ -135,6 +135,13 @@ none of this blocks a pilot — but the answers set the timeline for written ans
   This decides whether translation-at-intake is a core feature or an edge case. *(Compass
   already retrieves Spanish documents from an English question and can render them into
   English in the answer, with the citation still pointing to the Spanish original.)*
+- **Staff language.** Separate from the documents: does any Foundation staff member work
+  primarily in a language other than English and expect to *ask and read answers* in that
+  language, rather than only having non-English source documents rendered into English?
+  If yes, Compass needs a per-user language preference and a bidirectional render (answer
+  in the reader's language, citations still pointing to originals) — the translator
+  interface is already there; it's one direction today. If no, the current
+  English-out design is correct and this stays out of scope.
 - **Reporting cadence.** Is reporting frequency uniform, or does it vary by grant / fund /
   grantee (quarterly, semi-annual, annual, biennial, final-only)? Is the reporting period
   based on the grant year, the calendar year, or the Foundation's fiscal year? Compass

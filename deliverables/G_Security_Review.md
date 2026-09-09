@@ -131,10 +131,13 @@ Asset: board/comp memo, another portfolio's diligence notes. Entry: the query bo
 (boundary 2). Path: phrase a query that lexically matches the restricted topic and hope
 retrieval returns the passage. Expected protection: retrieval-time filter
 (`tier ∈ allowedTiers AND acl ∩ principals`) + `restricted` **not in the index at all**
-(metadata stub only). Test: `npm run eval` cases `board-compensation-restricted` (refused,
-nothing leaked) and `declined-applicant-wrong-persona` (an out-of-group user is refused
-17 matching passages). **Result: 8/8 eval, 0 leakage findings.** A control that also needs
-a red-team with adversarial phrasings before production (`DOCUMENTED`).
+(metadata stub only). Test: `npm run eval` cases `board-compensation-restricted` and
+`legal-confidentiality-clause-restricted` (both refused on the topic alone, nothing
+leaked, adjacent grant record not used), `legal-agreement-terms-answerable` (the mirror —
+ordinary reporting/payment terms still answer), and `declined-applicant-wrong-persona`
+(an out-of-group user is refused matching passages). **Result: 46/46 eval, 25/25 full,
+17/17 red-team, 0 leakage findings** — including `probe-legal-privileged-many-angles` and
+`probe-restricted-many-angles` adversarial phrasings (`VERIFIED`).
 
 ### A2 — Indirect prompt injection via an ingested document `RESULT: partial` `INFERRED`
 Asset: model behavior, other-tier context. Entry: a grantee report or (future) chat

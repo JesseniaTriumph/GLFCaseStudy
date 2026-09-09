@@ -139,7 +139,7 @@ Narrow the corpus or the user group. **Never** skip a security exit criterion.
 ## Build status (what's done in `compass/` vs. what needs the Foundation)
 
 **Every capability in the plan is built and tested** (`npm run ci` — deps:audit · eval
-44/44 · eval:pg 44/44 · eval:full 24/24 · redteam 16/16 · security 9/9 · server 17/17).
+46/46 · eval:pg 46/46 · eval:full 25/25 · redteam 17/17 · security 9/9 · server 17/17).
 What's left is not engineering — it splits three ways:
 
 1. **Only the Foundation's people can produce it** — the real 50–100-question gold set
@@ -174,7 +174,10 @@ is one setting).
 re-scores the top ~30 permitted hits, opt-in via `COMPASS_RERANK=1`, strictly after the
 permission filter. `npm run eval:metrics` (recall@k / MRR / nDCG, rerank A/B) shows recall@1
 +0.20 on the default corpus and +0.60 on the 5-year corpus, no misses added. The synthetic
-gold set is now **44 + 24 cases** covering every behavior. A live demo runs on Render
+gold set is now **46 + 25 cases** covering every behavior — including **privileged legal
+material** (counsel advice, confidentiality / indemnification clauses), now refused on the
+topic alone like board compensation and declined applicants, with a planted fixture and a
+mirror case proving ordinary agreement terms still answer. A live demo runs on Render
 (`docs/DEMO_HOSTING.md`), redeployed on each push to `main`.
 
 **Done before:** the web app is now served by the API on one origin (`npm run demo`) — every
@@ -231,7 +234,7 @@ Full detail: **`docs/BUILD_NOW_VS_HANDOFF.md`**. Nothing below stops a pilot.
 | 1.3 | Credential-activated connectors; mock fallback | The keys in `.env` (`docs/CONNECTORS.md`) |
 | 1.4 | **Extractive mode** — cited passages, no AI vendor, $0 | A generative backend under a zero-retention agreement, or a self-hosted model — one setting (`docs/BUILD_NOW_VS_HANDOFF.md`) |
 | 1.5, 1.6, 1.8 | Tier policy, source-of-truth matrix, V1 corpus — **drafted** in `docs/` | The data owner's sign-off |
-| 1.7 | `eval/gold.json` (44) + `eval/gold-full.json` (24) — every behavior covered | The 50–100 real questions, built *with* the Programs team |
+| 1.7 | `eval/gold.json` (46) + `eval/gold-full.json` (25) — every behavior covered | The 50–100 real questions, built *with* the Programs team |
 | 1.1, 1.9 | Documented role → question mapping (`docs/ROLES_AND_USERS.md`); timing-sheet template | Confirmation from 3–5 interviews + real baseline timings |
 | 4.8 | `docs/TABLETOP_EXERCISE.md` — full scenario | Running it once with the DRI, COO's office, counsel |
 

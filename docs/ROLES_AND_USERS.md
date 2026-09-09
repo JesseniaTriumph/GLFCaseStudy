@@ -172,7 +172,8 @@ is it handled?"
 **Nexus:** distinct from operations — People handles personnel, hiring, compensation. **This
 function is rarely a Compass user for grant knowledge**, and compensation / personnel data
 is `Restricted` and out of scope entirely. Listed here so it's explicit that HR ≠ ops ≠
-finance ≠ legal, and that board/staff compensation questions are refused for everyone.
+finance ≠ legal, and that board/staff compensation questions — like privileged legal
+material and declined-applicant diligence — are refused for everyone, on the topic alone.
 **Sees:** team tier only (for grant knowledge); no access to any compensation data through Compass.
 
 ### Communications & Marketing

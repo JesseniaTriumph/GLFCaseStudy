@@ -25,8 +25,11 @@
   --flag: #a3302a;
   --flag-bg: #f6e0dd;
   --shadow: 0 1px 2px rgba(11, 11, 11, .06), 0 10px 28px rgba(11, 11, 11, .07);
+  /* Their type system (gitlabfoundation.org): Inter for headings + reading text,
+     Poppins for chrome (nav, buttons, labels). */
   --font-display: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-body: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-ui: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
 }
 :root[data-theme="dark"] {
@@ -59,12 +62,12 @@ body {
   background: var(--ground);
   color: var(--body);
   font-family: var(--font-body);
-  font-weight: 300;
+  font-weight: 400;
   font-size: 15px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
-h1, h2, h3 { font-family: var(--font-display); color: var(--ink); margin: 0; font-weight: 800; letter-spacing: -.015em; }
+h1, h2, h3 { font-family: var(--font-display); color: var(--ink); margin: 0; font-weight: 800; letter-spacing: normal; }
 a { color: var(--accent-text); }
 button { font-family: inherit; cursor: pointer; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
@@ -85,17 +88,17 @@ button { font-family: inherit; cursor: pointer; }
 
 /* persona + corpus strip */
 .strip { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 12px; }
-.strip .lbl { font-size: 10.5px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-right: 2px; }
+.strip .lbl { font-family: var(--font-ui); font-size: 10.5px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-right: 2px; }
 .chip { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; padding: 5px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--body); }
 .chip .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--good); flex-shrink: 0; }
 .chip.off { color: var(--muted); } .chip.off .dot { background: var(--line-strong); }
 .chip .rng { font-family: var(--font-mono); font-size: 10.5px; color: var(--muted); }
 select.persona { font-family: var(--font-body); font-size: 12.5px; padding: 5px 8px; border: 1px solid var(--line-strong); border-radius: 8px; background: var(--surface); color: var(--ink); }
-.persona-note { font-size: 11.5px; color: var(--muted); }
+.persona-note { font-family: var(--font-ui); font-size: 11px; color: var(--muted); }
 
 /* tabs */
 .tabs { display: flex; gap: 22px; margin: 20px 0 16px; }
-.tabs button { background: none; border: none; padding: 6px 0; font-family: var(--font-display); font-weight: 700; font-size: 15px; color: var(--muted); border-bottom: 2px solid transparent; }
+.tabs button { background: none; border: none; padding: 6px 0; font-family: var(--font-ui); font-weight: 600; font-size: 15px; color: var(--muted); border-bottom: 2px solid transparent; }
 .tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
 
 /* split */
@@ -110,13 +113,13 @@ select.persona { font-family: var(--font-body); font-size: 12.5px; padding: 5px 
 .askbar { display: flex; gap: 8px; margin-bottom: 20px; }
 .askbar input { flex: 1; font-family: var(--font-body); font-size: 14px; padding: 11px 13px; border: 1.5px solid var(--line-strong); border-radius: 10px; background: var(--surface); color: var(--ink); }
 .askbar input:focus { border-color: var(--accent); outline: none; }
-/* white on brand orange = 4.22:1 — the Foundation's own button contrast (gitlabfoundation.org);
-   kept for brand parity, sized/weighted to sit in WCAG's large-text band */
-.askbar button { background: var(--accent); color: #fff; border: none; border-radius: 10px; padding: 0 22px; font-weight: 700; font-size: 15px; letter-spacing: .02em; }
+/* their button: Poppins 500, full pill, slight tracking, white on brand orange
+   (gitlabfoundation.org — 4.22:1, their own contrast; sized into WCAG's large-text band) */
+.askbar button { background: var(--accent); color: #fff; border: none; border-radius: 999px; padding: 0 24px; font-family: var(--font-ui); font-weight: 500; font-size: 15px; letter-spacing: .03em; }
 .askbar button:hover:not(:disabled) { background: #c8371f; }
 .askbar button:disabled { opacity: .5; }
 
-.question { font-family: var(--font-display); font-weight: 800; font-size: 18px; letter-spacing: -.01em; color: var(--ink); line-height: 1.4; padding-left: 13px; border-left: 3px solid var(--accent); margin-bottom: 12px; }
+.question { font-family: var(--font-display); font-weight: 800; font-size: 18px; letter-spacing: normal; color: var(--ink); line-height: 1.4; padding-left: 13px; border-left: 3px solid var(--accent); margin-bottom: 12px; }
 
 .answer-card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow); overflow: hidden; }
 .answer-body { padding: 16px 18px 4px; }
@@ -161,7 +164,7 @@ select.persona { font-family: var(--font-body); font-size: 12.5px; padding: 5px 
 /* rail */
 .rail { position: sticky; top: 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); box-shadow: var(--shadow); overflow: hidden; }
 @media (max-width: 900px) { .rail { position: static; } }
-.rail h3 { font-family: var(--font-body); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); padding: 13px 15px 9px; }
+.rail h3 { font-family: var(--font-ui); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); padding: 13px 15px 9px; }
 .rail-scroll { max-height: 66vh; overflow-y: auto; }
 @media (max-width: 900px) { .rail-scroll { max-height: none; } }
 .src { display: block; padding: 11px 15px; border-top: 1px solid var(--line); text-decoration: none; color: inherit; }
@@ -184,16 +187,16 @@ select.persona { font-family: var(--font-body); font-size: 12.5px; padding: 5px 
 /* deep dive */
 .dd { margin-top: 12px; border: 1px solid var(--line); border-left: 3px solid var(--amber); border-radius: 10px; background: var(--surface); overflow: hidden; }
 .dd-head { display: flex; align-items: center; gap: 8px; padding: 10px 13px; font-family: var(--font-display); font-weight: 700; font-size: 13px; color: var(--ink); }
-.dd-head .n { font-family: var(--font-body); font-weight: 300; color: var(--muted); font-size: 11.5px; }
-.dd-head label { margin-left: auto; font-family: var(--font-body); font-weight: 300; font-size: 11px; color: var(--body); display: inline-flex; gap: 5px; align-items: center; }
+.dd-head .n { font-family: var(--font-body); font-weight: 400; color: var(--muted); font-size: 11.5px; }
+.dd-head label { margin-left: auto; font-family: var(--font-ui); font-weight: 400; font-size: 11px; color: var(--body); display: inline-flex; gap: 5px; align-items: center; }
 .dd-body { padding: 0 13px 13px; display: grid; gap: 11px; }
-.dd-g h5 { margin: 0 0 4px; font-family: var(--font-body); font-size: 10.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 600; }
+.dd-g h5 { margin: 0 0 4px; font-family: var(--font-ui); font-size: 10.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 600; }
 .dd-g ul { margin: 0; padding-left: 15px; font-size: 12.5px; color: var(--body); }
 .dd-g li { margin-bottom: 3px; }
 .dd-who .r { color: var(--muted); } .dd-who .ext { color: var(--warn); font-size: 10.5px; }
 .dd-email { border: 1px solid var(--line); border-radius: 8px; background: var(--surface-2); padding: 9px 11px; font-size: 12px; }
 .dd-email .to { font-family: var(--font-mono); font-size: 10.5px; color: var(--accent-text); }
-.dd-email pre { margin: 5px 0 0; white-space: pre-wrap; font-family: var(--font-body); font-weight: 300; font-size: 12px; color: var(--body); line-height: 1.5; }
+.dd-email pre { margin: 5px 0 0; white-space: pre-wrap; font-family: var(--font-body); font-weight: 400; font-size: 12px; color: var(--body); line-height: 1.5; }
 
 /* dossier */
 .dossier-search { width: 100%; max-width: 340px; padding: 7px 11px; border: 1px solid var(--line); border-radius: 8px;
@@ -214,7 +217,7 @@ select.persona { font-family: var(--font-body); font-size: 12.5px; padding: 5px 
 .dossier h2 { font-size: 22px; margin-bottom: 2px; }
 .dossier .geo { font-size: 12px; color: var(--muted); font-family: var(--font-mono); }
 .dossier-sec { border-top: 1px solid var(--line); padding: 14px 0; }
-.dossier-sec h4 { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-family: var(--font-body); margin-bottom: 9px; }
+.dossier-sec h4 { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-family: var(--font-ui); margin-bottom: 9px; }
 .dgrid { display: grid; grid-template-columns: 130px 1fr; gap: 8px 14px; font-size: 13px; }
 .dgrid .k { color: var(--muted); font-size: 11.5px; }
 .pill-src { font-family: var(--font-mono); font-size: 9px; text-transform: uppercase; color: var(--muted); border: 1px solid var(--line); border-radius: 3px; padding: 0 3px; margin-left: 5px; }

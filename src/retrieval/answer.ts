@@ -98,13 +98,18 @@ export async function answerQuestion(
   const topBm25 = firstPass[0]?.bm25 ?? 0;
   const strongRealHits = firstPass.filter((h) => h.bm25 > 2 || h.semantic > 0.12).length;
   const restrictedMatched = withheld.tiers.includes("restricted");
-  // The question is *about* a restricted category — board/exec compensation, or a
-  // declined/rejected applicant. Those categories are held out of the index by policy, so
-  // refuse on the intent alone: the honest answer is "that isn't retrievable", not "I found
-  // nothing", and not a confident answer built from adjacent team-tier material.
+  // The question is *about* a restricted category — board/exec compensation, a
+  // declined/rejected applicant, or privileged legal material (counsel advice,
+  // confidentiality/indemnification clauses). Those categories are held out of the index by
+  // policy, so refuse on the intent alone: the honest answer is "that isn't retrievable",
+  // not "I found nothing", and not a confident answer built from adjacent team-tier
+  // material. The legal clause deliberately does NOT fire on ordinary agreement questions
+  // ("what reporting cadence / payment schedule did we agree") — that's team-tier and
+  // answerable; it targets confidentiality/secondary-use clauses and counsel's positions.
   const restrictedTopic =
     /\bsalary (band|range)|\bcompensation (review|figure|band|range|package)|\b(staff|executive|board|leadership) (compensation|pay|salar)|\b(compensation|salar\w+|pay)\b[\s\S]{0,40}\bboard\b|\bboard\b[\s\S]{0,40}\b(compensation|salar\w+)\b/i.test(question) ||
-    /\b(declin\w*|rejected?|turned down|passed on|unsuccessful|not funded|didn'?t fund)\b[\s\S]{0,30}\bapplica|\bapplica\w*[\s\S]{0,30}\b(declin\w*|rejected?|turn\w* down|pass\w* on|not fund|didn'?t fund)/i.test(question);
+    /\b(declin\w*|rejected?|turned down|passed on|unsuccessful|not funded|didn'?t fund)\b[\s\S]{0,30}\bapplica|\bapplica\w*[\s\S]{0,30}\b(declin\w*|rejected?|turn\w* down|pass\w* on|not fund|didn'?t fund)/i.test(question) ||
+    /\bwhat did (counsel|legal|the lawyers?|our attorneys?|outside counsel)\b|\b(counsel|outside counsel|legal team|our attorneys?)('s)? (advice|opinion|guidance|position|assessment|memo|recommendation)|\b(confidential(ity)?|non-disclosure|nda|secondary[- ]use|data[- ]use)\b[\s\S]{0,40}\b(clause|provision|term|restriction|obligation|agreement)|\b(clause|provision|terms?)\b[\s\S]{0,40}\b(confidential|non-disclosure|secondary use|limit\w* (its|our|the foundation'?s) use)|\bindemnif\w*|\bside letter\b|\blegal review\b|\bprivileged\b[\s\S]{0,20}\b(memo|advice|document|material)|\battorney[- ]client\b/i.test(question);
   // Beyond that, restricted stubs only block when there's essentially no real material and a
   // stub matches at least as well as our best hit — so a broad thesis question with plenty
   // of real grants is never blocked just because declined applicants exist in that thesis.
