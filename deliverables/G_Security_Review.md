@@ -362,7 +362,7 @@ confirmation); the promotion gate is automatic (`npm run ci`); off-host audit **
    `429` + `Retry-After`. Production swaps the in-process store for Redis so it holds
    across replicas.
 4. ~~The OAuth callback + session layer~~ **built** (`src/server/`, `npm run server:check`
-   9/9). Real connector credentials, a KMS for those secrets, and off-host audit
+   20/20). Real connector credentials, a KMS for those secrets, and off-host audit
    streaming remain design-only.
 5. Monitoring: **detection layer built** (`src/security/monitor.ts` — restricted-probing,
    auth-brute, broad-sweep, withheld-surge, cost-spike, each mapped to an IR playbook).
