@@ -53,7 +53,7 @@ The six evidence stages (`TRD.md`, `ARCHITECTURE.md`): **Connect → Preserve �
 | 2.2 | **Preserve:** raw objects stored with version + ACL + content hash; extraction-confidence gate; quarantine | low-confidence items visible on the ops view, not indexed | 2.1 | `src/pipeline/run.ts`, `LOGIC_TREES.md` §3 | ✓ (logic) → ☐ (store) |
 | 2.3 | **Resolve:** entity graph for ~30 grants; grant↔org join; dedupe (exact/near/cross-system); low-confidence → review queue | dossier assembles from all connected systems for the 30 | 2.2, 1.6 | `DATA_MODEL.md`, `src/pipeline/run.ts` | ✓ (logic) → ☐ (queue UI) |
 | 2.4 | **Retrieve:** Postgres + pgvector; hybrid (dense + BM25); **retrieval-time ACL filter in SQL**; `Restricted` excluded (stub only) | `npm run eval` green against the real slice; zero leaks | 2.3 | `src/retrieval/search.ts`, `TRD.md` §3 | ✓ (in-memory) → ☐ (pg) |
-| 2.5 | BGE-M3 embeddings + bge-reranker served; swap the tf-idf stand-in | retrieval quality ≥ agreed bar (RAGAS) | 2.4 | `PRIOR_ART.md` §Embeddings | ☐ |
+| 2.5 | BGE-M3 embeddings + bge-reranker served; swap the tf-idf stand-in | retrieval quality ≥ agreed bar (RAGAS) | 2.4 | `PRIOR_ART.md` §Embeddings | ✓ (bge-small embed + bge-reranker-base cross-encoder, opt-in) → ☐ (bge-m3 multilingual on GPU) |
 | 2.6 | **Answer:** evidence brief — strict schema, inline deep-link citations, coverage line, confidence (from evidence, not the model), abstention | matches the wireframe; refuses on the restricted question | 2.4 | `src/retrieval/answer.ts`, `WIREFRAMES.md` §1 | ✓ |
 | 2.7 | Web app: Google OIDC + session; Ask + brief + sources rail + Deep dive + dossier | a partner completes the core flow end-to-end | 2.6 | `web/`, `src/security/auth.ts`, `USER_FLOWS.md` | ✓ (persona stand-in) → ☐ (OIDC callback) |
 | 2.8 | Security controls **in the slice:** SSO+MFA, secrets manager, tamper-evident audit log, kill switch, step-up for admin | `npm run security` green; kill switch tested | 2.7 | `src/security/`, `G_Security_Review.md` §HARDEN | ✓ (token verify + audit) → ☐ (session + kill switch) |
@@ -139,13 +139,17 @@ Narrow the corpus or the user group. **Never** skip a security exit criterion.
 ## Build status (what's done in `compass/` vs. what needs the Foundation)
 
 **Every capability in the plan is built and tested** (`npm run ci` — deps:audit · eval
-12/12 · eval:pg 12/12 · eval:full 12/12 · redteam 16/16 · security 9/9 · server 16/16).
+44/44 · eval:pg 44/44 · eval:full 24/24 · redteam 16/16 · security 9/9 · server 17/17).
 What's left is not engineering — it splits three ways:
 
 1. **Only the Foundation's people can produce it** — the real 50–100-question gold set
    with verified answers (1.7), design partners using it weekly (2.10), baseline task
    timings (1.9), full-team onboarding (3.9), a named trained owner (4.6), the discovery
-   interviews (1.1). A gold set I write only tests whether Compass agrees with *me*.
+   interviews (1.1). The synthetic gold set is now 44 cases (`eval/gold.json`) + 24
+   full-corpus cases (`eval/gold-full.json`) covering every behavior — retrieval, synthesis,
+   restricted/declined/wrong-persona refusal, conflict surfacing, Spanish, PII quarantine,
+   portfolio-schedule, dossier, abstention, injection. It still only tests whether Compass
+   agrees with *me*; the real questions come from a session with the Programs team.
 2. **Only the Foundation can authorize** — least-privilege credentials (1.3), the
    zero-retention LLM agreement + DPA + Colombia/Kenya determination (1.4), the data
    owner's sign-off on the tier policy / source-of-truth matrix / v1 corpus (1.5, 1.6,
@@ -158,11 +162,13 @@ What's left is not engineering — it splits three ways:
    store, a KMS for secrets, off-host audit *storage* (the streaming hook exists), running
    the tabletop (4.8 — scenario written). Step-by-step: `docs/DEPLOY_CHECKLIST.md`.
 
-Nice-to-haves that are *not* blockers and could go deeper: a cross-encoder reranker (2.5),
-a fuller native Expo app (4.4 — the web app is now an installable PWA covering iOS +
-Android; native is only for MDM-catalog distribution or deep biometric integration), an
-impact-model connector (3.1 — needs the discovery answer on where the model lives; see
-`E_Discovery_Questions.md` §5).
+Nice-to-haves that are *not* blockers and could go deeper: a fuller native Expo app
+(4.4 — the web app is now an installable PWA covering iOS + Android; native is only for
+MDM-catalog distribution or deep biometric integration), an impact-model connector
+(3.1 — needs the discovery answer on where the model lives; see `E_Discovery_Questions.md`
+§5), and swapping the English `bge-reranker-base` for the multilingual `bge-reranker-v2-m3`
+on a GPU endpoint (2.5 — the rerank stage is wired and `COMPASS_RERANK`-gated; the model id
+is one setting).
 
 **Done since:** the web app is now served by the API on one origin (`npm run demo`) — every
 answer runs through the real server-side permission filter, not a client-side switch; the
@@ -185,7 +191,7 @@ New docs: pen-test SOW, `DEPLOY_CHECKLIST.md`, `Q_Data_Owner_Signoff.md`.
 | 2.2 | Preserve — immutable content-addressed raw store (`src/pipeline/rawstore.ts`) + manifest. Extraction-confidence + injection quarantine. |
 | 2.3 | Resolve — entity graph, grant↔org join, dedupe (exact/near/cross-system), **entity review queue** (`/admin/review`, `build:index` output). |
 | 2.4 | Retrieve — hybrid BM25 + tf-idf; **permission filter as a SQL `WHERE` clause** (`src/db/store.ts`, `npm run eval:pg` 12/12, 0 leaks); Restricted excluded. |
-| 2.5 | Learned embeddings — `bge-small` + `minilm` registered (`src/embed/embedder.ts`), via transformers.js, opt-in (`--embed`), eval-passing. bge-m3 (multilingual) + a cross-encoder reranker are the planned upgrades — not yet wired. |
+| 2.5 | Learned embeddings — `bge-small` + `minilm` registered (`src/embed/embedder.ts`), via transformers.js, opt-in (`--embed`), eval-passing. **Cross-encoder reranker** (`src/embed/reranker.ts` + `src/retrieval/rerank.ts`) — `bge-reranker-base` re-scores the top ~30 permitted hits, opt-in via `COMPASS_RERANK=1`, runs *after* the permission filter so it has no security surface; `npm run eval:rerank` + `npm run eval:metrics` (recall@k / MRR / nDCG A/B). bge-m3 multilingual on a GPU endpoint is the planned upgrade — one model id. |
 | 2.6 | Answer — evidence brief, inline deep-link citations, coverage line, **operational confidence** (coverage/agreement/freshness/completeness), abstention, **conflict surfacing**. |
 | 2.7 | Web app + the **full OIDC Authorization-Code + PKCE flow** (`src/server/`, `npm run server:check` 16/16). Served by the API on one origin (`npm run demo`) — every answer through the server-side filter; persona switch = real demo sign-in; real Google OIDC via `docs/DEMO_HOSTING.md`. Installable PWA. "How it works" panel. Embeddable widget. |
 | 2.8 | SSO+MFA-ready, session + **server-side revocation**, tamper-evident audit log, **kill switch**, admin-group gating. |
@@ -218,7 +224,7 @@ Full detail: **`docs/BUILD_NOW_VS_HANDOFF.md`**. Nothing below stops a pilot.
 | 1.3 | Credential-activated connectors; mock fallback | The keys in `.env` (`docs/CONNECTORS.md`) |
 | 1.4 | **Extractive mode** — cited passages, no AI vendor, $0 | A generative backend under a zero-retention agreement, or a self-hosted model — one setting (`docs/BUILD_NOW_VS_HANDOFF.md`) |
 | 1.5, 1.6, 1.8 | Tier policy, source-of-truth matrix, V1 corpus — **drafted** in `docs/` | The data owner's sign-off |
-| 1.7 | `eval/gold.json` (12) + `eval/gold-full.json` (12) | The 50–100 real questions, built *with* the Programs team |
+| 1.7 | `eval/gold.json` (44) + `eval/gold-full.json` (24) — every behavior covered | The 50–100 real questions, built *with* the Programs team |
 | 1.1, 1.9 | Documented role → question mapping (`docs/ROLES_AND_USERS.md`); timing-sheet template | Confirmation from 3–5 interviews + real baseline timings |
 | 4.8 | `docs/TABLETOP_EXERCISE.md` — full scenario | Running it once with the DRI, COO's office, counsel |
 

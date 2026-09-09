@@ -1,5 +1,7 @@
 import type { Answer, Citation, CorpusIndex, Principal } from "../core/types.js";
 import { retrieve, mayRead, type Scored, type RetrieveResult } from "./search.js";
+import { rerankHits, RERANK_POOL } from "./rerank.js";
+import { getConfiguredReranker, type Reranker } from "../embed/reranker.js";
 import { suggestFollowups } from "./followups.js";
 import { currentSeasons, interpretQuery, type FunctionKey } from "../roles.js";
 import { grantCycle, portfolioDeadlines } from "../grant-cycle.js";
@@ -31,6 +33,13 @@ export interface AnswerOptions {
     k: number,
     queryDense?: number[]
   ) => RetrieveResult | Promise<RetrieveResult>;
+  /**
+   * Cross-encoder reranker over the retrieved passage pool (roadmap 2.5). Runs strictly
+   * after the retriever's permission filter, so it only reorders passages the caller may
+   * already read. `undefined` (default) uses whatever `COMPASS_RERANK` selects — usually
+   * none; pass `null` to force it off, or a `Reranker` to force one on.
+   */
+  reranker?: Reranker | null;
 }
 
 /**
@@ -59,7 +68,15 @@ export async function answerQuestion(
     if (e) queryDense = (await e.embed([question]))[0];
   }
 
-  const { hits, withheld } = await (opts.retriever ?? retrieve)(index, question, principal, opts.k ?? 8, queryDense);
+  const wantK = opts.k ?? 8;
+  // Reranking (off unless COMPASS_RERANK is set): pull a wider candidate pool so the
+  // cross-encoder has something to reorder, then trim back to wantK. The retrieval-quality
+  // signals below (topWeak / strongRealHits / restricted logic) read the FIRST-PASS pool,
+  // so reranking only changes which passages are cited — never whether Compass answers.
+  const reranker = opts.reranker === undefined ? await getConfiguredReranker() : opts.reranker;
+  const fetchK = reranker ? Math.max(wantK, RERANK_POOL) : wantK;
+  const { hits: firstPass, withheld } = await (opts.retriever ?? retrieve)(index, question, principal, fetchK, queryDense);
+  const hits = (reranker ? await rerankHits(question, firstPass, reranker) : firstPass).slice(0, wantK);
 
   // Role & cycle context (off unless opts.roleContext is set): if the query is ambiguous,
   // note the reading Compass applied — always disclosed, never a silent scope change.
@@ -68,16 +85,18 @@ export async function answerQuestion(
 
   const coverage = (reading ? `${reading} ` : "") + coverageStatement(index);
 
-  // Refuse when nothing solidly matches — a weak lexical brush is not an answer.
-  const topWeak = hits.length > 0 && hits[0]!.bm25 < 1.6 && hits[0]!.semantic < 0.08;
+  // Refuse when nothing solidly matches — a weak lexical brush is not an answer. These
+  // gates read `firstPass` (the retriever's own ranking): "did retrieval find anything
+  // solid at all", independent of how the reranker later orders the passages we cite.
+  const topWeak = firstPass.length > 0 && firstPass[0]!.bm25 < 1.6 && firstPass[0]!.semantic < 0.08;
   // The question names a specific person/org, but nothing Compass can see mentions it.
   // Don't hand back a confident-looking brief about adjacent grantees — say so.
-  const unknownSubject = unrecognizedNamedSubject(question, index, hits);
+  const unknownSubject = unrecognizedNamedSubject(question, index, firstPass);
   // Enumeration / dump requests — Compass answers questions, it is not a document browser
   // or an export tool. This also closes the "list everything you can see" exfiltration probe.
   const metaDumpRequest = isEnumerationRequest(question);
-  const topBm25 = hits[0]?.bm25 ?? 0;
-  const strongRealHits = hits.filter((h) => h.bm25 > 2 || h.semantic > 0.12).length;
+  const topBm25 = firstPass[0]?.bm25 ?? 0;
+  const strongRealHits = firstPass.filter((h) => h.bm25 > 2 || h.semantic > 0.12).length;
   const restrictedMatched = withheld.tiers.includes("restricted");
   // The question is *about* a restricted category — board/exec compensation, or a
   // declined/rejected applicant. Those categories are held out of the index by policy, so
@@ -91,9 +110,9 @@ export async function answerQuestion(
   // of real grants is never blocked just because declined applicants exist in that thesis.
   const restrictedDominates =
     restrictedTopic || (restrictedMatched && strongRealHits === 0 && withheld.restrictedTopScore >= topBm25 * 0.9);
-  const permissionBlocked = hits.length === 0 && withheld.count > 0;
+  const permissionBlocked = firstPass.length === 0 && withheld.count > 0;
 
-  if (hits.length === 0 || topWeak || restrictedDominates || unknownSubject || metaDumpRequest) {
+  if (firstPass.length === 0 || topWeak || restrictedDominates || unknownSubject || metaDumpRequest) {
     let text: string;
     let reason: string;
     if (metaDumpRequest) {

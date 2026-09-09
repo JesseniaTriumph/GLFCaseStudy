@@ -59,7 +59,7 @@ Companion to `PRD.md` (what) and `PRIOR_ART.md` (which components). This is *how
 
 - **Chunking**: ~140 tokens on paragraph boundaries for prose; per-tab rows for Sheets; a generated plain-language "fact sheet" per structured GivingData grant so structured data is semantically retrievable.
 - **Index**: each chunk row carries `embedding vector`, `tokens` (for BM25), `tier`, `acl text[]`, `entity_ids`, `source_system`, `deep_link`, `date`, `content_sha256`.
-- **Hybrid retrieval**: dense (pgvector cosine) ∪ lexical (FTS/BM25) → RRF fusion → `bge-reranker` → top-k.
+- **Hybrid retrieval**: dense (pgvector cosine) ∪ lexical (FTS/BM25) → RRF fusion → `bge-reranker` cross-encoder over the top ~30 → top-k. The rerank stage is implemented (`src/retrieval/rerank.ts`, `COMPASS_RERANK`-gated, `bge-reranker-base` local / `bge-reranker-v2-m3` on a served endpoint) and runs strictly **after** the permission `WHERE` — it only reorders rows the caller may already read.
 - **Permission filter** (the boundary): applied as a **SQL `WHERE`** before ranking — `tier = ANY(:allowed_tiers) AND acl && :principal_ids` — so disallowed rows never enter scoring. Enforced again in the service layer as defence in depth.
 - **`Restricted`**: never inserted as a retrievable row; a `restricted_stub` row holds title + entities + tier only.
 - **Answer**: extractive by default (compose from top passages + citations); generative when an LLM is configured (passages + question only). Refusal when top score is weak or a restricted stub dominates.

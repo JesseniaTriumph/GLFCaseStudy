@@ -49,11 +49,17 @@ changing anything downstream.
 |---|---|---|
 | Text embeddings | **BGE-M3** (BAAI, MIT) | One model does dense + sparse + multi-vector; 90+ languages (Spanish for Colombia, English for US/Kenya) at competitive quality; self-hostable |
 | Alt / upgrade path | **Qwen3-Embedding** (top of MTEB v2, flexible output dims) | Swap behind the `Embedder` interface if quality demands it |
-| Reranking | **`bge-reranker-v2-m3`** (BAAI, MIT) | Standard, efficient RAG reranker |
+| Reranking | **`bge-reranker-v2-m3`** (BAAI, MIT) | Standard, efficient RAG reranker; multilingual |
 | Serving | A dedicated inference endpoint (self-hosted GPU or a managed embeddings API under a DPA) | Keep embeddings inside Foundation-controlled infra where possible |
 
 The current prototype uses a dependency-free tf-idf vector as a stand-in behind the same
-`Record<string, number>` shape — swapping in BGE-M3 is a one-module change.
+`Record<string, number>` shape — swapping in BGE-M3 is a one-module change. Learned
+embeddings (`bge-small`, `--embed`) and a **cross-encoder rerank stage** are both wired and
+opt-in: `COMPASS_RERANK=1` runs `bge-reranker-base` (English, ~280MB q8, local ONNX via
+transformers.js) over the top ~30 permitted hits before the answer is built — *after* the
+permission filter, so it cannot affect the boundary. `COMPASS_RERANK=bge-reranker-v2-m3`
+points it at the multilingual model; production serves that on the GPU endpoint above.
+`npm run eval:metrics` reports recall@k / MRR / nDCG with rerank on vs off.
 
 ## Vector store + entity graph + permission map
 
