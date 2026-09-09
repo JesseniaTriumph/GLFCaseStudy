@@ -12,25 +12,33 @@ const EXAMPLES = [
   "What did the board discuss about staff compensation?",
 ];
 
+type Theme = "light" | "dark";
+
 function useTheme() {
-  const [theme, setTheme] = useState<string>(() => {
+  const [theme, setTheme] = useState<Theme>(() => {
     try {
-      return localStorage.getItem("compass.theme") || "system";
+      const saved = localStorage.getItem("compass.theme");
+      if (saved === "light" || saved === "dark") return saved;
     } catch {
-      return "system";
+      /* ignore */
+    }
+    try {
+      // honour the OS on a first visit; fall back to dark (matches the Foundation's impact pages)
+      return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+    } catch {
+      return "dark";
     }
   });
   useEffect(() => {
-    const root = document.documentElement;
-    if (theme === "system") root.removeAttribute("data-theme");
-    else root.setAttribute("data-theme", theme);
+    document.documentElement.setAttribute("data-theme", theme);
     try {
       localStorage.setItem("compass.theme", theme);
     } catch {
       /* ignore */
     }
   }, [theme]);
-  return { theme, setTheme };
+  const toggle = () => setTheme((t) => (t === "dark" ? "light" : "dark"));
+  return { theme, toggle };
 }
 
 // tiny markdown: paragraphs, **bold**, _italic_, headings (####), lists, [n] -> cite button
@@ -86,7 +94,7 @@ type Me = { email: string; name?: string; groups: string[] };
 type ServerCfg = { oauthConfigured: boolean; demoLogin: boolean };
 
 export function App() {
-  const { theme, setTheme } = useTheme();
+  const { theme, toggle } = useTheme();
   const [index, setIndex] = useState<CorpusIndex | null>(null);
   const [err, setErr] = useState<string | null>(null);
   // null = still probing; true = an API server is serving this page (answers go through it);
@@ -273,10 +281,11 @@ export function App() {
           <span className="pill">Prototype · synthetic data</span>
           <button
             className="iconbtn"
-            title="Theme"
-            onClick={() => setTheme(theme === "dark" ? "light" : theme === "light" ? "system" : "dark")}
+            title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+            aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+            onClick={toggle}
           >
-            {theme === "dark" ? "☾" : theme === "light" ? "☀" : "◐"}
+            {theme === "dark" ? "☀" : "☾"}
           </button>
         </div>
       </header>

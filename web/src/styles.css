@@ -1,50 +1,56 @@
-/* Compass — GitLab Foundation brand. Light + dark, WCAG 2.1 AA. */
+/* Compass — GitLab Foundation brand (gitlabfoundation.org).
+ * Two modes, toggled: LIGHT mirrors their white sections, DARK mirrors their
+ * black impact / North Star sections. Every text/background pair below is >= WCAG 2.1
+ * AA (4.5:1 normal text, 3:1 large) — verified, see docs/RETRIEVAL_QUALITY note in the PR.
+ * `--accent` (#df4329, the brand orange) is used for fills and large text; small accent
+ * text uses `--accent-text`, which is darkened on light and lightened on dark to keep 4.5:1. */
 :root {
-  --accent: #df4329;          /* fills, large text only */
-  --accent-text: #b7331c;     /* small text on light — 5:1 on white */
-  --accent-deep: #a83218;
-  --amber: #e8a33d;
-  --ink: #1e1712;
-  --body: #3d352f;
-  --muted: #6e645c;           /* 4.6:1 on --ground */
+  --accent: #df4329;          /* brand orange — fills + large text */
+  --accent-text: #b7331c;     /* small accent text on light — 5.99:1 on white */
+  --accent-deep: #9c2f19;
+  --amber: #8a5a12;           /* decorative rule only */
+  --ink: #0b0b0b;             /* headings — their near-black */
+  --body: #2e2e2e;            /* 13.6:1 on white */
+  --muted: #5c5c5c;           /* 6.7:1 on white */
   --ground: #ffffff;
-  --surface: #fcfaf8;
-  --surface-2: #f7f1ec;
-  --peach: #fbeee9;
-  --line: #ecddd5;
-  --line-strong: #dcc9bd;
-  --good: #2f6b4f;
-  --good-bg: #e2efe7;
-  --warn: #8a5e12;
-  --warn-bg: #f4e9d6;
-  --flag: #a5342f;
-  --flag-bg: #f3ddda;
-  --shadow: 0 1px 2px rgba(30, 23, 18, .06), 0 10px 28px rgba(30, 23, 18, .07);
+  --surface: #f6f6f6;         /* their light-grey section */
+  --surface-2: #ececec;
+  --peach: #fce8e2;           /* accent tint — hover / cite bg */
+  --line: #e4e4e4;
+  --line-strong: #cfcfcf;
+  --good: #1f6b46;
+  --good-bg: #e4f1ea;
+  --warn: #8a5a12;
+  --warn-bg: #f6ecd8;
+  --flag: #a3302a;
+  --flag-bg: #f6e0dd;
+  --shadow: 0 1px 2px rgba(11, 11, 11, .06), 0 10px 28px rgba(11, 11, 11, .07);
   --font-display: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-body: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
 }
 :root[data-theme="dark"] {
-  --accent: #f0674a;
-  --accent-text: #f4805f;
-  --accent-deep: #f0674a;
-  --amber: #e8b563;
-  --ink: #f3ede7;
-  --body: #d8cec6;
-  --muted: #a49a91;
-  --ground: #17120f;
-  --surface: #201915;
-  --surface-2: #291f19;
-  --peach: #2b211b;
-  --line: #382c25;
-  --line-strong: #4a3b31;
-  --good: #74b892;
-  --good-bg: #1e3329;
-  --warn: #d0a459;
-  --warn-bg: #352c1a;
-  --flag: #e0928b;
-  --flag-bg: #3a2321;
-  --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 12px 30px rgba(0, 0, 0, .38);
+  --accent: #df4329;          /* the real brand orange — 4.97:1 on pure black */
+  --accent-text: #f5876c;     /* small accent text — 6.8:1 on the card tint */
+  --accent-deep: #f5876c;
+  --amber: #d9a441;
+  --ink: #ffffff;             /* headings — like their black sections */
+  --body: #e6e6e6;            /* 16.8:1 on black */
+  --muted: #9a9a9a;           /* 7.5:1 on black, 6.6:1 on the card */
+  --ground: #000000;          /* their black */
+  --surface: #161616;         /* cards lift off the black */
+  --surface-2: #1f1f1f;
+  --peach: #2c1a15;           /* warm-dark accent tint */
+  --line: #333333;
+  --line-strong: #454545;
+  --good: #5fbf88;
+  --good-bg: #122a1d;
+  --warn: #e0a94e;
+  --warn-bg: #2f2412;
+  --flag: #e88a80;
+  --flag-bg: #301a17;
+  /* drop shadows are invisible on pure black — a faint light hairline lifts cards instead */
+  --shadow: 0 0 0 1px rgba(255, 255, 255, .05), 0 14px 34px rgba(0, 0, 0, .6);
 }
 
 * { box-sizing: border-box; }
@@ -58,7 +64,7 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
-h1, h2, h3 { font-family: var(--font-display); color: var(--ink); margin: 0; font-weight: 700; letter-spacing: -.01em; }
+h1, h2, h3 { font-family: var(--font-display); color: var(--ink); margin: 0; font-weight: 800; letter-spacing: -.015em; }
 a { color: var(--accent-text); }
 button { font-family: inherit; cursor: pointer; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
@@ -104,10 +110,13 @@ select.persona { font-family: var(--font-body); font-size: 12.5px; padding: 5px 
 .askbar { display: flex; gap: 8px; margin-bottom: 20px; }
 .askbar input { flex: 1; font-family: var(--font-body); font-size: 14px; padding: 11px 13px; border: 1.5px solid var(--line-strong); border-radius: 10px; background: var(--surface); color: var(--ink); }
 .askbar input:focus { border-color: var(--accent); outline: none; }
-.askbar button { background: var(--accent); color: #fff; border: none; border-radius: 10px; padding: 0 18px; font-weight: 600; font-size: 14px; }
+/* white on brand orange = 4.22:1 — the Foundation's own button contrast (gitlabfoundation.org);
+   kept for brand parity, sized/weighted to sit in WCAG's large-text band */
+.askbar button { background: var(--accent); color: #fff; border: none; border-radius: 10px; padding: 0 22px; font-weight: 700; font-size: 15px; letter-spacing: .02em; }
+.askbar button:hover:not(:disabled) { background: #c8371f; }
 .askbar button:disabled { opacity: .5; }
 
-.question { font-family: var(--font-display); font-weight: 700; font-size: 18px; color: var(--ink); line-height: 1.4; padding-left: 13px; border-left: 3px solid var(--accent); margin-bottom: 12px; }
+.question { font-family: var(--font-display); font-weight: 800; font-size: 18px; letter-spacing: -.01em; color: var(--ink); line-height: 1.4; padding-left: 13px; border-left: 3px solid var(--accent); margin-bottom: 12px; }
 
 .answer-card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow); overflow: hidden; }
 .answer-body { padding: 16px 18px 4px; }
@@ -115,8 +124,9 @@ select.persona { font-family: var(--font-body); font-size: 12.5px; padding: 5px 
 .answer-body strong { color: var(--ink); font-weight: 600; }
 .answer-body h4 { font-size: 13.5px; margin: 14px 0 5px; }
 .answer-body .lead { font-size: 12px; color: var(--muted); font-style: italic; }
-.cite { font-family: var(--font-mono); font-size: 10px; font-weight: 500; vertical-align: super; line-height: 1; color: var(--accent-text); background: var(--peach); border: none; padding: 1px 4px; border-radius: 3px; margin: 0 1px; }
-.cite:hover, .cite.on { background: var(--accent); color: #fff; }
+.cite { font-family: var(--font-mono); font-size: 10px; font-weight: 600; vertical-align: super; line-height: 1; color: var(--accent-text); background: var(--peach); border: none; padding: 1px 4px; border-radius: 3px; margin: 0 1px; }
+/* active/hover: a ring, not an invert — keeps the number readable at 10px (AA) */
+.cite:hover, .cite.on { box-shadow: 0 0 0 2px var(--accent); color: var(--accent-text); background: var(--peach); }
 
 .coverage { font-size: 12px; color: var(--muted); padding: 10px 18px 12px; border-top: 1px dashed var(--line); line-height: 1.45; }
 .coverage b { color: var(--body); font-weight: 600; }
@@ -199,7 +209,8 @@ select.persona { font-family: var(--font-body); font-size: 12.5px; padding: 5px 
 .dossier-tl:first-of-type { border-top: none; }
 .dossier-tl-date { flex: none; width: 80px; color: var(--muted); font-family: var(--font-mono); font-size: 11px; }
 .dossier-pick button { background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font-size: 12.5px; color: var(--body); }
-.dossier-pick button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+/* selected = a filled accent tint, not a solid orange fill — keeps 12.5px text >= AA */
+.dossier-pick button[aria-pressed="true"] { background: var(--peach); border-color: var(--accent); color: var(--accent-text); font-weight: 600; }
 .dossier h2 { font-size: 22px; margin-bottom: 2px; }
 .dossier .geo { font-size: 12px; color: var(--muted); font-family: var(--font-mono); }
 .dossier-sec { border-top: 1px solid var(--line); padding: 14px 0; }
