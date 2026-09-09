@@ -160,7 +160,7 @@ function badge(slide, x, y, n) {
     ["Resolve", "Everything joined to canonical Grant / Org / Fund / Person. Low-confidence merges to a review queue."],
     ["Retrieve — permissioned", "Hybrid keyword + semantic search, then filtered to what the asker may see. This filter is the security boundary — it runs in code and as a SQL WHERE clause. Restricted tier is never indexed."],
     ["Answer with citations", "Grounded in retrieved passages; every claim deep-links to the exact spot. States what it searched and what it could not. Conflicts shown, not merged. Refuses when unsupported."],
-    ["Evaluate & improve", "A 46-case gold set + a 17-case adversarial suite + 126 unit tests + a dependency-advisory check gate every release (npm run ci). Feedback feeds the gold set. Better at retrieving and citing — never at deciding."],
+    ["Evaluate & improve", "A 46-case gold set + a 17-case adversarial suite + 166 unit tests + a dependency-advisory check gate every release (npm run ci). Feedback feeds the gold set. Better at retrieving and citing — never at deciding."],
   ];
   let y = 1.6;
   steps.forEach((row, i) => {
@@ -231,7 +231,7 @@ function badge(slide, x, y, n) {
     ["live demo + npm run demo", "One URL: the web app, the API and the login on one origin (hosted, and local). Every answer goes through the server-side permission filter — the demo persona switch is a real sign-in, not a UI toggle. Flip from Program Officer to Comms and watch the same question drop from 8 sources to 5. Click a citation and the source record opens with the passage highlighted — permission re-checked there too."],
     ["npm run eval · eval:pg · eval:full", "46 gold Q&A cases run in memory and through a SQL WHERE clause; 25 more against a synthetic 5-year corpus (~59 grants, ~110 declined applicants, ~260 docs) with template drift, a migration boundary, conflicting figures, Spanish reports. 0 permission leaks."],
     ["npm run redteam · eval:metrics", "15 planted prompt-injection documents + jailbreak, exfiltration, permission-probing, PII- and legal-privilege-probing. 17/17, 0 leaks. Separately, an optional cross-encoder reranker lifts recall@1 from 0.10 to 0.70 on the 5-year corpus — measured, not claimed."],
-    ["npm run test · security · server:check", "126 unit tests (~97% line coverage on the logic modules); RS256 OIDC verification, fail-closed on a failed group lookup, a hash-chained audit log, the full Google login flow, rate limits, a kill switch, session revocation — 20/20."],
+    ["npm run test · security · server:check", "166 unit tests (~96% line coverage); RS256 OIDC verification, fail-closed on a failed group lookup, a hash-chained audit log, the full Google login flow, rate limits, a kill switch, session revocation — 20/20."],
     ["npm run ci", "All of the above + a dependency-advisory check, in one promotion gate. A permission-leak finding or a red-team regression is a hard stop. GitHub Actions + Dependabot config included; the hosted demo redeploys on every green push to main."],
   ];
   let y = 2.15;

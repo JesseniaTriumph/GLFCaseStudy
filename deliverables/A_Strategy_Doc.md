@@ -19,7 +19,7 @@
 - **Compass deck** — the 7-minute presentation (`C_Compass_Deck.pptx`)
 - **Foundation research** — how they operate and how to speak to each panelist (`research/GitLab_Foundation_Deep_Dive.md`)
 - **The MVP** — `compass/web` (React + Vite): Ask, Grantee dossier, and "How it works", 12 personas, the Deep-dive panel (gaps · who-to-ask · draft email · per-grant cycle), conflict surfacing, the toggleable Role & cycle context, a permission-checked source viewer on every citation — running the *same* retrieval and permission modules as the CLI and the eval harness, on a synthetic 5-year corpus. **Live: https://compass-demo-gwk4.onrender.com** · local: `npm run demo`.
-- **Working codebase** — ingest → clean → PII/injection filter → dedupe → resolve → translate → index → retrieve (hybrid + an optional cross-encoder reranker) → cite, with credential-activated real connectors (Drive / Airtable / GivingData / Zoom / Notion) behind the same interface as the mocks. One promotion gate: `npm run ci` (eval 46/46 · eval:pg 46/46 · eval:full 25/25 · test 126 · security 9/9 · server:check 20/20 · redteam 17/17 · deps:audit — 0 permission leaks). Per-grant cycle logic, cadence inference. (`compass/`)
+- **Working codebase** — ingest → clean → PII/injection filter → dedupe → resolve → translate → index → retrieve (hybrid + an optional cross-encoder reranker) → cite, with credential-activated real connectors (Drive / Airtable / GivingData / Zoom / Notion) behind the same interface as the mocks. One promotion gate: `npm run ci` (eval 46/46 · eval:pg 46/46 · eval:full 25/25 · test 166 · security 9/9 · server:check 20/20 · redteam 17/17 · deps:audit — 0 permission leaks). Per-grant cycle logic, cadence inference. (`compass/`)
 
 ---
 
