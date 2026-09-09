@@ -23,19 +23,19 @@ high-impact philanthropy*. Compass has to serve all of it:
 
 | Line | What it does | Roles (public team + recent postings) |
 |---|---|---|
-| **Grantmaking** | Deploys the Foundation's own capital | Chief Programs & Partnerships Officer; Senior Program Officer (Roger Perez); Program Officer *(hiring)*; Program Coordinator (Alex Sindorf) |
-| **Collaborative capital / donor engagement** | Mobilizes *other people's* capital into high-SROI projects (co-funding, donor advising) | Entrepreneur-in-Residence (Drew Petty) — "leads a new donor engagement initiative"; Director, Donor Experience & Stewardship *(hiring, reports to the EIR)*; Partnerships Manager (Samii Hartman) |
-| **Impact advisory** | A *consulting practice* selling impact modeling & measurement to other philanthropic and investor clients | Director / Manager of Impact Advisory Services (Pragya Dewan); Impact Modeling team |
+| **Grantmaking** | Deploys the Foundation's own capital | Chief Programs & Partnerships Officer; Senior Program Officer; Program Officer *(hiring)*; Program Coordinator |
+| **Collaborative capital / donor engagement** | Mobilizes *other people's* capital into high-SROI projects (co-funding, donor advising) | Entrepreneur-in-Residence — "leads a new donor engagement initiative"; Director, Donor Experience & Stewardship *(hiring, reports to the EIR)*; Partnerships Manager |
+| **Impact advisory** | A *consulting practice* selling impact modeling & measurement to other philanthropic and investor clients | Director / Manager of Impact Advisory Services; Impact Modeling team |
 | **Knowledge & intelligence products** *(emerging)* | Tools and reusable capability for the Foundation and the wider sector | **Applied AI Fellow** *(this role)*; Impact Modeling Analyst *(hiring)*; the EIR |
 
 Supporting every line:
 
 | Function | Roles | Owns |
 |---|---|---|
-| **Executive & governance** | President & CEO (Ellie Bertani); COO (Elicia Wilson); EA to the CEO (Yvette Chaskel); Board (Exec Chair Sid Sijbrandij; Board Chair Caroline Whistler; + a Gates Foundation finance lead) | Direction, sequencing, org health, board reporting, the approvals matrix |
-| **Impact** | Director of Impact (Tamsin Chen); Senior Manager + Manager of Impact Modeling & Measurement (Geetika Malhotra; Henner Andrés Solarte — likely covers LatAm / Spanish-language grantees); Senior Analyst (Noor Sethi) | The North Star model, ROI models (230+ since 2023), monitoring & evaluation, learnings tracking |
-| **Finance & Grants Operations** | CFO (Tracy Cude); Controller (Tom Clevenger); Grants Manager (Jessica Van Grouw); Operations Coordinator (Kamille Oliveira) | GivingData as system of record, payments, budgets, 990s, audit, expenditure responsibility |
-| **Communications** | Director of Communications and Marketing (C.J. Jackson) | External narrative, the FY impact report, grantee announcements, the public handbook |
+| **Executive & governance** | President & CEO; COO; EA to the CEO; the Board (Exec Chair, Board Chair, + a co-funder finance lead) | Direction, sequencing, org health, board reporting, the approvals matrix |
+| **Impact** | Director of Impact; Senior Manager + Manager of Impact Modeling & Measurement (one likely covering LatAm / Spanish-language grantees); Senior Analyst | The North Star model, ROI models (230+ since 2023), monitoring & evaluation, learnings tracking |
+| **Finance & Grants Operations** | CFO; Controller; Grants Manager; Operations Coordinator | GivingData as system of record, payments, budgets, 990s, audit, expenditure responsibility |
+| **Communications** | Director of Communications and Marketing | External narrative, the FY impact report, grantee announcements, the public handbook |
 
 Compass derives a person's **function** from their Google directory title + group
 membership. It is a signal, never a lock — and a person can carry more than one.

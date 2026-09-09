@@ -1,7 +1,7 @@
 # GitLab Foundation — deep dive: who they are and how they think
 
 **Research compiled for the Applied AI Fellow case study. Sources at the end.**
-**Purpose: design Compass the way the Foundation would design it, and speak to the panel in their own frame.**
+**Purpose: design Compass the way the Foundation would design it, in its own frame.**
 
 ---
 
@@ -101,21 +101,21 @@ The public Notion Handbook — launched September 2022, modeled on GitLab Inc.'s
 - **Collaboration:** ***"we're not competing to save the world"*** — they deliberately **do not guard** their models, pipeline, or tools; *"developing public goods that benefit the broader ecosystem."* An explicit anti-behavior: ***"Hoarding knowledge — failing to share learnings, resources, or tools."***
 - **Efficiency:** *"Embracing imperfect progress — prioritizing action over perfection, and being comfortable with **MVPs and iterative improvements**"* … *"automating where possible"* … *"using the Handbook as our single source of truth."* *"Don't let perfect be the enemy of the good"* appears more than once.
 - Feedback norm: **"No ego, amigo"** / not having **"long toes."**
-- Board chair **Sid Sijbrandij**: *"Success isn't measured in input such as hours … it's about output."*
+- The board's public framing: *"Success isn't measured in input such as hours … it's about output."*
 
 **How the org is wired (from the Handbook TOC):**
 - **DRI (Directly Responsible Individual)** model + **Approval Matrices** under Governance — decisions have one owner; that is who signs off on Compass's data-access model.
 - Named internal systems and artifacts Compass should treat as sources or dependencies: **"Learnings and Insights Tracking,"** **"Our Published Grantee ROI Models,"** the **North Star Impact Modeling** workbook, **"Progress and Outcomes Reporting,"** **"Principles for Grant Renewal and Continuation,"** and **"Internal Grants Management Operations."**
 - Tools named in the Handbook: **ClickUp** (project/task management — a real fifth system), **GivingData**, **DocuSign**, **Calendly**, shared Google calendars and docs. They *"record meetings when some cannot participate"* and *"document calls and meetings"* — so meeting recordings/notes are a culturally-mandated source.
 - The Handbook itself **has a restricted tier**: *"Some content is restricted to GitLab Foundation team members"* — Talent, Compensation, Performance Management, Legal & Compliance, Governance are logged-in-only. This is the same tiering model Compass uses.
-- Structure: 3-Year Strategic Plan, quarterly **OKRs**, thesis-driven portfolio approach, three geographies (🇺🇸 🇨🇴 🇰🇪), a **President & CEO Shadow Program** (the observer in the final interview).
+- Structure: 3-Year Strategic Plan, quarterly **OKRs**, thesis-driven portfolio approach, three geographies (🇺🇸 🇨🇴 🇰🇪), a **President & CEO Shadow Program**.
 
 **What this locks in for Compass:**
 1. **"No juicing" is a design requirement, not just a nice-to-have.** The tool must make it *hard* to cherry-pick a favorable number and *easy* to see negative outcomes — citations, vintage-stamping, refusal, and surfacing conflicting values all serve this.
 2. **Compass is a CREDIT artifact.** It is a shared tool / public-good-shaped knowledge product, it fights knowledge-hoarding, and it's an MVP-first build. Say this explicitly — it's them.
 3. **Add ClickUp** to the source inventory (project tasks, owners, status) and treat the Handbook, the Learnings tracker, and the published ROI models as first-class content.
 4. **The DRI / Approval Matrix is the "data owner"** the strategy doc keeps referring to — name it that way with them.
-5. **"Rigorous but reasonable"** is the tone to strike in the interview: rigor on citations, permissions, and evals; reasonableness on scope, "we don't have that," and not over-engineering.
+5. **"Rigorous but reasonable"** is the tone Compass is built to: rigor on citations, permissions, and evals; reasonableness on scope, "we don't have that," and not over-engineering.
 
 ## How they operate (culture — read the JD through this)
 
@@ -157,25 +157,23 @@ The public Notion Handbook — launched September 2022, modeled on GitLab Inc.'s
 **Compass is a knowledge-and-intelligence product.** Built well and documented
 transparently, its architecture (multi-source, permission-aware, cited retrieval over
 philanthropic data) is exactly the kind of thing the advisory-services side could later
-offer other funders. Worth naming in the interview as the "where this goes" answer.
+offer other funders — the "where this goes" answer.
 
 ---
 
-## The panel — how each person will read the case study
+## How leadership reads a proposal like this
 
-| Person | Role | What they're listening for | How to speak to them |
-|---|---|---|---|
-| **Elicia Wilson** | COO (hiring manager; role reports to her) | Feasibility, governance, cost, risk, adoption, handoff. Will this actually get built and used, and not create a liability? | Lead with the phased plan, the security/compliance pillar, the "3–5 design partners first," and the handoff design. Be concrete about what you'd do in week one. |
-| **Ellie Bertani** | President & CEO; ex-Walmart / Wells Fargo workforce **product** leader; former frontline service worker | Product judgment, rigor, and whether this moves the mission for workers. Pattern-matches on real product thinking. | Show the reframe ("retrieval + permissioning + citation, not a chatbot"), the tradeoffs you deliberately cut, and how the tool changes a real decision (renewal, thesis). Tie it back to lifetime earnings. |
-| **Matt Zieger** | Chief Programs & Partnerships Officer — **the primary end user**, named in the JD | Does this make my team's work faster and does it ever embarrass us in front of a grantee or co-funder? Is it trustworthy? | The grantee-dossier view, citations on every claim, "verify before external use," and "I don't know" as a feature. He is the design partner — say so. |
-| **Tamsin Chen** | Director of Impact | Will it misreport an impact number? Does it respect model versions, the five dimensions, relative-income methodology? | Vintage-stamping, refusal-when-unsupported, the impact team as a partner (not a stakeholder), and Compass citing the authoritative impact source rather than a stale memo copy. |
-| **CEO Shadow participant** | Observer | (passive — no questions expected) | — |
+The Foundation's public writing points to four evaluation lenses, and Compass is designed
+to answer each:
 
-**Kamille Oliveira** ran screening (Operations Coordinator). Other names to know: Tracy
-Cude (CFO) and Tom Clevenger (Controller) own the financial-data line; **Jessica Van
-Grouw (Grants Manager)** almost certainly owns GivingData; Geetika Malhotra / Henner
-Andrés Solarte / Noor Sethi / Pragya Dewan are the impact-modeling team; Henner likely
-covers Colombia (Spanish-language reporting).
+- **Feasibility, governance, cost, handoff** — the phased plan with exit criteria, the
+  security/compliance pillar, "3–5 design partners first," and a written handoff from day one.
+- **Product judgment and rigor** — the reframe ("retrieval + permissioning + citation, not
+  a chatbot"), the tradeoffs deliberately cut, and how the tool changes a real decision.
+- **Does it ever embarrass the team in front of a grantee or co-funder** — the grantee-dossier
+  view, citations on every claim, "verify before external use," and "I don't know" as a feature.
+- **Will it misreport an impact number** — vintage-stamping, refusal-when-unsupported, and
+  Compass citing the authoritative impact source rather than a stale memo copy.
 
 ---
 

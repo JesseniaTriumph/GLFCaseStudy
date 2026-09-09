@@ -24,7 +24,7 @@ export const PERSONAS: Record<string, { label: string; note: string; principal: 
   "grants-compliance": {
     label: "Grants Manager (compliance)",
     note: "compliance, data integrity, expenditure responsibility · team + programs-only",
-    principal: { userId: "j.vangrouw", groups: ["grants-ops", "grants-compliance"], allowedTiers: ["team", "programs-only"] },
+    principal: { userId: "r.baptiste", groups: ["grants-ops", "grants-compliance"], allowedTiers: ["team", "programs-only"] },
   },
   "impact-measurement": {
     label: "Impact Modeling & Measurement",
@@ -34,7 +34,7 @@ export const PERSONAS: Record<string, { label: string; note: string; principal: 
   "impact-director": {
     label: "Director of Impact",
     note: "evidence strategy · team + programs-only",
-    principal: { userId: "t.chen", groups: ["impact", "impact-director"], allowedTiers: ["team", "programs-only"] },
+    principal: { userId: "n.okonkwo", groups: ["impact", "impact-director"], allowedTiers: ["team", "programs-only"] },
   },
   "impact-advisory": {
     label: "Impact Advisory (external clients)",
@@ -54,12 +54,12 @@ export const PERSONAS: Record<string, { label: string; note: string; principal: 
   coo: {
     label: "Chief Operating Officer",
     note: "operations, process, access owner · team + programs-only",
-    principal: { userId: "e.wilson", groups: ["coo", "operations", "leadership"], allowedTiers: ["team", "programs-only"] },
+    principal: { userId: "m.delacroix", groups: ["coo", "operations", "leadership"], allowedTiers: ["team", "programs-only"] },
   },
   finance: {
     label: "Finance (CFO / Controller)",
     note: "commitments vs. disbursements, payout · team + programs-only",
-    principal: { userId: "t.cude", groups: ["finance", "accounting"], allowedTiers: ["team", "programs-only"] },
+    principal: { userId: "t.caden", groups: ["finance", "accounting"], allowedTiers: ["team", "programs-only"] },
   },
   comms: {
     label: "Communications & Marketing",

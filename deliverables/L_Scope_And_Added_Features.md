@@ -5,7 +5,7 @@
 The case study asked for a product solution to one problem: *the Programs team wants to ask
 questions of five years of grant reports and internal notes spread across Google Drive,
 GivingData, Airtable, and Zoom Chat.* Four things to cover — context, the system, risks,
-tradeoffs — plus a 7-minute presentation.
+tradeoffs — plus the presentation deck.
 
 This document separates **what directly answers that** from **what I chose to add**, and
 for every addition, why it earns its place. Nothing here is built to show off; each item
@@ -55,7 +55,7 @@ answer with citations, admit the gaps. Everything in Part 2 sits on top of that.
 | **Real connectors** (Drive, Airtable, GivingData) | Live API connectors behind the same interface as the mocks. | The day the Foundation provides a credential, that source goes live — no rebuild, no waiting. |
 | **Zoom connectors** | Team Chat + recorded-call archive, built to Zoom's real constraints, **off unless explicitly enabled**. | So the Zoom decision is a switch, not a project — and Compass reports how much history actually exists before anyone commits. |
 | **Learned embeddings** | A smarter search option: matches meaning, so "certificate completion" finds "credential attainment". | The team shouldn't have to guess a document's exact wording. Opt-in; the default keyword search needs no setup. |
-| **Postgres permission filter** | The access rule runs as a database `WHERE` clause, proven with the same zero-leak test. | Proof for a panel deciding whether to trust this with $20M of records that the boundary is real infrastructure, not a UI trick. |
+| **Postgres permission filter** | The access rule runs as a database `WHERE` clause, proven with the same zero-leak test. | Proof for anyone deciding whether to trust this with $20M of records that the boundary is real infrastructure, not a UI trick. |
 | **Per-user rate + cost limits** | Each person gets a request and AI-spend budget; over it, they're slowed, not cut off. | One person — or a bug — can't run up the AI bill or hammer the source systems. |
 | **Anomaly monitoring** | Watches the audit log for patterns: someone repeatedly probing restricted content, a cost spike, a broad scrape. Each alert names the response playbook. | On-call finds out about misuse in minutes, not in a quarterly review. |
 
@@ -66,11 +66,11 @@ answer with citations, admit the gaps. Everything in Part 2 sits on top of that.
 | **Discovery request** (`H_`) | The team — the credentials to gather and two 45-minute session agendas |
 | **Cost model** (`I_`) | Leadership — ~$260/month to run, ~$18k one-time, can launch at $0 AI cost |
 | **Data preservation guide** (`J_`) | The whole team — the retention gaps and the five habits that keep the record whole |
-| **Lessons from HOPE** (`K_`) | The panel — how my prior real grant-data build shaped every decision here |
+| **Lessons from HOPE** (`K_`) | How a prior real grant-data build shaped every decision here |
 
 ---
 
-## The one-line version for the panel
+## The one-line version
 
 > "The core is deliberately small — connect four sources, enforce who sees what, answer
 > with citations, admit the gaps. Everything I added on top solves a specific Programs-team

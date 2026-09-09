@@ -1,4 +1,4 @@
-/* Compass — case-study deck for the GitLab Foundation final round.
+/* Compass — case-study deck for the GitLab Foundation.
  * Brand: GitLab Foundation (orange-red #DF4329, warm near-black, Inter/Poppins -> Arial for QA safety). */
 const pptxgen = require("pptxgenjs");
 const p = new pptxgen();

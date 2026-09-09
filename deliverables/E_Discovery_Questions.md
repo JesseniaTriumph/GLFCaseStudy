@@ -43,7 +43,7 @@ So before scoping anything, I run a **"follow the knowledge" exercise**: take th
 | **Zoom Cloud Recordings + transcripts / AI Companion summaries** | Recorded grantee calls, board meetings, internal program discussions, auto-generated summaries and action items | This is *distinct from Zoom Chat* and often much richer. Same privacy and retention questions, plus consent-to-record issues. |
 | **Meeting-notes / transcription tools** (Otter, Fireflies, Grain, Fathom) | Call notes and transcripts if the team uses one of these outside Zoom | Another transcript store with its own retention and sharing model. |
 | **Notion** (internal workspace — their public Handbook is already Notion) | Strategy, thesis development, meeting notes, OKRs, process docs, project trackers | Very likely holds "how we think" content that Drive doesn't. Has a clean API. Should probably be an early add. |
-| **Tableau + the impact model itself** | The public Impact Dashboard's underlying data model, extracts, and the cost-benefit / North Star spreadsheets behind it | The Foundation's headline numbers come from here. Compass needs to cite *this* for impact figures, not a stale copy in a memo. Coordinate with the Impact team (Tamsin Chen / Geetika Malhotra). |
+| **Tableau + the impact model itself** | The public Impact Dashboard's underlying data model, extracts, and the cost-benefit / North Star spreadsheets behind it | The Foundation's headline numbers come from here. Compass needs to cite *this* for impact figures, not a stale copy in a memo. Coordinate with the Impact team. |
 | **Portfolio / pipeline spreadsheets** (Google Sheets or Excel) used as informal databases | Cross-portfolio trackers, cohort rollups, "master lists" a program officer maintains by hand | These are shadow systems of record. Often more current than GivingData for in-flight work, and fragile. |
 | **Application / survey intake** (Airtable forms, Google Forms, SurveyMonkey, Submittable) | Open-RFP submissions, grantee feedback surveys, LOI intake | The Foundation runs topical open RFPs — that intake has to land somewhere, and declined applications carry learning. |
 | **DocuSign / Adobe Sign / PandaDoc** | Executed grant agreements and their terms | The authoritative copy of what was actually agreed, including confidentiality clauses. |
@@ -304,9 +304,8 @@ anything about the North Star (the benefit-to-cost ratio, projected lifetime ear
 back to the Foundation's impact model. Today Compass reads the *outputs* of that model where
 someone has written them into a grant record or a memo — which means it can cite a number
 that's a stale copy. To cite the number from the system that actually computes it, four things
-have to be known, and **each answer changes what gets built**. Coordinate with the Impact team
-(Tamsin Chen, Geetika Malhotra, Henner Solarte) — they are a build partner here, not a
-stakeholder to inform.
+have to be known, and **each answer changes what gets built**. Coordinate with the Impact team —
+they are a build partner here, not a stakeholder to inform.
 
 | # | Question | Why I'm asking / what the build does differently |
 |---|---|---|

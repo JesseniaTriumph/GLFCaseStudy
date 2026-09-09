@@ -1,6 +1,6 @@
 # Compass — demo script
 
-All data is synthetic and fictional. For the 7-minute presentation, keep it to the four
+All data is synthetic and fictional. For the demo, keep it to the four
 beats in Part 1. Part 2 is for the technical Q&A.
 
 **The full word-for-word walk-through with the permission-boundary moment is in

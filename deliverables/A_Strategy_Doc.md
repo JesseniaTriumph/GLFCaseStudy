@@ -1,7 +1,7 @@
 # Compass — a shared way to ask five years of grant knowledge one question
 
 **GitLab Foundation · Applied AI Fellow case study**
-**Jessenia Cintron · prepared for the final-round panel (Elicia Wilson, Ellie Bertani, Matt Zieger, Tamsin Chen)**
+**Jessenia Cintron**
 
 > *"Compass" is a working name. It is meant to complement the Foundation's North Star metric — the North Star tells the team where to go; Compass helps them navigate the five years of reports, notes, and decisions that show how far along the way you already are.*
 
@@ -14,10 +14,10 @@
 - **Data preservation guide** — plain-language: the retention gaps, why they exist, and how to keep the record whole going forward (`J_Data_Preservation_Guide.md`)
 - **Lessons from the HOPE grant dashboard** — what my prior real grant-data build taught me, applied line by line to Compass (`K_Lessons_From_HOPE.md`)
 - **Scope & added features** — what directly answers the assignment vs. what I added, and why each addition helps the Programs team (`L_Scope_And_Added_Features.md`)
-- **Leadership decision packet** — the three decisions the panel owns: run the pilot, keep Zoom out, name an owner (`M_Decision_Packet.md`)
+- **Leadership decision packet** — the three decisions leadership owns: run the pilot, keep Zoom out, name an owner (`M_Decision_Packet.md`)
 - **Code-weakness review** — an internal pass over the security-critical paths: 7 fixes, verified-sound list, production items (`N_Code_Review.md`)
-- **Compass deck** — the 7-minute presentation (`C_Compass_Deck.pptx`)
-- **Foundation research** — how they operate and how to speak to each panelist (`research/GitLab_Foundation_Deep_Dive.md`)
+- **Compass deck** — the presentation deck (`C_Compass_Deck.pptx`)
+- **Foundation research** — how the Foundation operates, and the frame Compass is designed to fit (`research/GitLab_Foundation_Deep_Dive.md`)
 - **The MVP** — `compass/web` (React + Vite): Ask, Grantee dossier, and "How it works", 12 personas, the Deep-dive panel (gaps · who-to-ask · draft email · per-grant cycle), conflict surfacing, the toggleable Role & cycle context, a permission-checked source viewer on every citation — running the *same* retrieval and permission modules as the CLI and the eval harness, on a synthetic 5-year corpus. **Live: https://compass-demo-gwk4.onrender.com** · local: `npm run demo`.
 - **Working codebase** — ingest → clean → PII/injection filter → dedupe → resolve → translate → index → retrieve (hybrid + an optional cross-encoder reranker) → cite, with credential-activated real connectors (Drive / Airtable / GivingData / Zoom / Notion) behind the same interface as the mocks. One promotion gate: `npm run ci` (eval 46/46 · eval:pg 46/46 · eval:full 25/25 · test 166 · security 9/9 · server:check 20/20 · redteam 17/17 · deps:audit — 0 permission leaks). Per-grant cycle logic, cadence inference. (`compass/`)
 
@@ -45,7 +45,7 @@ I would spend the first two to three weeks on discovery before writing productio
 
 "The whole team can use it" is the stated goal, but v1 has to serve specific people making specific decisions. I need to know:
 
-- **Who is actually in scope.** The Programs team asked for this, but the Foundation is ~21 people. Does "the team" mean the Programs and Partnerships group (Matt Zieger's org — program officers, coordinators, partnerships), the Impact team (Tamsin Chen's org — impact modeling and measurement, advisory services), or everyone including Finance, Comms, and the CEO? Each group asks different questions and has different access rights. My assumption for v1: **Programs + Impact, ~8–12 people, with 3–5 as design partners.**
+- **Who is actually in scope.** The Programs team asked for this, but the Foundation is ~21 people. Does "the team" mean the Programs and Partnerships group (program officers, coordinators, partnerships), the Impact team (impact modeling and measurement, advisory services), or everyone including Finance, Comms, and the CEO? Each group asks different questions and has different access rights. My assumption for v1: **Programs + Impact, ~8–12 people, with 3–5 as design partners.**
 - **The real decisions.** I would want to validate which of these the tool is meant to support, because they set the precision bar:
   - *Renewal / re-up:* "How did this grantee perform against what they projected last cycle, and what did our program officer flag as a concern?"
   - *Sourcing and diligence:* "Have we ever funded anything in rural nuclear-maintenance upskilling or eviction-prevention AI? What did we learn, and who did we talk to?"
@@ -76,7 +76,7 @@ This is the part most likely to stall the project if not front-loaded.
 | System | What I need to confirm |
 |---|---|
 | **Google Drive** | Is the relevant content in Shared Drives (permission by drive/folder, clean) or scattered across individuals' My Drive (permission chaos)? Which folders are explicitly restricted (board, HR, legal, compensation)? Will Workspace admin grant a scoped service account / domain-wide delegation, or do we use per-user OAuth? Is there an existing classification or labeling scheme? |
-| **GivingData** | Does the plan tier include API access, and what are its limits — or are we relying on scheduled report/document exports? Do all Programs staff see all grants today, or are some records restricted by role? Are there confidentiality terms on grantee-portal uploads? Who owns the instance internally (Jessica Van Grouw, Grants Manager, is the likely owner)? |
+| **GivingData** | Does the plan tier include API access, and what are its limits — or are we relying on scheduled report/document exports? Do all Programs staff see all grants today, or are some records restricted by role? Are there confidentiality terms on grantee-portal uploads? Who owns the instance internally (the Grants Manager is the likely owner)? |
 | **Airtable** | Which bases, and who owns them? API access via OAuth or per-base keys is straightforward. Which fields carry PII (contact emails, phone, personal notes)? Any field- or view-level restrictions to mirror? |
 | **Zoom Chat** | Does the Foundation have admin rights to create an OAuth app with chat scopes? What is the message-retention setting (does five years even exist)? Are we ever considering DMs and private channels, or public channels only? What have staff been told about their chat being searchable — this is a genuine employee-privacy and trust question, not just a technical one. |
 | **Cross-cutting** | Is Google Workspace the identity provider / is there SSO to gate the app and map permissions? What is the Foundation's position on sending grantee and co-funder data to a third-party LLM API — do we need a zero-retention, no-training enterprise agreement and a signed DPA? Any data-residency requirement? Do grant agreements and the Foundation's privacy policy permit this secondary use of grantee data? Are there confidentiality obligations to co-funders (Ballmer Group, Annie E. Casey Foundation) about shared-cohort data? Who is the designated data owner who signs off on the access model — and is there internal IT/security or an outsourced MSP? What are the records-retention and legal-hold obligations, and does anyone treat query logs as discoverable records? |
@@ -545,4 +545,4 @@ Public information used to ground assumptions about the Foundation's model, port
 - [GivingData — grant management platform (grantee portal, reporting, communication features)](https://www.givingdata.com/insights/a-grant-cycle-management-software-streamlining-the-grant-lifecycle)
 - [GitLab Foundation 2025 Impact Report](https://www.gitlabfoundation.org/fy2025impactreport)
 
-*Case study prompt: GitLab Foundation, Applied AI Fellow, final-round skills demonstration (2026).*
+*Case study: GitLab Foundation, Applied AI Fellow skills demonstration (2026).*

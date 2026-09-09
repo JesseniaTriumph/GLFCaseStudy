@@ -1,6 +1,6 @@
 # Compass — leadership decision packet
 
-**For:** Elicia Wilson (COO), Ellie Bertani (CEO), Matt Zieger (Chief Programs & Partnerships), Tamsin Chen (Director of Impact)
+**For:** Foundation leadership — COO, CEO, Chief Programs & Partnerships, Director of Impact
 **From:** Jessenia Cintron
 **Purpose:** the three decisions leadership owns before Compass goes past a pilot (roadmap 4.7)
 

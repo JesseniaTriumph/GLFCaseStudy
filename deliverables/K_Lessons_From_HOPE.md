@@ -213,7 +213,7 @@ library key off it.
 
 ---
 
-## What I'd say to the panel
+## The short version
 
 > "This isn't my first grant system. I built one for a Brooklyn workforce nonprofit on
 > their real Salesforce data, through a vendor who gave me exactly the fields I asked for
