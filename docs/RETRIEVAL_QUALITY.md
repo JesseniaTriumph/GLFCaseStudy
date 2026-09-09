@@ -36,10 +36,13 @@ an external process termination can still prevent execution.
 
 Only cases without `expectRefusal: true` and with a nonempty `expectSources`
 array are included. Each case has equal weight, regardless of how many expected
-sources it lists. IDs are matched exactly against canonical citation `ref`
-values, including the system prefix (for example, `givingdata:GD-1188`). Unlike
-the legacy eval harness's permissive suffix matching, similar IDs do not count
-as a match here.
+sources it lists. An expected id is matched against the answer's citation `ref`
+values using the **same rule `scripts/eval.ts` scores retrieval with** — exact id,
+the expected id is a suffix of the ref, or the ref ends with the expected id's
+body (the part after the `system:` prefix). A source therefore counts as
+retrieved here iff the release gate would also count it. On the current gold
+sets every match is exact; the looser cases only matter if a future gold id and
+its citation ref diverge in form.
 
 Ranks are one-based positions in the first ten returned answer citations. They
 are not ranks of distinct documents: two passages from a document can occupy two
@@ -81,11 +84,12 @@ compare A/B on the same revision, corpus, and translation/embedding settings.
 
 ## Baseline snapshot
 
-Measured on 2026-09-08 against repository revision `234c117`, before the goldset
-and rerank branches land, with default translation/embedding settings. Both
-commands completed with exit 0. The fresh metrics worktree reused the existing
-checkout's tsx installation using `npx --prefix ../compass tsx` without adding
-dependency files. Full mode selects the glossary translator by default.
+Measured on 2026-09-09 against the `metrics` branch (based on `234c117`), before
+the `goldset` and `rerank` branches land, with default translation/embedding
+settings. Both commands completed with exit 0. Full mode selects the glossary
+translator by default. Aligning the match rule with `scripts/eval.ts` did not
+change any value — on the current gold sets every citation ref matches its
+expected id exactly.
 
 Default corpus (`eval/gold.json`):
 

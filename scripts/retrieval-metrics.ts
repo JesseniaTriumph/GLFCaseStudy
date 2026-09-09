@@ -17,6 +17,21 @@ type Metrics = Record<string, number | null>;
 type Measurement = { metrics: Metrics } | { error: string };
 const worker = process.argv.includes("--metrics-worker");
 
+/**
+ * Rank (1-based) of the first citation ref that counts as `source`, or 0. Uses the exact
+ * same match as `scripts/eval.ts` scores retrieval with, so a source counts as retrieved
+ * here iff the release gate would also count it: exact id, the expected id is a suffix of
+ * the ref, or the ref ends with the expected id's body (the part after the `system:` prefix).
+ */
+function rankOf(source: string, refs: string[]): number {
+  const body = source.split(":")[1] ?? source;
+  for (let i = 0; i < refs.length; i++) {
+    const id = refs[i]!;
+    if (id === source || source.endsWith(id) || id.endsWith(body)) return i + 1;
+  }
+  return 0;
+}
+
 async function measure(): Promise<Metrics> {
   // Imports happen only in the worker: each A/B arm gets its environment before
   // module initialization, including rerankers that read their flag at import time.
@@ -42,10 +57,10 @@ async function measure(): Promise<Metrics> {
     if (!principal) throw new Error(`gold case ${c.id}: unknown persona ${c.persona}`);
     const answer = await answerQuestion(index, c.question, principal, { k: 10, followUps: false });
     const refs = answer.citations.slice(0, 10).map((citation) => citation.ref);
-    // Exact canonical source IDs, first occurrence only. Repeated passages occupy
+    // Distinct expected sources, first matching citation only. Repeated passages occupy
     // citation ranks but never earn extra relevance credit for the same source.
     const expected = [...new Set(c.expectSources!)];
-    const ranks = expected.map((id) => refs.indexOf(id) + 1);
+    const ranks = expected.map((source) => rankOf(source, refs));
     const found = ranks.filter((rank) => rank > 0);
     for (const k of cutoffs) {
       totals[`recall@${k}`]! += found.filter((rank) => rank <= k).length / expected.length;
