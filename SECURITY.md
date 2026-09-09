@@ -47,11 +47,11 @@ Full policy + the `never-ingest` list: `docs/TIER_POLICY.md`.
 | Control | Where | Proof |
 |---|---|---|
 | **OIDC Authorization-Code + PKCE** login flow; RS256 ID-token verification (sig / iss / aud / exp / iat / `hd` / `email_verified`) | `src/server/oauth.ts`, `src/security/auth.ts` | `npm run security` (token forgery, `hd` bypass, expiry) · `npm run server:check` (full flow, replay, logout revoke) |
-| **Retrieval-time tier + ACL filter** — in code and as a SQL `WHERE` clause; fails closed | `src/retrieval/search.ts`, `src/db/store.ts` | `npm run eval` / `eval:pg` / `eval:full` — 12/12 each, **0 permission leaks** |
+| **Retrieval-time tier + ACL filter** — in code and as a SQL `WHERE` clause; fails closed | `src/retrieval/search.ts`, `src/db/store.ts` | `npm run eval` / `eval:pg` / `eval:full` — 46 / 46 / 25 cases, **0 permission leaks** |
 | **`Restricted` excluded from the index** | `src/pipeline/run.ts` | eval `*-restricted` cases |
 | **Session** — HMAC `HttpOnly; Secure; SameSite=Strict` cookie, 8h TTL, constant-time verify, per-user + global server-side revocation | `src/server/session.ts` | `npm run server:check`, unit tests |
 | **Group resolution** — read-only Admin SDK Directory lookup, cached, fails closed, optional suspended-account check | `src/security/directory.ts` | unit tests |
-| **Indirect prompt injection** — pattern-strip + score-quarantine at intake; 15 planted docs + behavioural cases | `src/pipeline/run.ts`, `src/adapters/mockInjection.ts` | `npm run redteam` — 16/16, 0 leaks |
+| **Indirect prompt injection** — pattern-strip + score-quarantine at intake; 15 planted docs + behavioural cases | `src/pipeline/run.ts`, `src/adapters/mockInjection.ts` | `npm run redteam` — 17/17, 0 leaks |
 | **PII** — deterministic scrub (email/phone/SSN/EIN/card+Luhn/bank/IP/DOB/passport) + participant-data heuristic → tier-raise + quarantine | `src/pipeline/pii.ts` | unit tests, red-team PII cases |
 | **Tamper-evident audit log** — append-only, hash-chained; off-host stream hook | `src/security/audit.ts` | `npm run security` detects an edited entry; `npm run audit` |
 | **Anomaly monitor** — restricted-probing / auth-brute / broad-sweep / withheld-surge / cost-spike → IR playbooks | `src/security/monitor.ts` | unit tests, `server:check` |

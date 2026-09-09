@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { answerQuestion } from "./lib/retrieval/answer.js";
-import type { Answer, CorpusIndex } from "./lib/core/types.js";
-import { grantCycle } from "./lib/grant-cycle.js";
+import { answerQuestion } from "@compass/retrieval/answer.js";
+import type { Answer, CorpusIndex } from "@compass/core/types.js";
+import { grantCycle } from "@compass/grant-cycle.js";
 import { PERSONAS, personaFunctions } from "./principals.js";
 
 const EXAMPLES = [

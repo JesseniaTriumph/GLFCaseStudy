@@ -29,6 +29,7 @@
     "pentest": "COMPASS_CORPUS=full npm run -s build:index:full && npm --prefix web run -s build && COMPASS_CORPUS=full COMPASS_PENTEST=1 COMPASS_EGRESS_ENFORCE=1 COMPASS_SESSION_SECRET=${COMPASS_SESSION_SECRET:-pentest-fixed-secret-not-for-production} COMPASS_AUDIT_LOG=${COMPASS_AUDIT_LOG:-dist/pentest-audit.jsonl} tsx scripts/serve.ts",
     "server:check": "tsx scripts/server-check.ts",
     "ui:audit": "node scripts/ui-audit.mjs",
+    "ui:offline": "node scripts/offline-check.mjs",
     "redteam": "tsx scripts/redteam.ts",
     "ci": "tsx scripts/ci.ts",
     "build:index:ner": "COMPASS_PII_NER=true tsx scripts/build-index.ts",

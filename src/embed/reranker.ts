@@ -47,13 +47,17 @@ export async function getReranker(id: string): Promise<Reranker | null> {
   }
 }
 
+/** `process.env` in Node, an empty bag in the browser — this module is in the shared retrieval core. */
+const ENV: Record<string, string | undefined> =
+  typeof process !== "undefined" && process.env ? process.env : {};
+
 /**
  * The reranker id the environment asks for, or null when reranking is off.
  *   COMPASS_RERANK unset / "0" / "false"  → null
  *   COMPASS_RERANK = "1" / "true"         → the default English model
  *   COMPASS_RERANK = "<model-id>"         → that model
  */
-export function configuredRerankerId(env: NodeJS.ProcessEnv = process.env): string | null {
+export function configuredRerankerId(env: Record<string, string | undefined> = ENV): string | null {
   const v = (env.COMPASS_RERANK ?? "").trim();
   if (!v || v === "0" || v === "false" || v === "off") return null;
   if (v === "1" || v === "true" || v === "on") return "bge-reranker-base";
@@ -61,7 +65,7 @@ export function configuredRerankerId(env: NodeJS.ProcessEnv = process.env): stri
 }
 
 /** Convenience: the configured reranker instance, or null. Cached. */
-export async function getConfiguredReranker(env: NodeJS.ProcessEnv = process.env): Promise<Reranker | null> {
+export async function getConfiguredReranker(env: Record<string, string | undefined> = ENV): Promise<Reranker | null> {
   const id = configuredRerankerId(env);
   return id ? getReranker(id) : null;
 }

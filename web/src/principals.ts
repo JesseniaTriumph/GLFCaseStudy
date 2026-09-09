@@ -1,11 +1,11 @@
-import type { Principal } from "./lib/core/types.js";
-import { functionsForGroups } from "./lib/roles.js";
+import type { Principal } from "@compass/core/types.js";
+import { functionsForGroups } from "@compass/roles.js";
 
 /**
  * Demo personas (fictional users) — one per function in the real ~17-person org (see
  * docs/ROLES_AND_USERS.md). In production these come from Google OIDC + a synced Google
  * Groups membership. `groups` drive the permission filter AND — separately, only when
- * Role & cycle context is on — the relevance logic in lib/roles.ts.
+ * Role & cycle context is on — the relevance logic in src/roles.ts.
  *
  * Permission tiers: `team` = any signed-in staff; `programs-only` = Programs + Impact +
  * leadership + finance/grants-ops + partnerships. `restricted` is granted to no one.

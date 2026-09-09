@@ -83,8 +83,9 @@ npm run web:build && npm --prefix web run preview     # or: build the index + se
 Real in-browser hybrid retrieval over the built index, the retrieval-time permission
 filter, `Restricted`-tier exclusion, cited evidence briefs, coverage disclosure, and the
 toggleable Deep-dive panel — the **same modules** as the CLI and the eval harness. GitLab
-Foundation brand, light + dark, WCAG 2.1 AA. Self-contained (`web/src/lib/` is a copy of
-the shared retrieval/core modules) so it deploys anywhere:
+Foundation brand, light + dark, WCAG 2.1 AA. It imports the retrieval/core modules straight
+from `src/` via the `@compass/*` alias — one source of truth, no vendored copy — and bundles
+to fully static output, so it deploys anywhere:
 
 ```bash
 cd web && npx vercel deploy        # or: netlify deploy --dir dist  /  any static host
@@ -131,7 +132,7 @@ src/
   security/              auth (OIDC verify) · audit (hash chain)
 scripts/                 build-index · eval · security-check · audit · ask
 eval/gold.json           the gold Q&A set
-web/                     React + Vite app (self-contained via web/src/lib/)
+web/                     React + Vite app (imports src/ retrieval core via @compass/*)
 data/mock/               synthetic fictional corpus
 docs/                    the build-doc set
 deliverables/            the case-study write-ups (strategy · discovery · security

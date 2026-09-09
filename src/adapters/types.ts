@@ -1,10 +1,11 @@
 import type { SourceDoc } from "../core/types.js";
 
 /**
- * Every source connector implements this one interface — the mock adapters and the
- * real Google Drive / GivingData / Airtable / Notion / email adapters alike.
+ * Every source connector implements this one interface — the mock adapters and the real
+ * Google Drive / GivingData / Airtable / Notion / Zoom adapters alike. A new source
+ * (Slack, email, a CRM) is one file implementing `pull()`; nothing downstream changes.
  *
- * This is the "swappable module" idea from DASH's mock-data pattern, made into a contract:
+ * This is the "swappable module" idea from a prior mock-data pattern, made into a contract:
  * the pipeline downstream of `pull()` never knows or cares which adapter produced a doc.
  */
 export interface SourceAdapter {
