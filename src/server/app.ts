@@ -27,7 +27,7 @@ import { makeStaticHandler } from "./static.js";
 import { DEMO_PERSONAS, demoPersona } from "./demo-personas.js";
 import { RateLimiter } from "./limits.js";
 import { Monitor, type Signal } from "../security/monitor.js";
-import { AuditLog, type AuditEvent } from "../security/audit.js";
+import { AuditLog, type AuditEvent, type AuditRecord } from "../security/audit.js";
 
 export interface ServerDeps {
   index: CorpusIndex;
@@ -83,7 +83,7 @@ export const killSwitch = {
  * estimate: an extractive answer is ~free; a generative one is ~6k in + 0.5k out tokens
  * at Sonnet 5 rates ($2 / $10 per M) ≈ $0.017.
  */
-export function auditStats(records: readonly import("../security/audit.js").AuditRecord[]) {
+export function auditStats(records: readonly AuditRecord[]) {
   const q = records.filter((r) => r.event.type === "query").map((r) => r.event as Extract<AuditEvent, { type: "query" }>);
   const auth = records.filter((r) => r.event.type === "auth").map((r) => r.event as Extract<AuditEvent, { type: "auth" }>);
   const users = new Set(q.map((e) => e.user));

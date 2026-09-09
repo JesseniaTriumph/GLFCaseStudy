@@ -115,6 +115,8 @@ Production — BLOCKED until 1–6 close.* None of the blockers are engineering.
 | A `SourceAdapter` code comment listed an "email adapter" that doesn't exist | Corrected — a new source is one file implementing `pull()`. |
 | The web React app had its own `tsconfig` excluded from CI; a `serverMode`-scope bug reached production once | `typecheck:web` is now step 2 of the promotion gate. |
 | No lint gate | Added ESLint (`typescript-eslint` + `react-hooks`), wired as step 3 of `npm run ci` (errors gate; `any`-warnings don't). Fixed the 19 it flagged — unnecessary regex escapes, two stray zero-width characters in source, dead variables, ternary-as-statement. |
+| `web/src/App.tsx` was ~780 lines (one file for the whole SPA) | Split `Dossier` and `HowItWorks` into `web/src/Dossier.tsx` / `HowItWorks.tsx`; App.tsx is now ~540. |
+| Six inline `import("…")` type references in `run.ts` / `app.ts` | Tidied into top-level `import type` statements. |
 
 ### 4.2 Clean
 
@@ -124,13 +126,14 @@ Production — BLOCKED until 1–6 close.* None of the blockers are engineering.
 - `npm run ui:audit` drives every tab, persona, example, toggle, citation, feedback control and dossier button in a headless browser and asserts nothing renders blank and no request errors — 54/54. `npm run ui:offline` does the same for the static path — 10/10.
 - The web app has zero `any`.
 
-### 4.3 Minor — worth doing, not blockers
+### 4.3 Minor — remaining, not blockers
 
 | Item | Effort |
 |---|---|
-| ~22 `any` remaining in `src/` — all in adapters parsing untyped external API JSON (Notion / Zoom / Airtable) and the `meta` bag; ESLint flags each as a warning. Add response types. | ~2 hours |
-| `web/src/App.tsx` is ~780 lines — split `Dossier` and `HowItWorks` into their own files. | ~1 hour |
+| ~22 `any` in `src/` — all in adapters parsing untyped external API JSON (Notion / Zoom / Airtable) and the `meta` bag; ESLint flags each as a warning. Add response types. | ~2 hours |
 | Two `react-hooks/exhaustive-deps` warnings in `App.tsx` — the effects are intended to run on a subset of deps; make that explicit or restructure. | ~20 minutes |
+| `eval.ts` / `eval-pg.ts` / `retrieval-metrics.ts` each build the test index and score cases with near-identical code — a shared `eval/harness.ts` would DRY it up. Left as-is because each script staying self-contained aids readability. | judgment call |
+| `src/pipeline/run.ts` (`runPipeline` ~270 lines) and `src/retrieval/answer.ts` (`answerQuestion` ~170 lines) are the two long functions. `answerQuestion`'s refusal-decision block is the one place a small extract would help clarity. | judgment call |
 
 ---
 

@@ -3,7 +3,12 @@
  * Everything here operates on SourceDoc / Chunk and never looks at which adapter produced a doc.
  */
 import type { SourceAdapter } from "../adapters/types.js";
-import type { SourceDoc, Chunk, CorpusIndex, EntityRef, DedupeReport, GapReport, Tier, IndexPerson } from "../core/types.js";
+import type {
+  SourceDoc, Chunk, CorpusIndex, EntityRef, DedupeReport, GapReport, Tier, IndexPerson,
+  GrantMeta, EntityReviewItem,
+} from "../core/types.js";
+import type { NerRedactor } from "./ner.js";
+import type { Translator } from "./translate.js";
 import { tokenize, jaccard, tfidfVector, detectLanguage, bilingualBridge } from "../util/text.js";
 import { sha1 } from "../util/hash.js";
 import { scrubPii, looksLikeParticipantData } from "./pii.js";
@@ -25,9 +30,9 @@ export interface RunOptions {
   /** if set, every ingested document's original bytes are written to this immutable raw store */
   rawDir?: string;
   /** optional NER redactor (transformers.js) for free-text person names — opt-in */
-  nerRedactor?: import("./ner.js").NerRedactor;
+  nerRedactor?: NerRedactor;
   /** optional translator — non-English docs get an English rendering for retrieval + the brief */
-  translator?: import("./translate.js").Translator | null;
+  translator?: Translator | null;
 }
 
 export async function runPipeline(adapters: SourceAdapter[], opts: RunOptions): Promise<CorpusIndex> {
@@ -157,7 +162,7 @@ export async function runPipeline(adapters: SourceAdapter[], opts: RunOptions): 
   if (reviewQueue.length) log(`  entity review queue: ${reviewQueue.length} item(s) for a human to confirm`);
 
   // per-grant schedule metadata for the cycle logic (docs/ROLES_AND_USERS.md)
-  const grantMeta: Record<string, import("../core/types.js").GrantMeta> = {};
+  const grantMeta: Record<string, GrantMeta> = {};
   for (const d of docs) {
     if (d.meta.recordType !== "grant-fact-sheet" || !d.meta.grantId) continue;
     grantMeta[d.meta.grantId as string] = {
@@ -500,8 +505,8 @@ function resolveEntities(docs: SourceDoc[], log: (m: string) => void): EntityRef
  * never co-occur with the other side (a likely missing link). Nothing here is auto-merged
  * — the queue is shown, and a reviewer decides.
  */
-function entityReviewQueue(docs: SourceDoc[], entities: EntityRef[]): import("../core/types.js").EntityReviewItem[] {
-  const out: import("../core/types.js").EntityReviewItem[] = [];
+function entityReviewQueue(docs: SourceDoc[], entities: EntityRef[]): EntityReviewItem[] {
+  const out: EntityReviewItem[] = [];
   const orgs = entities.filter((e) => e.kind === "organization");
   const norm = (s: string) => new Set(tokenize(s).filter((t) => !/^(inc|the|foundation|fund|of|for|and)$/.test(t)));
 
