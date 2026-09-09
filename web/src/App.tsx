@@ -515,8 +515,14 @@ export function App() {
         </div>
       )}
 
-      {tab === "dossier" && <Dossier index={index} persona={persona} />}
-      {tab === "how" && <HowItWorks index={index} />}
+      {tab === "dossier" &&
+        (index ? (
+          <Dossier index={index} persona={persona} serverMode={serverMode} />
+        ) : (
+          <div className="rail-empty">Loading the corpus index…</div>
+        ))}
+      {tab === "how" &&
+        (index ? <HowItWorks index={index} /> : <div className="rail-empty">Loading the corpus index…</div>)}
 
       <footer>
         <b>What runs here:</b>{" "}
@@ -533,7 +539,7 @@ export function App() {
   );
 }
 
-function Dossier({ index, persona }: { index: CorpusIndex; persona: keyof typeof PERSONAS }) {
+function Dossier({ index, persona, serverMode }: { index: CorpusIndex; persona: keyof typeof PERSONAS; serverMode: boolean | null }) {
   const principal = PERSONAS[persona].principal;
   const allowed = new Set<string>(principal.allowedTiers);
   const pr = new Set([`user:${principal.userId}`, ...principal.groups.map((g) => `group:${g}`), "*"]);
