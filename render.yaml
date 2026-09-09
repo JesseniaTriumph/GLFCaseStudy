@@ -1,0 +1,24 @@
+# One-click deploy to Render (render.com) — no CLI needed.
+# New > Blueprint > point at this repo. Free plan; the instance sleeps when idle.
+# Synthetic corpus only. This is a demo / pen-test instance — see docs/DEPLOY_CHECKLIST.md
+# for what a production deployment adds (KMS, Redis, private network, TLS config).
+services:
+  - type: web
+    name: compass-demo
+    runtime: docker
+    plan: free
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: COMPASS_SESSION_SECRET
+        generateValue: true       # Render generates a strong random value
+      - key: COMPASS_CORPUS
+        value: full
+      - key: COMPASS_PENTEST
+        value: "1"
+      - key: COMPASS_EGRESS_ENFORCE
+        value: "1"
+      # - key: COMPASS_NO_DEMO      # set to "1" to turn the demo persona switch off
+      #   value: "1"
+      # - key: COMPASS_ALLOWED_EMAILS   # if you wire real Google sign-in, scope it to named people
+      #   value: friend@example.com
