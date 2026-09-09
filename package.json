@@ -42,9 +42,9 @@
     "deps:audit": "tsx scripts/deps-audit.ts"
   },
   "devDependencies": {
-    "@types/node": "^22.9.0",
+    "@types/node": "^26.4.1",
     "tsx": "^4.19.2",
-    "typescript": "^5.6.3"
+    "typescript": "^7.0.2"
   },
   "dependencies": {
     "@electric-sql/pglite": "^0.5.8"
