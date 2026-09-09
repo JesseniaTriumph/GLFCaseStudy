@@ -478,7 +478,7 @@ export function App() {
                   <a
                     key={c.n}
                     className={"src" + (activeCite === c.n ? " on" : "")}
-                    href={c.deepLink}
+                    href={c.previewLink ?? c.deepLink}
                     target="_blank"
                     rel="noreferrer"
                     onClick={() => setActiveCite(c.n)}
@@ -493,7 +493,9 @@ export function App() {
                       {c.locator ? ` · ${c.locator}` : ""}
                     </div>
                     <div className="src-snip">{c.snippet}…</div>
-                    <div className="src-open">↳ opens in {c.system}, this passage highlighted ↗</div>
+                    <div className="src-open">
+                      {c.previewLink ? `↳ open the ${c.system} record, this passage highlighted ↗` : `↳ opens in ${c.system}, this passage highlighted ↗`}
+                    </div>
                     <div className={"src-tier" + (c.tier === "programs-only" ? " p" : "")}>
                       {c.tier === "programs-only" ? "Programs-only" : "Team"}
                     </div>
@@ -573,15 +575,19 @@ function Dossier({ index, persona }: { index: CorpusIndex; persona: keyof typeof
     .sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""));
 
   const otherDocs = useMemo(() => {
-    const m = new Map<string, { title: string; system: string; tier: string; deepLink: string; text: string }>();
+    const m = new Map<string, { title: string; system: string; tier: string; deepLink: string; docId: string; text: string }>();
     for (const c of chunks) {
       if (c.docTitle.startsWith("Grant fact sheet") || /reported results|progress report|— (Call|Email|Site visit|Check-in)/i.test(c.docTitle)) continue;
-      const e = m.get(c.docId) ?? { title: c.docTitle, system: c.system, tier: c.tier, deepLink: c.deepLink, text: "" };
+      const e = m.get(c.docId) ?? { title: c.docTitle, system: c.system, tier: c.tier, deepLink: c.deepLink, docId: c.docId, text: "" };
       e.text += (e.text ? "\n" : "") + c.text;
       m.set(c.docId, e);
     }
     return [...m.values()];
   }, [chunks]);
+
+  // Demo: server-rendered source viewer when we're talking to the API; the fictional
+  // deepLink otherwise. Production leaves previewLink unset and deepLink opens the record.
+  const srcHref = (docId: string, deepLink: string) => (serverMode ? `/s/${encodeURIComponent(docId)}` : deepLink);
 
   const num = (t: string, re: RegExp) => {
     const m = t.match(re);
@@ -644,7 +650,7 @@ function Dossier({ index, persona }: { index: CorpusIndex; persona: keyof typeof
                       {!proj?.participants && !repP && <span className="dossier-muted">no projection on file (pre-migration grant)</span>}
                     </div>
                     {factSheet && (
-                      <a className="src-open" href={factSheet.deepLink} target="_blank" rel="noreferrer">
+                      <a className="src-open" href={srcHref(factSheet.docId, factSheet.deepLink)} target="_blank" rel="noreferrer">
                         ↳ open the grant record ↗
                       </a>
                     )}
@@ -679,7 +685,7 @@ function Dossier({ index, persona }: { index: CorpusIndex; persona: keyof typeof
                   <span className="pill-src">{d.system}</span>
                   {d.tier === "programs-only" && <span className="pill-src">programs-only</span>}
                 </div>
-                <a className="src-open" href={d.deepLink} target="_blank" rel="noreferrer">↳ open in {d.system} ↗</a>
+                <a className="src-open" href={srcHref(d.docId, d.deepLink)} target="_blank" rel="noreferrer">↳ open in {d.system} ↗</a>
                 <div className="src-snip" style={{ marginTop: 4, whiteSpace: "pre-wrap" }}>
                   {d.text.slice(0, 380)}
                   {d.text.length > 380 ? "…" : ""}

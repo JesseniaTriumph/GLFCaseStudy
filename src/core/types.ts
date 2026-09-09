@@ -209,6 +209,16 @@ export interface Citation {
    * user lands on the passage with it highlighted — not just on the record.
    */
   deepLink: string;
+  /**
+   * Demo only: a same-origin URL that renders the cited document as Compass indexed it,
+   * styled like its source system, with this passage highlighted — because the fictional
+   * `deepLink` above points nowhere. Set by the server when source-preview is enabled
+   * (`ServerDeps.sourcePreview`, default = demo mode). Absent in production, where
+   * `deepLink` opens the real record. The UI uses `previewLink ?? deepLink`.
+   */
+  previewLink?: string;
+  /** `${system}:${sourceId}` — the document this passage belongs to */
+  docId: string;
   /** human-readable position within the source, e.g. "§ Wage outcomes", "p. 3", "field: Median wage" */
   locator: string | null;
   docTitle: string;

@@ -254,6 +254,26 @@ const req = async (path: string, opts: RequestInit = {}) => {
   ok("restricted question → refused, nothing leaked", body.confidence === "refused" && !/salary band|committee deliberation/i.test(body.text ?? ""));
 }
 
+// 6b. demo source viewer: citations carry a same-origin previewLink; it renders the doc,
+//     permission-checked, and refuses a restricted-tier doc the same way a query does.
+{
+  const r = await req("/api/ask", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ question: "how did Riverbend Care Collective perform against projection?" }) });
+  const body = (await r.json()) as { citations?: { previewLink?: string; docId?: string }[] };
+  const cite = body.citations?.[0];
+  const pv = await req(cite?.previewLink ?? "/s/none");
+  const html = await pv.text();
+  ok(
+    "citation previewLink renders the source doc (demo viewer), passage highlighted",
+    typeof cite?.previewLink === "string" && cite!.previewLink!.startsWith("/s/") && pv.status === 200 && /Demo preview/.test(html) && /<mark id="hl">/.test(html)
+  );
+
+  const restricted = await req("/s/" + encodeURIComponent("drive:legal-riverbend-grant-agreement-review-2025"));
+  ok("source viewer refuses a restricted-tier document (403, no content)", restricted.status === 403 && /outside your approved access/i.test(await restricted.text()));
+
+  const bogus = await req("/s/" + encodeURIComponent("drive:does-not-exist"));
+  ok("source viewer 404s an unknown document id", bogus.status === 404);
+}
+
 // 7. monitor: repeated restricted-tier refusals raise a restricted-probing signal
 {
   for (let i = 0; i < 3; i++) {

@@ -18,6 +18,8 @@ import { appendFileSync } from "node:fs";
 import type { CorpusIndex } from "../core/types.js";
 import { principalFromGroups } from "../security/auth.js";
 import { answerQuestion } from "../retrieval/answer.js";
+import { mayRead } from "../retrieval/search.js";
+import { renderSourcePreview } from "./source-preview.js";
 import { functionsForGroups } from "../roles.js";
 import { beginLogin, handleCallback, type OAuthConfig } from "./oauth.js";
 import { issueSession, verifySession, cookieHeader, clearCookieHeader, readCookie, revokeUser, revokeAll } from "./session.js";
@@ -50,6 +52,12 @@ export interface ServerDeps {
   demoLogin?: boolean;
   /** whether real Google OIDC is configured (drives what the web app's sign-in bar shows) */
   oauthConfigured?: boolean;
+  /**
+   * Mount `GET /s/<docId>` — renders a cited document (as indexed) styled like its source
+   * system, with the passage highlighted, because the fictional `deepLink`s point nowhere.
+   * Permission-checked against the caller's session. Demo only; defaults to `demoLogin`.
+   */
+  sourcePreview?: boolean;
 }
 
 /**
@@ -123,6 +131,7 @@ async function readBody(req: IncomingMessage): Promise<unknown> {
 
 export function createApp(deps: ServerDeps) {
   const secure = deps.secureCookies ?? process.env.NODE_ENV === "production";
+  const sourcePreview = deps.sourcePreview ?? deps.demoLogin ?? false;
   const limiter = deps.limiter ?? new RateLimiter();
   const monitor = deps.monitor ?? new Monitor();
   const serveStatic = makeStaticHandler(deps.webRoot);
@@ -307,6 +316,7 @@ export function createApp(deps: ServerDeps) {
           llm: deps.llm as never,
           followUps: body.deepDive ?? false,
           roleContext: body.roleContext ? { functions: functionsForGroups(session.groups) } : undefined,
+          sourcePreview,
         });
         // The answer shown to the user reveals no restricted-record count (that metadata is
         // itself sensitive), but the internal audit log still needs to know a restricted
@@ -324,6 +334,35 @@ export function createApp(deps: ServerDeps) {
           mode: ans.mode,
         });
         return json(res, 200, ans);
+      }
+
+      // Demo-only source viewer: render a cited document as Compass indexed it, styled like
+      // its source system, passage highlighted — the fictional deepLinks point nowhere.
+      // Permission-checked: you only see a source you were entitled to retrieve.
+      if (sourcePreview && path.startsWith("/s/") && req.method === "GET") {
+        if (!session) {
+          res.writeHead(302, { location: "/" });
+          return res.end();
+        }
+        const docId = decodeURIComponent(path.slice(3));
+        const principal = principalFromGroups(
+          session.email.split("@")[0] ?? session.sub,
+          session.groups,
+          session.groupsResolved !== false
+        );
+        const { status, html } = renderSourcePreview({
+          index: deps.index,
+          docId,
+          highlight: url.searchParams.get("h") ?? "",
+          canRead: (chunk) => mayRead(chunk, principal),
+        });
+        res.writeHead(status, {
+          "content-type": "text/html; charset=utf-8",
+          "content-security-policy": "default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src data:",
+          "referrer-policy": "same-origin",
+          "x-content-type-options": "nosniff",
+        });
+        return res.end(html);
       }
 
       // Anything else: the built web app (same origin). Unknown /api|/auth|/admin paths 404.

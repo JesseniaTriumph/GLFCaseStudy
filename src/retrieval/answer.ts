@@ -40,6 +40,12 @@ export interface AnswerOptions {
    * none; pass `null` to force it off, or a `Reranker` to force one on.
    */
   reranker?: Reranker | null;
+  /**
+   * Demo only: when set, each citation also gets a `previewLink` — a same-origin
+   * `/s/<docId>?h=<passage>` URL the server renders as the source document (the fictional
+   * `deepLink` points nowhere). Off in production.
+   */
+  sourcePreview?: boolean;
 }
 
 /**
@@ -57,7 +63,7 @@ export async function answerQuestion(
   // A portfolio-schedule question ("what's due in the next 30 days", "which grants have
   // renewals coming up", "what's overdue") is answered by computing across every grant's
   // own cycle — not by retrieval. Cited to the grant fact sheets it draws on.
-  const scheduleAns = maybeScheduleAnswer(index, question, principal);
+  const scheduleAns = maybeScheduleAnswer(index, question, principal, opts.sourcePreview ?? false);
   if (scheduleAns) return scheduleAns;
 
   // embed the query the same way the index was built, if it uses a learned embedder
@@ -159,6 +165,7 @@ export async function answerQuestion(
   }
 
   const citations = buildCitations(hits);
+  if (opts.sourcePreview) for (const c of citations) c.previewLink = sourcePreviewLink(c.docId, c.highlight);
 
   // The question asks for participant-level detail (a specific named/described individual's
   // outcome) but Compass holds no participant identifiers by policy. Answer from the grant
@@ -232,6 +239,7 @@ function buildCitations(hits: Scored[]): Citation[] {
       n: i + 1,
       system: h.chunk.system,
       deepLink: withHighlight(h.chunk.system, h.chunk.deepLink, highlight),
+      docId: h.chunk.docId,
       locator: locatorFor(h.chunk.text),
       docTitle: h.chunk.docTitle,
       ref: refFor(h),
@@ -276,6 +284,16 @@ function withHighlight(system: string, link: string, highlight: string): string 
 function refFor(h: Scored): string {
   const id = h.chunk.docId.split(":")[1] ?? h.chunk.docId;
   return `${h.chunk.system}:${id}`;
+}
+
+/**
+ * Same-origin URL the demo server renders as the source document with `highlight` marked.
+ * The real `deepLink` points at a fictional record; this is what "open the source" uses in
+ * demo mode. Production leaves `previewLink` unset and `deepLink` opens the live record.
+ */
+function sourcePreviewLink(docId: string, highlight: string): string {
+  const h = highlight ? `?h=${encodeURIComponent(highlight.slice(0, 120))}` : "";
+  return `/s/${encodeURIComponent(docId)}${h}`;
 }
 
 function extractiveAnswer(question: string, hits: Scored[], citations: Citation[]): string {
@@ -453,7 +471,7 @@ function isEnumerationRequest(question: string): boolean {
  * "What reports are due in the next 30 days?" · "Which grants have renewals coming up?" ·
  * "What's overdue across the portfolio?"
  */
-function maybeScheduleAnswer(index: CorpusIndex, question: string, principal: Principal): Answer | null {
+function maybeScheduleAnswer(index: CorpusIndex, question: string, principal: Principal, preview: boolean): Answer | null {
   const q = question.toLowerCase();
   const scheduleKw =
     /\b(due|overdue|deadline|coming up|upcoming|renewal|re-?application|report[s]? (due|left|remaining))\b|\bwhat'?s (due|left|coming|overdue)\b/.test(q);
@@ -521,10 +539,13 @@ function maybeScheduleAnswer(index: CorpusIndex, question: string, principal: Pr
 
   const citations: Citation[] = cites.slice(0, 10).map((gid, i) => {
     const fs = index.chunks.find((c) => c.docTitle.startsWith("Grant fact sheet") && c.docId.includes(gid));
+    const docId = fs?.docId ?? `givingdata:${gid}`;
     return {
       n: i + 1,
       system: "givingdata",
       deepLink: fs?.deepLink ?? `https://givingdata.example/records/${gid}`,
+      docId,
+      ...(preview ? { previewLink: sourcePreviewLink(docId, "") } : {}),
       locator: `§ Reporting schedule`,
       docTitle: fs?.docTitle ?? `Grant ${gid}`,
       ref: `givingdata:${gid}`,

@@ -165,6 +165,10 @@ export interface Citation {
    * user lands on the passage with it highlighted — not just on the record.
    */
   deepLink: string;
+  /** demo only: a same-origin `/s/<docId>` URL the server renders as the source document; the UI uses `previewLink ?? deepLink` */
+  previewLink?: string;
+  /** `${system}:${sourceId}` — the document this passage belongs to */
+  docId: string;
   /** human-readable position within the source, e.g. "§ Wage outcomes", "p. 3", "field: Median wage" */
   locator: string | null;
   docTitle: string;
