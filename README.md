@@ -127,4 +127,11 @@ eval/gold.json           the gold Q&A set
 web/                     React + Vite app (self-contained via web/src/lib/)
 data/mock/               synthetic fictional corpus
 docs/                    the build-doc set
+deliverables/            the case-study write-ups (strategy · discovery · security
+                         review + OWASP controls matrix · cost model · pen-test scope ·
+                         data-owner sign-off · the deck) — see deliverables/A_Strategy_Doc.md
+research/                background research on the Foundation
 ```
+
+**Running a penetration test?** Start at [`PENTEST.md`](PENTEST.md) and
+[`deliverables/P_PenTest_Scope.md`](deliverables/P_PenTest_Scope.md).

@@ -17,3 +17,7 @@ secrets/
 # runtime feedback capture
 eval/feedback.jsonl
 dist/raw/
+
+# the deck-builder's deps (run `npm --prefix deliverables install` + `node deliverables/build_deck.cjs` to rebuild the pptx)
+deliverables/node_modules/
+deliverables/package-lock.json
