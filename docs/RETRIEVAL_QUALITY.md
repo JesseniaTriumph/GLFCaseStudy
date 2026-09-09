@@ -18,7 +18,8 @@ Both commands run A/B automatically. Baseline explicitly unsets `COMPASS_RERANK`
 reranked sets it to `1`. Each arm runs in a fresh process, so the flag takes effect
 even if the reranker reads it during module initialization. An inherited rerank
 flag cannot accidentally enable the baseline. Other environment settings are
-preserved. Before the reranker lands, identical columns are expected.
+preserved. On a revision with no reranker wired, the two columns come out
+identical.
 
 The default run reads `eval/gold.json`; full mode instead reads
 `eval/gold-full.json`. Neither file is changed. Each arm builds an in-memory index
@@ -69,50 +70,52 @@ Values are rounded to four decimals only for display.
 
 For these small, curated fixtures, a useful target is complete source recall by
 rank 10 and zero complete misses, with the expected evidence moving toward the
-first few citations. The current default set already has recall@3 of 1.0; the
-full set reaches 1.0 at rank 5. A promising reranker would improve early recall,
-MRR, and nDCG while retaining that coverage. These are comparison targets, not
-enforced thresholds. With multiple expected sources, recall@1 cannot reach 1
-for every case, even with ideal ordering.
+first few citations. Both sets already reach recall@10 of 1.0 with no misses; the
+reranker's job is to pull the expected evidence forward — which it does (see the
+snapshot: recall@1, MRR, and nDCG all rise sharply, most of all on the noisier
+5-year corpus, while recall@10 and misses are unchanged). These are comparison
+targets, not enforced thresholds. With multiple expected sources, recall@1 cannot
+reach 1 for every case, even with ideal ordering.
 
-The current sets contain only 8 and 6 eligible cases. A single question can
+The current sets contain 28 and 10 eligible cases. A single question can
 move the averages substantially, and unlisted sources may still be useful.
 Scores describe agreement with the annotated expected IDs, not exhaustive
 relevance, answer correctness, or permission safety. Review changes alongside
 the gold questions and the release eval. Re-run after gold-set changes and
 compare A/B on the same revision, corpus, and translation/embedding settings.
 
-## Baseline snapshot
+## Snapshot
 
-Measured on 2026-09-09 against the `metrics` branch (based on `234c117`), before
-the `goldset` and `rerank` branches land, with default translation/embedding
-settings. Both commands completed with exit 0. Full mode selects the glossary
-translator by default. Aligning the match rule with `scripts/eval.ts` did not
-change any value — on the current gold sets every citation ref matches its
-expected id exactly.
+Measured on 2026-09-09 on integrated `main` (goldset + metrics + rerank merged),
+with default translation/embedding settings. Reranked = `COMPASS_RERANK=1`
+(`bge-reranker-base`, q8). Both commands completed with exit 0. Full mode selects
+the glossary translator by default.
 
-Default corpus (`eval/gold.json`):
+Default corpus (`eval/gold.json`, 28 eligible cases):
 
 | Metric | Baseline | Reranked | Delta |
 | --- | ---: | ---: | ---: |
-| recall@1 | 0.3125 | 0.3125 | 0.0000 |
-| recall@3 | 1.0000 | 1.0000 | 0.0000 |
-| recall@5 | 1.0000 | 1.0000 | 0.0000 |
+| recall@1 | 0.5000 | 0.6964 | +0.1964 |
+| recall@3 | 0.9107 | 0.9286 | +0.0179 |
+| recall@5 | 0.9821 | 0.9821 | 0.0000 |
 | recall@10 | 1.0000 | 1.0000 | 0.0000 |
-| MRR | 0.6458 | 0.6458 | 0.0000 |
-| nDCG@10 | 0.7344 | 0.7344 | 0.0000 |
+| MRR | 0.7470 | 0.8780 | +0.1310 |
+| nDCG@10 | 0.8041 | 0.9025 | +0.0985 |
 | No expected source retrieved | 0 | 0 | 0 |
-| Eligible cases | 8 | 8 | 0 |
 
-Full corpus (`eval/gold-full.json`):
+Full corpus (`eval/gold-full.json`, 10 eligible cases — the noisier 5-year corpus,
+where first-pass ranking has ~59 grants competing):
 
 | Metric | Baseline | Reranked | Delta |
 | --- | ---: | ---: | ---: |
-| recall@1 | 0.1667 | 0.1667 | 0.0000 |
-| recall@3 | 0.6667 | 0.6667 | 0.0000 |
-| recall@5 | 1.0000 | 1.0000 | 0.0000 |
+| recall@1 | 0.1000 | 0.7000 | +0.6000 |
+| recall@3 | 0.7000 | 0.9500 | +0.2500 |
+| recall@5 | 0.9500 | 1.0000 | +0.0500 |
 | recall@10 | 1.0000 | 1.0000 | 0.0000 |
-| MRR | 0.4639 | 0.4639 | 0.0000 |
-| nDCG@10 | 0.6070 | 0.6070 | 0.0000 |
+| MRR | 0.4200 | 0.9000 | +0.4800 |
+| nDCG@10 | 0.5755 | 0.9032 | +0.3277 |
 | No expected source retrieved | 0 | 0 | 0 |
-| Eligible cases | 6 | 6 | 0 |
+
+The reranker moves the right evidence to rank 1 far more often (recall@1 +0.20
+default, +0.60 full) and lifts MRR / nDCG correspondingly, while never dropping a
+source that first-pass retrieval already surfaced (recall@10 and misses flat).

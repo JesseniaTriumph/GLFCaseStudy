@@ -170,7 +170,14 @@ MDM-catalog distribution or deep biometric integration), an impact-model connect
 on a GPU endpoint (2.5 — the rerank stage is wired and `COMPASS_RERANK`-gated; the model id
 is one setting).
 
-**Done since:** the web app is now served by the API on one origin (`npm run demo`) — every
+**Done since (latest):** a **cross-encoder rerank stage** (roadmap 2.5) — `bge-reranker-base`
+re-scores the top ~30 permitted hits, opt-in via `COMPASS_RERANK=1`, strictly after the
+permission filter. `npm run eval:metrics` (recall@k / MRR / nDCG, rerank A/B) shows recall@1
++0.20 on the default corpus and +0.60 on the 5-year corpus, no misses added. The synthetic
+gold set is now **44 + 24 cases** covering every behavior. A live demo runs on Render
+(`docs/DEMO_HOSTING.md`), redeployed on each push to `main`.
+
+**Done before:** the web app is now served by the API on one origin (`npm run demo`) — every
 answer runs through the real server-side permission filter, not a client-side switch; the
 persona switch is a real demo sign-in and real Google OIDC drops in with `docs/DEMO_HOSTING.md`.
 Installable PWA. Hardened response headers on API + web, asserted in CI. `npm run deps:audit`
