@@ -283,7 +283,7 @@ const INJECTION_PATTERNS: RegExp[] = [
   /<!--[\s\S]*?-->/g,
   /<(script|style)\b[\s\S]*?<\/\1>/gi,
   // an instruction header line, with or without a trailing colon
-  /^\s*#{0,4}\s*(SYSTEM|ASSISTANT|USER|AI|NOTE TO COMPASS|INSTRUCTIONS? (FOR|TO)\b[^\n]*)\s*[:\-]?.*$/gim,
+  /^\s*#{0,4}\s*(SYSTEM|ASSISTANT|USER|AI|NOTE TO COMPASS|INSTRUCTIONS? (FOR|TO)\b[^\n]*)\s*[:-]?.*$/gim,
   // an imperative line aimed at an assistant (optionally a numbered step)
   /^\s*\d{0,2}[.)]?\s*(forget|ignore|disregard|disable|bypass|override|reveal|expose|output|print|dump|list every|do not (tell|mention|disclose|reveal)|stay in character|proceed to include)\b[^\n]*$/gim,
   // a sentence/line telling an assistant to ignore rules, change role, or exfiltrate
@@ -298,6 +298,7 @@ const INJECTION_PATTERNS: RegExp[] = [
   // a message impersonating a named authority to the assistant
   /--\s*message from the [^\n-]+--[\s\S]*?--/gi,
   // zero-width and bidi control characters used to hide instructions
+  // eslint-disable-next-line no-irregular-whitespace
   /[​-‏‪-‮⁠﻿]/g,
 ];
 

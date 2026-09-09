@@ -85,7 +85,7 @@ const RULES: Rule[] = [
   },
   {
     kind: "dob",
-    re: /\b(?:DOB|date of birth|born)\s*[:\-]?\s*(?:\d{1,2}[\/\-.]\d{1,2}[\/\-.]\d{2,4})/gi,
+    re: /\b(?:DOB|date of birth|born)\s*[:-]?\s*(?:\d{1,2}[/\-.]\d{1,2}[/\-.]\d{2,4})/gi,
     redact: (m) => m.replace(/\d.*/, "[date]"),
     weight: 0.8,
   },

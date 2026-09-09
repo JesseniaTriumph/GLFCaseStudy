@@ -24,7 +24,6 @@ const index = await runPipeline(ADAPTERS, {
   embedderId,
   log: () => {},
 });
-const embedder = index.embedder ? await (await import("../src/embed/embedder.js")).getEmbedder(index.embedder.id) : null;
 
 const store = await PgStore.open();
 await store.load(index);

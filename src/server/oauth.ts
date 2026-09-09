@@ -122,7 +122,7 @@ export async function handleCallback(cfg: OAuthConfig, code: string, state: stri
   let groupsResolved = true;
   try {
     groups = await cfg.resolveGroups(claims.email, claims.sub);
-  } catch (e) {
+  } catch {
     groupsResolved = false;
   }
   const principal = principalFromClaims(claims, groups, groupsResolved);

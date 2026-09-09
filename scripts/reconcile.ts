@@ -48,7 +48,7 @@ const unlinkedOrgs = airtable.filter((d) => d.meta.recordType === "org-profile" 
 const untagged = factSheets.filter((d) => !d.meta.thesisArea).map((d) => d.meta.grantId);
 
 // 6. migration-boundary grants with blank projection fields
-const migrated = gd.filter((d) => d.meta.recordType === "grant-fact-sheet" && String(d.text).includes("(untagged)") ).length;
+const untaggedGrants = gd.filter((d) => d.meta.recordType === "grant-fact-sheet" && String(d.text).includes("(untagged)")).length;
 
 // run the pipeline to get the dedupe + review-queue + excluded reports
 const index = await runPipeline([mockGivingData, mockDrive, mockAirtable, mockZoom], {
@@ -77,6 +77,7 @@ console.log(line(missingReports.length, "grant reports expected but not received
 console.log(line(grantsNoMemo.length, "grants with no diligence memo in Drive"));
 console.log(line(unlinkedOrgs.length, "Airtable org records not linked to a grant → " + unlinkedOrgs.slice(0, 5).join(", ")));
 console.log(line(untagged.length, "grants with no thesis-area tag"));
+console.log(line(untaggedGrants, "fact sheets carrying a pre-migration \"(untagged)\" marker"));
 console.log(line(index.dedupe.nearDuplicates, "near-duplicate documents collapsed to one authoritative copy"));
 console.log(line(index.dedupe.crossSystemLinks, "cross-system links (same report in Drive + the grantee portal)"));
 console.log(line(index.reviewQueue.length, "entity-resolution calls flagged for review"));

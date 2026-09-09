@@ -88,8 +88,6 @@ const check = async (label, fn) => {
   }
 };
 
-const clickText = (sel, text) =>
-  `[...document.querySelectorAll(${JSON.stringify(sel)})].find(e => e.textContent.trim() === ${JSON.stringify(text)})?.click()`;
 const clickSel = (sel, n = 0) => `document.querySelectorAll(${JSON.stringify(sel)})[${n}]?.click()`;
 
 // ---- load ----

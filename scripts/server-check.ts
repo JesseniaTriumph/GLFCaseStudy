@@ -31,7 +31,8 @@ let pass = 0,
   fail = 0;
 const ok = (n: string, c: boolean, extra = "") => {
   console.log(`${c ? "\x1b[32m✓\x1b[0m" : "\x1b[31m✗\x1b[0m"}  ${n}${extra ? " — " + extra : ""}`);
-  c ? pass++ : fail++;
+  if (c) pass++;
+  else fail++;
 };
 const b64u = (b: Buffer | string) =>
   (Buffer.isBuffer(b) ? b : Buffer.from(b)).toString("base64").replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");

@@ -249,10 +249,6 @@ export function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [persona, me, deepDive, roleCtx]);
 
-  const orgs = useMemo(() => {
-    if (!index) return [];
-    return index.entities.filter((e) => e.kind === "organization").sort((a, b) => a.label.localeCompare(b.label));
-  }, [index]);
 
   if (err) return <div className="shell"><div className="loading">{err}</div></div>;
   if (serverMode === null) return <div className="shell"><div className="loading">Connecting…</div></div>;

@@ -10,7 +10,7 @@
  *   4. An expired token is rejected.
  *   5. The audit log is append-only and hash-chained — tampering is detected.
  */
-import { generateKeyPairSync, createSign, randomBytes } from "node:crypto";
+import { generateKeyPairSync, createSign } from "node:crypto";
 import { writeFileSync, readFileSync, rmSync, existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { verifyIdToken, principalFromClaims, AuthError, type Jwk, type OidcConfig } from "../src/security/auth.js";
@@ -20,7 +20,8 @@ let pass = 0,
   fail = 0;
 const ok = (name: string, cond: boolean, extra = "") => {
   console.log(`${cond ? "\x1b[32m✓\x1b[0m" : "\x1b[31m✗\x1b[0m"}  ${name}${extra ? "  — " + extra : ""}`);
-  cond ? pass++ : fail++;
+  if (cond) pass++;
+  else fail++;
 };
 
 // ---------- set up a test signing key (stands in for Google's) ----------

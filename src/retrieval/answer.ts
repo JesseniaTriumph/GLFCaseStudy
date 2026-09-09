@@ -183,7 +183,7 @@ export async function answerQuestion(
     });
     mode = "generative";
   } else {
-    text = extractiveAnswer(question, hits, citations);
+    text = extractiveAnswer(question, hits);
   }
 
   // Conflicting figures across sources are shown, not merged (roadmap 3.6).
@@ -296,7 +296,7 @@ function sourcePreviewLink(docId: string, highlight: string): string {
   return `/s/${encodeURIComponent(docId)}${h}`;
 }
 
-function extractiveAnswer(question: string, hits: Scored[], citations: Citation[]): string {
+function extractiveAnswer(question: string, hits: Scored[]): string {
   const lines: string[] = [];
   const systems = new Set(hits.map((h) => h.chunk.system));
   lines.push(
@@ -336,7 +336,7 @@ function extractiveAnswer(question: string, hits: Scored[], citations: Citation[
  *
  * The level is the weakest dimension that applies, and the reason names which one drove it.
  */
-function gradeConfidence(hits: Scored[], question = "", conflict = false): { level: Answer["confidence"]; reason: string } {
+function gradeConfidence(hits: Scored[], _question = "", conflict = false): { level: Answer["confidence"]; reason: string } {
   const top = hits[0]!;
   const systems = new Set(hits.slice(0, 5).map((h) => h.chunk.system)).size;
   const strong = hits.filter((h) => h.bm25 > 2 || h.semantic > 0.12).length;

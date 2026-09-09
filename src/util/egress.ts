@@ -41,7 +41,7 @@ function isPrivateHost(host: string): boolean {
   );
 }
 
-/** exact host, or a leading-dot suffix ("​.googleapis.com" matches "www.googleapis.com") */
+/** exact host, or a leading-dot suffix (".googleapis.com" matches "www.googleapis.com") */
 export function hostAllowed(host: string, allow: readonly string[]): boolean {
   const h = host.toLowerCase().replace(/:\d+$/, "");
   if (METADATA_IPS.has(h)) return allow.includes(h); // metadata only if listed verbatim

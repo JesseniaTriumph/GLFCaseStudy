@@ -23,7 +23,7 @@ const pend = new Map();
 const errors = [];
 ws.onmessage = (e) => {
   const m = JSON.parse(e.data);
-  if (m.id && pend.has(m.id)) return pend.get(m.id)(m), pend.delete(m.id);
+  if (m.id && pend.has(m.id)) { pend.get(m.id)(m); pend.delete(m.id); return; }
   if (m.method === "Runtime.exceptionThrown") errors.push(m.params.exceptionDetails?.exception?.description || m.params.exceptionDetails?.text);
   if (m.method === "Runtime.consoleAPICalled" && m.params.type === "error") errors.push("console.error: " + m.params.args.map((a) => a.value || a.description).join(" "));
 };
@@ -32,7 +32,7 @@ const ev = async (expr) => (await send("Runtime.evaluate", { expression: expr, a
 await send("Page.enable"); await send("Runtime.enable");
 
 let pass = 0, fail = 0;
-const check = (label, cond, extra = "") => { cond ? pass++ : fail++; console.log(`${cond ? "\x1b[32m✓\x1b[0m" : "\x1b[31m✗\x1b[0m"} ${label}${cond ? "" : "  " + extra}`); };
+const check = (label, cond, extra = "") => { if (cond) pass++; else fail++; console.log(`${cond ? "\x1b[32m✓\x1b[0m" : "\x1b[31m✗\x1b[0m"} ${label}${cond ? "" : "  " + extra}`); };
 
 await send("Page.navigate", { url: BASE });
 await sleep(2500);

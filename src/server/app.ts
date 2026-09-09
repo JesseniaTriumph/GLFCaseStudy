@@ -257,7 +257,8 @@ export function createApp(deps: ServerDeps) {
         const s = adminSession();
         if (!s) return json(res, 403, { error: "admin only" });
         const body = (await readBody(req)) as { on?: boolean };
-        body.on ? killSwitch.engage() : killSwitch.release();
+        if (body.on) killSwitch.engage();
+        else killSwitch.release();
         record({ type: "admin", user: s.email, action: "killswitch", detail: body.on ? "engaged" : "released" });
         return json(res, 200, { engaged: killSwitch.engaged });
       }
