@@ -56,7 +56,8 @@ function badge(slide, x, y, n) {
   s.addText([
     { text: "Applied AI Fellow · Skills demonstration", options: { color: "F0C7B8" } },
     { text: "\nJessenia Cintron", options: { color: C.white, bold: true } },
-  ], { x: M, y: 5.55, w: 9, h: 1, isTextBox: true, margin: 0, fontFace: F, fontSize: 14, lineSpacingMultiple: 1.35 });
+    { text: "\nLive demo: compass-demo-gwk4.onrender.com", options: { color: "F0C7B8" } },
+  ], { x: M, y: 5.4, w: 9, h: 1.2, isTextBox: true, margin: 0, fontFace: F, fontSize: 14, lineSpacingMultiple: 1.35 });
   s.addText("“The North Star tells the team where to go. Compass helps them navigate the five years of\nreports, notes and decisions that show how far along the way they already are.”", {
     x: M, y: EH - 1.15, w: 11.5, h: 0.8, isTextBox: true, margin: 0, fontFace: F, fontSize: 11, italic: true, color: "E7B6A6",
   });
@@ -159,7 +160,7 @@ function badge(slide, x, y, n) {
     ["Resolve", "Everything joined to canonical Grant / Org / Fund / Person. Low-confidence merges to a review queue."],
     ["Retrieve — permissioned", "Hybrid keyword + semantic search, then filtered to what the asker may see. This filter is the security boundary — it runs in code and as a SQL WHERE clause. Restricted tier is never indexed."],
     ["Answer with citations", "Grounded in retrieved passages; every claim deep-links to the exact spot. States what it searched and what it could not. Conflicts shown, not merged. Refuses when unsupported."],
-    ["Evaluate & improve", "A gold Q&A set + a 16-case adversarial suite + ~130 unit tests + a dependency-advisory check gate every release (npm run ci). Feedback feeds the gold set. Better at retrieving and citing — never at deciding."],
+    ["Evaluate & improve", "A 46-case gold set + a 17-case adversarial suite + 126 unit tests + a dependency-advisory check gate every release (npm run ci). Feedback feeds the gold set. Better at retrieving and citing — never at deciding."],
   ];
   let y = 1.6;
   steps.forEach((row, i) => {
@@ -227,11 +228,11 @@ function badge(slide, x, y, n) {
   kicker(s, "The skills demonstration", M, 0.8, C.amber);
   s.addText("This isn't a mockup — it runs, and the checks are the proof", { x: M, y: 1.15, w: 11.5, h: 0.7, isTextBox: true, margin: 0, fontFace: F, fontSize: 24, bold: true, color: C.white });
   const checks = [
-    ["npm run demo", "One URL: the web app, the API and the login on one origin. Every answer goes through the server-side permission filter — the demo persona switch is a real sign-in, not a UI toggle. Flip from Program Officer to Comms and watch the same question drop from 8 sources to 5."],
-    ["npm run eval · eval:pg · eval:full", "12 gold Q&A cases run in memory and through a SQL WHERE clause; 12 more against a synthetic 5-year corpus (~65 grants, ~110 declined applicants, ~260 docs) with template drift, a migration boundary, conflicting figures, Spanish reports. 0 permission leaks."],
-    ["npm run redteam", "15 planted prompt-injection documents in the index + jailbreak, exfiltration, permission-probing, PII-extraction. 16/16, 0 leaks. “Print your system prompt” is refused."],
-    ["npm run test · security · server:check", "~130 unit tests (~97% line coverage on the logic modules); RS256 OIDC verification, fail-closed on a failed group lookup, a hash-chained audit log, the full Google login flow, rate limits, a kill switch, session revocation — 17/17."],
-    ["npm run ci", "All of the above + a dependency-advisory check, in one 10-step promotion gate. A permission-leak finding or a red-team regression is a hard stop. GitHub Actions + Dependabot config included."],
+    ["live demo + npm run demo", "One URL: the web app, the API and the login on one origin (hosted, and local). Every answer goes through the server-side permission filter — the demo persona switch is a real sign-in, not a UI toggle. Flip from Program Officer to Comms and watch the same question drop from 8 sources to 5. Click a citation and the source record opens with the passage highlighted — permission re-checked there too."],
+    ["npm run eval · eval:pg · eval:full", "46 gold Q&A cases run in memory and through a SQL WHERE clause; 25 more against a synthetic 5-year corpus (~59 grants, ~110 declined applicants, ~260 docs) with template drift, a migration boundary, conflicting figures, Spanish reports. 0 permission leaks."],
+    ["npm run redteam · eval:metrics", "15 planted prompt-injection documents + jailbreak, exfiltration, permission-probing, PII- and legal-privilege-probing. 17/17, 0 leaks. Separately, an optional cross-encoder reranker lifts recall@1 from 0.10 to 0.70 on the 5-year corpus — measured, not claimed."],
+    ["npm run test · security · server:check", "126 unit tests (~97% line coverage on the logic modules); RS256 OIDC verification, fail-closed on a failed group lookup, a hash-chained audit log, the full Google login flow, rate limits, a kill switch, session revocation — 20/20."],
+    ["npm run ci", "All of the above + a dependency-advisory check, in one promotion gate. A permission-leak finding or a red-team regression is a hard stop. GitHub Actions + Dependabot config included; the hosted demo redeploys on every green push to main."],
   ];
   let y = 2.15;
   checks.forEach((row) => {
@@ -240,7 +241,7 @@ function badge(slide, x, y, n) {
     y += 0.98;
   });
   pageNum(s, 7);
-  s.addNotes("The reason to trust the design is that it's built and tested. It runs as one URL — the web app, the API and the login together — and every answer goes through the real server-side permission filter; the persona switch in the demo is a real sign-in. Twelve gold Q&A cases with a permission-leak test, run in memory and through a SQL WHERE clause, plus twelve more against a synthetic five-year corpus built from public research on the Foundation. A red-team suite with fifteen planted injection documents. Around a hundred and thirty unit tests. Real OIDC, a tamper-evident audit log, rate limits, a kill switch. All of it in a ten-step promotion gate where a leak is a hard stop.");
+  s.addNotes("The reason to trust the design is that it's built and tested. It's running at a live URL you can open right now, and every answer goes through the real server-side permission filter; the persona switch in the demo is a real sign-in. Forty-six gold Q&A cases with a permission-leak test, run in memory and through a SQL WHERE clause, plus twenty-five more against a synthetic five-year corpus built from public research on the Foundation. A red-team suite with fifteen planted injection documents, seventeen adversarial cases. A hundred and twenty-six unit tests. Real OIDC, a tamper-evident audit log, rate limits, a kill switch. All of it in a promotion gate where a leak is a hard stop, and the hosted demo redeploys on every green push.");
 }
 
 // ============================================================ 7 · RISKS
@@ -368,7 +369,7 @@ function badge(slide, x, y, n) {
   s.addText("Rigorous but reasonable: rigor on citations, permissions and evals; reasonableness on scope and on saying “we don't have that.” An MVP-first build, documented in the open, for a team with no engineers and a six-month clock.", {
     x: 8.3, y: 2.55, w: 4.4, h: 3.0, isTextBox: true, margin: 0, fontFace: F, fontSize: 10.5, color: "F4D9CF", lineSpacingMultiple: 1.3,
   });
-  s.addText("Jessenia Cintron  ·  Compass  ·  strategy doc · discovery guide · security review + OWASP controls matrix · cost model · pen-test scope · deploy checklist · data-owner sign-off · running codebase (npm run ci · npm run demo)", {
+  s.addText("Jessenia Cintron  ·  Compass  ·  strategy doc · discovery guide · security review + OWASP controls matrix · cost model · pen-test scope · deploy checklist · data-owner sign-off · running codebase (npm run ci) · live demo at compass-demo-gwk4.onrender.com", {
     x: M, y: EH - 0.95, w: 11.5, h: 0.55, isTextBox: true, margin: 0, fontFace: F, fontSize: 8.5, color: "E7B6A6", lineSpacingMultiple: 1.2,
   });
   s.addNotes("What I'd actually do in week one: interview the people whose work this improves, lock in design partners, inventory every source including the shadow ones, get the data owner to agree the corpus and the tiers, and start the gold set and the LLM agreement. And where it goes: the Foundation is building toward knowledge products for the sector — Compass is that shape, and could become something the advisory side offers other funders. Happy to take questions.");

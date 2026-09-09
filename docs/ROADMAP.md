@@ -185,7 +185,7 @@ answer runs through the real server-side permission filter, not a client-side sw
 persona switch is a real demo sign-in and real Google OIDC drops in with `docs/DEMO_HOSTING.md`.
 Installable PWA. Hardened response headers on API + web, asserted in CI. `npm run deps:audit`
 (OWASP A06) in the gate. Full control state in `docs/HARDEN_CHECKLIST.md`. A **unit suite**
-(`npm run test` / `npm run coverage`, ~126 cases, ~97% line coverage on the logic modules)
+(`npm run test` / `npm run coverage`, 126 cases, ~97% line coverage on the logic modules)
 is now step 2 of the gate. A full front-to-back click-through fixed two wiring gaps: the
 web feedback buttons now POST to `/api/feedback`, and `corpus-index.json` is no longer
 served with an immutable cache. **Get-to-100 code:** the real Google Directory group
@@ -200,13 +200,13 @@ New docs: pen-test SOW, `DEPLOY_CHECKLIST.md`, `Q_Data_Owner_Signoff.md`.
 | 2.1 | Real connectors for Drive / GivingData / Airtable behind `SourceAdapter`, credential-activated (+ Zoom and Notion, gated). Mock fallback per source. |
 | 2.2 | Preserve — immutable content-addressed raw store (`src/pipeline/rawstore.ts`) + manifest. Extraction-confidence + injection quarantine. |
 | 2.3 | Resolve — entity graph, grant↔org join, dedupe (exact/near/cross-system), **entity review queue** (`/admin/review`, `build:index` output). |
-| 2.4 | Retrieve — hybrid BM25 + tf-idf; **permission filter as a SQL `WHERE` clause** (`src/db/store.ts`, `npm run eval:pg` 12/12, 0 leaks); Restricted excluded. |
+| 2.4 | Retrieve — hybrid BM25 + tf-idf; **permission filter as a SQL `WHERE` clause** (`src/db/store.ts`, `npm run eval:pg` 46/46, 0 leaks); Restricted excluded. |
 | 2.5 | Learned embeddings — `bge-small` + `minilm` registered (`src/embed/embedder.ts`), via transformers.js, opt-in (`--embed`), eval-passing. **Cross-encoder reranker** (`src/embed/reranker.ts` + `src/retrieval/rerank.ts`) — `bge-reranker-base` re-scores the top ~30 permitted hits, opt-in via `COMPASS_RERANK=1`, runs *after* the permission filter so it has no security surface; `npm run eval:rerank` + `npm run eval:metrics` (recall@k / MRR / nDCG A/B). bge-m3 multilingual on a GPU endpoint is the planned upgrade — one model id. |
 | 2.6 | Answer — evidence brief, inline deep-link citations, coverage line, **operational confidence** (coverage/agreement/freshness/completeness), abstention, **conflict surfacing**. |
-| 2.7 | Web app + the **full OIDC Authorization-Code + PKCE flow** (`src/server/`, `npm run server:check` 16/16). Served by the API on one origin (`npm run demo`) — every answer through the server-side filter; persona switch = real demo sign-in; real Google OIDC via `docs/DEMO_HOSTING.md`. Installable PWA. "How it works" panel. Embeddable widget. |
+| 2.7 | Web app + the **full OIDC Authorization-Code + PKCE flow** (`src/server/`, `npm run server:check` 20/20). Served by the API on one origin (`npm run demo`) — every answer through the server-side filter; persona switch = real demo sign-in; real Google OIDC via `docs/DEMO_HOSTING.md`. Installable PWA. "How it works" panel. Embeddable widget. |
 | 2.8 | SSO+MFA-ready, session + **server-side revocation**, tamper-evident audit log, **kill switch**, admin-group gating. |
 | 2.9 | Feedback control — the web thumbs-up/down POST to `/api/feedback` → `eval/feedback.jsonl` (read by `npm run tune`); **`npm run redteam`** (16 cases, injection/jailbreak/exfil/PII) inside **`npm run ci`**. |
-| — | **Unit suite** — `npm run test` (node:test, ~112 cases) + `npm run coverage`; step 2 of the promotion gate. Covers auth / session / oauth / limits / static / monitor / audit / search / grant-cycle / pii / translate / roles / text at ~97% line. |
+| — | **Unit suite** — `npm run test` (node:test, 126 cases) + `npm run coverage`; step 2 of the promotion gate. Covers auth / session / oauth / limits / static / monitor / audit / search / grant-cycle / pii / translate / roles / text at ~97% line. |
 | 2.11 | Per-user rate + cost limits → 429 + Retry-After. |
 | 3.1 | Airtable adapter done; **Notion connector** built (gated). |
 | 3.2 | PII pass (deterministic + participant heuristic + quarantine); **optional NER name pass** (`src/pipeline/ner.ts`). |

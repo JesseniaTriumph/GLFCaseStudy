@@ -3,11 +3,12 @@
 **7 minutes. One browser tab. The point to land: Compass answers from what it found,
 shows its work, admits its gaps, and the permission boundary is real — not a UI trick.**
 
-Setup: `npm run demo` → open `http://localhost:8787`. It loads already signed in as a
-Program Officer (a fictional demo user). Everything below runs on the synthetic 5-year
-corpus. If real Google sign-in is configured (see `compass/docs/DEMO_HOSTING.md`), the
-persona switch is replaced by a real "Sign in with Google" — the rest of the script is
-identical.
+Setup: open the live demo at **https://compass-demo-gwk4.onrender.com** (hit it ~2 minutes
+early — the free tier sleeps after 15 min idle and takes ~30s to wake). Local fallback:
+`npm run demo` → `http://localhost:8787`. It loads already signed in as a Program Officer
+(a fictional demo user). Everything below runs on the synthetic 5-year corpus. If real
+Google sign-in is configured (see `compass/docs/DEMO_HOSTING.md`), the persona switch is
+replaced by a real "Sign in with Google" — the rest of the script is identical.
 
 ---
 
@@ -50,8 +51,11 @@ In the **Sources & coverage** rail, click citation **[2] — PO check-in notes**
 > of plan, renewal warranted with a revised ramp. Compass didn't summarize that away —
 > it pointed me at it."
 
-*(Deep-link targets are example URLs in the demo; against real systems they land on the
-record.)*
+*(In the demo this opens a Compass-rendered view of the record, styled like its source
+system — Drive, GivingData or Airtable — with the passage highlighted and the real record
+URL shown on the page. Against the live systems the same link lands you in the record
+itself; it's one config change, not a rebuild. Permission is re-checked on that view too —
+open a source your persona can't see and it refuses exactly like a query would.)*
 
 ---
 
@@ -91,7 +95,7 @@ Point at the difference, side by side:
 |---|---|
 | 8 passages | **5 passages** |
 | PO check-in notes, the renewal call, the impact review — all shown | **all gone** |
-| "6 withheld — restricted" | **"143 withheld — programs-only, restricted"** |
+| "7 withheld — restricted" | **"~140 withheld — programs-only, restricted"** |
 
 > "Same question. Same corpus. The only thing that changed is who's asking. The program
 > officer's candid notes and the internal review are **programs-only** — Comms doesn't see
@@ -124,9 +128,11 @@ Then, still as Comms, click the board-compensation example:
 
 | Question | Answer | Show it |
 |---|---|---|
-| "Is the permission filter really server-side?" | Yes. The web page calls `POST /api/ask`; the server builds the principal from the session and filters the corpus before ranking. There's also a SQL `WHERE tier = ANY($1) AND acl && $2` as a second point. | `npm run server:check` (16/16) · `npm run eval:pg` |
-| "How do you know it doesn't leak?" | A gold set + an adversarial red-team suite run in CI. A single leaked restricted string is a hard build failure. | `npm run redteam` (16/16) · `npm run ci` |
+| "Is the permission filter really server-side?" | Yes. The web page calls `POST /api/ask`; the server builds the principal from the session and filters the corpus before ranking. There's also a SQL `WHERE tier = ANY($1) AND acl && $2` as a second point — and the source-viewer link re-checks it a third time. | `npm run server:check` (20/20) · `npm run eval:pg` (46/46) |
+| "How do you know it doesn't leak?" | A 46-case gold set + a 25-case 5-year-corpus set + a 17-case adversarial red-team suite, all run in CI. A single leaked restricted string is a hard build failure. | `npm run redteam` (17/17) · `npm run ci` |
 | "What about prompt injection?" | Instruction-like text in a retrieved document is stripped at intake ("[removed: text targeting an AI assistant]" — you can see one in the Riverbend answer, citation [7]) and high-score documents are quarantined. 15 planted injection docs are in the red-team corpus. | citation [7] · `docs/CONTROLS_MATRIX.md` (LLM01) |
+| "What about legal / contract questions?" | Same treatment as board compensation and declined applicants — privileged legal material (counsel advice, confidentiality clauses, indemnification) is Restricted, never indexed, and refused on the topic alone. Ordinary agreement terms (reporting cadence, payment schedule) still answer — that's team-tier. | ask "what confidentiality clause did counsel advise on?" then "what reporting cadence did we agree?" |
+| "How good is the retrieval?" | Hybrid BM25 + tf-idf by default; an optional local cross-encoder reranker (`COMPASS_RERANK=1`) re-scores the top ~30 hits — on the 5-year corpus it moves recall@1 from 0.10 to 0.70. Runs after the permission filter, so it only reorders what you're already allowed to see. | `npm run eval:metrics` · `docs/RETRIEVAL_QUALITY.md` |
 | "Does it use an LLM?" | Not in this demo — the answer is extractive (source passages + citations). A generative backend is a config value and gets only the retrieved passages, never the corpus or any tools. It needs a zero-retention vendor agreement first. | `docs/CONTROLS_MATRIX.md` (AI-1, LLM03) |
 | "Can I put it on my phone?" | It's an installable PWA — "Add to Home Screen" on iOS and Android, no app store. The phone is just another client of the same server API; it never downloads the corpus. | the install prompt |
 | "What would this cost to run?" | ~$260/month run-rate, ~$18k one-time for a third-party penetration test. It can launch at $0 AI cost on the extractive path. | `deliverables/I_Cost_Model.md` |

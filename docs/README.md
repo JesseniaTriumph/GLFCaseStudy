@@ -40,9 +40,9 @@ npm run ci             # the promotion gate: typecheck → build → eval → ev
 npm run build:index    # pipeline: clean → PII → injection filter → dedupe → resolve → graph join → gap report + raw store + manifest
 npm run eval           # gold set: retrieval + refusal + permission-leak — 11/11, 0 leaks
 npm run eval:pg        # the same gold set through the SQL permission filter — 11/11
-npm run redteam        # adversarial suite: injection, jailbreak, exfiltration, PII — 16/16, 0 leaks
+npm run redteam        # adversarial suite: injection, jailbreak, exfiltration, PII, legal-privilege — 17/17, 0 leaks
 npm run security       # OIDC token verify + fail-closed auth + tamper-evident audit — 9/9
-npm run server:check   # full OIDC login + demo sign-in + hardened headers + rate limit + kill switch — 16/16
+npm run server:check   # full OIDC login + demo sign-in + hardened headers + rate limit + kill switch + source viewer — 20/20
 npm run deps:audit     # OWASP A06 — fails on any high/critical advisory in shipping deps
 npm run demo           # one URL: web app + API + sign-in, every answer through the real permission filter
 npm run audit          # print + verify the hash-chained audit log
@@ -53,7 +53,7 @@ npm run ask -- --as programs "how did Riverbend Care Collective perform against 
 
 The MVP is the web app. Two ways to run it:
 
-- **`npm run demo`** — one server on `http://localhost:8787` serves the web app + the API +
+- **Live demo** — https://compass-demo-gwk4.onrender.com  ·  **`npm run demo`** — one server on `http://localhost:8787` serves the web app + the API +
   sign-in. Every answer goes through `POST /api/ask`: the **server-side** permission
   filter, the rate limiter, the audit log. A demo persona switch stands in for Google
   sign-in (or configure real OIDC — `docs/DEMO_HOSTING.md`). This is the one to demo.

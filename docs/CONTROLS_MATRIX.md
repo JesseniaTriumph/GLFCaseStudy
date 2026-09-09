@@ -63,7 +63,7 @@ into `npm run ci`, so a regression on either blocks promotion.
 
 | ID | Category | Compass control | Status |
 |---|---|---|---|
-| LLM01 | Prompt injection | `INJECTION_PATTERNS` stripping + `injectionScore()` quarantine at intake; query-side jailbreak refusal; 15 planted docs + behavioural cases in `npm run redteam` (CI gate) (AI-4) | ✅ |
+| LLM01 | Prompt injection | `INJECTION_PATTERNS` stripping + `injectionScore()` quarantine at intake; query-side jailbreak refusal; 15 planted docs + behavioural cases in `npm run redteam` (17/17, CI gate) (AI-4) | ✅ |
 | LLM02 | Sensitive information disclosure | `Restricted` tier never indexed (metadata stub only for policy-restricted; none for PII-raised); deterministic PII scrubber + participant-data heuristic; refusals reveal no count and don't confirm a match exists (DP-2, DP-3, AI-3) | ✅ |
 | LLM03 | Supply chain | Models pinned by exact id (`Xenova/bge-small-en-v1.5`, opus-mt, NER); transformers.js is optional; zero-retention LLM agreement is a Phase-1 legal step (SC-3, AI-1) | 🟡 |
 | LLM04 | Data & model poisoning | Sources are read-only; immutable content-addressed raw store; injection quarantine at intake; per-chunk hashing detects post-hoc tampering (IN-1, IN-2, AI-4) | ✅ |
